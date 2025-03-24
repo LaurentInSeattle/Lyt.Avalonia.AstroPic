@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Desktop", "Lyt.Avalonia.AstroPic\Lyt.Avalonia.AstroPic.Desktop.csproj", "{56EEBCC7-68F0-47D1-8AAB-3A5402A1C417}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Desktop", "Lyt.Avalonia.AstroPic.Desktop\Lyt.Avalonia.AstroPic.Desktop.csproj", "{134747B8-7895-CB37-6197-FF6BF55529C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{56EEBCC7-68F0-47D1-8AAB-3A5402A1C417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56EEBCC7-68F0-47D1-8AAB-3A5402A1C417}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56EEBCC7-68F0-47D1-8AAB-3A5402A1C417}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56EEBCC7-68F0-47D1-8AAB-3A5402A1C417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134747B8-7895-CB37-6197-FF6BF55529C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134747B8-7895-CB37-6197-FF6BF55529C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134747B8-7895-CB37-6197-FF6BF55529C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134747B8-7895-CB37-6197-FF6BF55529C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
