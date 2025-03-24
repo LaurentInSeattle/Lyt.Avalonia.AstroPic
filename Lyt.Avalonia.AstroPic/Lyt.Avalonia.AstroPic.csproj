@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>Lyt.TextoCopier</RootNamespace>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+		<AvaloniaResource Include="Assets\Languages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.2.5" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.5" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.5" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Controls\Lyt.Avalonia.Controls.csproj" />
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Interfaces\Lyt.Avalonia.Interfaces.csproj" />
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Model\Lyt.Avalonia.Model.csproj" />
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
+	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Persistence\Lyt.Avalonia.Persistence.csproj" />
+	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Model\Lyt.Avalonia.AstroPic.Model.csproj" />
+	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,82 @@
+<ResourceDictionary 
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+	<system:String x:Key="Shell.AppName">TextoCopier</system:String>
+	<system:String x:Key="Shell.About">About</system:String>
+	<system:String x:Key="Shell.Groups">Groups</system:String>
+	<system:String x:Key="Shell.NewGroup">New</system:String>
+	<system:String x:Key="Shell.NewGroupLong">New Group</system:String>
+	<system:String x:Key="Shell.EditGroup">Edit</system:String>
+	<system:String x:Key="Shell.DeleteGroup">Delete</system:String>
+	<system:String x:Key="Shell.Settings">Settings</system:String>
+	<system:String x:Key="Shell.Exit">Exit</system:String>
+	<system:String x:Key="Shell.Close">Close</system:String>
+	<system:String x:Key="Shell.Save">Save</system:String>
+	<system:String x:Key="Shell.Ready">Ready</system:String>
+	<system:String x:Key="Shell.Greetings">Welcome to TextoCopier!</system:String>
+
+	<system:String x:Key="Shell.Delete">Delete</system:String>
+	<system:String x:Key="Shell.GroupDelete.Question">Delete this Group?</system:String>
+	<system:String x:Key="Shell.GroupDelete.Hint">All entries in this group will be deleted. This operation cannot be undone.</system:String>
+
+	<system:String x:Key="Shell.Deleted">Deleted.</system:String>
+	<system:String x:Key="Shell.GroupDeleted">Group has been deleted.</system:String>
+
+	<system:String x:Key="Shell.Error">Error</system:String>
+	<system:String x:Key="Shell.FailGroupDelete">Failed to delete group</system:String>
+
+	<system:String x:Key="Shell.NoGroups.Title">No groups defined.</system:String>
+	<system:String x:Key="Shell.NoGroups.Hint">Create a new group to get started...</system:String>
+
+	<system:String x:Key="Template.Copy">Copy</system:String>
+	<system:String x:Key="Toast.Dismiss">Dismiss</system:String>
+
+	<system:String x:Key="NewEditView.Max64">64 characters max.</system:String>
+	<system:String x:Key="NewEditView.Max2048">2048 characters max.</system:String>
+
+	<system:String x:Key="Group.NewTemplate">New...</system:String>
+	<system:String x:Key="Group.NewTemplateLong">New Template</system:String>
+	<system:String x:Key="Group.NoSelection">No group selected...</system:String>
+
+	<system:String x:Key="NewEditGroupView.GroupName">Name</system:String>
+	<system:String x:Key="NewEditGroupView.GroupDescription">Description</system:String>
+	<system:String x:Key="NewEditGroupView.GroupIconName">Icon Name</system:String>
+	<system:String x:Key="NewEditGroupView.StartTyping">Start typing to search... </system:String>
+	
+	<system:String x:Key="TemplateView.LinkNotFound.Title">404, Not Found!</system:String>
+	<system:String x:Key="TemplateView.LinkNotFound.Hint">Could not open the provided link in the default browser.</system:String>
+
+	<system:String x:Key="NewEditTemplateView.Changed.Format">Will be changed in {0}</system:String>
+	<system:String x:Key="NewEditTemplateView.Added.Format">Will be added to {0}</system:String>
+
+	<system:String x:Key="NewEditTemplateView.TemplateName">Template Name</system:String>
+	<system:String x:Key="NewEditTemplateView.TemplateValue">Template Value</system:String>
+	<system:String x:Key="NewEditTemplateView.HideText.TrueText">Hide Text</system:String>
+	<system:String x:Key="NewEditTemplateView.HideText.FalseText">Normal</system:String>
+	<system:String x:Key="NewEditTemplateView.IsWebLink.TrueText">Is Web Link</system:String>
+	<system:String x:Key="NewEditTemplateView.IsWebLink.FalseText">Regular</system:String>
+
+	<system:String x:Key="Settings.Language">User Interface Language</system:String>
+	<system:String x:Key="Settings.French">French</system:String>
+	<system:String x:Key="Settings.English">US English</system:String>
+	<system:String x:Key="Settings.Italian">Italian</system:String>
+	<system:String x:Key="Settings.RestartRequired.Title">Restart Required</system:String>
+	<system:String x:Key="Settings.RestartRequired.Hint">Changing this setting requires restarting the application.</system:String>
+	<system:String x:Key="Settings.RestartRequired.Verb">Restart Now!</system:String>
+
+	<system:String x:Key="TemplatesModel.GroupNameIsBlank">Group name cannot be left empty or blank.</system:String>
+	<system:String x:Key="TemplatesModel.DescriptionIsBlank">Group description cannot be left empty or blank.</system:String>
+	<system:String x:Key="TemplatesModel.IconNameIsBlank">An icon name is required.</system:String>
+	<system:String x:Key="TemplatesModel.GroupNameIsTooLong">The group name is too long.</system:String>
+	<system:String x:Key="TemplatesModel.DescriptionIsTooLong">The group description is too long.</system:String>
+	<system:String x:Key="TemplatesModel.IconNotAvailable">This icon cannot be found.</system:String>
+
+	<system:String x:Key="TemplatesModel.TemplateAlreadyExists">A template with this name already exists.</system:String>
+    <system:String x:Key="TemplatesModel.NoSuchTemplate">No such template.</system:String>
+    <system:String x:Key="TemplatesModel.TemplateNameIsBlank">The template name cannot be left empty or blank.</system:String>
+    <system:String x:Key="TemplatesModel.TemplateValueIsBlank">The template string value cannot be left empty or blank.</system:String>
+    <system:String x:Key="TemplatesModel.TemplateNameIsTooLong">The template name is too long.</system:String>
+    <system:String x:Key="TemplatesModel.TemplateValueIsTooLong">The template string value is too long.</system:String>
+
+</ResourceDictionary>
