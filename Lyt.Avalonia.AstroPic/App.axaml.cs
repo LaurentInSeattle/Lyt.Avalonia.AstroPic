@@ -60,14 +60,19 @@ public partial class App : ApplicationBase
                 App.Organization, App.Application, App.RootNamespace, App.AssemblyName, App.AssetsFolder));
 
         // The localizer needs the File Manager, do not change the order.
-        var localizer = App.GetRequiredService<LocalizerModel>();
-        await localizer.Configure(
-            new LocalizerConfiguration
-            {
-                AssemblyName = App.AssemblyName,
-                Languages = ["en-US", "fr-FR", "it-IT"],
-                // Use default for all other config parameters 
-            });
+        var localizer = App.GetRequiredService<ILocalizer>();
+
+        // TODO: FIX that ! 
+        if (localizer is LocalizerModel localizerModel)
+        {
+            await localizerModel.Configure(
+                new LocalizerConfiguration
+                {
+                    AssemblyName = App.AssemblyName,
+                    Languages = ["en-US", "fr-FR", "it-IT"],
+                    // Use default for all other config parameters 
+                });
+        } 
 
         logger.Debug("OnStartupBegin complete");
     }

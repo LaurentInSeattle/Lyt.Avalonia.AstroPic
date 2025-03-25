@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Shell;
+﻿using Lyt.Avalonia.AstroPic.Service;
+
+namespace Lyt.Avalonia.AstroPic.Shell;
 
 public sealed class ShellViewModel : Bindable<ShellView>
 {
@@ -6,10 +8,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private readonly IToaster toaster;
     private readonly IMessenger messenger;
     private readonly IProfiler profiler;
-    private readonly LocalizerModel localizer;
+    private readonly ILocalizer localizer;
 
     public ShellViewModel(
-        LocalizerModel localizer, 
+        ILocalizer localizer, 
         IDialogService dialogService, IToaster toaster, IMessenger messenger, IProfiler profiler)
     {
         this.localizer = localizer;
@@ -19,7 +21,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         this.profiler = profiler;
     }
 
-    protected override void OnViewLoaded()
+    protected async override void OnViewLoaded()
     {
         this.Logger.Debug("OnViewLoaded begins");
 
@@ -30,12 +32,11 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
 
         // Select default language 
-        //this.localizer.DetectAvailableLanguages();
-        //string preferredLanguage = this.templatesModel.Language;
-        //this.Logger.Debug("Language: " + preferredLanguage);
-        //this.localizer.SelectLanguage(preferredLanguage);
+        string preferredLanguage = "it-IT";
+        this.Logger.Debug("Language: " + preferredLanguage);
+        this.localizer.SelectLanguage(preferredLanguage);
 
-        //this.Logger.Debug("OnViewLoaded language loaded");
+        this.Logger.Debug("OnViewLoaded language loaded");
 
         // Create all statics views and bind them 
         // ShellViewModel.SetupWorkflow();
@@ -60,6 +61,13 @@ public sealed class ShellViewModel : Bindable<ShellView>
         //}
 
         this.Logger.Debug("OnViewLoaded complete");
+
+        //var result = await AstroPicService.GetPictures(Provider.Nasa, DateTime.Now);
+        //if ((result != null) && (result.Count > 0))
+        //{
+        //    var picture = result[0];
+        //    var bytes = await AstroPicService.DownloadPicture(picture);
+        //} 
     }
 
     private void OnModelUpdated(ModelUpdateMessage message)
