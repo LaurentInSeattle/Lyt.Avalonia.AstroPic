@@ -11,6 +11,7 @@ public class AstroPicModel : ModelBase
         new()
         {
             Language = DefaultLanguage,
+            IsFirstRun = true,
         }; 
     private readonly FileManagerModel fileManager;
 
@@ -37,6 +38,9 @@ public class AstroPicModel : ModelBase
     [JsonRequired]
     public string Language { get; set; } = AstroPicModel.DefaultLanguage;
 
+    [JsonRequired]
+    public bool IsFirstRun { get; set; } = false;
+
     //// Serialized -  No model changed event
     //[JsonRequired]
     //// public List<Group> Groups { get; set; } = [];
@@ -61,24 +65,25 @@ public class AstroPicModel : ModelBase
 
     public Task Load()
     {
+        string filename = AstroPicModel.AstroPicModelFilename;
         try
         {
-            if (!this.fileManager.Exists(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename))
+            if (!this.fileManager.Exists(Area.User, Kind.Json, filename))
             {
-                this.fileManager.Save(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename, AstroPicModel.DefaultData);
+                this.fileManager.Save(Area.User, Kind.Json, filename, AstroPicModel.DefaultData);
             }
 
-            //TemplatesModel model =
-            //    this.fileManager.Load<TemplatesModel>(Area.User, Kind.Json, TemplatesModel.TemplatesModelFilename);
+            AstroPicModel model =
+                this.fileManager.Load<AstroPicModel>(Area.User, Kind.Json, filename);
 
-            //// Copy all properties with attribute [JsonRequired]
-            //base.CopyJSonRequiredProperties<TemplatesModel>(model);
+            // Copy all properties with attribute [JsonRequired]
+            base.CopyJSonRequiredProperties<AstroPicModel>(model);
             return Task.CompletedTask;
         }
         catch (Exception ex)
         {
-            //string msg = "Failed to load Model from " + TemplatesModel.TemplatesModelFilename;
-            //this.Logger.Fatal(msg);
+            string msg = "Failed to load Model from " + filename;
+            this.Logger.Fatal(msg);
             throw new Exception("", ex);
         }
     }

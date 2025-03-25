@@ -4,6 +4,7 @@ internal class NasaService
 {
     public const string ApiKey = "DEMO_KEY";
     public const string Endpoint = "https://api.nasa.gov";
+    public const string Request = "/planetary/apod";
 
     public static async Task<List<Picture>> GetPictures(DateTime dateTime, int count = 1)
     {
@@ -15,7 +16,7 @@ internal class NasaService
         try
         {
             var client = new RestClient(NasaService.Endpoint);
-            var request = new RestRequest("/planetary/apod", Method.Get)
+            var request = new RestRequest(NasaService.Request, Method.Get)
             {
                 RequestFormat = DataFormat.Json
             };

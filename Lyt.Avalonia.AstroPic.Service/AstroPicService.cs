@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Service.Nasa;
-
-namespace Lyt.Avalonia.AstroPic.Service;
+﻿namespace Lyt.Avalonia.AstroPic.Service;
 
 ///  See : https://github.com/nikvoronin/LastWallpaper 
 /// https://github.com/nikvoronin/LastWallpaper?tab=readme-ov-file#media-sources-8 
@@ -21,7 +19,8 @@ public class AstroPicService
                 return await NasaService.GetPictures(dateTime);
 
             case Provider.Bing:
-                break;
+                return await BingService.GetPictures(dateTime);
+
             case Provider.EarthView:
                 break;
             default:

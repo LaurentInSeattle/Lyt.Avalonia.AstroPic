@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Service;
-
-namespace Lyt.Avalonia.AstroPic.Shell;
+﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
 public sealed class ShellViewModel : Bindable<ShellView>
 {
@@ -62,25 +60,25 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
         this.Logger.Debug("OnViewLoaded complete");
 
-        //var result = await AstroPicService.GetPictures(Provider.Nasa, DateTime.Now);
-        //if ((result != null) && (result.Count > 0))
-        //{
-        //    var picture = result[0];
-        //    var bytes = await AstroPicService.DownloadPicture(picture);
-        //} 
+        var result = await AstroPicService.GetPictures(Provider.Bing, DateTime.Now);
+        if ((result != null) && (result.Count > 0))
+        {
+            var picture = result[0];
+            byte [] bytes = await AstroPicService.DownloadPicture(picture);
+        }
     }
 
-    private void OnModelUpdated(ModelUpdateMessage message)
-    {
-        string msgProp = string.IsNullOrWhiteSpace(message.PropertyName) ? "<unknown>" : message.PropertyName;
-        string msgMethod = string.IsNullOrWhiteSpace(message.MethodName) ? "<unknown>" : message.MethodName;
-        this.Logger.Debug("Model update, property: " + msgProp + " method: " + msgMethod);
+    //private void OnModelUpdated(ModelUpdateMessage message)
+    //{
+    //    string msgProp = string.IsNullOrWhiteSpace(message.PropertyName) ? "<unknown>" : message.PropertyName;
+    //    string msgMethod = string.IsNullOrWhiteSpace(message.MethodName) ? "<unknown>" : message.MethodName;
+    //    this.Logger.Debug("Model update, property: " + msgProp + " method: " + msgMethod);
 
-        //if (message.PropertyName != nameof(this.templatesModel.SelectedGroup))
-        //{
-        //    this.BindGroupIcons();
-        //}
-    }
+    //    //if (message.PropertyName != nameof(this.templatesModel.SelectedGroup))
+    //    //{
+    //    //    this.BindGroupIcons();
+    //    //}
+    //}
 
 
 #pragma warning disable IDE0051 // Remove unused private members
@@ -95,6 +93,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 #pragma warning disable CA1822 // Mark members as static
     private void OnExit(object? _) { }
 #pragma warning restore CA1822 
+#pragma warning restore IDE0051 // Remove unused private members
 
     public ICommand SettingsCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 

@@ -1,9 +1,20 @@
-﻿using Lyt.Avalonia.AstroPic.Service.Nasa;
-
-namespace Lyt.Avalonia.AstroPic.Service; 
+﻿namespace Lyt.Avalonia.AstroPic.Service; 
 
 public sealed class Picture
 {
+    internal Picture(BingPicture bingPicture)
+    {
+        this.Provider = Provider.Bing;
+        this.Date = DateTime.Now.Date;
+        this.MediaType = MediaType.Image;
+
+        this.Url = string.Concat(BingService.Endpoint, bingPicture.PartialUrl);
+
+        this.Title = bingPicture.Title;
+        this.Description = bingPicture.Copyright;
+        this.Copyright = bingPicture.Copyright;
+    }
+
     internal Picture(NasaPicture nasaPicture)
     {
         this.Provider = Provider.Nasa;
