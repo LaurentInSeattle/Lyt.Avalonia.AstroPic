@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic;
+﻿using Lyt.Avalonia.Mvvm.Animations;
+
+namespace Lyt.Avalonia.AstroPic;
 
 public partial class App : ApplicationBase
 {
@@ -22,30 +24,32 @@ public partial class App : ApplicationBase
         [
            // Singletons
            typeof(ShellViewModel),
-           //typeof(GroupViewModel),
-           //typeof(NewEditGroupViewModel),
-           //typeof(HelpViewModel),
+           typeof(GalleryViewModel),
            //typeof(SettingsViewModel),
-           //typeof(NewEditTemplateViewModel),
+           //typeof(IntroViewModel),
         ],
         [
             // Services 
-#if DEBUG
-            new Tuple<Type, Type>(typeof(ILogger), typeof(LogViewerWindow)),
-#else
-            new Tuple<Type, Type>(typeof(ILogger), typeof(Logger)),
-#endif
-            
+            App.LoggerService,
+            new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
             new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
             new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
             new Tuple<Type, Type>(typeof(IMessenger), typeof(Messenger)),
             new Tuple<Type, Type>(typeof(IProfiler), typeof(Profiler)),
             new Tuple<Type, Type>(typeof(IToaster), typeof(Toaster)),
         ],
-        singleInstanceRequested: false)
+        singleInstanceRequested: false,
+        splashImageUri: null,
+        appSplashWindow: new SplashWindow()
+        )
     {
         // This should be empty, use the OnStartup override
     }
+
+    private static Tuple<Type, Type> LoggerService =>
+            Debugger.IsAttached ?
+                new Tuple<Type, Type>(typeof(ILogger), typeof(LogViewerWindow)) :
+                new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
 
     public bool RestartRequired { get; set; }
 

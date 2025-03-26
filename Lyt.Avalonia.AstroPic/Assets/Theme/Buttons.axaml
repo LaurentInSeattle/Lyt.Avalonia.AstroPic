@@ -54,5 +54,40 @@
 		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
 		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
 		<Setter Property="IsDisabled" Value="False" />
-	</ControlTheme>		
+	</ControlTheme>
+
+	<ControlTheme x:Key="ViewIconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="Width" Value="280" />
+		<Setter Property="Height" Value="80" />
+		<Setter Property="FontSize" Value="36" />
+		<Setter Property="Layout" Value="IconTextRightSide" />
+		<Setter Property="Behaviour" Value="Tap" />
+		<Setter Property="HorizontalAlignment" Value="Right" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="ButtonBackground" Value="BorderOnly" />
+		<Setter Property="GlyphStrokeThickness" Value="0" />
+		<Setter Property="GlyphAngle" Value="0" />
+	</ControlTheme>
+
+	<ControlTheme x:Key="TextButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="Width" Value="280" />
+		<Setter Property="Height" Value="80" />
+		<Setter Property="FontSize" Value="36" />
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="Layout" Value="TextOnly" />
+		<Setter Property="Behaviour" Value="Tap" />
+		<Setter Property="HorizontalAlignment" Value="Right" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="ButtonBackground" Value="BorderOnly" />
+		<Setter Property="GlyphStrokeThickness" Value="0" />
+		<Setter Property="GlyphAngle" Value="0" />
+	</ControlTheme>
 </ResourceDictionary>

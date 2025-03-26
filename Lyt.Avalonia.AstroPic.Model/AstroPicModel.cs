@@ -1,6 +1,5 @@
-﻿using static Lyt.Avalonia.Persistence.FileManagerModel;
-
-namespace Lyt.Avalonia.AstroPic.Model;
+﻿namespace Lyt.Avalonia.AstroPic.Model;
+using static Lyt.Avalonia.Persistence.FileManagerModel;
 
 public class AstroPicModel : ModelBase
 {
