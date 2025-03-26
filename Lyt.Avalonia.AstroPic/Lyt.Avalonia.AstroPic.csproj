@@ -32,4 +32,10 @@
 	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Workflow\Gallery\" />
+	  <Folder Include="Workflow\Intro\" />
+	  <Folder Include="Workflow\Settings\" />
+	</ItemGroup>
+
 </Project>
