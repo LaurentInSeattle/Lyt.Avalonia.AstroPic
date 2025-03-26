@@ -1,0 +1,77 @@
+<UserControl 
+    x:Class="Lyt.Avalonia.AstroPic.Workflow.Gallery.GalleryView"
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	xmlns:controls="clr-namespace:Lyt.Invasion.Controls"
+	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
+	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
+    xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
+    x:DataType="vm:GalleryViewModel" 
+	>
+	<Grid
+		x:Name="InnerGrid"
+		Background="Black"
+	    >
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="374" />
+			<ColumnDefinition Width="1" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="1" />
+		</Grid.RowDefinitions>
+		<!-- Do not add rows and/or columns to the toaster host-->
+		<Grid
+			x:Name="ToasterHost"
+			Grid.Column="1" Grid.Row="1"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			>
+			<ContentControl
+				x:Name="ShellViewContent"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+		</Grid>
+		<panzoom:PanZoomControl
+			x:Name="PanAndZoom"
+			Grid.Column="1" Grid.Row="1"
+			Background="#AACCCCCC"
+			ZoomFactor="{Binding ZoomFactor}"
+			>
+			<panzoom:PanZoomControl.ZoomableContent>
+				<Canvas
+					x:Name="Canvas"
+					RenderOptions.BitmapInterpolationMode="LowQuality"
+					Background="AliceBlue"
+					VerticalAlignment="Top" HorizontalAlignment="Left"
+					>
+				</Canvas>
+			</panzoom:PanZoomControl.ZoomableContent>
+		</panzoom:PanZoomControl>
+		<!--
+		<controls:ZoomController
+			x:Name="ZoomController"
+			Grid.Column="1" Grid.Row="1"
+			VerticalAlignment="Top" HorizontalAlignment="Right"
+			Margin="0 12 12 12"
+			>
+		</controls:ZoomController>
+			-->
+			<Grid
+			x:Name="SideBar"
+			Grid.Column="2" Grid.Row="1" Grid.RowSpan="999"
+			>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="6" />
+				<!-- Splitter ? -->
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+		</Grid>
+	</Grid>
+</UserControl>

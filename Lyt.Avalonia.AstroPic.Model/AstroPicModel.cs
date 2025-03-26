@@ -12,6 +12,7 @@ public class AstroPicModel : ModelBase
         {
             Language = DefaultLanguage,
             IsFirstRun = true,
+            ShouldAutoStart = false,
         }; 
     private readonly FileManagerModel fileManager;
 
@@ -38,8 +39,12 @@ public class AstroPicModel : ModelBase
     [JsonRequired]
     public string Language { get; set; } = AstroPicModel.DefaultLanguage;
 
+    /// <summary> This should stay true, ==> But... Just FOR NOW !  </summary>
     [JsonRequired]
     public bool IsFirstRun { get; set; } = false;
+
+    [JsonRequired]
+    public bool ShouldAutoStart { get; set; } = false;
 
     //// Serialized -  No model changed event
     //[JsonRequired]

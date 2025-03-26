@@ -17,6 +17,7 @@ public partial class App : ApplicationBase
         [
             // Models 
             typeof(FileManagerModel),
+            typeof(AstroPicModel),
         ],
         [
            // Singletons

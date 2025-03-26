@@ -33,7 +33,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Workflow\Gallery\" />
 	  <Folder Include="Workflow\Intro\" />
 	  <Folder Include="Workflow\Settings\" />
 	</ItemGroup>
