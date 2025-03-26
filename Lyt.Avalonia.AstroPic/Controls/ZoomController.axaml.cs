@@ -10,8 +10,8 @@ public partial class ZoomController : UserControl
         this.Opacity = 1.0;
         this.Slider.Minimum = 1.0;
         this.Slider.Maximum = 4.0;
-        this.Slider.SmallChange = 0.25;
-        this.Slider.TickFrequency = 0.25;
+        this.Slider.SmallChange = 0.20;
+        this.Slider.TickFrequency = 0.20;
         this.Slider.Value = 1.0;
         if (!Design.IsDesignMode)
         {

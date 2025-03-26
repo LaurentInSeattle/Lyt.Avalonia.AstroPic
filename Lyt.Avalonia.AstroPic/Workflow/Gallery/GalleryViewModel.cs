@@ -5,10 +5,8 @@ public class GalleryViewModel : Bindable<GalleryView>
     private bool downloading;
     private bool downloaded ;
 
-    public GalleryViewModel()
-    {
-        this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
-    }
+    public GalleryViewModel() 
+        => this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
 
     protected override void OnViewLoaded()
     {
@@ -35,7 +33,9 @@ public class GalleryViewModel : Bindable<GalleryView>
         }
 
         this.downloading = true;
-        var result = await AstroPicService.GetPictures(Provider.Bing, DateTime.Now);
+        Provider provider = Provider.Bing;
+        // Provider provider = Provider.Nasa;
+        var result = await AstroPicService.GetPictures(provider, DateTime.Now);
         if ((result != null) && (result.Count > 0))
         {
             var picture = result[0];
@@ -48,20 +48,22 @@ public class GalleryViewModel : Bindable<GalleryView>
 
     private void LoadImage(byte[] imageBytes)
     {
-        var canvas = this.View.Canvas;
         var image = new Image { Stretch = Stretch.Uniform };
         RenderOptions.SetBitmapInterpolationMode(image, BitmapInterpolationMode.MediumQuality);
+        var canvas = this.View.Canvas;
         canvas.Children.Clear();
         canvas.Children.Add(image);
-        var stream = new MemoryStream(imageBytes);
-        var bitmap = WriteableBitmap.Decode(stream);
+        var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         canvas.Width = bitmap.Size.Width;
         canvas.Height = bitmap.Size.Height;
         image.Source = bitmap;
-        this.ZoomFactor = 2.0;
-        Schedule.OnUiThread(50, () => { this.ZoomFactor = 1.0; }, DispatcherPriority.ApplicationIdle);        
-    }
 
+        // This is where it gets really weird
+        // this.View.InvalidateVisual() ; // does not work , even if dispatched 
+        // The view box in the zoom control is stuck to zero bounds 
+        this.ZoomFactor = 2.0;
+        Schedule.OnUiThread(50, () => { this.ZoomFactor = 1.0; }, DispatcherPriority.ApplicationIdle);
+    }
 
     private void OnZoomRequest(ZoomRequestMessage message)
         => this.ZoomFactor = message.ZoomFactor;
