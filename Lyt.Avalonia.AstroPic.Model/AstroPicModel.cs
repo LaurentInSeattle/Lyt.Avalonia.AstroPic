@@ -1,7 +1,8 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
+
 using static Lyt.Avalonia.Persistence.FileManagerModel;
 
-public class AstroPicModel : ModelBase
+public sealed partial class AstroPicModel : ModelBase
 {
     public const string DefaultLanguage = "it-IT";
     private const string AstroPicModelFilename = "AstroPicData";
@@ -12,7 +13,9 @@ public class AstroPicModel : ModelBase
             Language = DefaultLanguage,
             IsFirstRun = true,
             ShouldAutoStart = false,
-        }; 
+            MaxImages = 128,
+            MaxStorageMB = 64,
+        };
     private readonly FileManagerModel fileManager;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -33,29 +36,6 @@ public class AstroPicModel : ModelBase
         this.fileManager = fileManager;
         this.ShouldAutoSave = true;
     }
-
-    // Serialized -  No model changed event
-    [JsonRequired]
-    public string Language { get; set; } = AstroPicModel.DefaultLanguage;
-
-    /// <summary> This should stay true, ==> But... Just FOR NOW !  </summary>
-    [JsonRequired]
-    public bool IsFirstRun { get; set; } = false;
-
-    [JsonRequired]
-    public bool ShouldAutoStart { get; set; } = false;
-
-    //// Serialized -  No model changed event
-    //[JsonRequired]
-    //// public List<Group> Groups { get; set; } = [];
-
-    //[JsonIgnore]
-    //// Not serialized -  With model changed event
-    //// public Group? SelectedGroup { get => this.Get<Group?>(); set => this.Set(value); }
-
-    //[JsonIgnore]
-    //// Not serialized - No model changed event
-    //// public List<string> AvailableIcons { get; set; } = [];
 
     public override async Task Initialize() => await this.Load();
 

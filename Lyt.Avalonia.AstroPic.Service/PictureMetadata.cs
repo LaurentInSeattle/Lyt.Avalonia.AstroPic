@@ -1,21 +1,39 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service; 
 
-public sealed class Picture
+public class PictureMetadata
 {
-    internal Picture(BingPicture bingPicture)
+    public PictureMetadata()
+    {
+        this.Provider = Provider.Unknown;
+        this.Date = DateTime.Now.Date;
+        this.MediaType = MediaType.Image;
+    }
+
+    internal PictureMetadata(BingPicture bingPicture)
     {
         this.Provider = Provider.Bing;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
-
         this.Url = string.Concat(BingService.Endpoint, bingPicture.PartialUrl);
 
-        this.Title = bingPicture.Title;
-        this.Description = bingPicture.Copyright;
-        this.Copyright = bingPicture.Copyright;
+        string? copyright = bingPicture.Copyright;
+        this.Title = copyright;
+        this.Copyright = copyright;
+        this.Description = bingPicture.Title;
+
+        if ( !string.IsNullOrWhiteSpace(copyright))
+        {
+            string[] tokens =
+                copyright.Split(['(', ')'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            if (tokens.Length == 2)
+            {
+                this.Title = tokens[0];
+                this.Copyright= tokens[1];
+            }
+        }
     }
 
-    internal Picture(NasaPicture nasaPicture)
+    internal PictureMetadata(NasaPicture nasaPicture)
     {
         this.Provider = Provider.Nasa;
         this.Date = DateTime.Parse(nasaPicture.Date);

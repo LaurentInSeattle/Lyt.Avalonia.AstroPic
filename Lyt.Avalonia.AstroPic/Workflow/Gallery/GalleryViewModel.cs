@@ -1,12 +1,19 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿using System.Net;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public class GalleryViewModel : Bindable<GalleryView>
 {
+    private readonly AstroPicModel astroPicModel; 
+
     private bool downloading;
     private bool downloaded ;
 
-    public GalleryViewModel() 
-        => this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
+    public GalleryViewModel(AstroPicModel astroPicModel)
+    {
+        this.astroPicModel = astroPicModel;
+        this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
+    } 
 
     protected override void OnViewLoaded()
     {
@@ -33,17 +40,22 @@ public class GalleryViewModel : Bindable<GalleryView>
         }
 
         this.downloading = true;
-        Provider provider = Provider.Bing;
-        // Provider provider = Provider.Nasa;
-        var result = await AstroPicService.GetPictures(provider, DateTime.Now);
-        if ((result != null) && (result.Count > 0))
+
+        List<PictureDownload> downloads = await this.astroPicModel.DownloadTodayImages();
+        this.downloading = false;
+        if ((downloads != null) && (downloads.Count > 0))
         {
-            var picture = result[0];
-            byte[] bytes = await AstroPicService.DownloadPicture(picture);
             this.downloaded = true;
-            this.downloading = false;
-            Dispatch.OnUiThread(() => { this.LoadImage(bytes); });
+            Dispatch.OnUiThread(() => { this.LoadImages(downloads); });
         }
+    }
+
+    private void LoadImages(List<PictureDownload> downloads)
+    {
+        foreach (PictureDownload download in downloads)
+        {
+            this.LoadImage(download.ImageBytes);
+        } 
     }
 
     private void LoadImage(byte[] imageBytes)

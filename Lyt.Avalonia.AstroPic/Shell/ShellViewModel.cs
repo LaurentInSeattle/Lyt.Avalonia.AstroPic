@@ -27,7 +27,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         this.Messenger.Subscribe<ShowTitleBarMessage>(this.OnShowTitleBar);
     }
 
-    protected async override void OnViewLoaded()
+    protected override void OnViewLoaded()
     {
         this.Logger.Debug("OnViewLoaded begins");
 

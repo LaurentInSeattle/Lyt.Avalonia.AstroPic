@@ -7,7 +7,7 @@ internal class BingService
     internal const string Endpoint = "https://www.bing.com";
     internal const string Request = "/HPImageArchive.aspx";
 
-    public static async Task<List<Picture>> GetPictures(DateTime dateTime, int count = 1)
+    public static async Task<List<PictureMetadata>> GetPictures(DateTime dateTime, int count = 1)
     {
         if ((count <= 0) || (count > 8))
         {
@@ -32,10 +32,10 @@ internal class BingService
                 var responseObject = JsonSerializer.Deserialize<BingPictures>(response.Content);
                 if (responseObject is BingPictures bingPictures)
                 {
-                    var list = new List<Picture>(count);
+                    var list = new List<PictureMetadata>(count);
                     foreach (BingPicture bingPicture in bingPictures.BingPictureList)
                     {
-                        list.Add(new Picture(bingPicture)); 
+                        list.Add(new PictureMetadata(bingPicture)); 
                     } 
 
                     return list;

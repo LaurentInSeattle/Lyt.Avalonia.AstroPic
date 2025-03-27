@@ -5,7 +5,7 @@
 
 public class AstroPicService
 {
-    public static async Task<List<Picture>> GetPictures(
+    public static async Task<List<PictureMetadata>> GetPictures(
         Provider provider, DateTime dateTime, int count = 1)
     {
         if ((count <= 0) || (count > 8))
@@ -30,7 +30,7 @@ public class AstroPicService
         throw new NotImplementedException();
     }
 
-    public static async Task<byte[]> DownloadPicture(Picture picture)
+    public static async Task<byte[]> DownloadPicture(PictureMetadata picture)
     {
         if (picture.MediaType != MediaType.Image)
         {

@@ -6,7 +6,7 @@ internal class NasaService
     public const string Endpoint = "https://api.nasa.gov";
     public const string Request = "/planetary/apod";
 
-    public static async Task<List<Picture>> GetPictures(DateTime dateTime, int count = 1)
+    public static async Task<List<PictureMetadata>> GetPictures(DateTime dateTime, int count = 1)
     {
         if ((count <= 0) || (count > 8))
         {
@@ -29,7 +29,7 @@ internal class NasaService
                 var responseObject = JsonSerializer.Deserialize<NasaPicture>(response.Content);
                 if (responseObject is NasaPicture nasaPicture)
                 {
-                    var list = new List<Picture>() { new(nasaPicture) };
+                    var list = new List<PictureMetadata>() { new(nasaPicture) };
                     return list;
                 }
 

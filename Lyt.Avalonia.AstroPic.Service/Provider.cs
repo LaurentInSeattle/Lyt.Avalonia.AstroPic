@@ -2,7 +2,9 @@
 
 public enum Provider
 {
+    Unknown = 0,
+
     Nasa, 
     Bing, 
-    EarthView, 
+    EarthView,
 }
