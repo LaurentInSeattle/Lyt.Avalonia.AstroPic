@@ -1,0 +1,30 @@
+﻿
+
+Experiment with Additional Image API web services  
+
+	https://cloudinary.com/image-api 
+
+	https://www.flickr.com/services/api/?ref=public_apis&utm_medium=website
+
+	https://wallhaven.cc/help/api?ref=public_apis&utm_medium=website
+
+	https://pixabay.com/api/docs/
+
+	https://picsum.photos/
+
+	https://www.pexels.com/api/
+
+	https://unsplash.com/developers
+
+	https://thecatapi.com/
+
+	https://developers.google.com/photos
+
+	https://www.vecteezy.com/developers
+
+	https://api.openverse.org/v1/
+
+	https://www.mediawiki.org/wiki/API:Images 
+
+	https://www.shutterstock.com/developers/documentation
+
