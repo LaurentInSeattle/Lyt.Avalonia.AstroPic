@@ -37,4 +37,10 @@
 	  <Folder Include="Workflow\Settings\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Workflow\Gallery\ThumbnailsPanelView.axaml.cs">
+	    <DependentUpon>ThumbnailsPanelView.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

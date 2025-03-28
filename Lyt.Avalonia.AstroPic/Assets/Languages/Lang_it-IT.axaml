@@ -20,7 +20,7 @@
 	<system:String x:Key="Shell.Close">Chiudi</system:String>
 	<system:String x:Key="Shell.Save">Salva</system:String>
 	<system:String x:Key="Shell.Ready">Pronto.</system:String>
-	<system:String x:Key="Shell.Greetings">Benvenuto in Testo Copiatrice!</system:String>
+	<system:String x:Key="Shell.Greetings">Benvenuto in Immagini Astronomiche!</system:String>
 
 	<system:String x:Key="Shell.Delete">Eliminare</system:String>
 	<system:String x:Key="Shell.GroupDelete.Question">Eliminare questo gruppo?</system:String>

@@ -21,11 +21,11 @@
         Background="Transparent"
         >
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="80" MaxWidth="80" />
+			<ColumnDefinition Width="0"/>
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="56" MaxHeight="56" />
+			<RowDefinition Height="64"/>
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Image
