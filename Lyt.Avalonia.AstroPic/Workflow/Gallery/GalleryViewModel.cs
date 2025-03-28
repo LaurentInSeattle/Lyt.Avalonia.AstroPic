@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
-public class GalleryViewModel : Bindable<GalleryView>
+public sealed class GalleryViewModel : Bindable<GalleryView>
 {
     private readonly AstroPicModel astroPicModel; 
 
@@ -10,26 +10,23 @@ public class GalleryViewModel : Bindable<GalleryView>
     public GalleryViewModel(AstroPicModel astroPicModel)
     {
         this.astroPicModel = astroPicModel;
+        this.PictureViewModel = new PictureViewModel(this); 
+        this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
     } 
 
     protected override void OnViewLoaded()
     {
         base.OnViewLoaded();
-
-        // Create and bind child views
-        // TODO
-
-        _ = this.DownloadImage(); 
+        _ = this.DownloadImages(); 
     }
 
     public override void Activate(object? activationParameters)
     {
         base.Activate(activationParameters);
-
-        _ = this.DownloadImage();
+        _ = this.DownloadImages();
     }
 
-    private async Task DownloadImage ()
+    private async Task DownloadImages ()
     {
         if (this.downloaded || this.downloading)
         {
@@ -37,7 +34,6 @@ public class GalleryViewModel : Bindable<GalleryView>
         }
 
         this.downloading = true;
-
         List<PictureDownload> downloads = await this.astroPicModel.DownloadTodayImages();
         this.downloading = false;
         if ((downloads != null) && (downloads.Count > 0))
@@ -47,12 +43,18 @@ public class GalleryViewModel : Bindable<GalleryView>
         }
     }
 
-    private void LoadImages(List<PictureDownload> downloads)
-    {
-        foreach (PictureDownload download in downloads)
-        {
-            // this.LoadImage(download.ImageBytes);
-        } 
+    private void LoadImages(List<PictureDownload> downloads) 
+        => this.ThumbnailsPanelViewModel.LoadImages(downloads);
+
+    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel 
+    { 
+        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel"); 
+        set => this.Set(value); 
     }
 
+    public PictureViewModel PictureViewModel 
+    { 
+        get => this.Get<PictureViewModel?>() ?? throw new ArgumentNullException("PictureViewModel");
+        set => this.Set(value); 
+    }
 }

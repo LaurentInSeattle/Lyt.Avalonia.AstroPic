@@ -1,9 +1,12 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery; 
 
-internal class PictureViewModel : Bindable<PictureView>
+public sealed class PictureViewModel : Bindable<PictureView>
 {
-    public PictureViewModel()
+    private readonly GalleryViewModel galleryViewModel;
+
+    public PictureViewModel(GalleryViewModel galleryViewModel)
     {
+        this.galleryViewModel = galleryViewModel;
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
     }
 

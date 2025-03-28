@@ -6,14 +6,36 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
-	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
-	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
     xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
     x:DataType="vm:ThumbnailsPanelViewModel" 
 	>
 	<Grid
-		Background="LemonChiffon"
-		> 
-		
+		Background="Transparent"
+		>
+		<ScrollViewer
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+				>
+			<ItemsControl
+				x:Name="TemplatesItemControl"
+				ItemsSource="{Binding Thumbnails}"
+				Margin="0 0 24 0"
+				>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<vm:ThumbnailView 
+							Margin="0 8 0 8"
+							/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
 	</Grid>
 </UserControl>

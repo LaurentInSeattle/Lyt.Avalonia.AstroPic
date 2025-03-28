@@ -1,13 +1,6 @@
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-
-namespace Lyt.Avalonia.AstroPic;
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public partial class ThumbnailView : UserControl
 {
-    public ThumbnailView()
-    {
-        InitializeComponent();
-    }
+    public ThumbnailView() => this.InitializeComponent();
 }
