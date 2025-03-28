@@ -1,6 +1,7 @@
 ﻿
+Make the Image Service a service and inject a logger, etc 
 
-Experiment with Additional Image API web services  
+Experiment with Additional Image API web services, such as: 
 
 	https://cloudinary.com/image-api 
 
@@ -27,4 +28,15 @@ Experiment with Additional Image API web services
 	https://www.mediawiki.org/wiki/API:Images 
 
 	https://www.shutterstock.com/developers/documentation
+
+More Images sources: 
+	
+	See : https://github.com/nikvoronin/LastWallpaper 
+	https://github.com/nikvoronin/LastWallpaper?tab=readme-ov-file#media-sources-8 
+
+Also look at: 
+
+	Variety (Unix) 
+	https://github.com/varietywalls/variety/blob/master/variety/plugins/builtin/downloaders/EarthviewDownloader.py 
+
 

@@ -1,27 +1,76 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service.EarthView;
 
-// See: https://github.com/varietywalls/variety/blob/master/variety/plugins/builtin/downloaders/EarthviewDownloader.py 
-
 internal class EarthViewService
 {
-    // DATA_URL = "https://new-images-preview-dot-earth-viewer.appspot.com/_api/photos.json"
-    // ROOT_URL = "https://new-images-preview-dot-earth-viewer.appspot.com/"; 
+    private const string RootUrl = "https://new-images-preview-dot-earth-viewer.appspot.com/_api/"; 
 
-    /*
-    def download_queue_item(self, item):
-            item = Util.fetch_json("https://new-images-preview-dot-earth-viewer.appspot.com/_api/" + item["slug"] + ".json")
-            region = item["region"]
-            filename = "{}{} (ID-{}).jpg".format(
-                region + ", " if region and region != "-" else "", item["country"], item["id"]
-            )
-            origin_url = EarthviewDownloader.ROOT_URL + str(item["slug"])
-            image_url = item["photoUrl"]
-            if not image_url.startswith("http"):
-                image_url = "https://" + image_url
+    private static List<EarthViewPictureBasic>? EarthViewPictures;
+    private static readonly Random random = new((int)DateTime.Now.Millisecond);
 
-            extra_metadata = {"description": item.get("name"), "author": item.get("attribution")}
-            return self.save_locally(
-                origin_url, image_url, local_filename=filename, extra_metadata=extra_metadata
-            )
-    */
+    private static void LoadPhotoLibrary()
+    {
+        if (EarthViewPictures == null)
+        {
+            EarthViewPictures = SerializationUtilities.LoadEarthViewPhotoLibrary(out string message);
+            if (EarthViewPictures == null)
+            {
+                throw new Exception(message);
+            }
+        }
+    }
+
+    private static List<string> PickSomeRandomSlugs(int count)
+    {
+        if (EarthViewPictures == null)
+        {
+            throw new Exception("No Earthview photo library");
+        }
+
+        var list = new List<string>(count);
+        while (count > 0)
+        {
+            int index = random.Next(0, EarthViewPictures.Count);
+            string? slug = EarthViewPictures[index].Slug;
+            if (!string.IsNullOrWhiteSpace(slug) && !list.Contains(slug))
+            {
+                list.Add(slug);
+                count--;
+            }
+        }
+
+        return list;
+    }
+
+    public static async Task<List<PictureMetadata>> GetPictures(int count = 4)
+    {
+        try
+        {
+            if ((count <= 0) || (count > 8))
+            {
+                throw new ArgumentException("Invalid count: max == 8");
+            }
+
+            LoadPhotoLibrary();
+            List<string> slugs = PickSomeRandomSlugs(count);
+            var list = new List<PictureMetadata>(count);
+
+            HttpClient client = new();
+            foreach (string slug in slugs)
+            {
+                string url = string.Concat(RootUrl, slug, ".json"); 
+                string jsonMetadata = await client.GetStringAsync(url);
+                EarthViewPicture earthViewPicture = SerializationUtilities.Deserialize<EarthViewPicture>(jsonMetadata);
+                var pictureMetadata = new PictureMetadata(earthViewPicture);
+                list.Add(pictureMetadata);
+            }
+
+            return list;
+
+        }
+        catch (Exception )
+        {
+            // TODO: log 
+            throw; 
+        }
+    }
 }

@@ -1,13 +1,13 @@
-﻿namespace Lyt.Avalonia.AstroPic.Service.EarthView;
+﻿namespace Lyt.Avalonia.AstroPic.Service.EarthView; 
 
 internal class EarthViewPicture
 {
-    [JsonPropertyName("slug")]
-    public string? Slug { get; init; }
+    [JsonPropertyName("attribution")]
+    public string? Copyright { get; init; }
 
-    [JsonPropertyName("lat")]
-    public double Latitude { get; init; }
+    [JsonPropertyName("photoUrl")]
+    public string? PhotoUrl { get; init; }
 
-    [JsonPropertyName("lng")]
-    public double Longitude { get; init; }
+    [JsonPropertyName("title")]
+    public required string Title { get; init; }
 }

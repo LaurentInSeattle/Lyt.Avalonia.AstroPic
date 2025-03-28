@@ -9,6 +9,17 @@ public class PictureMetadata
         this.MediaType = MediaType.Image;
     }
 
+    internal PictureMetadata(EarthViewPicture earthViewPicture)
+    {
+        this.Provider = Provider.EarthView;
+        this.Date = DateTime.Now.Date;
+        this.MediaType = MediaType.Image;
+        this.Url = earthViewPicture.PhotoUrl;
+        this.Title = earthViewPicture.Title;
+        this.Description = string.Empty;
+        this.Copyright = earthViewPicture.Copyright;
+    }
+
     internal PictureMetadata(BingPicture bingPicture)
     {
         this.Provider = Provider.Bing;

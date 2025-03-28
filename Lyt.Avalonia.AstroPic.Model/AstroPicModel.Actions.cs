@@ -7,7 +7,7 @@ public sealed partial class AstroPicModel : ModelBase
         // TODO: Check Internet: See what we did for Cranky 
 
 
-        Provider[] providers = [Provider.Nasa, Provider.Bing];
+        Provider[] providers = [Provider.Nasa, Provider.Bing, Provider.EarthView];
         var downloads = new List<PictureDownload>(providers.Length); 
         foreach (var provider in providers)
         {
@@ -17,13 +17,19 @@ public sealed partial class AstroPicModel : ModelBase
             {
                 // A little pause between starting the next provider 
                 await Task.Delay(500);
-            } 
+            }
 
-            var download = await this.DownloadImage(provider);
-            if (download.IsValid)
+            try
             {
-                downloads.Add(download);
-                // TODO: send progress message 
+                var download = await this.DownloadImage(provider);
+                if (download.IsValid)
+                {
+                    downloads.Add(download);
+                    // TODO: send progress message 
+                }
+            }
+            catch (Exception)
+            {
             } 
         } 
 

@@ -16,6 +16,8 @@ global using System.Threading.Tasks;
 
 global using RestSharp;
 
-global using Lyt.Avalonia.AstroPic.Service.Nasa;
+global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Service.Bing;
+global using Lyt.Avalonia.AstroPic.Service.EarthView;
+global using Lyt.Avalonia.AstroPic.Service.Nasa;
 

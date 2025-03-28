@@ -1,8 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service;
 
-///  See : https://github.com/nikvoronin/LastWallpaper 
-/// https://github.com/nikvoronin/LastWallpaper?tab=readme-ov-file#media-sources-8 
-
 public class AstroPicService
 {
     public static async Task<List<PictureMetadata>> GetPictures(
@@ -22,7 +19,8 @@ public class AstroPicService
                 return await BingService.GetPictures(dateTime);
 
             case Provider.EarthView:
-                break;
+                return await EarthViewService.GetPictures();
+
             default:
                 break;
         }

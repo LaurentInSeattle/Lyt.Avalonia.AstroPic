@@ -41,7 +41,7 @@ internal class BingService
                     return list;
                 }
 
-                throw new Exception("Failed to deserialize nasa data");
+                throw new Exception("Failed to deserialize bing data");
             }
             else
             {
