@@ -9,7 +9,7 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     {
         this.parent = parent;
         this.download = download;
-        this.Provider = this.download.PictureMetadata.Provider.ToString();
+        this.Provider = this.download.PictureMetadata.Provider.ToString().BeautifyEnumString();
         var bitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), 360);
         this.Thumbnail = bitmap;
     }

@@ -48,7 +48,7 @@
 				FontWeight="DemiBold"
 				Foreground="{StaticResource PastelOrchid_0_080}"
 				TextWrapping="Wrap"
-			/>
+				/>
 			<vm:PictureView
 				DataContext="{Binding PictureViewModel}"
 				/>

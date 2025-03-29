@@ -28,6 +28,7 @@
 				Text="{Binding Provider}"
 				FontSize="24"
 				TextAlignment="Center"			
+				Foreground="{StaticResource PastelOrchid_0_080}"
 				/>
 			<Image
 				Grid.Row="1"

@@ -17,6 +17,29 @@ public sealed class PictureViewModel : Bindable<PictureView>
         byte[] imageBytes = download.ImageBytes;
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.LoadImage(bitmap);
+        var metadata = this.download.PictureMetadata; 
+        this.Provider = metadata.Provider.ToString().BeautifyEnumString();
+        this.Title = string.IsNullOrWhiteSpace(metadata.Title) ? string.Empty : metadata.Title;
+        this.Copyright = string.IsNullOrWhiteSpace(metadata.Copyright) ? string.Empty : metadata.Copyright;
+        this.Description = string.IsNullOrWhiteSpace(metadata.Description) ? string.Empty : metadata.Description;
+        double height = 0.0; 
+        if (!string.IsNullOrWhiteSpace(metadata.Description))
+        {
+            if (metadata.Description.Length < 150)
+            {
+                height = 40.0;
+            }
+            else if (metadata.Description.Length < 300)
+            {
+                height = 80.0;
+            }
+            else
+            {
+                height = 120.0;
+            }
+        }
+
+        this.DescriptionHeight =new GridLength(height, GridUnitType.Pixel); 
     }
 
     private void LoadImage(WriteableBitmap bitmap)
@@ -47,4 +70,14 @@ public sealed class PictureViewModel : Bindable<PictureView>
         => this.ZoomFactor = message.ZoomFactor;
 
     public double ZoomFactor { get => this.Get<double>(); set => this.Set(value); }
+
+    public string Provider { get => this.Get<string>()!; set => this.Set(value); }
+
+    public string Title { get => this.Get<string>()!; set => this.Set(value); }
+
+    public string Copyright { get => this.Get<string>()!; set => this.Set(value); }
+
+    public string Description { get => this.Get<string>()!; set => this.Set(value); }
+
+    public GridLength DescriptionHeight { get => this.Get<GridLength>(); set => this.Set(value); }
 }
