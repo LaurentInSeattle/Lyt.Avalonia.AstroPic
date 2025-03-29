@@ -1,25 +1,25 @@
 <UserControl 
-    x:Class="Lyt.Avalonia.AstroPic.Workflow.Gallery.GalleryView"
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Gallery.GalleryView"
 	xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
 	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
 	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
-    xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
-    x:DataType="vm:GalleryViewModel" 
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
+	x:DataType="vm:GalleryViewModel" 
 	>
 	<Grid
 		x:Name="InnerGrid"
 		Background="Transparent"
-	    >
+		>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1" />
+			<ColumnDefinition Width="10" />
 			<ColumnDefinition Width="400" />
 			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="1" />
+			<ColumnDefinition Width="2" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="1" />

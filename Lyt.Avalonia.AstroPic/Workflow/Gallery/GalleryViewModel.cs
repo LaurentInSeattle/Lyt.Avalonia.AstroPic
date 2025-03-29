@@ -46,6 +46,9 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     private void LoadImages(List<PictureDownload> downloads) 
         => this.ThumbnailsPanelViewModel.LoadImages(downloads);
 
+    internal void Select(PictureDownload download) 
+        => this.PictureViewModel.Select(download);
+
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel 
     { 
         get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel"); 

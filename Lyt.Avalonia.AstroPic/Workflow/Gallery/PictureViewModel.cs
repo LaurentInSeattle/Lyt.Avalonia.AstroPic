@@ -1,8 +1,9 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery; 
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class PictureViewModel : Bindable<PictureView>
 {
     private readonly GalleryViewModel galleryViewModel;
+    private PictureDownload? download;
 
     public PictureViewModel(GalleryViewModel galleryViewModel)
     {
@@ -10,14 +11,21 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
     }
 
-    private void LoadImage(byte[] imageBytes)
+    internal void Select(PictureDownload download)
+    {
+        this.download = download;
+        byte[] imageBytes = download.ImageBytes;
+        var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
+        this.LoadImage(bitmap);
+    }
+
+    private void LoadImage(WriteableBitmap bitmap)
     {
         var image = new Image { Stretch = Stretch.Uniform };
         RenderOptions.SetBitmapInterpolationMode(image, BitmapInterpolationMode.MediumQuality);
         var canvas = this.View.Canvas;
         canvas.Children.Clear();
         canvas.Children.Add(image);
-        var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         canvas.Width = bitmap.Size.Width;
         canvas.Height = bitmap.Size.Height;
         image.Source = bitmap;
@@ -27,6 +35,12 @@ public sealed class PictureViewModel : Bindable<PictureView>
         // The view box in the zoom control is stuck to zero bounds 
         this.ZoomFactor = 2.0;
         Schedule.OnUiThread(50, () => { this.ZoomFactor = 1.0; }, DispatcherPriority.ApplicationIdle);
+        if (this.download is not null)
+        {
+            Schedule.OnUiThread(
+                250, 
+                () => { this.Profiler.MemorySnapshot(this.download.PictureMetadata.Provider.ToString()); }, DispatcherPriority.ApplicationIdle);
+        } 
     }
 
     private void OnZoomRequest(ZoomRequestMessage message)

@@ -14,6 +14,23 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.Thumbnail = bitmap;
     }
 
+    internal void Select()
+    {
+        Debug.WriteLine("Selected: " + this.Provider);
+        this.parent.Select(this.download);
+    }
+
+    internal void Deselect(PictureDownload download)
+    {
+        if (this.download == download)
+        {
+            return;
+        }
+
+        Debug.WriteLine("Deselected: " + this.Provider);
+        this.View.Deselect(); 
+    }
+
     public string Provider { get => this.Get<string>()!; set => this.Set(value); }
 
     public WriteableBitmap Thumbnail { get => this.Get<WriteableBitmap>()!; set => this.Set(value); }

@@ -4,6 +4,8 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>
 {
     private readonly GalleryViewModel galleryViewModel;
 
+    private PictureDownload? selectedDownload; 
+
     public ThumbnailsPanelViewModel(GalleryViewModel galleryViewModel)
     {
         this.galleryViewModel = galleryViewModel;
@@ -20,6 +22,20 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>
         }
 
         this.Thumbnails = thumbnails;
+    }
+
+    internal void Select(PictureDownload download)
+    {
+        foreach (ThumbnailViewModel thumbnailViewModel in this.Thumbnails)
+        {
+            thumbnailViewModel.Deselect(download); 
+        }
+
+        if (this.selectedDownload is null || this.selectedDownload != download)
+        {
+            this.selectedDownload = download; 
+            this.galleryViewModel.Select(download);
+        } 
     }
 
     public List<ThumbnailViewModel> Thumbnails

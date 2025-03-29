@@ -12,13 +12,14 @@
     x:DataType="vm:PictureViewModel" 
 	>
 	<Grid
-		Background="MintCream"
+		Background="Transparent"
 		>
 		<panzoom:PanZoomControl
 			x:Name="PanAndZoom"
 			Grid.Column="1" Grid.Row="1"
 			Background="Transparent"
 			ZoomFactor="{Binding ZoomFactor}"
+			ShiftToDrag="False"
 			>
 			<panzoom:PanZoomControl.ZoomableContent>
 				<Canvas
