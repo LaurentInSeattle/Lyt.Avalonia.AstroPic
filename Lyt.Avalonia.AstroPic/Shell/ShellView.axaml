@@ -50,13 +50,13 @@
 			Text="{DynamicResource Shell.AppName}" 
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Margin="8 0 0 0"
-			FontSize="28" 
+			FontSize="34" 
 			FontStyle="Normal"
 			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
 			/>
-		<!-- View Selector - Main tool bar -->
+		<!-- View Selector - Main toolbar - Aligned left -->
 		<StackPanel
 			Orientation="Horizontal"
 			Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
@@ -114,6 +114,15 @@
 				Text="{DynamicResource Shell.About}"
 				Command="{Binding InfoCommand}"
 				/>
+		</StackPanel>
+
+		<!-- View Selector - Close tool bar - Aligned Right -->
+		<StackPanel
+			Orientation="Horizontal"
+			Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
+			Margin="0 0 16 0"
+			HorizontalAlignment="Right"
+			>
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
@@ -139,9 +148,11 @@
 				Command="{Binding ExitCommand}"
 				/>
 		</StackPanel>
+
+		<!-- View Specific toolbar - Aligned Center -->
 		<ContentControl
 			x:Name="ShellViewToolbar"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch" HorizontalAlignment="Center"
 			/>
 		<!-- Do not add rows and/or columns to the toaster host-->
 		<Grid
