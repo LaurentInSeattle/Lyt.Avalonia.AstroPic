@@ -1,5 +1,17 @@
 # Lyt.Avalonia.AstroPic
-Downloads and manages the NASA Astronomy Pictures of the Day (APOD) 
+Downloads and manages images from various providers: 
 
+- the NASA Astronomy Pictures of the Day (APOD) 
+- Bing Wallpaper of the day 
+- Google Earth View images
 
-WIP ~ Just started (March 24th 2025)
+<p align="left"><img src="QuanticsScreenshot.png" height="520"/>
+
+# TODO's, hopefully coming soon: 
+
+- Support for more image providers 
+- Managing the image collection 
+- Set as Wallpaper
+- Rotating wallpapers
+- Autostart 
+- "Tray icon" app'
