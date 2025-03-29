@@ -16,7 +16,9 @@ public sealed partial class AstroPicModel : ModelBase
             MaxImages = 128,
             MaxStorageMB = 64,
         };
+
     private readonly FileManagerModel fileManager;
+    private readonly AstroPicService astroPicService;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
@@ -31,9 +33,12 @@ public sealed partial class AstroPicModel : ModelBase
 #pragma warning restore CS8625 
 #pragma warning restore CS8618
 
-    public AstroPicModel(FileManagerModel fileManager, IMessenger messenger, ILogger logger) : base(messenger, logger)
+    public AstroPicModel(
+        FileManagerModel fileManager, AstroPicService astroPicService,
+        IMessenger messenger, ILogger logger) : base(messenger, logger)
     {
         this.fileManager = fileManager;
+        this.astroPicService = astroPicService;
         this.ShouldAutoSave = true;
     }
 

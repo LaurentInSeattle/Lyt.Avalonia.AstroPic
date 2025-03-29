@@ -6,8 +6,9 @@ public sealed partial class AstroPicModel : ModelBase
     {
         // TODO: Check Internet: See what we did for Cranky 
 
-
+        // TODO: Use ONLY enabled and selected providers 
         Provider[] providers = [Provider.Nasa, Provider.Bing, Provider.EarthView];
+
         var downloads = new List<PictureDownload>(providers.Length); 
         foreach (var provider in providers)
         {
@@ -16,7 +17,7 @@ public sealed partial class AstroPicModel : ModelBase
             if (downloads.Count > 1)
             {
                 // A little pause between starting the next provider 
-                await Task.Delay(500);
+                await Task.Delay(100);
             }
 
             try
@@ -25,12 +26,13 @@ public sealed partial class AstroPicModel : ModelBase
                 if (download.IsValid)
                 {
                     downloads.Add(download);
-                    // TODO: send progress message 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-            } 
+                this.Logger.Warning(
+                    "Failed to load picture from " + provider.ToString() + "\n" + ex.ToString());
+            }
         } 
 
         return downloads;
@@ -41,9 +43,11 @@ public sealed partial class AstroPicModel : ModelBase
         var empty = new PictureDownload(new(), []);
         try
         {
-            var metadata = await AstroPicService.GetPictures(provider, DateTime.Now);
+            this.Report(provider, isMetadata: true, isBegin: true);
+            var metadata = await this.astroPicService.GetPictures(provider, DateTime.Now);
             if ((metadata != null) && (metadata.Count > 0))
             {
+                this.Report(provider, isMetadata: true, isBegin: false);
                 var picture = metadata[0];
                 if (picture.MediaType == MediaType.Image)
                 {
@@ -51,7 +55,14 @@ public sealed partial class AstroPicModel : ModelBase
                     {
                         if (!this.IsAlreadyInCollection(picture))
                         {
-                            byte[] bytes = await AstroPicService.DownloadPicture(picture);
+                            // A little pause so that we can see the messaging 
+                            await Task.Delay(100);
+                            this.Report(provider, isMetadata: false, isBegin: true);
+
+                            // A little pause between starting the actual image download 
+                            await Task.Delay(100);
+                            byte[] bytes = await this.astroPicService.DownloadPicture(picture);
+                            this.Report(provider, isMetadata: false, isBegin: false);
                             return new PictureDownload(picture, bytes);
                         }
                         else
@@ -76,12 +87,21 @@ public sealed partial class AstroPicModel : ModelBase
         }
         catch (Exception ex)
         {
+            this.ReportError(provider, ex.Message);
             this.Logger.Warning(
-                "Failed to load picture from " + provider.ToString() + "\n" + ex.ToString());
+                "Failed to load picture from " + provider.ToString() + "\n" +
+                ex.Message + "\n" + ex.ToString());
         }
 
         return empty;
     }
+
+    private void ReportError(Provider provider, string message)
+        => this.Messenger.Publish(new ServiceErrorMessage(provider, message));
+
+    private void Report (Provider provider, bool isMetadata, bool isBegin)
+        => this.Messenger.Publish(
+            new ServiceProgressMessage(provider, IsMetadata: isMetadata, IsBegin: isBegin));
 
     private bool IsAlreadyInCollection (PictureMetadata picture)
         => !string.IsNullOrWhiteSpace(picture.Url) && 

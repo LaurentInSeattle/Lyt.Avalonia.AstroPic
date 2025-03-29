@@ -76,6 +76,8 @@ global using Lyt.Avalonia.Persistence;
 global using Lyt.Avalonia.AstroPic.Messaging;
 global using Lyt.Avalonia.AstroPic.Model;
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;
+global using Lyt.Avalonia.AstroPic.Model.Messaging;
+
 global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Shell;
 global using Lyt.Avalonia.AstroPic.Workflow;

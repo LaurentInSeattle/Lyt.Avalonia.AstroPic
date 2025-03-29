@@ -2,12 +2,23 @@
 
 public class AstroPicService
 {
-    public static async Task<List<PictureMetadata>> GetPictures(
+    private readonly IMessenger messenger;
+    private readonly ILogger logger;
+
+    public AstroPicService(IMessenger messenger, ILogger logger)
+    {
+        this.messenger = messenger;
+        this.logger = logger;
+    }
+
+    public async Task<List<PictureMetadata>> GetPictures(
         Provider provider, DateTime dateTime, int count = 1)
     {
         if ((count <= 0) || (count > 8))
         {
-            throw new ArgumentException("Invalid count: max == 8");
+            string msg = "Invalid count: max == 8";
+            this.logger.Error(msg);
+            throw new ArgumentException(msg);
         }
 
         switch (provider)
@@ -28,17 +39,21 @@ public class AstroPicService
         throw new NotImplementedException();
     }
 
-    public static async Task<byte[]> DownloadPicture(PictureMetadata picture)
+    public async Task<byte[]> DownloadPicture(PictureMetadata picture)
     {
         if (picture.MediaType != MediaType.Image)
         {
-            throw new ArgumentException("Invalid media type");
+            string msg = "Invalid media type";
+            this.logger.Error(msg);
+            throw new ArgumentException(msg);
         }
 
         string? url = picture.Url;
         if (string.IsNullOrWhiteSpace(url))
         {
-            throw new ArgumentException("Invalid: no media URL");
+            string msg = "Invalid: no media URL";
+            this.logger.Error(msg);
+            throw new ArgumentException(msg);            
         }
 
         HttpClient client = new();

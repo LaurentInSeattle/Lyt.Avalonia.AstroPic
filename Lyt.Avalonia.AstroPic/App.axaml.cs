@@ -27,6 +27,8 @@ public partial class App : ApplicationBase
            typeof(GalleryViewModel),
            //typeof(SettingsViewModel),
            //typeof(IntroViewModel),
+
+           typeof(AstroPicService),
         ],
         [
             // Services 

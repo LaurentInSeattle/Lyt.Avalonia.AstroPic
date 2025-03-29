@@ -1,4 +1,9 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿
+using Lyt.Avalonia.AstroPic.Service;
+using Lyt.Avalonia.Mvvm.Utilities;
+using System.Reflection;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
@@ -12,7 +17,9 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         this.astroPicModel = astroPicModel;
         this.PictureViewModel = new PictureViewModel(this); 
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
-    } 
+        this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
+        this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
+    }
 
     protected override void OnViewLoaded()
     {
@@ -43,11 +50,34 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         }
     }
 
-    private void LoadImages(List<PictureDownload> downloads) 
-        => this.ThumbnailsPanelViewModel.LoadImages(downloads);
+    private void OnDownloadError(ServiceErrorMessage message)
+    {
 
-    internal void Select(PictureDownload download) 
-        => this.PictureViewModel.Select(download);
+    }
+
+    private void OnDownloadProgress(ServiceProgressMessage message)
+    {
+        string start = message.IsBegin ? "Starting downloading " : "Completed downloading ";
+        string middle = message.IsMetadata ? " image metadata " : " image ";
+        string provider = message.Provider.ToString().BeautifyEnumString() ;
+        string end = " for provider " ;
+        this.ProgressMessage = string.Concat(start, middle, end, provider) ;
+    }
+
+    private void LoadImages(List<PictureDownload> downloads)
+    {
+        this.ThumbnailsPanelViewModel.LoadImages(downloads);
+        Schedule.OnUiThread(
+            200, () => { this.ProgressMessage = "Downloads complete!"; } , DispatcherPriority.Background);        
+    }
+
+    internal void Select(PictureDownload download)
+    {
+        this.PictureViewModel.Select(download);
+        this.ProgressMessage = string.Empty;
+    }
+
+    public string ProgressMessage { get => this.Get<string>()!; set => this.Set(value); }
 
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel 
     { 

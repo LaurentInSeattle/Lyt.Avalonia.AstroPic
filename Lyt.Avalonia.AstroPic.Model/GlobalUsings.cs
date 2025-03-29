@@ -20,6 +20,6 @@ global using Lyt.Avalonia.Model;
 global using Lyt.Avalonia.Persistence;
 
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;
-global using Lyt.Avalonia.AstroPic.Service;
+global using Lyt.Avalonia.AstroPic.Model.Messaging;
 
-//global using Lyt.Avalonia.AstroPic.Service;
+global using Lyt.Avalonia.AstroPic.Service;
