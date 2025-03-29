@@ -5,7 +5,7 @@ Downloads and manages images from various providers:
 - Bing Wallpaper of the day 
 - Google Earth View images
 
-<p align="left"><img src="QuanticsScreenshot.png" height="520"/>
+<p align="left"><img src="AstroPicScreenshot.png" height="520"/>
 
 # TODO's, hopefully coming soon: 
 
