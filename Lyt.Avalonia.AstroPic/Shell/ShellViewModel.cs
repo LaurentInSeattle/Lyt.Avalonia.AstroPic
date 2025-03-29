@@ -160,13 +160,29 @@ public sealed class ShellViewModel : Bindable<ShellView>
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
-    //private void OnSettings(object? _) => this.OnViewActivation(ActivatedView.Settings);
+    private void OnToday(object? _) => this.OnViewActivation(ActivatedView.Gallery);
+
+    private void OnCollection(object? _) => this.OnViewActivation(ActivatedView.Gallery);
+
+    private void OnSettings(object? _) => this.OnViewActivation(ActivatedView.Settings);
+
+    private void OnInfo(object? _) => this.OnViewActivation(ActivatedView.Intro);
+
+    private void OnTray(object? _) { }
 
     private void OnExit(object? _) { }
 #pragma warning restore CA1822 
 #pragma warning restore IDE0051 // Remove unused private members
 
+    public ICommand TodayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+    
+    public ICommand CollectionCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+
     public ICommand SettingsCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+
+    public ICommand InfoCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+
+    public ICommand ToTrayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand ExitCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 }

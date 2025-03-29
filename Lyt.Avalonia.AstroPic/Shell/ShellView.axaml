@@ -25,7 +25,7 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="64"/>
+			<RowDefinition Height="72"/>
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Image
@@ -51,11 +51,98 @@
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Margin="8 0 0 0"
 			FontSize="28" 
-			FontStyle="Italic"
+			FontStyle="Normal"
+			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
 			/>
-
+		<!-- View Selector - Main tool bar -->
+		<StackPanel
+			Orientation="Horizontal"
+			Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
+			Margin="400 0 0 0"
+			HorizontalAlignment="Left"
+			>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="calendar_today"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				GlyphAngle="0"
+				Text="Today"
+				Command="{Binding TodayCommand}"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="collections"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				GlyphAngle="0"
+				Text="My Collection"
+				Command="{Binding CollectionCommand}"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="settings"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				GlyphAngle="20"
+				Text="{DynamicResource Shell.Settings}"
+				Command="{Binding SettingsCommand}"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="arrow_up"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				Text="{DynamicResource Shell.About}"
+				Command="{Binding InfoCommand}"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="swipe_down"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				Text="To Tray Icon"
+				Command="{Binding ToTrayCommand}"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="76" Height="56"
+				Margin="4 12 4 12"
+				GlyphSource="dismiss"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				Text="{DynamicResource Shell.Close}"
+				Command="{Binding ExitCommand}"
+				/>
+		</StackPanel>
+		<ContentControl
+			x:Name="ShellViewToolbar"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			/>
 		<!-- Do not add rows and/or columns to the toaster host-->
 		<Grid
 			x:Name="ToasterHost"
