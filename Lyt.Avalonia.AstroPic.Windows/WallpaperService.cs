@@ -44,6 +44,16 @@ public class WallpaperService(ILogger logger) : IWallpaperService
                 key.SetValue(@"WallpaperStyle", 1.ToString());
                 key.SetValue(@"TileWallpaper", 1.ToString());
             }
+            else if (wallpaperStyle == WallpaperStyle.Fit)
+            {
+                key.SetValue(@"WallpaperStyle", 6.ToString());
+                key.SetValue(@"TileWallpaper", 0.ToString());
+            }
+            else if (wallpaperStyle == WallpaperStyle.Fill)
+            {
+                key.SetValue(@"WallpaperStyle", 10.ToString());
+                key.SetValue(@"TileWallpaper", 0.ToString());
+            }
             else
             {
                 string msg = "Unsupported wallpaper style. "; 

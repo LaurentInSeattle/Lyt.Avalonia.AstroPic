@@ -18,7 +18,7 @@ public sealed partial class AstroPicModel : ModelBase
 
             string path = this.fileManager.MakePath(fileId);
             this.fileManager.Save<byte[]>(fileId, download.ImageBytes);
-            this.wallpaperService.Set(path, WallpaperStyle.Stretched);
+            this.wallpaperService.Set(path, WallpaperStyle.Fill);
             this.fileManager.Delete(fileId);
         }
         catch (Exception ex)

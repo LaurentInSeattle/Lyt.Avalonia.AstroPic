@@ -4,5 +4,7 @@ public enum WallpaperStyle
 {
     Tiled,
     Centered,
-    Stretched
+    Stretched, 
+    Fit,
+    Fill,
 }
