@@ -9,7 +9,7 @@ Downloads and manages images from various online providers:
 
 # Just in...
 
-- Set image as Wallpaper (Windows Obly for now)
+- Set image as Wallpaper (Windows Only for now)
 
 # TODO's, hopefully coming soon: 
 
