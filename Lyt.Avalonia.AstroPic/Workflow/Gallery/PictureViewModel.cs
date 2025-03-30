@@ -29,13 +29,17 @@ public sealed class PictureViewModel : Bindable<PictureView>
             {
                 height = 40.0;
             }
-            else if (metadata.Description.Length < 300)
+            else if (metadata.Description.Length < 400)
             {
                 height = 80.0;
             }
-            else
+            else if (metadata.Description.Length < 800)
             {
                 height = 120.0;
+            }
+            else 
+            {
+                height = 160.0;
             }
         }
 

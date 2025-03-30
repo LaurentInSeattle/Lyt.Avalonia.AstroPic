@@ -3,6 +3,8 @@ Make the Image Service a service and inject a logger, etc
 
 Experiment with Additional Image API web services, such as: 
 
+	Mars Rover API : https://api.nasa.gov/ 
+
 	https://cloudinary.com/image-api 
 
 	https://www.flickr.com/services/api/?ref=public_apis&utm_medium=website
@@ -15,7 +17,7 @@ Experiment with Additional Image API web services, such as:
 
 	https://www.pexels.com/api/
 
-	https://unsplash.com/developers
+	Against licensing policy: https://unsplash.com/developers
 
 	https://thecatapi.com/
 

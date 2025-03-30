@@ -1,4 +1,5 @@
-﻿using Lyt.Avalonia.Mvvm.Animations;
+﻿using Lyt.Avalonia.AstroPic.Interfaces;
+using Lyt.Avalonia.Mvvm.Animations;
 
 namespace Lyt.Avalonia.AstroPic;
 
@@ -33,6 +34,7 @@ public partial class App : ApplicationBase
         [
             // Services 
             App.LoggerService,
+            App.OsSpecificWallpaperService(), 
             new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
             new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
             new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
@@ -52,6 +54,23 @@ public partial class App : ApplicationBase
             Debugger.IsAttached ?
                 new Tuple<Type, Type>(typeof(ILogger), typeof(LogViewerWindow)) :
                 new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
+
+    private static Tuple<Type, Type> OsSpecificWallpaperService()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            return new Tuple<Type, Type>(typeof(IWallpaperService), typeof(Windows.WallpaperService)); 
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            return new Tuple<Type, Type>(typeof(IWallpaperService), typeof(MacOs.WallpaperService));
+        }
+        else
+        {
+            // OSPlatform.Linux is NOT supported, at least for now, no way to test it here
+            throw new ArgumentException("Unsupported platform: " + RuntimeInformation.OSDescription);
+        }
+    }
 
     public bool RestartRequired { get; set; }
 
@@ -79,7 +98,7 @@ public partial class App : ApplicationBase
                     Languages = ["en-US", "fr-FR", "it-IT"],
                     // Use default for all other config parameters 
                 });
-        } 
+        }
 
         logger.Debug("OnStartupBegin complete");
     }
@@ -93,13 +112,13 @@ public partial class App : ApplicationBase
         {
             logger.Debug("On Shutdown Complete: Restart Required");
             var process = Process.GetCurrentProcess();
-            if ( (process is not null) && (process.MainModule is not null ) )
+            if ((process is not null) && (process.MainModule is not null))
             {
                 Process.Start(process.MainModule.FileName);
-            } 
+            }
         }
 
-        return Task.CompletedTask; 
+        return Task.CompletedTask;
     }
 
     // Why does it need to be there ??? 

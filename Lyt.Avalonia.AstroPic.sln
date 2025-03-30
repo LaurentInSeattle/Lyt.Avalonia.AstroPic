@@ -32,6 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Service", "Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj", "{3E4F2A8E-24AE-494F-8841-F4E2428988C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Interfaces", "Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj", "{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Windows", "Lyt.Avalonia.AstroPic.Windows\Lyt.Avalonia.AstroPic.Windows.csproj", "{DD1FC328-041B-4E54-B3AB-7887D323E24D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.MacOs", "Lyt.Avalonia.AstroPic.MacOs\Lyt.Avalonia.AstroPic.MacOs.csproj", "{40D85047-DC0E-4B84-B87E-DAC18DCDC958}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +84,18 @@ Global
 		{3E4F2A8E-24AE-494F-8841-F4E2428988C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E4F2A8E-24AE-494F-8841-F4E2428988C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E4F2A8E-24AE-494F-8841-F4E2428988C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1FC328-041B-4E54-B3AB-7887D323E24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1FC328-041B-4E54-B3AB-7887D323E24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1FC328-041B-4E54-B3AB-7887D323E24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1FC328-041B-4E54-B3AB-7887D323E24D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
