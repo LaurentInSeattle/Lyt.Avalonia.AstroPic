@@ -7,11 +7,14 @@ Downloads and manages images from various providers:
 
 <p align="left"><img src="AstroPicScreenshot.png" height="520"/>
 
+# Just in...
+
+- Set image as Wallpaper
+
 # TODO's, hopefully coming soon: 
 
 - Support for more image providers 
 - Managing the image collection 
-- Set as Wallpaper
 - Rotating wallpapers
 - Autostart 
 - "Tray icon" app'
