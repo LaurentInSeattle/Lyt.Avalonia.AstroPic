@@ -31,6 +31,8 @@ Experiment with Additional Image API web services, such as:
 
 	https://www.shutterstock.com/developers/documentation
 
+	https://www.nationalgeographic.com/photo-of-the-day/  (Will require scraping)
+
 More Images sources: 
 	
 	See : https://github.com/nikvoronin/LastWallpaper 

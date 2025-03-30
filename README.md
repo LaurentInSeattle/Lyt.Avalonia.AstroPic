@@ -1,5 +1,5 @@
 # Lyt.Avalonia.AstroPic
-Downloads and manages images from various providers: 
+Downloads and manages images from various online providers: 
 
 - the NASA Astronomy Pictures of the Day (APOD) 
 - Bing Wallpaper of the day 
@@ -9,7 +9,7 @@ Downloads and manages images from various providers:
 
 # Just in...
 
-- Set image as Wallpaper
+- Set image as Wallpaper (Windows Obly for now)
 
 # TODO's, hopefully coming soon: 
 
