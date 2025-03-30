@@ -19,6 +19,8 @@ global using Lyt.Avalonia.Interfaces.Messenger;
 global using Lyt.Avalonia.Model;
 global using Lyt.Avalonia.Persistence;
 
+global using Lyt.Avalonia.AstroPic.Interfaces;
+
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;
 global using Lyt.Avalonia.AstroPic.Model.Messaging;
 

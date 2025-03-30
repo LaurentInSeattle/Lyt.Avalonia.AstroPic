@@ -1,7 +1,33 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using static FileManagerModel; 
+
 public sealed partial class AstroPicModel : ModelBase
 {
+    public void SetWallpaper(PictureDownload download)
+    {
+        Provider provider = download.PictureMetadata.Provider;
+        try
+        {
+            string name = provider.ToString();
+            var fileId = new FileId(Area.User, Kind.BinaryNoExtension, name);
+            if (this.fileManager.Exists(fileId))
+            {
+                this.fileManager.Delete(fileId);
+            }
+
+            string path = this.fileManager.MakePath(fileId);
+            this.fileManager.Save<byte[]>(fileId, download.ImageBytes);
+            this.wallpaperService.Set(path, WallpaperStyle.Stretched);
+            this.fileManager.Delete(fileId);
+        }
+        catch (Exception ex)
+        {
+            this.Logger.Warning(
+                "Failed to set wallpaper " + provider.ToString() + "\n" + ex.ToString());
+        }
+    }
+
     public async Task<List<PictureDownload>> DownloadTodayImages()
     {
         // TODO: Check Internet: See what we did for Cranky 

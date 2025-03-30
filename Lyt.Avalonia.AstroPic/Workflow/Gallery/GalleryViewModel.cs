@@ -1,9 +1,4 @@
-﻿
-using Lyt.Avalonia.AstroPic.Service;
-using Lyt.Avalonia.Mvvm.Utilities;
-using System.Reflection;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
@@ -19,6 +14,24 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
         this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
+        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+    }
+
+    private void OnToolbarCommand(ToolbarCommandMessage message)
+    {
+        switch (message.Command)
+        {
+            case ToolbarCommandMessage.ToolbarCommand.SetWallpaper:
+                this.PictureViewModel.SetWallpaper();
+                break;
+
+            case ToolbarCommandMessage.ToolbarCommand.AddToCollection:
+                break;
+            case ToolbarCommandMessage.ToolbarCommand.SaveToFile:
+                break;
+            default:
+                break;
+        }
     }
 
     protected override void OnViewLoaded()

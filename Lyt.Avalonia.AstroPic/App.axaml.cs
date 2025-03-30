@@ -26,6 +26,7 @@ public partial class App : ApplicationBase
            // Singletons
            typeof(ShellViewModel),
            typeof(GalleryViewModel),
+           typeof(GalleryToolbarViewModel),
            //typeof(SettingsViewModel),
            //typeof(IntroViewModel),
 

@@ -1,4 +1,5 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class PictureViewModel : Bindable<PictureView>
 {
@@ -68,6 +69,17 @@ public sealed class PictureViewModel : Bindable<PictureView>
                 250, 
                 () => { this.Profiler.MemorySnapshot(this.download.PictureMetadata.Provider.ToString()); }, DispatcherPriority.ApplicationIdle);
         } 
+    }
+
+    internal void SetWallpaper() 
+    {
+        if( this.download is null)
+        {
+            return;
+        }
+
+        var model = App.GetRequiredService<AstroPicModel>();
+        model.SetWallpaper(this.download); 
     }
 
     private void OnZoomRequest(ZoomRequestMessage message)

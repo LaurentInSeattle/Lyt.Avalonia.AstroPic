@@ -6,9 +6,16 @@ public sealed record class ToolbarCommandMessage(
     public enum ToolbarCommand
     {
         // Main tool bar 
+        Today,
+        Collection,
         Settings,
-        Save,
-        SaveToFile,
+        About, 
+        ToTray, 
         Close, 
+
+        // Gallery toolbar 
+        SetWallpaper,
+        AddToCollection,
+        SaveToFile,
     }
 }

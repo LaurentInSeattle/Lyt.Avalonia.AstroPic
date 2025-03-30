@@ -14,7 +14,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private readonly ILocalizer localizer;
 
     public ShellViewModel(
-        ILocalizer localizer, 
+        ILocalizer localizer,
         IDialogService dialogService, IToaster toaster, IMessenger messenger, IProfiler profiler)
     {
         this.localizer = localizer;
@@ -57,7 +57,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         if (true)
         {
             this.toaster.Show(
-                this.localizer.Lookup("Shell.Ready"), this.localizer.Lookup("Shell.Greetings"), 
+                this.localizer.Lookup("Shell.Ready"), this.localizer.Lookup("Shell.Greetings"),
                 5_000, InformationLevel.Info);
         }
 
@@ -81,7 +81,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private void OnViewActivation(ViewActivationMessage message)
         => this.OnViewActivation(message.View, message.ActivationParameter, false);
 
+#pragma warning disable IDE0060 // Remove unused parameter
+    // Maybe needed later 
     private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
+#pragma warning restore IDE0060 
     {
         if (activatedView == ActivatedView.Exit)
         {
@@ -98,6 +101,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         {
             default:
             case ActivatedView.Gallery:
+                this.SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
                 this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
                 break;
 
@@ -115,6 +119,20 @@ public sealed class ShellViewModel : Bindable<ShellView>
     {
         var application = App.GetRequiredService<IApplicationBase>();
         await application.Shutdown();
+    }
+
+    private void SetupToolbar<TViewModel, TControl>()
+        where TViewModel : Bindable<TControl>
+        where TControl : Control, new()
+
+    {
+        if (this.View is null)
+        {
+            throw new Exception("No view: Failed to startup...");
+        }
+
+        var newViewModel = App.GetRequiredService<TViewModel>();
+        this.View.ShellViewToolbar.Content = newViewModel.View;
     }
 
     private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
@@ -152,11 +170,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
 
         CreateAndBind<GalleryViewModel, GalleryView>();
+        CreateAndBind<GalleryToolbarViewModel, GalleryToolbarView>();
         // CreateAndBind<IntroViewModel, IntroView>();
         // CreateAndBind<SettingsViewModel, SettingsView>();
     }
 
-
+#pragma warning disable IDE0079 
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
@@ -173,9 +192,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private void OnExit(object? _) { }
 #pragma warning restore CA1822 
 #pragma warning restore IDE0051 // Remove unused private members
+#pragma warning restore IDE0079 
 
     public ICommand TodayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-    
+
     public ICommand CollectionCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand SettingsCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
