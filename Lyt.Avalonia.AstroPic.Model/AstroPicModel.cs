@@ -15,6 +15,12 @@ public sealed partial class AstroPicModel : ModelBase
             ShouldAutoStart = false,
             MaxImages = 128,
             MaxStorageMB = 64,
+            Providers =
+            [
+                new Provider(ProviderKey.Nasa),
+                new Provider(ProviderKey.Bing),
+                new Provider(ProviderKey.EarthView),
+            ]
         };
 
     private readonly FileManagerModel fileManager;

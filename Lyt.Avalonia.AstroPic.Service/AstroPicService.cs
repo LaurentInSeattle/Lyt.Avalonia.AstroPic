@@ -1,18 +1,12 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service;
 
-public class AstroPicService
+public class AstroPicService(IMessenger messenger, ILogger logger)
 {
-    private readonly IMessenger messenger;
-    private readonly ILogger logger;
-
-    public AstroPicService(IMessenger messenger, ILogger logger)
-    {
-        this.messenger = messenger;
-        this.logger = logger;
-    }
+    private readonly IMessenger messenger = messenger;
+    private readonly ILogger logger = logger;
 
     public async Task<List<PictureMetadata>> GetPictures(
-        Provider provider, DateTime dateTime, int count = 1)
+        ProviderKey provider, DateTime dateTime, int count = 1)
     {
         if ((count <= 0) || (count > 8))
         {
@@ -23,13 +17,13 @@ public class AstroPicService
 
         switch (provider)
         {
-            case Provider.Nasa:
+            case ProviderKey.Nasa:
                 return await NasaService.GetPictures(dateTime);
 
-            case Provider.Bing:
+            case ProviderKey.Bing:
                 return await BingService.GetPictures(dateTime);
 
-            case Provider.EarthView:
+            case ProviderKey.EarthView:
                 return await EarthViewService.GetPictures();
 
             default:

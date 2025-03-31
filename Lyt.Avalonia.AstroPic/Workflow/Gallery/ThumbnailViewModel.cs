@@ -2,6 +2,8 @@
 
 public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
+    public const int ThumbnailWidth = 360; 
+
     private readonly PictureDownload download;
     private readonly ThumbnailsPanelViewModel parent;
 
@@ -10,7 +12,8 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.parent = parent;
         this.download = download;
         this.Provider = this.download.PictureMetadata.Provider.ToString().BeautifyEnumString();
-        var bitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), 360);
+        var bitmap = 
+            WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), ThumbnailWidth);
         this.Thumbnail = bitmap;
     }
 

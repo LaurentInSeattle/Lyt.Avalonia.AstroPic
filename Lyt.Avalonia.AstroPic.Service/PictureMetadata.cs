@@ -4,14 +4,14 @@ public class PictureMetadata
 {
     public PictureMetadata()
     {
-        this.Provider = Provider.Unknown;
+        this.Provider = ProviderKey.Unknown;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
     }
 
     internal PictureMetadata(EarthViewPicture earthViewPicture)
     {
-        this.Provider = Provider.EarthView;
+        this.Provider = ProviderKey.EarthView;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
         this.Url = earthViewPicture.PhotoUrl;
@@ -22,7 +22,7 @@ public class PictureMetadata
 
     internal PictureMetadata(BingPicture bingPicture)
     {
-        this.Provider = Provider.Bing;
+        this.Provider = ProviderKey.Bing;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
         this.Url = string.Concat(BingService.Endpoint, bingPicture.PartialUrl);
@@ -46,7 +46,7 @@ public class PictureMetadata
 
     internal PictureMetadata(NasaPicture nasaPicture)
     {
-        this.Provider = Provider.Nasa;
+        this.Provider = ProviderKey.Nasa;
         this.Date = DateTime.Parse(nasaPicture.Date);
         this.MediaType = nasaPicture.MediaType == "image" ? MediaType.Image : MediaType.Video;
         this.Url = nasaPicture.HdImageUrl;
@@ -55,7 +55,7 @@ public class PictureMetadata
         this.Copyright = nasaPicture.Copyright; 
     }
 
-    public Provider Provider { get; set; }
+    public ProviderKey Provider { get; set; }
 
     public DateTime Date { get; set; }
 

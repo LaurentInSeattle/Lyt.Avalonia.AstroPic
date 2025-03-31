@@ -6,7 +6,7 @@ public sealed partial class AstroPicModel : ModelBase
 {
     public void SetWallpaper(PictureDownload download)
     {
-        Provider provider = download.PictureMetadata.Provider;
+        ProviderKey provider = download.PictureMetadata.Provider;
         try
         {
             string name = provider.ToString();
@@ -32,12 +32,16 @@ public sealed partial class AstroPicModel : ModelBase
     {
         // TODO: Check Internet: See what we did for Cranky 
 
-        // TODO: Use ONLY enabled and selected providers 
-        Provider[] providers = [Provider.Nasa, Provider.Bing, Provider.EarthView];
 
-        var downloads = new List<PictureDownload>(providers.Length); 
-        foreach (var provider in providers)
+        var downloads = new List<PictureDownload>(this.Providers.Count);
+        foreach (var provider in this.Providers)
         {
+            // Use ONLY enabled and selected providers 
+            if ( !provider.IsSelected) 
+            {
+                continue; 
+            }
+
             // We dont want to download everything in paralel so that we do not
             // overwhelm the computer Internet bandwith 
             if (downloads.Count > 1)
@@ -48,7 +52,7 @@ public sealed partial class AstroPicModel : ModelBase
 
             try
             {
-                var download = await this.DownloadImage(provider);
+                var download = await this.DownloadImage(provider.Key);
                 if (download.IsValid)
                 {
                     downloads.Add(download);
@@ -64,7 +68,7 @@ public sealed partial class AstroPicModel : ModelBase
         return downloads;
     }
 
-    private async Task<PictureDownload> DownloadImage(Provider provider)
+    private async Task<PictureDownload> DownloadImage(ProviderKey provider)
     {
         var empty = new PictureDownload(new(), []);
         try
@@ -122,10 +126,10 @@ public sealed partial class AstroPicModel : ModelBase
         return empty;
     }
 
-    private void ReportError(Provider provider, string message)
+    private void ReportError(ProviderKey provider, string message)
         => this.Messenger.Publish(new ServiceErrorMessage(provider, message));
 
-    private void Report (Provider provider, bool isMetadata, bool isBegin)
+    private void Report (ProviderKey provider, bool isMetadata, bool isBegin)
         => this.Messenger.Publish(
             new ServiceProgressMessage(provider, IsMetadata: isMetadata, IsBegin: isBegin));
 
