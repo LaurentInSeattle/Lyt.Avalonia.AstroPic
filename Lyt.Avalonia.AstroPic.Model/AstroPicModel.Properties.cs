@@ -21,7 +21,7 @@ public sealed partial class AstroPicModel : ModelBase
     public int MaxStorageMB { get; set; } = 64;
 
     [JsonRequired]
-    public PictureCollection Collection { get; set; } = new();
+    public Dictionary<string, Picture> Pictures { get; set; } = [];
 
     [JsonRequired]
     public List<Provider> Providers { get; set; } = [];

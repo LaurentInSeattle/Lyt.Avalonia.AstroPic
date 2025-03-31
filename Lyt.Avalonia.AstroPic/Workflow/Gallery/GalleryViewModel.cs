@@ -26,9 +26,14 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
                 break;
 
             case ToolbarCommandMessage.ToolbarCommand.AddToCollection:
+                this.PictureViewModel.AddToCollection();
                 break;
-            case ToolbarCommandMessage.ToolbarCommand.SaveToFile:
+
+            case ToolbarCommandMessage.ToolbarCommand.SaveToDesktop:
+                this.PictureViewModel.SaveToDesktop();
                 break;
+
+            // Ignore all other commands 
             default:
                 break;
         }

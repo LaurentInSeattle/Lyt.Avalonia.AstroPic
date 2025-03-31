@@ -16,6 +16,6 @@ public sealed record class ToolbarCommandMessage(
         // Gallery toolbar 
         SetWallpaper,
         AddToCollection,
-        SaveToFile,
+        SaveToDesktop,
     }
 }

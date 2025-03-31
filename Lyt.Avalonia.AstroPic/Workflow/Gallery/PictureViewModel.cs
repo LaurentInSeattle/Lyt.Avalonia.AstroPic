@@ -3,12 +3,17 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class PictureViewModel : Bindable<PictureView>
 {
+    public const int ThumbnailWidth = 280;
+
+    private readonly AstroPicModel astroPicModel;
     private readonly GalleryViewModel galleryViewModel;
+
     private PictureDownload? download;
 
     public PictureViewModel(GalleryViewModel galleryViewModel)
     {
         this.galleryViewModel = galleryViewModel;
+        this.astroPicModel = App.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
     }
 
@@ -18,8 +23,8 @@ public sealed class PictureViewModel : Bindable<PictureView>
         byte[] imageBytes = download.ImageBytes;
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.LoadImage(bitmap);
-        var metadata = this.download.PictureMetadata; 
-        this.Provider = metadata.Provider.ToString().BeautifyEnumString();
+        var metadata = this.download.PictureMetadata;
+        this.Provider = this.astroPicModel.ProviderName(metadata.Provider);
         this.Title = string.IsNullOrWhiteSpace(metadata.Title) ? string.Empty : metadata.Title;
         this.Copyright = string.IsNullOrWhiteSpace(metadata.Copyright) ? string.Empty : metadata.Copyright;
         this.Description = string.IsNullOrWhiteSpace(metadata.Description) ? string.Empty : metadata.Description;
@@ -78,8 +83,25 @@ public sealed class PictureViewModel : Bindable<PictureView>
             return;
         }
 
-        var model = App.GetRequiredService<AstroPicModel>();
-        model.SetWallpaper(this.download); 
+        this.astroPicModel.SetWallpaper(this.download); 
+    }
+
+    internal void AddToCollection()
+    {
+        if (this.download is null)
+        {
+            return;
+        }
+
+        var writeableBitmap = 
+            WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), ThumbnailWidth) ; 
+        this.download.ThumbnailBytes = writeableBitmap.EncodeToJpeg();
+        this.astroPicModel.AddToCollection(this.download);
+    }
+
+    internal void SaveToDesktop()
+    {
+        // TODO ! 
     }
 
     private void OnZoomRequest(ZoomRequestMessage message)

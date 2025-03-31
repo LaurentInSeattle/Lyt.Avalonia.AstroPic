@@ -4,6 +4,21 @@ using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
 {
+    private const int JpgMinLength = 256; 
+
+    public string ProviderName ( ProviderKey key )
+    {
+        string? name  = 
+            (from provider in this.Providers where provider.Key == key select provider.Name).FirstOrDefault();
+        if ( string.IsNullOrWhiteSpace( name ) )
+        {
+            this.Logger.Warning("Undefined Provider!"); 
+            return "Unknown Provider";
+        }
+
+        return name;
+    }
+
     public void SetWallpaper(PictureDownload download)
     {
         ProviderKey provider = download.PictureMetadata.Provider;
@@ -66,6 +81,65 @@ public sealed partial class AstroPicModel : ModelBase
         } 
 
         return downloads;
+    }
+
+    public bool AddToCollection (PictureDownload download)
+    {
+        // BUG ~ Problem ? 
+        // If the service returns many images per day (Earth View) only one will be saved 
+        // But there will be many entries in the dictionary 
+        try
+        {
+            var metadata = download.PictureMetadata; 
+            string? url = metadata.Url;
+            if (!string.IsNullOrWhiteSpace(url))
+            {
+                if (this.Pictures.ContainsKey(url))
+                {
+                    this.Logger.Warning(
+                        "Picture already added to collection: " +
+                        download.PictureMetadata.Provider.ToString() );
+                    // TODO: Messenger info 
+                    return true;
+                }
+            }
+            else
+            {
+                throw new Exception("Picture has no URL");
+            }
+
+            var picture = new Picture(metadata);
+            byte[] imageBytes = download.ImageBytes;
+            byte[]? thumbnailBytes = download.ThumbnailBytes;
+            if ( imageBytes is not null && 
+                imageBytes.Length > JpgMinLength &&
+                thumbnailBytes is not null && 
+                thumbnailBytes.Length > JpgMinLength)
+            {
+                // Save images 
+                this.fileManager.Save<byte[]>(
+                    Area.User, Kind.BinaryNoExtension, picture.ImageFilePath, imageBytes);
+                this.fileManager.Save<byte[]>(
+                    Area.User, Kind.BinaryNoExtension, picture.ThumbnailFilePath, thumbnailBytes);
+
+                // Save metadata 
+                this.Pictures.Add(url, picture);
+                this.Save();
+                return true;
+            }
+            else
+            {
+                throw new Exception("Missing image data"); 
+            }
+        }
+        catch (Exception ex)
+        {
+            // TODO: Messenger warning 
+            this.Logger.Warning(
+                "Failed to add picture to collection" + 
+                download.PictureMetadata.Provider.ToString() + "\n" + ex.ToString());
+            return false;
+        }
     }
 
     private async Task<PictureDownload> DownloadImage(ProviderKey provider)
@@ -135,5 +209,5 @@ public sealed partial class AstroPicModel : ModelBase
 
     private bool IsAlreadyInCollection (PictureMetadata picture)
         => !string.IsNullOrWhiteSpace(picture.Url) && 
-            this.Collection.Pictures.ContainsKey(picture.Url);
+            this.Pictures.ContainsKey(picture.Url);
 }

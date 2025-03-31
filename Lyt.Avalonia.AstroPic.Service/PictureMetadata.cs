@@ -55,17 +55,24 @@ public class PictureMetadata
         this.Copyright = nasaPicture.Copyright; 
     }
 
+    [JsonRequired]
     public ProviderKey Provider { get; set; }
 
+    [JsonRequired]
     public DateTime Date { get; set; }
 
+    [JsonRequired]
     public MediaType MediaType { get; set; }
 
+    [JsonRequired]
     public string? Url { get; set; } = string.Empty;
 
+    [JsonRequired]
     public string? Title { get; set; } = string.Empty;
 
+    [JsonRequired]
     public string? Description { get; set; } = string.Empty;
 
+    [JsonRequired]
     public string? Copyright { get; set; } = string.Empty;
 }

@@ -17,9 +17,9 @@ public sealed partial class AstroPicModel : ModelBase
             MaxStorageMB = 64,
             Providers =
             [
-                new Provider(ProviderKey.Nasa),
-                new Provider(ProviderKey.Bing),
-                new Provider(ProviderKey.EarthView),
+                new Provider(ProviderKey.Nasa, "Nasa APOD"),
+                new Provider(ProviderKey.Bing, "Bing Wallpaper"),
+                new Provider(ProviderKey.EarthView, "Google Earth View"),
             ]
         };
 

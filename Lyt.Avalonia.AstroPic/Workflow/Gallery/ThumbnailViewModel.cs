@@ -2,7 +2,7 @@
 
 public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
-    public const int ThumbnailWidth = 360; 
+    public const int ThumbnailWidth = 360;
 
     private readonly PictureDownload download;
     private readonly ThumbnailsPanelViewModel parent;
@@ -11,8 +11,9 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     {
         this.parent = parent;
         this.download = download;
-        this.Provider = this.download.PictureMetadata.Provider.ToString().BeautifyEnumString();
-        var bitmap = 
+        var model = App.GetRequiredService<AstroPicModel>();
+        this.Provider = model.ProviderName(this.download.PictureMetadata.Provider);
+        var bitmap =
             WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), ThumbnailWidth);
         this.Thumbnail = bitmap;
     }
@@ -31,7 +32,7 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         }
 
         Debug.WriteLine("Deselected: " + this.Provider);
-        this.View.Deselect(); 
+        this.View.Deselect();
     }
 
     public string Provider { get => this.Get<string>()!; set => this.Set(value); }

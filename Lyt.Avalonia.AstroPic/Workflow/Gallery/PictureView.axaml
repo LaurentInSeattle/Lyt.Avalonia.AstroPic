@@ -33,7 +33,7 @@
 			Grid.Row="0"
 			Text="{Binding Title}"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Margin="200 0 0 0"
+			Margin="300 0 0 0"
 			FontSize="24"
 			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"

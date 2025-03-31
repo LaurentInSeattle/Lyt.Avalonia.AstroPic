@@ -31,6 +31,32 @@
 			Text="Set as Wallpaper"
 			Command="{Binding WallpaperCommand}"
 			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Width="100" Height="56"
+			Margin="8 4 8 4"
+			GlyphSource="add_circle"
+			ButtonBackground="BorderlessRectangle"
+			GlyphStrokeThickness="0"
+			GlyphAngle="0"
+			Text="Add to Collection"
+			Command="{Binding AddToCollectionCommand}"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Width="100" Height="56"
+			Margin="8 4 8 4"
+			GlyphSource="save"
+			ButtonBackground="BorderlessRectangle"
+			GlyphStrokeThickness="0"
+			GlyphAngle="0"
+			Text="Save to Desktop"
+			Command="{Binding SaveToDesktopCommand}"
+			/>
 	</StackPanel>
 
 </UserControl>
