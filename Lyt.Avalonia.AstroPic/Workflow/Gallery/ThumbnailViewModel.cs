@@ -4,29 +4,30 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
     public const int ThumbnailWidth = 360;
 
-    private readonly PictureDownload download;
+    public  readonly PictureDownload Download;
+
     private readonly ThumbnailsPanelViewModel parent;
 
     public ThumbnailViewModel(ThumbnailsPanelViewModel parent, PictureDownload download)
     {
         this.parent = parent;
-        this.download = download;
+        this.Download = download;
         var model = App.GetRequiredService<AstroPicModel>();
-        this.Provider = model.ProviderName(this.download.PictureMetadata.Provider);
+        this.Provider = model.ProviderName(this.Download.PictureMetadata.Provider);
         var bitmap =
-            WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), ThumbnailWidth);
+            WriteableBitmap.DecodeToWidth(new MemoryStream(this.Download.ImageBytes), ThumbnailWidth);
         this.Thumbnail = bitmap;
     }
 
     internal void Select()
     {
         Debug.WriteLine("Selected: " + this.Provider);
-        this.parent.Select(this.download);
+        this.parent.Select(this.Download);
     }
 
     internal void Deselect(PictureDownload download)
     {
-        if (this.download == download)
+        if (this.Download == download)
         {
             return;
         }

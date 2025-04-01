@@ -1,7 +1,17 @@
-﻿namespace Lyt.Avalonia.AstroPic.Service; 
+﻿namespace Lyt.Avalonia.AstroPic.Service;
 
 public class PictureMetadata
 {
+    private static readonly List<string> SupportedPicturesFileExtensions =
+    [
+        "jpg",
+        "jpeg",
+        "JPG",
+        "JPEG",
+        "png",
+        "PNG"
+    ];
+
     public PictureMetadata()
     {
         this.Provider = ProviderKey.Unknown;
@@ -16,6 +26,7 @@ public class PictureMetadata
         this.MediaType = MediaType.Image;
         this.Url = earthViewPicture.PhotoUrl;
         this.Title = earthViewPicture.Title;
+        this.Title = this.Title.Replace("\u2013 Earth View from Google", string.Empty);
         this.Description = string.Empty;
         this.Copyright = earthViewPicture.Copyright;
     }
@@ -32,14 +43,14 @@ public class PictureMetadata
         this.Copyright = copyright;
         this.Description = bingPicture.Title;
 
-        if ( !string.IsNullOrWhiteSpace(copyright))
+        if (!string.IsNullOrWhiteSpace(copyright))
         {
             string[] tokens =
                 copyright.Split(['(', ')'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (tokens.Length == 2)
             {
                 this.Title = tokens[0];
-                this.Copyright= tokens[1];
+                this.Copyright = tokens[1];
             }
         }
     }
@@ -52,7 +63,39 @@ public class PictureMetadata
         this.Url = nasaPicture.HdImageUrl;
         this.Title = nasaPicture.Title;
         this.Description = nasaPicture.Explanation;
-        this.Copyright = nasaPicture.Copyright; 
+        this.Copyright = nasaPicture.Copyright;
+    }
+
+    public string? UrlFileExtension()
+    {
+        if ((this.MediaType != MediaType.Image) || string.IsNullOrWhiteSpace(this.Url))
+        {
+            return string.Empty;
+        }
+
+        string[] tokens = this.Url.Split(['.'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        string maybeExtension = tokens[^1];
+        if (SupportedPicturesFileExtensions.Contains(maybeExtension) ) 
+        {
+            return maybeExtension;
+        }
+
+        foreach (string extension in SupportedPicturesFileExtensions)
+        {
+            if (maybeExtension.Contains(extension, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return extension;
+            }
+        }
+
+        return "jpg"; 
+    }
+
+    public string TodayImageFilePath()
+    {
+        string? maybeExtension = this.UrlFileExtension();
+        string extension = string.IsNullOrWhiteSpace(maybeExtension) ? "jpg" : maybeExtension;
+        return string.Format("{0}_Today.{1}", this.Provider.ToString(), extension);
     }
 
     [JsonRequired]

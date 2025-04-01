@@ -1,16 +1,20 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
-    private readonly AstroPicModel astroPicModel; 
+    private readonly AstroPicModel astroPicModel;
+    private readonly IToaster toaster;
 
     private bool downloading;
-    private bool downloaded ;
+    private bool downloaded;
 
-    public GalleryViewModel(AstroPicModel astroPicModel)
+    public GalleryViewModel(AstroPicModel astroPicModel, IToaster toaster)
     {
         this.astroPicModel = astroPicModel;
-        this.PictureViewModel = new PictureViewModel(this); 
+        this.toaster = toaster;
+        this.PictureViewModel = new PictureViewModel(this);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
         this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
@@ -42,7 +46,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     protected override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        _ = this.DownloadImages(); 
+        _ = this.DownloadImages();
     }
 
     public override void Activate(object? activationParameters)
@@ -51,7 +55,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         _ = this.DownloadImages();
     }
 
-    private async Task DownloadImages ()
+    private async Task DownloadImages()
     {
         if (this.downloaded || this.downloading)
         {
@@ -59,6 +63,9 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         }
 
         this.downloading = true;
+
+        // Wait a bit so that the UI is given enough time to load and show up at startup
+        await Task.Delay(500);
         List<PictureDownload> downloads = await this.astroPicModel.DownloadTodayImages();
         this.downloading = false;
         if ((downloads != null) && (downloads.Count > 0))
@@ -70,23 +77,26 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
 
     private void OnDownloadError(ServiceErrorMessage message)
     {
-
+        this.toaster.Dismiss();
+        this.toaster.Show(
+            message.Provider.ToString().BeautifyEnumString(),
+            message.ErrorKey, 10_000, InformationLevel.Warning);
     }
 
     private void OnDownloadProgress(ServiceProgressMessage message)
     {
         string start = message.IsBegin ? "Starting downloading " : "Completed downloading ";
         string middle = message.IsMetadata ? " image metadata " : " image ";
-        string provider = message.Provider.ToString().BeautifyEnumString() ;
-        string end = " for provider " ;
-        this.ProgressMessage = string.Concat(start, middle, end, provider) ;
+        string provider = message.Provider.ToString().BeautifyEnumString();
+        string end = " for provider ";
+        this.ProgressMessage = string.Concat(start, middle, end, provider);
     }
 
     private void LoadImages(List<PictureDownload> downloads)
     {
         this.ThumbnailsPanelViewModel.LoadImages(downloads);
         Schedule.OnUiThread(
-            200, () => { this.ProgressMessage = "Downloads complete!"; } , DispatcherPriority.Background);        
+            200, () => { this.ProgressMessage = "Downloads complete!"; }, DispatcherPriority.Background);
     }
 
     internal void Select(PictureDownload download)
@@ -97,15 +107,15 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
 
     public string ProgressMessage { get => this.Get<string>()!; set => this.Set(value); }
 
-    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel 
-    { 
-        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel"); 
-        set => this.Set(value); 
+    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel
+    {
+        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
+        set => this.Set(value);
     }
 
-    public PictureViewModel PictureViewModel 
-    { 
+    public PictureViewModel PictureViewModel
+    {
         get => this.Get<PictureViewModel?>() ?? throw new ArgumentNullException("PictureViewModel");
-        set => this.Set(value); 
+        set => this.Set(value);
     }
 }

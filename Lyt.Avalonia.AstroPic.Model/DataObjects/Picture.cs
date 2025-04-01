@@ -34,12 +34,16 @@ public sealed class Picture
     private void SetImageFilePaths ()
     {
         var meta = this.PictureMetadata;
-        var date = meta.Date; 
+        var date = meta.Date;
+        string? maybeExtension = meta.UrlFileExtension();
+        string extension = string.IsNullOrWhiteSpace(maybeExtension) ? "jpg" : maybeExtension;
         this.ImageFilePath = 
             string.Format(
-                "{0}_{1}_{2}_{3}.jpg", meta.Provider.ToString(), date.Year, date.Month, date.Day);
+                "{0}_{1}_{2}_{3}.{4}", 
+                meta.Provider.ToString(), date.Year, date.Month, date.Day, extension);
         this.ThumbnailFilePath =
             string.Format(
-                "{0}_{1}_{2}_{3}_Thumb.jpg", meta.Provider.ToString(), date.Year, date.Month, date.Day);
+                "{0}_{1}_{2}_{3}_Thumb.{4}", 
+                meta.Provider.ToString(), date.Year, date.Month, date.Day, extension);
     }
 }

@@ -22,6 +22,17 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>
         }
 
         this.Thumbnails = thumbnails;
+
+        // Delay a bit so that the UI has time to populate
+        Schedule.OnUiThread(
+            20 + 50 * this.Thumbnails.Count, 
+            ()=> 
+            {
+                if (this.Thumbnails.Count > 0)
+                {
+                    this.Select(this.Thumbnails[0].Download);
+                } 
+            }, DispatcherPriority.Background);
     }
 
     internal void Select(PictureDownload download)

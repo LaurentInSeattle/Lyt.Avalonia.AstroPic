@@ -4,5 +4,8 @@ public sealed record class Provider
 (
     ProviderKey Key = ProviderKey.Unknown, 
     string Name = "", // string.Empty;
-    bool IsSelected = true 
-); 
+    bool IsSelected = true
+)
+{
+    public bool IsLoaded { get; set; }  
+}

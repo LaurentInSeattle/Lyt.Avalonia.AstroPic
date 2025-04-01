@@ -1,5 +1,4 @@
 ﻿
-Make the Image Service a service and inject a logger, etc 
 
 Experiment with Additional Image API web services, such as: 
 
@@ -9,17 +8,9 @@ Experiment with Additional Image API web services, such as:
 
 	https://www.flickr.com/services/api/?ref=public_apis&utm_medium=website
 
-	https://wallhaven.cc/help/api?ref=public_apis&utm_medium=website
-
-	https://pixabay.com/api/docs/
-
-	https://picsum.photos/
-
-	https://www.pexels.com/api/
-
-	Against licensing policy: https://unsplash.com/developers
-
 	https://thecatapi.com/
+		DOABLE: https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=4 
+		https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t 
 
 	https://developers.google.com/photos
 
@@ -32,6 +23,18 @@ Experiment with Additional Image API web services, such as:
 	https://www.shutterstock.com/developers/documentation
 
 	https://www.nationalgeographic.com/photo-of-the-day/  (Will require scraping)
+
+Against licensing policy: 
+		https://unsplash.com/developers
+		https://www.pexels.com/api/
+		https://pixabay.com/api/docs/
+			Only CC0 images
+			API does NOT return copyright / licence info 
+
+
+Weird / Unusable / Slow 
+		https://picsum.photos/
+		https://wallhaven.cc/help/api?ref=public_apis&utm_medium=website
 
 More Images sources: 
 	

@@ -26,6 +26,9 @@ public sealed partial class AstroPicModel : ModelBase
     [JsonRequired]
     public List<Provider> Providers { get; set; } = [];
 
+    [JsonRequired]
+    public Dictionary<ProviderKey, PictureMetadata> LastUpdate { get; set; } = [];
+
     #endregion Serialized -  No model changed event
 
     #region Samples 

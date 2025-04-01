@@ -85,13 +85,14 @@ public partial class ThumbnailView : UserControl
 
     private void OnPointerReleased(object? sender, PointerEventArgs args)
     {
+        bool wasInside = this.isInside;
         if ((sender is ThumbnailView view) && (this == view))
         {
             this.isHot = false;
             this.isInside = false;
             this.isSelected = true;
             this.SetVisualState();
-            if (this.DataContext is ThumbnailViewModel thumbnailViewModel)
+            if (wasInside && this.DataContext is ThumbnailViewModel thumbnailViewModel)
             {
                 thumbnailViewModel.Select();
             }
