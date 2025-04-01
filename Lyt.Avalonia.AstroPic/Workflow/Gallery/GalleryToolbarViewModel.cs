@@ -13,8 +13,6 @@ public sealed class GalleryToolbarViewModel : Bindable<GalleryToolbarView>
     private void OnAddToCollection(object? _) => Command(ToolbarCommand.AddToCollection);
     private void OnSaveToDesktop(object? _) => Command(ToolbarCommand.SaveToDesktop);
 
-    // private void OnTray(object? _) { }
-
 #pragma warning restore CA1822
 #pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore IDE0079

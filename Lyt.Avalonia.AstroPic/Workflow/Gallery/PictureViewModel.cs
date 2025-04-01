@@ -1,6 +1,9 @@
 ﻿
 namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
+using System.Xml.Linq;
+using static FileManagerModel; 
+
 public sealed class PictureViewModel : Bindable<PictureView>
 {
     public const int ThumbnailWidth = 280;
@@ -101,7 +104,28 @@ public sealed class PictureViewModel : Bindable<PictureView>
 
     internal void SaveToDesktop()
     {
-        // TODO ! 
+        if (this.download is null)
+        {
+            return;
+        }
+
+        try
+        {
+            var fileManager = App.GetRequiredService<FileManagerModel>();
+            fileManager.Save<byte[]>(
+                Area.Desktop, Kind.BinaryNoExtension,
+                this.download.PictureMetadata.TodayImageFilePath(),
+                this.download.ImageBytes);
+        }
+        catch (Exception ex)
+        {
+            string msg = "Failed to save image file: \n" + ex.ToString() ;
+            this.Logger.Error(msg);
+            var toaster = App.GetRequiredService<IToaster>();
+            toaster.Show(
+                "File System Error", "Could not save image file",
+                10_000, InformationLevel.Warning);
+        }
     }
 
     private void OnZoomRequest(ZoomRequestMessage message)

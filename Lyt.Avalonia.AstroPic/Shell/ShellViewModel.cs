@@ -189,7 +189,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnTray(object? _) { }
 
-    private void OnExit(object? _) { }
+    private async void OnExit(object? _) 
+    {
+        var application = App.GetRequiredService<IApplicationBase>();
+        await application.Shutdown();
+    }
+
 #pragma warning restore CA1822 
 #pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore IDE0079 
