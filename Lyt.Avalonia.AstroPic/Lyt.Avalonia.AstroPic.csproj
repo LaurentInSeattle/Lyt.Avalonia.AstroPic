@@ -14,6 +14,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AvaloniaResource Remove="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
+	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaXaml Remove="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
+	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.2.6" />
 		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
 		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.6" />
