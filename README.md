@@ -18,3 +18,5 @@ Downloads and manages images from various online providers:
 - Rotating wallpapers
 - Autostart 
 - "Tray icon" app'
+- Localization
+- Mac OS support
