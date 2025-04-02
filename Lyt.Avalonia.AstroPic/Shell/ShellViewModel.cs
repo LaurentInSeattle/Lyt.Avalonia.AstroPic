@@ -7,25 +7,41 @@ using static ViewActivationMessage;
 
 public sealed class ShellViewModel : Bindable<ShellView>
 {
+    private const int MinutesToMillisecs = 60 * 1_000;
+
+    private readonly AstroPicModel astroPicModel; 
     private readonly IDialogService dialogService;
     private readonly IToaster toaster;
     private readonly IMessenger messenger;
     private readonly IProfiler profiler;
     private readonly ILocalizer localizer;
+    private readonly TimeoutTimer rotatorTimer; 
 
     public ShellViewModel(
+        AstroPicModel astroPicModel ,
         ILocalizer localizer,
         IDialogService dialogService, IToaster toaster, IMessenger messenger, IProfiler profiler)
     {
+        this.astroPicModel = astroPicModel;
         this.localizer = localizer;
         this.dialogService = dialogService;
         this.toaster = toaster;
         this.messenger = messenger;
         this.profiler = profiler;
+        this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 1 * MinutesToMillisecs); 
+        if ( true /* for now */ )
+        {
+            this.rotatorTimer.Start();
+        }
 
         this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
         this.Messenger.Subscribe<ShowTitleBarMessage>(this.OnShowTitleBar);
+        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
     }
+
+    private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
+
+    private void OnRotatorTimer() => this.astroPicModel.RotateWallpaper(); 
 
     protected override void OnViewLoaded()
     {
@@ -189,11 +205,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnTray(object? _) { }
 
-    private async void OnExit(object? _) 
-    {
-        var application = App.GetRequiredService<IApplicationBase>();
-        await application.Shutdown();
-    }
+    private void OnExit(object? _) => ShellViewModel.OnExit(); 
 
 #pragma warning restore CA1822 
 #pragma warning restore IDE0051 // Remove unused private members

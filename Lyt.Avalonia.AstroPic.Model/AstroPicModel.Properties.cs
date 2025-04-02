@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.AstroPic.Model; 
+﻿namespace Lyt.Avalonia.AstroPic.Model;
 
 public sealed partial class AstroPicModel : ModelBase
 {
@@ -15,7 +15,7 @@ public sealed partial class AstroPicModel : ModelBase
     public bool ShouldAutoStart { get; set; } = false;
 
     [JsonRequired]
-    public int  MaxImages { get; set; } = 128;
+    public int MaxImages { get; set; } = 128;
 
     [JsonRequired]
     public int MaxStorageMB { get; set; } = 64;
@@ -31,15 +31,20 @@ public sealed partial class AstroPicModel : ModelBase
 
     #endregion Serialized -  No model changed event
 
+
+    #region Not serialized - No model changed event
+    
+    [JsonIgnore]
+    internal HashSet<string> MruWallpapers { get; set; } = [];
+
+    #endregion Not serialized - No model changed event
+
+
     #region Samples 
 
     //[JsonIgnore]
     //// Not serialized -  With model changed event
     //// public Group? SelectedGroup { get => this.Get<Group?>(); set => this.Set(value); }
-
-    //[JsonIgnore]
-    //// Not serialized - No model changed event
-    //// public List<string> AvailableIcons { get; set; } = [];
 
     #endregion Samples 
 }

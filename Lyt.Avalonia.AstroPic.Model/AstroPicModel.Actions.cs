@@ -1,10 +1,14 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using Lyt.Avalonia.Persistence;
+using System.IO;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
 {
     private const int JpgMinLength = 256;
+
+    private readonly Random random = new((int)DateTime.Now.Ticks);
 
     public string ProviderName(ProviderKey key)
     {
@@ -33,13 +37,68 @@ public sealed partial class AstroPicModel : ModelBase
 
             string path = this.fileManager.MakePath(fileId);
             this.fileManager.Save<byte[]>(fileId, download.ImageBytes);
-            this.wallpaperService.Set(path, WallpaperStyle.Fill);
+            this.SetWallpaper(path);
             this.fileManager.Delete(fileId);
         }
         catch (Exception ex)
         {
             this.Logger.Warning(
                 "Failed to set wallpaper " + provider.ToString() + "\n" + ex.ToString());
+        }
+    }
+
+    public void RotateWallpaper()
+    {
+        // Pickup a new wallpaper not present in the MRU list
+        if (this.MruWallpapers.Count == this.Pictures.Values.Count)
+        {
+            this.Logger.Info("MRU Wallpapers cleared");
+            this.MruWallpapers.Clear();
+        }
+
+        List<string> files = [];
+        foreach (var picture in this.Pictures.Values)
+        {
+            string name = picture.ImageFilePath;
+            string path = this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, name);
+            if (this.MruWallpapers.Contains(path))
+            {
+                continue;
+            }
+
+            files.Add(path);
+        }
+
+        if (files.Count == 1)
+        {
+            this.MruWallpapers.Clear();
+            this.Logger.Info("MRU Wallpapers cleared");
+            this.SetWallpaper(files[0]);
+        }
+        else
+        {
+            int index = this.random.Next(files.Count);
+            this.SetWallpaper(files[index]);
+        }
+    }
+
+    private void SetWallpaper(string path)
+    {
+        try
+        {
+            if (!Path.Exists(path))
+            {
+                throw new Exception("Does not exists.");
+            }
+
+            this.MruWallpapers.Add(path);
+            this.wallpaperService.Set(path, WallpaperStyle.Fill);
+            this.Logger.Info("Wallpaper set: " + path);
+        }
+        catch (Exception ex)
+        {
+            this.Logger.Warning(
+                "Failed to set wallpaper: " + path + "\n" + ex.ToString());
         }
     }
 
@@ -69,15 +128,17 @@ public sealed partial class AstroPicModel : ModelBase
                             Area.User, Kind.BinaryNoExtension, pictureMetadata.TodayImageFilePath());
                         downloads.Add(new PictureDownload(pictureMetadata, imageBytes));
                         provider.IsLoaded = true;
-                    } 
-                    catch (Exception e1 )
-                    { 
+                    }
+                    catch (Exception e1)
+                    {
+                        this.Logger.Warning(
+                            "Failed to load image: " + "\n" + e1.ToString());
                     }
                 } // else we will download it 
             }
         }
 
-        bool needToSaveModel = false; 
+        bool needToSaveModel = false;
         foreach (var provider in this.Providers)
         {
             // Use ONLY enabled and selected providers 
@@ -112,6 +173,10 @@ public sealed partial class AstroPicModel : ModelBase
                     try
                     {
                         var meta = download.PictureMetadata;
+                        this.fileManager.Save<byte[]>(
+                            Area.User, Kind.BinaryNoExtension,
+                            meta.TodayImageFilePath(), download.ImageBytes);
+
                         if (this.LastUpdate.TryGetValue(provider.Key, out _))
                         {
                             this.LastUpdate[provider.Key] = meta;
@@ -121,16 +186,13 @@ public sealed partial class AstroPicModel : ModelBase
                             this.LastUpdate.Add(provider.Key, meta);
                         }
 
-                        this.fileManager.Save<byte[]>(
-                            Area.User, Kind.BinaryNoExtension,
-                            meta.TodayImageFilePath(), download.ImageBytes);
-
                         needToSaveModel = true;
                     }
                     catch (Exception e2)
                     {
+                        this.Logger.Warning(
+                            "Failed to save image: " + "\n" + e2.ToString());
                     }
-
                 }
             }
             catch (Exception ex)
@@ -142,7 +204,11 @@ public sealed partial class AstroPicModel : ModelBase
 
         if (needToSaveModel)
         {
-            await this.Save(); 
+            await this.Save();
+
+            // If we need to save the model, we have downloaded new stuff 
+            // so we clear the most recently used wallpapers
+            this.MruWallpapers.Clear();
         }
 
         return downloads;
@@ -252,7 +318,7 @@ public sealed partial class AstroPicModel : ModelBase
             else
             {
                 // Nasa Astronomy Picture of the Day can be a video 
-                string msg = "The Picture of the Day is actually a video clip."; 
+                string msg = "The Picture of the Day is actually a video clip.";
                 this.ReportError(provider, msg);
                 throw new Exception("Failed to retrieve picture metadata.");
             }
