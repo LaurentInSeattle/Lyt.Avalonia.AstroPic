@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
-using Lyt.Avalonia.Persistence;
-using System.IO;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -279,7 +277,7 @@ public sealed partial class AstroPicModel : ModelBase
         try
         {
             this.Report(provider, isMetadata: true, isBegin: true);
-            var metadata = await this.astroPicService.GetPictures(provider, DateTime.Now);
+            var metadata = await this.astroPicService.GetPictures(provider);
             if ((metadata != null) && (metadata.Count > 0))
             {
                 this.Report(provider, isMetadata: true, isBegin: false);

@@ -6,44 +6,31 @@ internal class NasaService
     public const string Endpoint = "https://api.nasa.gov";
     public const string Request = "/planetary/apod";
 
-    public static async Task<List<PictureMetadata>> GetPictures(DateTime dateTime, int count = 1)
+    public static async Task<List<PictureMetadata>> GetPictures()
     {
-        if ((count <= 0) || (count > 8))
+        var client = new RestClient(NasaService.Endpoint);
+        var request = new RestRequest(NasaService.Request, Method.Get)
         {
-            throw new ArgumentException("Invalid count: max == 8");
-        }
+            RequestFormat = DataFormat.Json
+        };
 
-        try
+        request.AddQueryParameter("api_key", NasaService.ApiKey);
+        RestResponse response = await client.ExecuteAsync(request);
+        response.StatusCode.ThrowIfBad();
+        if (!string.IsNullOrWhiteSpace(response.Content))
         {
-            var client = new RestClient(NasaService.Endpoint);
-            var request = new RestRequest(NasaService.Request, Method.Get)
+            var responseObject = JsonSerializer.Deserialize<NasaPicture>(response.Content);
+            if (responseObject is NasaPicture nasaPicture)
             {
-                RequestFormat = DataFormat.Json
-            };
-            // request.AddQueryParameter("count", count.ToString());
-            request.AddQueryParameter("api_key", NasaService.ApiKey);
-            RestResponse response = await client.ExecuteAsync(request);
-            response.StatusCode.ThrowIfBad();
-            if (!string.IsNullOrWhiteSpace(response.Content))
-            {
-                var responseObject = JsonSerializer.Deserialize<NasaPicture>(response.Content);
-                if (responseObject is NasaPicture nasaPicture)
-                {
-                    var list = new List<PictureMetadata>() { new(nasaPicture) };
-                    return list;
-                }
-
-                throw new Exception("Failed to deserialize nasa data");
-            }
-            else
-            {
-                throw new Exception("No Content (null or empty)");
+                var list = new List<PictureMetadata>() { new(nasaPicture) };
+                return list;
             }
 
+            throw new Exception("Failed to deserialize nasa data");
         }
-        catch (Exception)
+        else
         {
-            throw;  ;
+            throw new Exception("No Content (null or empty)");
         }
     }
 }

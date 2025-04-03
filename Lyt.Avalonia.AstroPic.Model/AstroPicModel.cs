@@ -52,6 +52,11 @@ public sealed partial class AstroPicModel : ModelBase
         this.ShouldAutoSave = true;
     }
 
+    ~AstroPicModel()
+    {
+        NetworkChange.NetworkAvailabilityChanged -= this.OnNetworkAvailabilityChanged;
+    }
+
     public override async Task Initialize() => await this.Load();
 
     public override async Task Shutdown()
@@ -77,6 +82,12 @@ public sealed partial class AstroPicModel : ModelBase
 
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<AstroPicModel>(model);
+
+            // Check Internet by send a fire and forget ping request to Azure 
+            this.IsInternetConnected = false;
+            _ = this.Ping();
+            NetworkChange.NetworkAvailabilityChanged += this.OnNetworkAvailabilityChanged;
+            
             return Task.CompletedTask;
         }
         catch (Exception ex)
@@ -99,5 +110,60 @@ public sealed partial class AstroPicModel : ModelBase
         }
 
         return Task.CompletedTask;
+    }
+
+    private const int PingTimeout = 5_000;
+    private const string PingHost = "www.bing.com";
+
+    private void OnNetworkAvailabilityChanged(object? sender, NetworkAvailabilityEventArgs e)
+        => _ = this.Ping(); // Fire and forget 
+
+    private async Task Ping()
+    {
+        void Trouble(Exception ex)
+        {
+            string message = ex.Message + "\n" + ex.ToString();
+            Debug.WriteLine(message);
+            this.Logger.Warning(message);
+            this.IsInternetConnected = false;
+        }
+
+        try
+        {
+            using Ping ping = new();
+            PingReply reply = await ping.SendPingAsync(PingHost, PingTimeout);
+            this.IsInternetConnected = (reply is { Status: IPStatus.Success });
+            string message = this.IsInternetConnected ? "Service is available." : "No internet or server down";
+            Debug.WriteLine(message);
+            if (this.IsInternetConnected)
+            {
+                this.Logger.Info(message);
+            }
+            else
+            {
+                this.Logger.Warning(message);
+            }
+        }
+        catch (PingException pex)
+        {
+            if (pex.InnerException is SocketException sex)
+            {
+                if (sex.SocketErrorCode == SocketError.NoData)
+                {
+                    // Stupid Azure does not Ping properly, assumes connected in this case
+                    this.IsInternetConnected = true;
+                    string message = "Service is available.";
+                    Debug.WriteLine(message);
+                    this.Logger.Info(message);
+                    return;
+                }
+            }
+
+            Trouble(pex);
+        }
+        catch (Exception ex)
+        {
+            Trouble(ex);
+        }
     }
 }

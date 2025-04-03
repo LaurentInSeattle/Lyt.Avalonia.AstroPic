@@ -40,11 +40,13 @@ public sealed partial class AstroPicModel : ModelBase
     #endregion Not serialized - No model changed event
 
 
-    #region Samples 
 
-    //[JsonIgnore]
-    //// Not serialized -  With model changed event
-    //// public Group? SelectedGroup { get => this.Get<Group?>(); set => this.Set(value); }
+    #region NOT serialized - WITH model changed event
 
-    #endregion Samples 
+    [JsonIgnore]
+    // Asynchronous: Must raise Model Updated events 
+    public bool IsInternetConnected { get => this.Get<bool>(); set => this.Set(value); }
+
+    #endregion NOT serialized - WITH model changed event    #region Samples 
+
 }

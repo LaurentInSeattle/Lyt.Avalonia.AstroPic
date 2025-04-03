@@ -1,36 +1,35 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service;
 
-public class AstroPicService(IMessenger messenger, ILogger logger)
+public class AstroPicService(ILogger logger)
 {
-    private readonly IMessenger messenger = messenger;
     private readonly ILogger logger = logger;
 
-    public async Task<List<PictureMetadata>> GetPictures(
-        ProviderKey provider, DateTime dateTime, int count = 1)
+    public async Task<List<PictureMetadata>> GetPictures(ProviderKey provider)
     {
-        if ((count <= 0) || (count > 8))
+        try
         {
-            string msg = "Invalid count: max == 8";
+            switch (provider)
+            {
+                case ProviderKey.Nasa:
+                    return await NasaService.GetPictures();
+
+                case ProviderKey.Bing:
+                    return await BingService.GetPictures();
+
+                case ProviderKey.EarthView:
+                    return await EarthViewService.GetPictures();
+
+                default:
+                    break;
+            }
+            throw new NotImplementedException();
+        }
+        catch (Exception ex)
+        {
+            string msg = "Exception thrown: " + ex.Message +"\n" + ex.Message;
             this.logger.Error(msg);
-            throw new ArgumentException(msg);
+            throw;
         }
-
-        switch (provider)
-        {
-            case ProviderKey.Nasa:
-                return await NasaService.GetPictures(dateTime);
-
-            case ProviderKey.Bing:
-                return await BingService.GetPictures(dateTime);
-
-            case ProviderKey.EarthView:
-                return await EarthViewService.GetPictures();
-
-            default:
-                break;
-        }
-
-        throw new NotImplementedException();
     }
 
     public async Task<byte[]> DownloadPicture(PictureMetadata picture)

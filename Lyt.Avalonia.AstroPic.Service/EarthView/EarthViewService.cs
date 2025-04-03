@@ -2,7 +2,7 @@
 
 internal class EarthViewService
 {
-    private const string RootUrl = "https://new-images-preview-dot-earth-viewer.appspot.com/_api/"; 
+    private const string RootUrl = "https://new-images-preview-dot-earth-viewer.appspot.com/_api/";
 
     private static List<EarthViewPictureBasic>? EarthViewPictures;
     private static readonly Random random = new((int)DateTime.Now.Millisecond);
@@ -41,36 +41,22 @@ internal class EarthViewService
         return list;
     }
 
-    public static async Task<List<PictureMetadata>> GetPictures(int count = 4)
+    public static async Task<List<PictureMetadata>> GetPictures()
     {
-        try
+        EarthViewService.LoadPhotoLibrary();
+        List<string> slugs = PickSomeRandomSlugs(8);
+        var list = new List<PictureMetadata>(8);
+        HttpClient client = new();
+        foreach (string slug in slugs)
         {
-            if ((count <= 0) || (count > 8))
-            {
-                throw new ArgumentException("Invalid count: max == 8");
-            }
-
-            LoadPhotoLibrary();
-            List<string> slugs = PickSomeRandomSlugs(count);
-            var list = new List<PictureMetadata>(count);
-
-            HttpClient client = new();
-            foreach (string slug in slugs)
-            {
-                string url = string.Concat(RootUrl, slug, ".json"); 
-                string jsonMetadata = await client.GetStringAsync(url);
-                EarthViewPicture earthViewPicture = SerializationUtilities.Deserialize<EarthViewPicture>(jsonMetadata);
-                var pictureMetadata = new PictureMetadata(earthViewPicture);
-                list.Add(pictureMetadata);
-            }
-
-            return list;
-
+            string url = string.Concat(RootUrl, slug, ".json");
+            string jsonMetadata = await client.GetStringAsync(url);
+            EarthViewPicture earthViewPicture = SerializationUtilities.Deserialize<EarthViewPicture>(jsonMetadata);
+            var pictureMetadata = new PictureMetadata(earthViewPicture);
+            list.Add(pictureMetadata);
         }
-        catch (Exception )
-        {
-            // TODO: log 
-            throw; 
-        }
+
+        return list;
+
     }
 }
