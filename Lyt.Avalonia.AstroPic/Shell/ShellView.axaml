@@ -63,6 +63,7 @@
 			Margin="400 0 0 0"
 			HorizontalAlignment="Left"
 			>
+			<glyphs:SelectionGroup x:Name="SelectionGroup" />
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
@@ -74,7 +75,9 @@
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
 				Text="Today"
+				IsSelected="True"
 				Command="{Binding TodayCommand}"
+				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
@@ -88,6 +91,7 @@
 				GlyphAngle="0"
 				Text="Collection"
 				Command="{Binding CollectionCommand}"
+				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
@@ -101,6 +105,7 @@
 				GlyphAngle="20"
 				Text="{DynamicResource Shell.Settings}"
 				Command="{Binding SettingsCommand}"
+				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
@@ -113,6 +118,7 @@
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.About}"
 				Command="{Binding InfoCommand}"
+				Group="{Binding ElementName=SelectionGroup}"
 				/>
 		</StackPanel>
 

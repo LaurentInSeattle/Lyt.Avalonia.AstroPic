@@ -24,7 +24,7 @@
 	<glyphs:VisualState x:Key="ToolbarIconGeneralVisualState" 
 		Normal="{StaticResource LightAqua_1_100}"
 		Disabled="{StaticResource LightAqua_2_040}"
-		Selected="{StaticResource FreshGreen_2_100}"
+		Selected="{StaticResource FreshGreen_0_080}"
 		Pressed="{StaticResource OrangePeel_1_100}"
 		Hot="{StaticResource OrangePeel_0_100}"
 		/>

@@ -19,13 +19,13 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.Thumbnail = bitmap;
     }
 
-    internal void Select()
+    internal void OnSelect()
     {
         Debug.WriteLine("Selected: " + this.Provider);
-        this.parent.Select(this.Download);
+        this.parent.OnSelect(this.Download);
     }
 
-    internal void Deselect(PictureDownload download)
+    internal void ShowDeselected(PictureDownload download)
     {
         if (this.Download == download)
         {
@@ -34,6 +34,12 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 
         Debug.WriteLine("Deselected: " + this.Provider);
         this.View.Deselect();
+    }
+
+    internal void ShowSelected()
+    {
+        Debug.WriteLine("Deselected: " + this.Provider);
+        this.View.Select();
     }
 
     public string Provider { get => this.Get<string>()!; set => this.Set(value); }

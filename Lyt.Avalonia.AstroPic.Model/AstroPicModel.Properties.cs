@@ -21,6 +21,12 @@ public sealed partial class AstroPicModel : ModelBase
     public int MaxStorageMB { get; set; } = 64;
 
     [JsonRequired]
+    public bool ShouldRotateWallpapers { get; set; } = true ;
+
+    [JsonRequired]
+    public int WallpaperRotationMinutes { get; set; } = 5;
+
+    [JsonRequired]
     public Dictionary<string, Picture> Pictures { get; set; } = [];
 
     [JsonRequired]

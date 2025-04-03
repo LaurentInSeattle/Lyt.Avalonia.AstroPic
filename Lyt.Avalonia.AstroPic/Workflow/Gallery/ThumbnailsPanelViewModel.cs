@@ -30,16 +30,17 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>
             {
                 if (this.Thumbnails.Count > 0)
                 {
-                    this.Select(this.Thumbnails[0].Download);
+                    this.Thumbnails[0].ShowSelected();
+                    this.OnSelect(this.Thumbnails[0].Download);
                 } 
             }, DispatcherPriority.Background);
     }
 
-    internal void Select(PictureDownload download)
+    internal void OnSelect(PictureDownload download)
     {
         foreach (ThumbnailViewModel thumbnailViewModel in this.Thumbnails)
         {
-            thumbnailViewModel.Deselect(download); 
+            thumbnailViewModel.ShowDeselected(download); 
         }
 
         if (this.selectedDownload is null || this.selectedDownload != download)

@@ -9,16 +9,30 @@ public sealed class ShellViewModel : Bindable<ShellView>
 {
     private const int MinutesToMillisecs = 60 * 1_000;
 
-    private readonly AstroPicModel astroPicModel; 
+    // TODO: Cleanup this list of services when ready 
+    private readonly AstroPicModel astroPicModel;
     private readonly IDialogService dialogService;
     private readonly IToaster toaster;
     private readonly IMessenger messenger;
     private readonly IProfiler profiler;
     private readonly ILocalizer localizer;
-    private readonly TimeoutTimer rotatorTimer; 
+    private readonly TimeoutTimer rotatorTimer;
+    private readonly TimeoutTimer downloadRetriesTimer;
+
+    #region To please the XAML viewer 
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    // Should never be executed 
+    public ShellViewModel() 
+    { 
+        if (Debugger.IsAttached) { Debugger.Break(); } 
+    }
+#pragma warning restore CS8618 
+
+    #endregion To please the XAML viewer 
 
     public ShellViewModel(
-        AstroPicModel astroPicModel ,
+        AstroPicModel astroPicModel,
         ILocalizer localizer,
         IDialogService dialogService, IToaster toaster, IMessenger messenger, IProfiler profiler)
     {
@@ -28,9 +42,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
         this.toaster = toaster;
         this.messenger = messenger;
         this.profiler = profiler;
-        this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 1 * MinutesToMillisecs); 
-        if ( true /* for now */ )
+
+        this.downloadRetriesTimer = new TimeoutTimer(this.OnDownloadRetriesTimer, 1 * MinutesToMillisecs);
+        this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 3 * MinutesToMillisecs);
+        if (this.astroPicModel.ShouldRotateWallpapers)
         {
+            this.rotatorTimer.Change(this.astroPicModel.WallpaperRotationMinutes * MinutesToMillisecs);
             this.rotatorTimer.Start();
         }
 
@@ -41,7 +58,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
 
-    private void OnRotatorTimer()
+    private void OnDownloadRetriesTimer()
     {
         if (this.astroPicModel.IsUpdatingTodayImagesNeeded() &&
             this.astroPicModel.IsInternetConnected)
@@ -51,9 +68,11 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
         else
         {
-            this.astroPicModel.RotateWallpaper();
-        } 
-    } 
+            this.downloadRetriesTimer.Stop();
+        }
+    }
+
+    private void OnRotatorTimer() => this.astroPicModel.RotateWallpaper();
 
     protected override void OnViewLoaded()
     {
@@ -94,7 +113,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         this.Logger.Debug("OnViewLoaded complete");
     }
 
-    private async void ActivateInitialView ()
+    private async void ActivateInitialView()
     {
         int retries = 3;
         while (retries > 0)
@@ -104,10 +123,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
             {
                 this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
                 this.Logger.Debug("OnViewLoaded OnViewActivation complete");
-                return; 
+                return;
             }
 
-            await Task.Delay(100); 
+            await Task.Delay(100);
             --retries;
         }
 
@@ -136,6 +155,9 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
 #pragma warning restore IDE0060 
     {
+        // Navigation also reset the wallpaper rotation timer
+        this.rotatorTimer.Reset();
+
         if (activatedView == ActivatedView.Exit)
         {
             ShellViewModel.OnExit();
@@ -239,11 +261,11 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnTray(object? _) { }
 
-    private void OnExit(object? _) => ShellViewModel.OnExit(); 
+    private void OnExit(object? _) => ShellViewModel.OnExit();
 
-#pragma warning restore CA1822 
+#pragma warning restore CA1822
 #pragma warning restore IDE0051 // Remove unused private members
-#pragma warning restore IDE0079 
+#pragma warning restore IDE0079
 
     public ICommand TodayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 

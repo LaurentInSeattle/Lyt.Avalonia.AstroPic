@@ -47,6 +47,12 @@ public sealed partial class AstroPicModel : ModelBase
 
     public void RotateWallpaper()
     {
+        if (this.Pictures.Values.Count == 0)
+        {
+            // No data, most likely first run
+            return; 
+        }
+
         // Pickup a new wallpaper not present in the MRU list
         if (this.MruWallpapers.Count == this.Pictures.Values.Count)
         {

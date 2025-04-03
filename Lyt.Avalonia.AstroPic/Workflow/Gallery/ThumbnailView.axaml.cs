@@ -48,6 +48,14 @@ public partial class ThumbnailView : UserControl
         this.DataContextChanged -= this.OnDataContextChanged;
     }
 
+    public void Select()
+    {
+        this.isHot = false;
+        this.isInside = false;
+        this.isSelected = true;
+        this.SetVisualState();
+    }
+
     public void Deselect()
     {
         this.isHot = false;
@@ -94,7 +102,7 @@ public partial class ThumbnailView : UserControl
             this.SetVisualState();
             if (wasInside && this.DataContext is ThumbnailViewModel thumbnailViewModel)
             {
-                thumbnailViewModel.Select();
+                thumbnailViewModel.OnSelect();
             }
         }
     }
@@ -108,4 +116,5 @@ public partial class ThumbnailView : UserControl
                 hotBrush :
                 this.isSelected ? selectedBrush : normalBrush;
     }
+
 }

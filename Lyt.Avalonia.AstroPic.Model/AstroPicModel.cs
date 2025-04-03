@@ -13,6 +13,8 @@ public sealed partial class AstroPicModel : ModelBase
             Language = DefaultLanguage,
             IsFirstRun = true,
             ShouldAutoStart = false,
+            ShouldRotateWallpapers = true,
+            WallpaperRotationMinutes = 3,
             MaxImages = 128,
             MaxStorageMB = 64,
             Providers =
