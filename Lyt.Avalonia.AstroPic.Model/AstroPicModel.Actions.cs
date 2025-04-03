@@ -100,9 +100,29 @@ public sealed partial class AstroPicModel : ModelBase
         }
     }
 
+    public bool IsUpdatingTodayImagesNeeded()
+    {
+        foreach (var provider in this.Providers)
+        {
+            // Use ONLY enabled and selected providers 
+            if (!provider.IsSelected)
+            {
+                continue;
+            }
+
+            if (!provider.IsLoaded)
+            {
+                return true;
+            }
+        } 
+        
+        return false;
+    }
+
     public async Task<List<PictureDownload>> DownloadTodayImages()
     {
-        // TODO: Check Internet: See what we did for Cranky 
+        // Check Internet is done elsewhere, here it is assumed we are connected 
+
         var downloads = new List<PictureDownload>(this.Providers.Count);
         foreach (var provider in this.Providers)
         {

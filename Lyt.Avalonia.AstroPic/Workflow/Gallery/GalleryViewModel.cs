@@ -1,13 +1,10 @@
-﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
 
-    private bool downloading;
     private bool downloaded;
 
     public GalleryViewModel(AstroPicModel astroPicModel, IToaster toaster)
@@ -43,31 +40,18 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         }
     }
 
-    protected override void OnViewLoaded()
-    {
-        base.OnViewLoaded();
-        _ = this.DownloadImages();
-    }
-
     public override void Activate(object? activationParameters)
     {
         base.Activate(activationParameters);
-        _ = this.DownloadImages();
+        if (!this.downloaded)
+        {
+            _ = this.DownloadImages();
+        } 
     }
 
-    private async Task DownloadImages()
+    public async Task DownloadImages()
     {
-        if (this.downloaded || this.downloading)
-        {
-            return;
-        }
-
-        this.downloading = true;
-
-        // Wait a bit so that the UI is given enough time to load and show up at startup
-        await Task.Delay(500);
         List<PictureDownload> downloads = await this.astroPicModel.DownloadTodayImages();
-        this.downloading = false;
         if ((downloads != null) && (downloads.Count > 0))
         {
             this.downloaded = true;

@@ -41,7 +41,19 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
 
-    private void OnRotatorTimer() => this.astroPicModel.RotateWallpaper(); 
+    private void OnRotatorTimer()
+    {
+        if (this.astroPicModel.IsUpdatingTodayImagesNeeded() &&
+            this.astroPicModel.IsInternetConnected)
+        {
+            var galleryViewModel = App.GetRequiredService<GalleryViewModel>();
+            _ = galleryViewModel.DownloadImages();
+        }
+        else
+        {
+            this.astroPicModel.RotateWallpaper();
+        } 
+    } 
 
     protected override void OnViewLoaded()
     {
@@ -65,8 +77,6 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
-        this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
-        this.Logger.Debug("OnViewLoaded OnViewActivation complete");
 
         // Ready 
         this.toaster.Host = this.View.ToasterHost;
@@ -77,8 +87,32 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 5_000, InformationLevel.Info);
         }
 
-        this.Logger.Debug("OnViewLoaded complete");
+        // Delay a bit the launch of the gallery so that there is time to ping 
+        this.Logger.Debug("OnViewLoaded: Internet connected: " + this.astroPicModel.IsInternetConnected);
+        Schedule.OnUiThread(100, this.ActivateInitialView, DispatcherPriority.Background);
 
+        this.Logger.Debug("OnViewLoaded complete");
+    }
+
+    private async void ActivateInitialView ()
+    {
+        int retries = 3;
+        while (retries > 0)
+        {
+            this.Logger.Debug("ActivateInitialView: Internet connected: " + this.astroPicModel.IsInternetConnected);
+            if (this.astroPicModel.IsInternetConnected)
+            {
+                this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
+                this.Logger.Debug("OnViewLoaded OnViewActivation complete");
+                return; 
+            }
+
+            await Task.Delay(100); 
+            --retries;
+        }
+
+        this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
+        this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
     //private void OnModelUpdated(ModelUpdateMessage message)
