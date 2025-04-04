@@ -21,9 +21,9 @@ public sealed partial class AstroPicModel : ModelBase
         return name;
     }
 
-    public void SetWallpaper(PictureDownload download)
+    public void SetWallpaper(PictureMetadata pictureMetadata, byte[] imageBytes)
     {
-        ProviderKey provider = download.PictureMetadata.Provider;
+        ProviderKey provider = pictureMetadata.Provider;
         try
         {
             string name = provider.ToString();
@@ -34,7 +34,7 @@ public sealed partial class AstroPicModel : ModelBase
             }
 
             string path = this.fileManager.MakePath(fileId);
-            this.fileManager.Save<byte[]>(fileId, download.ImageBytes);
+            this.fileManager.Save<byte[]>(fileId, imageBytes);
             this.SetWallpaper(path);
             this.fileManager.Delete(fileId);
         }
@@ -238,22 +238,21 @@ public sealed partial class AstroPicModel : ModelBase
         return downloads;
     }
 
-    public bool AddToCollection(PictureDownload download)
+    public bool AddToCollection(PictureMetadata pictureMetadata, byte[] imageBytes, byte[] thumbnailBytes)
     {
         // BUG ~ Problem ? 
         // If the service returns many images per day (Earth View) only one will be saved 
         // But there will be many entries in the dictionary 
         try
         {
-            var metadata = download.PictureMetadata;
-            string? url = metadata.Url;
+            string? url = pictureMetadata.Url;
             if (!string.IsNullOrWhiteSpace(url))
             {
                 if (this.Pictures.ContainsKey(url))
                 {
                     this.Logger.Warning(
                         "Picture already added to collection: " +
-                        download.PictureMetadata.Provider.ToString());
+                        pictureMetadata.Provider.ToString());
                     // TODO: Messenger info 
                     return true;
                 }
@@ -263,9 +262,7 @@ public sealed partial class AstroPicModel : ModelBase
                 throw new Exception("Picture has no URL");
             }
 
-            var picture = new Picture(metadata);
-            byte[] imageBytes = download.ImageBytes;
-            byte[]? thumbnailBytes = download.ThumbnailBytes;
+            var picture = new Picture(pictureMetadata);
             if (imageBytes is not null &&
                 imageBytes.Length > JpgMinLength &&
                 thumbnailBytes is not null &&
@@ -292,7 +289,7 @@ public sealed partial class AstroPicModel : ModelBase
             // TODO: Messenger warning 
             this.Logger.Warning(
                 "Failed to add picture to collection" +
-                download.PictureMetadata.Provider.ToString() + "\n" + ex.ToString());
+                pictureMetadata.Provider.ToString() + "\n" + ex.ToString());
             return false;
         }
     }

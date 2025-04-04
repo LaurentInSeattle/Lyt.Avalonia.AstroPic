@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿using Lyt.Avalonia.AstroPic.Workflow.Shared;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
@@ -11,7 +13,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     {
         this.astroPicModel = astroPicModel;
         this.toaster = toaster;
-        this.PictureViewModel = new PictureViewModel(this);
+        this.PictureViewModel = new PictureViewModel();
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
         this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
@@ -46,7 +48,16 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         if (!this.downloaded)
         {
             _ = this.DownloadImages();
-        } 
+        }
+        else
+        {
+            // This needs to be scheduled because virtualization will most likely 'shake' and renew
+            // the bindings of views and previously bound view models 
+            Schedule.OnUiThread(
+                200, 
+                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); }, 
+                DispatcherPriority.Background);            
+        }
     }
 
     public async Task DownloadImages()
@@ -85,7 +96,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
 
     internal void Select(PictureDownload download)
     {
-        this.PictureViewModel.Select(download);
+        this.PictureViewModel.Select(download.PictureMetadata, download.ImageBytes);
         this.ProgressMessage = string.Empty;
     }
 

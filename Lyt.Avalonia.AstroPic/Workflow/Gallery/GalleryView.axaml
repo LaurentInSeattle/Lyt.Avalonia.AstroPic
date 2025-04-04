@@ -10,6 +10,7 @@
 	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
 	x:DataType="vm:GalleryViewModel" 
+	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
 	>
 	<Grid
 		x:Name="InnerGrid"
@@ -49,7 +50,7 @@
 				Foreground="{StaticResource PastelOrchid_0_080}"
 				TextWrapping="Wrap"
 				/>
-			<vm:PictureView
+			<shared:PictureView
 				DataContext="{Binding PictureViewModel}"
 				/>
 		</Grid>

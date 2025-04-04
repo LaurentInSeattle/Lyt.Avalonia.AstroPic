@@ -1,7 +1,5 @@
-﻿
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-using System.Xml.Linq;
 using static FileManagerModel; 
 
 public sealed class PictureViewModel : Bindable<PictureView>
@@ -9,24 +7,24 @@ public sealed class PictureViewModel : Bindable<PictureView>
     public const int ThumbnailWidth = 280;
 
     private readonly AstroPicModel astroPicModel;
-    private readonly GalleryViewModel galleryViewModel;
 
-    private PictureDownload? download;
+    private PictureMetadata? pictureMetadata;
+    private byte[]? imageBytes; 
 
-    public PictureViewModel(GalleryViewModel galleryViewModel)
+    public PictureViewModel()
     {
-        this.galleryViewModel = galleryViewModel;
-        this.astroPicModel = App.GetRequiredService<AstroPicModel>();
+        this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
+        this.DisablePropertyChangedLogging = true ;
     }
 
-    internal void Select(PictureDownload download)
+    internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
     {
-        this.download = download;
-        byte[] imageBytes = download.ImageBytes;
+        this.pictureMetadata = pictureMetadata;
+        this.imageBytes = imageBytes;
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.LoadImage(bitmap);
-        var metadata = this.download.PictureMetadata;
+        var metadata = this.pictureMetadata;
         this.Provider = this.astroPicModel.ProviderName(metadata.Provider);
         this.Title = string.IsNullOrWhiteSpace(metadata.Title) ? string.Empty : metadata.Title;
         this.Copyright = string.IsNullOrWhiteSpace(metadata.Copyright) ? string.Empty : metadata.Copyright;
@@ -71,57 +69,57 @@ public sealed class PictureViewModel : Bindable<PictureView>
         // The view box in the zoom control is stuck to zero bounds 
         this.ZoomFactor = 2.0;
         Schedule.OnUiThread(50, () => { this.ZoomFactor = 1.0; }, DispatcherPriority.ApplicationIdle);
-        if (this.download is not null)
+        if (this.pictureMetadata is not null)
         {
             Schedule.OnUiThread(
                 250, 
-                () => { this.Profiler.MemorySnapshot(this.download.PictureMetadata.Provider.ToString()); }, DispatcherPriority.ApplicationIdle);
+                () => { this.Profiler.MemorySnapshot(this.pictureMetadata.Provider.ToString()); }, DispatcherPriority.ApplicationIdle);
         } 
     }
 
     internal void SetWallpaper() 
     {
-        if( this.download is null)
+        if (this.pictureMetadata is null || this.imageBytes is null)
         {
             return;
         }
 
-        this.astroPicModel.SetWallpaper(this.download); 
+        this.astroPicModel.SetWallpaper(this.pictureMetadata, this.imageBytes); 
     }
 
     internal void AddToCollection()
     {
-        if (this.download is null)
+        if (this.pictureMetadata is null || this.imageBytes is null)
         {
             return;
         }
 
         var writeableBitmap = 
-            WriteableBitmap.DecodeToWidth(new MemoryStream(this.download.ImageBytes), ThumbnailWidth) ; 
-        this.download.ThumbnailBytes = writeableBitmap.EncodeToJpeg();
-        this.astroPicModel.AddToCollection(this.download);
+            WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), ThumbnailWidth) ; 
+        byte[] thumbnailBytes = writeableBitmap.EncodeToJpeg();
+        this.astroPicModel.AddToCollection(this.pictureMetadata, this.imageBytes, thumbnailBytes);
     }
 
     internal void SaveToDesktop()
     {
-        if (this.download is null)
+        if (this.pictureMetadata is null || this.imageBytes is null)
         {
             return;
         }
 
         try
         {
-            var fileManager = App.GetRequiredService<FileManagerModel>();
-            fileManager.Save<byte[]>(
+            var fileManager = ApplicationBase.GetRequiredService<FileManagerModel>();
+            fileManager.Save(
                 Area.Desktop, Kind.BinaryNoExtension,
-                this.download.PictureMetadata.TodayImageFilePath(),
-                this.download.ImageBytes);
+                this.pictureMetadata.TodayImageFilePath(),
+                this.imageBytes);
         }
         catch (Exception ex)
         {
             string msg = "Failed to save image file: \n" + ex.ToString() ;
             this.Logger.Error(msg);
-            var toaster = App.GetRequiredService<IToaster>();
+            var toaster = ApplicationBase.GetRequiredService<IToaster>();
             toaster.Show(
                 "File System Error", "Could not save image file",
                 10_000, InformationLevel.Warning);

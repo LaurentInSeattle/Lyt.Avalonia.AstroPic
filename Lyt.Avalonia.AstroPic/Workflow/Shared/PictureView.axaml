@@ -1,5 +1,5 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.AstroPic.Workflow.Gallery.PictureView"
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Shared.PictureView"
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
 	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
 	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
 	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
-	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
 	x:DataType="vm:PictureViewModel" 
 	>
 	<Grid

@@ -1,4 +1,4 @@
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 public partial class PictureView : UserControl
 {

@@ -17,13 +17,10 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         var bitmap =
             WriteableBitmap.DecodeToWidth(new MemoryStream(this.Download.ImageBytes), ThumbnailWidth);
         this.Thumbnail = bitmap;
+        this.DisablePropertyChangedLogging = true;
     }
 
-    internal void OnSelect()
-    {
-        Debug.WriteLine("Selected: " + this.Provider);
-        this.parent.OnSelect(this.Download);
-    }
+    internal void OnSelect() => this.parent.OnSelect(this.Download);
 
     internal void ShowDeselected(PictureDownload download)
     {
@@ -32,15 +29,10 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
             return;
         }
 
-        Debug.WriteLine("Deselected: " + this.Provider);
         this.View.Deselect();
     }
 
-    internal void ShowSelected()
-    {
-        Debug.WriteLine("Deselected: " + this.Provider);
-        this.View.Select();
-    }
+    internal void ShowSelected() => this.View.Select();
 
     public string Provider { get => this.Get<string>()!; set => this.Set(value); }
 
