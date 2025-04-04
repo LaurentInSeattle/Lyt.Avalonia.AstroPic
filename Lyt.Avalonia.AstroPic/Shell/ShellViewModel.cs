@@ -23,9 +23,8 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     // Should never be executed 
-    public ShellViewModel() 
-    { 
-        if (Debugger.IsAttached) { Debugger.Break(); } 
+    public ShellViewModel()
+    {
     }
 #pragma warning restore CS8618 
 
@@ -177,6 +176,11 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
                 break;
 
+            case ActivatedView.Collection:
+                this.SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
+                this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
+                break;
+
             case ActivatedView.Intro:
                 // this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
                 break;
@@ -216,13 +220,19 @@ public sealed class ShellViewModel : Bindable<ShellView>
             throw new Exception("No view: Failed to startup...");
         }
 
+        var newViewModel = App.GetRequiredService<TViewModel>();
         object? currentView = this.View.ShellViewContent.Content;
         if (currentView is Control control && control.DataContext is Bindable currentViewModel)
         {
+            if (newViewModel == currentViewModel)
+            {
+                return;
+            }
+
             currentViewModel.Deactivate();
         }
 
-        var newViewModel = App.GetRequiredService<TViewModel>();
+
         newViewModel.Activate(activationParameters);
         this.View.ShellViewContent.Content = newViewModel.View;
         if (!isFirstActivation)
@@ -243,6 +253,9 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
         CreateAndBind<GalleryViewModel, GalleryView>();
         CreateAndBind<GalleryToolbarViewModel, GalleryToolbarView>();
+        CreateAndBind<CollectionViewModel, CollectionView>();
+        CreateAndBind<CollectionToolbarViewModel, CollectionToolbarView>();
+
         // CreateAndBind<IntroViewModel, IntroView>();
         // CreateAndBind<SettingsViewModel, SettingsView>();
     }
@@ -253,7 +266,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnToday(object? _) => this.OnViewActivation(ActivatedView.Gallery);
 
-    private void OnCollection(object? _) => this.OnViewActivation(ActivatedView.Gallery);
+    private void OnCollection(object? _) => this.OnViewActivation(ActivatedView.Collection);
 
     private void OnSettings(object? _) => this.OnViewActivation(ActivatedView.Settings);
 

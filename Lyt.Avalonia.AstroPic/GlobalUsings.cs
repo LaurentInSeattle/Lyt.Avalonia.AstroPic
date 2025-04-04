@@ -83,4 +83,5 @@ global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Shell;
 global using Lyt.Avalonia.AstroPic.Utilities;
 global using Lyt.Avalonia.AstroPic.Workflow;
+global using Lyt.Avalonia.AstroPic.Workflow.Collection;
 global using Lyt.Avalonia.AstroPic.Workflow.Gallery;

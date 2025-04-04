@@ -37,7 +37,7 @@
 				Height="150" 
 				ValueChanged="OnSliderValueChanged"
 				TickPlacement="None"
-				IsSnapToTickEnabled="True"			
+				IsSnapToTickEnabled="True"
 				/>
 			<glyphs:GlyphButton
 				Style="{StaticResource TextButton}"

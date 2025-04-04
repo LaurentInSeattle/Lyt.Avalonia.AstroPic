@@ -21,6 +21,7 @@
 	<ItemGroup>
 	  <AvaloniaXaml Remove="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
 	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
+	  <AvaloniaXaml Remove="Assets\Theme\Sliders.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,6 +57,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AvaloniaResource Update="Assets\Theme\Sliders.axaml">
+	    <SubType>Designer</SubType>
+	  </AvaloniaResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Workflow\Collection\CollectionToolbarView.axaml.cs">
+	    <DependentUpon>CollectionToolbarView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Gallery\ThumbnailsPanelView.axaml.cs">
 	    <DependentUpon>ThumbnailsPanelView.axaml</DependentUpon>
 	  </Compile>

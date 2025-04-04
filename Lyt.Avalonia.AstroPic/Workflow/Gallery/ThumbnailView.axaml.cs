@@ -5,8 +5,8 @@ using static Avalonia.Controls.Utilities;
 
 public partial class ThumbnailView : UserControl
 {
-    private static readonly SolidColorBrush normalBrush;
     private static readonly SolidColorBrush hotBrush;
+    private static readonly SolidColorBrush pressedBrush;
     private static readonly SolidColorBrush selectedBrush;
 
     private bool isSelected;
@@ -15,9 +15,9 @@ public partial class ThumbnailView : UserControl
 
     static ThumbnailView()
     {
-        normalBrush = FindResource<SolidColorBrush>("LightAqua_1_100");
-        hotBrush = FindResource<SolidColorBrush>("PastelOrchid_1_100");
-        selectedBrush = FindResource<SolidColorBrush>("OrangePeel_0_100");
+        hotBrush = FindResource<SolidColorBrush>("OrangePeel_0_100");
+        pressedBrush = FindResource<SolidColorBrush>("OrangePeel_1_100");
+        selectedBrush = FindResource<SolidColorBrush>("FreshGreen_0_080");
     }
 
     public ThumbnailView()
@@ -113,8 +113,8 @@ public partial class ThumbnailView : UserControl
         this.outerBorder.BorderThickness = new Thickness(visible ? 1.0 : 0.0);
         this.outerBorder.BorderBrush =
             this.isHot ?
-                hotBrush :
-                this.isSelected ? selectedBrush : normalBrush;
+                pressedBrush :
+                this.isSelected ? selectedBrush : hotBrush;
     }
 
 }
