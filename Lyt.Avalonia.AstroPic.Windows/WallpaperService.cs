@@ -7,7 +7,7 @@ namespace Lyt.Avalonia.AstroPic.Windows;
 using Lyt.Avalonia.AstroPic.Interfaces;
 using Lyt.Avalonia.Interfaces.Logger;
 
-
+[SupportedOSPlatform("windows")]
 public class WallpaperService(ILogger logger) : IWallpaperService
 {
     private const int SPI_SETDESKWALLPAPER = 20;

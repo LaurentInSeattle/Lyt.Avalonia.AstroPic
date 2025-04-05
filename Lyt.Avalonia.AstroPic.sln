@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Windo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.MacOs", "Lyt.Avalonia.AstroPic.MacOs\Lyt.Avalonia.AstroPic.MacOs.csproj", "{40D85047-DC0E-4B84-B87E-DAC18DCDC958}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryMac", "ClassLibraryMac\ClassLibraryMac.csproj", "{B5EEA01F-3676-4485-B396-229B6586EF84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40D85047-DC0E-4B84-B87E-DAC18DCDC958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5EEA01F-3676-4485-B396-229B6586EF84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5EEA01F-3676-4485-B396-229B6586EF84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5EEA01F-3676-4485-B396-229B6586EF84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5EEA01F-3676-4485-B396-229B6586EF84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
