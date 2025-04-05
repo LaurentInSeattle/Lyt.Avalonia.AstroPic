@@ -1,6 +1,9 @@
 ﻿using Lyt.Avalonia.AstroPic.Interfaces;
 using Lyt.Avalonia.Interfaces.Logger;
 
+// using Foundation; 
+// using Xamarin; 
+
 namespace Lyt.Avalonia.AstroPic.MacOs;
 
 public class WallpaperService(ILogger logger) : IWallpaperService
