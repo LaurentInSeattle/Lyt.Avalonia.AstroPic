@@ -45,10 +45,8 @@
 	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
 	<ProjectReference Include="..\..\Lyt.Avalonia.Framework\Lyt.Avalonia.Persistence\Lyt.Avalonia.Persistence.csproj" />
 	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj" />
-	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.MacOs\Lyt.Avalonia.AstroPic.MacOs.csproj" />
 	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Model\Lyt.Avalonia.AstroPic.Model.csproj" />
 	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
-	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Windows\Lyt.Avalonia.AstroPic.Windows.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

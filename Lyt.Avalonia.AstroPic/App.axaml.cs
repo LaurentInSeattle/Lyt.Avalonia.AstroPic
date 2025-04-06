@@ -60,21 +60,7 @@ public partial class App : ApplicationBase
                 new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
 
     private static Tuple<Type, Type> OsSpecificWallpaperService()
-    {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            return new Tuple<Type, Type>(typeof(IWallpaperService), typeof(Windows.WallpaperService)); 
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            return new Tuple<Type, Type>(typeof(IWallpaperService), typeof(MacOs.WallpaperService));
-        }
-        else
-        {
-            // OSPlatform.Linux is NOT supported, at least for now, no way to test it here
-            throw new ArgumentException("Unsupported platform: " + RuntimeInformation.OSDescription);
-        }
-    }
+        => App.OsSpecificService<IWallpaperService>("WallpaperService");
 
     public bool RestartRequired { get; set; }
 

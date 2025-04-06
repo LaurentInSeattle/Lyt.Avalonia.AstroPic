@@ -1,15 +1,17 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
+#pragma warning disable IDE0130
 namespace Lyt.Avalonia.AstroPic.Windows;
+#pragma warning restore IDE0130
 
 using Lyt.Avalonia.AstroPic.Interfaces;
-using Lyt.Avalonia.Interfaces.Logger;
-using System.Diagnostics.CodeAnalysis;
 
 [SupportedOSPlatform("windows")]
-public class WallpaperService(ILogger logger) : IWallpaperService
+public class WallpaperService : IWallpaperService
 {
     private const int SPI_SETDESKWALLPAPER = 20;
     private const int SPIF_UPDATEINIFILE = 0x01;
@@ -22,7 +24,10 @@ public class WallpaperService(ILogger logger) : IWallpaperService
 #pragma warning restore SYSLIB1054
 #pragma warning restore IDE0079
 
-    private readonly ILogger logger = logger;
+    public WallpaperService()
+    {
+        // An empty CTOR is required for the Activator 
+    }
 
     [SupportedOSPlatform("windows")]
     [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(WallpaperService))]
@@ -59,7 +64,7 @@ public class WallpaperService(ILogger logger) : IWallpaperService
             else
             {
                 string msg = "Unsupported wallpaper style. "; 
-                this.logger.Warning(msg);
+                // this.logger.Warning(msg);
                 throw new Exception(msg);
             }
 
@@ -74,14 +79,14 @@ public class WallpaperService(ILogger logger) : IWallpaperService
             catch (Exception ex)
             {
                 string msg = "Failed to set SPI_SETDESKWALLPAPER" + ex.Message;
-                this.logger.Warning(msg);
+                // this.logger.Warning(msg);
                 throw new Exception(msg);
             }
         }
         else
         {
             string msg = "Failed to retrieve registry key 'Control Panel\\Desktop'. ";
-            this.logger.Warning(msg);
+            // this.logger.Warning(msg);
             throw new Exception(msg);             
         }
     }
