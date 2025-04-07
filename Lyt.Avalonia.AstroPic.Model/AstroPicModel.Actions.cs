@@ -423,6 +423,12 @@ public sealed partial class AstroPicModel : ModelBase
 
         // 3 : Wait for completion 
         Task.WaitAll(tasks); 
-        return list;
+
+        // Reorder the list, most recent first 
+        var orderedList = 
+            ( from picture in list 
+              orderby picture.Item1.PictureMetadata.Date descending
+              select picture ).ToList();
+        return orderedList;
     }
 }

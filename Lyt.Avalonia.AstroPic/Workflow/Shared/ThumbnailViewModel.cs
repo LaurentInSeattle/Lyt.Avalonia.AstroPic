@@ -5,10 +5,13 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
     public const double LargeFontSize = 24.0;
-    public const double SmallFontSize = 14.0;
+    public const double SmallFontSize = 16.0;
 
     public const double LargeBorderHeight = 260;
-    public const double SmallBorderHeight = 180;
+    public const double SmallBorderHeight = 212;
+
+    public const double LargeImageHeight = 200;
+    public const double SmallImageHeight = 140;
 
     public const int LargeThumbnailWidth = 360;
     public const int SmallThumbnailWidth = 240;
@@ -33,9 +36,14 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.Metadata = metadata;
         this.ImageBytes = imageBytes;
         this.BorderHeight = isLarge ? LargeBorderHeight : SmallBorderHeight;
+        this.ImageHeight = isLarge ? LargeImageHeight : SmallImageHeight;
         this.FontSize = isLarge ? LargeFontSize : SmallFontSize;
         var model = App.GetRequiredService<AstroPicModel>();
-        this.Provider = model.ProviderName(this.Metadata.Provider);
+        string provider = model.ProviderName(this.Metadata.Provider);
+        this.Provider =
+            isLarge ?
+                provider :
+                string.Concat(provider, "  ~  " + metadata.Date.ToShortDateString()); 
         var bitmap =
             isLarge  ?
                 WriteableBitmap.DecodeToWidth(
@@ -62,6 +70,8 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     public double FontSize { get => this.Get<double>()!; set => this.Set(value); }
 
     public double BorderHeight { get => this.Get<double>()!; set => this.Set(value); }
+
+    public double ImageHeight { get => this.Get<double>()!; set => this.Set(value); }
 
     public string Provider { get => this.Get<string>()!; set => this.Set(value); }
 

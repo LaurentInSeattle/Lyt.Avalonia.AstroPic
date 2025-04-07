@@ -29,12 +29,14 @@
 				FontSize="{Binding FontSize}"
 				TextAlignment="Center"			
 				Foreground="{StaticResource PastelOrchid_0_080}"
+				VerticalAlignment="Center"
 				/>
 			<Image
 				Grid.Row="1"
 				Source="{Binding Thumbnail}"
-				Height="200"
+				Height="{Binding ImageHeight}" 
 				IsHitTestVisible="False"
+				VerticalAlignment="Top"
 				/>
 		</Grid>
 	</Border>
