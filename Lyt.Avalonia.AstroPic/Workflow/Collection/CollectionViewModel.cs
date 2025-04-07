@@ -11,7 +11,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.toaster = toaster;
         this.PictureViewModel = new PictureViewModel();
         this.DropViewModel = new DropViewModel();
-        // this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
+        this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
     }
 
@@ -35,6 +35,15 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
             default:
                 break;
         }
+    }
+
+    internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
+        => this.PictureViewModel.Select(pictureMetadata, imageBytes);
+    
+    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel
+    {
+        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
+        set => this.Set(value);
     }
 
     public DropViewModel DropViewModel

@@ -1,6 +1,5 @@
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-using global::Avalonia.Controls;
 using static Avalonia.Controls.Utilities;
 
 public partial class ThumbnailView : UserControl

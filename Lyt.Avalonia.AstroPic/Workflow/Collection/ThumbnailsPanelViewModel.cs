@@ -1,14 +1,15 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView> , ISelectListener
+// See if we can create a base class 
+public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, ISelectListener
 {
-    private readonly GalleryViewModel galleryViewModel;
+    private readonly CollectionViewModel collectionViewModel;
 
     private PictureMetadata? selectedMetadata;
 
-    public ThumbnailsPanelViewModel(GalleryViewModel galleryViewModel)
+    public ThumbnailsPanelViewModel(CollectionViewModel collectionViewModel)
     {
-        this.galleryViewModel = galleryViewModel;
+        this.collectionViewModel = collectionViewModel;
         this.Thumbnails = [];
     }
 
@@ -41,11 +42,11 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView> , I
     {
         if (selectedObject is ThumbnailViewModel thumbnailViewModel)
         {
-            var pictureMetadata = thumbnailViewModel.Metadata; 
+            var pictureMetadata = thumbnailViewModel.Metadata;
             if (this.selectedMetadata is null || this.selectedMetadata != pictureMetadata)
             {
                 this.selectedMetadata = pictureMetadata;
-                this.galleryViewModel.Select(pictureMetadata, thumbnailViewModel.ImageBytes);
+                this.collectionViewModel.Select(pictureMetadata, thumbnailViewModel.ImageBytes);
             }
 
             this.UpdateSelection();

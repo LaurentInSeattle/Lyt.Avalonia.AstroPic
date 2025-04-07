@@ -1,16 +1,16 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.AstroPic.Workflow.Gallery.ThumbnailView"
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Shared.ThumbnailView"
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="260"
-	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
 	x:DataType="vm:ThumbnailViewModel" 
 	>
 	<Border
 		x:Name="outerBorder"
-		Height="260" 
+		Height="{Binding BorderHeight}" 
 		Background="Transparent"
 		BorderBrush="{StaticResource LightAqua_1_100}"
 		BorderThickness="1"
@@ -20,13 +20,13 @@
 			Margin="4"
 			>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="40" />
+				<RowDefinition Height="36" />
 				<RowDefinition Height="200" />
 			</Grid.RowDefinitions>
 			<TextBlock
 				Grid.Row="0"
 				Text="{Binding Provider}"
-				FontSize="24"
+				FontSize="{Binding FontSize}"
 				TextAlignment="Center"			
 				Foreground="{StaticResource PastelOrchid_0_080}"
 				/>

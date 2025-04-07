@@ -1,0 +1,73 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Collection.ThumbnailsPanelView"
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
+	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
+	xmlns:panels="clr-namespace:Lyt.Avalonia.Controls.Panels;assembly=Lyt.Avalonia.Controls"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Collection"
+	x:DataType="vm:ThumbnailsPanelViewModel" 
+	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
+	>
+	<Grid
+		Background="Transparent"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="72" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<StackPanel
+			Orientation="Horizontal"
+			Margin="0 0 0 0"
+			HorizontalAlignment="Left"
+			Height="72"
+			>
+			<Rectangle
+				Fill="#70000020"
+				HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Behaviour="Tap"
+				HorizontalAlignment="Left" VerticalAlignment="Center"
+				Width="100" Height="56"
+				Margin="8 4 8 4"
+				GlyphSource="wallpaper"
+				ButtonBackground="BorderlessRectangle"
+				GlyphStrokeThickness="0"
+				GlyphAngle="0"
+				Text="Set as Wallpaper"
+			/>
+		</StackPanel>
+
+		<ScrollViewer
+			Grid.Row="1"
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+				>
+			<ItemsControl
+				x:Name="TemplatesItemControl"
+				ItemsSource="{Binding Thumbnails}"
+				Margin="0 0 24 0"
+				>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<panels:MultiColumnStackPanel ColumnMaxWidth="360"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<shared:ThumbnailView 
+							Margin="0 8 0 8"
+							/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

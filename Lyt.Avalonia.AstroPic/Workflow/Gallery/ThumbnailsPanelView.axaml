@@ -6,8 +6,9 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
-    xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
-    x:DataType="vm:ThumbnailsPanelViewModel" 
+	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Gallery"
+	x:DataType="vm:ThumbnailsPanelViewModel" 
 	>
 	<Grid
 		Background="Transparent"
@@ -30,7 +31,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<vm:ThumbnailView 
+						<shared:ThumbnailView 
 							Margin="0 8 0 8"
 							/>
 					</DataTemplate>

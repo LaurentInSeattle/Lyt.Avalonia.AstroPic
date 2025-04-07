@@ -94,9 +94,9 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
             200, () => { this.ProgressMessage = "Downloads complete!"; }, DispatcherPriority.Background);
     }
 
-    internal void Select(PictureDownload download)
+    internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
     {
-        this.PictureViewModel.Select(download.PictureMetadata, download.ImageBytes);
+        this.PictureViewModel.Select(pictureMetadata, imageBytes);
         this.ProgressMessage = string.Empty;
     }
 

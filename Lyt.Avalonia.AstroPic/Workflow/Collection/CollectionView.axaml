@@ -30,13 +30,10 @@
 		<Grid
 			x:Name="SideBar"
 			Grid.Column="1" Grid.Row="1" Grid.RowSpan="1"
-			Background="LavenderBlush"
 			>
-			<!--
 			<vm:ThumbnailsPanelView
 				DataContext="{Binding ThumbnailsPanelViewModel}"
 				/>
-			-->
 		</Grid>
 		<Grid
 			x:Name="MainArea"
