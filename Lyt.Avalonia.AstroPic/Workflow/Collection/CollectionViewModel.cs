@@ -5,6 +5,9 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
 
+    private bool loaded;
+    private List<Tuple<Picture, byte[]>>? collectionThumbnails;
+
     public CollectionViewModel(AstroPicModel astroPicModel, IToaster toaster)
     {
         this.astroPicModel = astroPicModel;
@@ -13,6 +16,31 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.DropViewModel = new DropViewModel();
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+    }
+
+    public override void Activate(object? activationParameters)
+    {
+        base.Activate(activationParameters);
+        if (!this.loaded)
+        {
+            Task.Run(this.LoadThumbnails);
+        }
+        else
+        {
+            // This needs to be scheduled because virtualization will most likely 'shake' and renew
+            // the bindings of views and previously bound view models 
+            Schedule.OnUiThread(
+                200,
+                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
+                DispatcherPriority.Background);
+        }
+    }
+
+    private void LoadThumbnails()
+    {
+        this.collectionThumbnails = this.astroPicModel.LoadCollectionThumbnails();
+        this.loaded = true;
+        this.ThumbnailsPanelViewModel.LoadThumnails(this.collectionThumbnails);
     }
 
     private void OnToolbarCommand(ToolbarCommandMessage message)
@@ -37,9 +65,41 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         }
     }
 
-    internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
-        => this.PictureViewModel.Select(pictureMetadata, imageBytes);
-    
+    internal void Select(PictureMetadata pictureMetadata, byte[] _)
+    {
+        // We receive the bytes of the thumbnail so we need to load the full image 
+        bool showBadPicture = true;
+        try
+        {
+            string? url = pictureMetadata.Url;
+            if (!string.IsNullOrEmpty(url) &&
+                this.astroPicModel.Pictures.TryGetValue(url, out Picture? maybePicture) &&
+                maybePicture is Picture picture)
+            {
+                var fileManager = App.GetRequiredService<FileManagerModel>();
+                var fileId = new FileId(FileManagerModel.Area.User, FileManagerModel.Kind.BinaryNoExtension, picture.ImageFilePath);
+                if (fileManager.Exists(fileId))
+                {
+                    // Consider caching some of the images ? 
+                    byte[] imageBytes = fileManager.Load<byte[]>(fileId);
+                    if ((imageBytes != null) && (imageBytes.Length > 256))
+                    {
+                        this.PictureViewModel.Select(pictureMetadata, imageBytes);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+
+        if (showBadPicture)
+        {
+            // TODO 
+        }
+    }
+
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel
     {
         get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
@@ -57,5 +117,4 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         get => this.Get<PictureViewModel?>() ?? throw new ArgumentNullException("PictureViewModel");
         set => this.Set(value);
     }
-
 }

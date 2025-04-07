@@ -57,7 +57,7 @@
 				>
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
-						<panels:MultiColumnStackPanel ColumnMaxWidth="360"/>
+						<panels:MultiColumnStackPanel ColumnMaxWidth="290"/>
 					</ItemsPanelTemplate>
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>

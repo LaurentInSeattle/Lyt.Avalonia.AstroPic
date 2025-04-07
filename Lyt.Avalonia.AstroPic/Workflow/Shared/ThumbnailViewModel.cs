@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
+﻿using Lyt.Avalonia.AstroPic.Service;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
@@ -16,9 +18,14 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 
     private readonly ISelectListener parent;
 
+    /// <summary> 
+    /// Creates a thumbnail from a full (large) image - use for downloads 
+    /// - OR - 
+    /// Creates a thumbnail from a small (thumbnail) image - use for collection 
+    /// </summary>
     public ThumbnailViewModel(
         ISelectListener parent, 
-        PictureMetadata metadata, byte[] imageBytes, bool isLarge = true )
+        PictureMetadata metadata, byte[] imageBytes, bool isLarge = true )        
     {
         this.DisablePropertyChangedLogging = true;
 
@@ -30,9 +37,11 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         var model = App.GetRequiredService<AstroPicModel>();
         this.Provider = model.ProviderName(this.Metadata.Provider);
         var bitmap =
-            WriteableBitmap.DecodeToWidth(
-                new MemoryStream(imageBytes), 
-                isLarge ? LargeThumbnailWidth : SmallThumbnailWidth);
+            isLarge  ?
+                WriteableBitmap.DecodeToWidth(
+                    new MemoryStream(imageBytes), 
+                    isLarge ? LargeThumbnailWidth : SmallThumbnailWidth) :
+                WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.Thumbnail = bitmap;
     }
 

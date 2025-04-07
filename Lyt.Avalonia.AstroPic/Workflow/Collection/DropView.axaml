@@ -12,7 +12,7 @@
 	x:DataType="vm:DropViewModel" 
 	>
 	<Grid
-		Background="PapayaWhip"
+		Background="Transparent"
 		>
 		
 	</Grid>

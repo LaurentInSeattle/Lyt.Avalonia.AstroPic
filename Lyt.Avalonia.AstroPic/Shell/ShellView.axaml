@@ -74,7 +74,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
-				Text="Today"
+				Text="Oggi"
 				IsSelected="True"
 				Command="{Binding TodayCommand}"
 				Group="{Binding ElementName=SelectionGroup}"
@@ -89,7 +89,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
-				Text="Collection"
+				Text="Collezione"
 				Command="{Binding CollectionCommand}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
@@ -138,7 +138,7 @@
 				GlyphSource="swipe_down"
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
-				Text="To Tray Icon"
+				Text="All'icona"
 				Command="{Binding ToTrayCommand}"
 				/>
 			<glyphs:GlyphButton

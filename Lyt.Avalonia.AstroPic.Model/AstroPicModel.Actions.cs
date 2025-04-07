@@ -50,7 +50,7 @@ public sealed partial class AstroPicModel : ModelBase
         if (this.Pictures.Values.Count == 0)
         {
             // No data, most likely first run
-            return; 
+            return;
         }
 
         // Pickup a new wallpaper not present in the MRU list
@@ -120,8 +120,8 @@ public sealed partial class AstroPicModel : ModelBase
             {
                 return true;
             }
-        } 
-        
+        }
+
         return false;
     }
 
@@ -365,4 +365,64 @@ public sealed partial class AstroPicModel : ModelBase
     private bool IsAlreadyInCollection(PictureMetadata picture)
         => !string.IsNullOrWhiteSpace(picture.Url) &&
             this.Pictures.ContainsKey(picture.Url);
+
+    public List<Tuple<Picture, byte[]>> LoadCollectionThumbnails()
+    {
+        List<Tuple<Picture, byte[]>> list = [];
+        var pictures = this.Pictures.Values.ToList();
+
+        // Speed up the loading of the collection using threads (aka tasks) 
+        void LoadPicture(int from, int to)
+        {
+            for (int k = from; k < to; ++k)
+            {
+                var picture = pictures[k];
+                string name = picture.ThumbnailFilePath;
+                var fileId = new FileId(Area.User, Kind.BinaryNoExtension, name);
+                try
+                {
+                    if (this.fileManager.Exists(fileId))
+                    {
+                        byte[] bytes = this.fileManager.Load<byte[]>(fileId);
+                        lock (list)
+                        {
+                            list.Add(new Tuple<Picture, byte[]>(picture, bytes));
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.ToString());
+                }
+            }
+        }
+
+        // 1 : Setup
+        int count = 4; // Consider: Environment.ProcessorCount;  
+        int all = pictures.Count;
+        int half = all / 2;
+        int quart = half / 2;
+
+        // Consider improving: a bit suboptimal if all is odd...
+        int[] indices = [0, quart, half, half + quart, all];
+        var tasks = new Task[count];
+        for (int taskIndex = 0; taskIndex < count; ++taskIndex)
+        {
+            int from = indices[taskIndex];
+            int to = indices[1 + taskIndex];
+            Debug.WriteLine("From: " + from + " To: " + to);
+            var task = new Task(() => LoadPicture(from, to));
+            tasks[taskIndex] = task;
+        }
+
+        // 2 : Start all tasks
+        for (int taskIndex = 0; taskIndex < count; ++taskIndex)
+        {
+            tasks[taskIndex].Start();
+        }
+
+        // 3 : Wait for completion 
+        Task.WaitAll(tasks); 
+        return list;
+    }
 }

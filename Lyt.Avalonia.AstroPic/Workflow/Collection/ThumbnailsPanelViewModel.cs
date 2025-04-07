@@ -13,14 +13,16 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         this.Thumbnails = [];
     }
 
-    internal void LoadImages(List<PictureDownload> downloads)
+    internal void LoadThumnails(List<Tuple<Picture, byte[]>> thumbnailsCollection)
     {
         this.Thumbnails.Clear();
-        List<ThumbnailViewModel> thumbnails = new(downloads.Count);
-        foreach (PictureDownload download in downloads)
+        List<ThumbnailViewModel> thumbnails = new(thumbnailsCollection.Count);
+        foreach (var tuple in thumbnailsCollection)
         {
+            var metadata = tuple.Item1.PictureMetadata;
             thumbnails.Add(
-                new ThumbnailViewModel(this, download.PictureMetadata, download.ImageBytes));
+                new ThumbnailViewModel(
+                    this, tuple.Item1.PictureMetadata, tuple.Item2, isLarge:false ));
         }
 
         this.Thumbnails = thumbnails;
