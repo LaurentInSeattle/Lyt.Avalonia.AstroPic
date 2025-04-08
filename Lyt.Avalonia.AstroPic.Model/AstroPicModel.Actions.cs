@@ -292,6 +292,15 @@ public sealed partial class AstroPicModel : ModelBase
 
                 // Save metadata 
                 this.Pictures.Add(pictureMetadata.Url, picture);
+
+                // Add thumbnail to cache, if needed
+                bool added = this.ThumbnailCache.TryAdd(picture.ThumbnailFilePath, thumbnailBytes);
+                if (!added)
+                {
+                    this.Logger.Warning("Failed to add picture thumbnail in cache");
+                }
+
+                // Save the whole model to disk 
                 this.Save();
                 return true;
             }
@@ -308,6 +317,11 @@ public sealed partial class AstroPicModel : ModelBase
                 pictureMetadata.Provider.ToString() + "\n" + ex.ToString());
             return false;
         }
+    }
+
+    public void RemoveFromCollection(PictureMetadata pictureMetadata)
+    {
+        // ToDO
     }
 
     private void UpdatePersonalPictureData(Picture picture)

@@ -60,8 +60,8 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
                 this.PictureViewModel.SetWallpaper();
                 break;
 
-            case ToolbarCommandMessage.ToolbarCommand.AddToCollection:
-                this.PictureViewModel.AddToCollection();
+            case ToolbarCommandMessage.ToolbarCommand.RemoveFromCollection:
+                this.PictureViewModel.RemoveFromCollection();
                 break;
 
             case ToolbarCommandMessage.ToolbarCommand.SaveToDesktop:

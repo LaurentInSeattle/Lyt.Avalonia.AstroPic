@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
+using global::Avalonia.Controls;
 using static FileManagerModel; 
 
 public sealed class PictureViewModel : Bindable<PictureView>
@@ -98,6 +99,22 @@ public sealed class PictureViewModel : Bindable<PictureView>
             WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), ThumbnailWidth) ; 
         byte[] thumbnailBytes = writeableBitmap.EncodeToJpeg();
         this.astroPicModel.AddToCollection(this.pictureMetadata, this.imageBytes, thumbnailBytes);
+    }
+
+    internal void RemoveFromCollection()
+    {
+        this.Provider = "Nessuna Immagine";
+        this.Title = string.Empty;
+        this.Copyright = string.Empty; 
+
+        var canvas = this.View.Canvas;
+        canvas.Children.Clear();
+        if (this.pictureMetadata is not null)
+        {
+            this.astroPicModel.RemoveFromCollection(this.pictureMetadata);
+            this.pictureMetadata = null;
+            this.imageBytes = null;
+        } 
     }
 
     internal void SaveToDesktop()

@@ -10,7 +10,7 @@ public sealed class CollectionToolbarViewModel : Bindable<CollectionToolbarView>
 #pragma warning disable CA1822 // Mark members as static
 
     private void OnWallpaper(object? _) => Command(ToolbarCommand.SetWallpaper);
-    private void OnAddToCollection(object? _) => Command(ToolbarCommand.AddToCollection);
+    private void OnRemoveFromCollection(object? _) => Command(ToolbarCommand.RemoveFromCollection);
     private void OnSaveToDesktop(object? _) => Command(ToolbarCommand.SaveToDesktop);
 
 #pragma warning restore CA1822
@@ -19,7 +19,7 @@ public sealed class CollectionToolbarViewModel : Bindable<CollectionToolbarView>
 
     public ICommand WallpaperCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
-    public ICommand AddToCollectionCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+    public ICommand RemoveFromCollectionCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand SaveToDesktopCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 }
