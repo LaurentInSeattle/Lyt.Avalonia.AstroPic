@@ -62,10 +62,19 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
             return;
         }
 
-        this.View.Deselect();
+        if (this.IsBound)
+        {
+            this.View.Deselect();
+        }
     }
 
-    internal void ShowSelected() => this.View.Select();
+    internal void ShowSelected()
+    {
+        if (this.IsBound)
+        {
+            this.View.Select();
+        } 
+    } 
 
     public double FontSize { get => this.Get<double>()!; set => this.Set(value); }
 

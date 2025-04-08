@@ -312,7 +312,7 @@ public sealed partial class AstroPicModel : ModelBase
 
     private void UpdatePersonalPictureData(Picture picture)
     {
-        int ParsePath(string path)
+        static int ParsePath(string path)
         {
             path = path.Replace("Personal_", string.Empty);
             string index = path[..6];
@@ -336,7 +336,7 @@ public sealed partial class AstroPicModel : ModelBase
         // extension includes the dot
         string extension = Path.GetExtension(picture.ImageFilePath);
         picture.ImageFilePath = string.Format("Personal_{0:D6}{1}", index, extension);
-        picture.ThumbnailFilePath= string.Format("Personal_{0:D6}_Thumb{1}", index, extension);
+        picture.ThumbnailFilePath = string.Format("Personal_{0:D6}_Thumb{1}", index, extension);
     }
 
     private async Task<PictureDownload> DownloadImage(ProviderKey provider)
@@ -415,6 +415,30 @@ public sealed partial class AstroPicModel : ModelBase
     {
         List<Tuple<Picture, byte[]>> list = [];
         var pictures = this.Pictures.Values.ToList();
+        foreach (var picture in pictures)
+        {
+            string name = picture.ThumbnailFilePath;
+            if (this.ThumbnailCache.TryGetValue(name, out byte[]? bytes))
+            {
+                if (bytes is not null)
+                {
+                    list.Add(new Tuple<Picture, byte[]>(picture, bytes));
+                }
+            }
+        }
+
+        // Reorder the list, most recent first 
+        var orderedList =
+            (from picture in list
+             orderby picture.Item1.PictureMetadata.Date descending
+             select picture).ToList();
+        return orderedList;
+    }
+
+    public void LoadThumbnailCache()
+    {
+        this.ThumbnailCache.Clear();
+        var pictures = this.Pictures.Values.ToList();
 
         // Speed up the loading of the collection using threads (aka tasks) 
         void LoadPicture(int from, int to)
@@ -429,9 +453,9 @@ public sealed partial class AstroPicModel : ModelBase
                     if (this.fileManager.Exists(fileId))
                     {
                         byte[] bytes = this.fileManager.Load<byte[]>(fileId);
-                        lock (list)
+                        lock (this.ThumbnailCache)
                         {
-                            list.Add(new Tuple<Picture, byte[]>(picture, bytes));
+                            this.ThumbnailCache.Add(name, bytes);
                         }
                     }
                 }
@@ -469,11 +493,19 @@ public sealed partial class AstroPicModel : ModelBase
         // 3 : Wait for completion 
         Task.WaitAll(tasks);
 
-        // Reorder the list, most recent first 
-        var orderedList =
-            (from picture in list
-             orderby picture.Item1.PictureMetadata.Date descending
-             select picture).ToList();
-        return orderedList;
+        this.ThumbnailsLoaded = true;
+        this.NotifyModelLoaded();
+    }
+
+    private void NotifyModelLoaded()
+    {
+        lock (this.lockObject)
+        {
+            if (!this.ModelLoadedNotified && this.ThumbnailsLoaded && this.PingComplete)
+            {
+                this.Messenger.Publish(new ModelLoadedMessage());
+                this.ModelLoadedNotified = true;
+            }
+        }
     }
 }

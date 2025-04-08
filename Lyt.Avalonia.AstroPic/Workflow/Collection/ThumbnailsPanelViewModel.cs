@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
+﻿using Lyt.Avalonia.AstroPic.Service;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 // See if we can create a base class 
 public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, ISelectListener
@@ -19,25 +21,13 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         List<ThumbnailViewModel> thumbnails = new(thumbnailsCollection.Count);
         foreach (var tuple in thumbnailsCollection)
         {
-            var metadata = tuple.Item1.PictureMetadata;
             thumbnails.Add(
                 new ThumbnailViewModel(
                     this, tuple.Item1.PictureMetadata, tuple.Item2, isLarge:false ));
         }
 
         this.Thumbnails = thumbnails;
-
-        // Delay a bit so that the UI has time to populate
-        Schedule.OnUiThread(
-            20 + 50 * this.Thumbnails.Count,
-            () =>
-            {
-                if (this.Thumbnails.Count > 0)
-                {
-                    this.Thumbnails[0].ShowSelected();
-                    this.OnSelect(this.Thumbnails[0]);
-                }
-            }, DispatcherPriority.Background);
+        this.selectedMetadata = thumbnails[0].Metadata;
     }
 
     public void OnSelect(object selectedObject)

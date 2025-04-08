@@ -18,6 +18,27 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
         this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+        this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
+    }
+
+    public override void Activate(object? activationParameters)
+    {
+        base.Activate(activationParameters);
+        if (this.downloaded)
+        {
+            Schedule.OnUiThread(
+                200,
+                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
+                DispatcherPriority.Background);
+        }
+    }
+
+    private void OnModelLoaded(ModelLoadedMessage message)
+    {
+        if (!this.downloaded)
+        {
+            _ = this.DownloadImages();
+        }
     }
 
     private void OnToolbarCommand(ToolbarCommandMessage message)
@@ -39,24 +60,6 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
             // Ignore all other commands 
             default:
                 break;
-        }
-    }
-
-    public override void Activate(object? activationParameters)
-    {
-        base.Activate(activationParameters);
-        if (!this.downloaded)
-        {
-            _ = this.DownloadImages();
-        }
-        else
-        {
-            // This needs to be scheduled because virtualization will most likely 'shake' and renew
-            // the bindings of views and previously bound view models 
-            Schedule.OnUiThread(
-                200, 
-                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); }, 
-                DispatcherPriority.Background);            
         }
     }
 

@@ -29,19 +29,22 @@
             Margin="60 60 0 0 "
             FontSize="26"
             Foreground="#ECfac8b2"
+			HorizontalAlignment="Left" VerticalAlignment="Top"
             />
         <TextBlock
             Text="Astro Pic"
-            Margin="120 160 0 0 "
+            Margin="0"
             FontSize="74"
             FontWeight="DemiBold"
             Foreground="#FFa8efff"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
             />
         <TextBlock
             Text="Caricamento in corso, attendere prego."
-            Margin="300 340 0 0 "
+            Margin="0 0 60 60 "
             FontSize="26"
             Foreground="#ECfac8b2"
+			HorizontalAlignment="Right" VerticalAlignment="Bottom"
             />
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
+﻿using Lyt.Avalonia.AstroPic.Service;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 public sealed class CollectionViewModel : Bindable<CollectionView>
 {
@@ -16,14 +18,28 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.DropViewModel = new DropViewModel();
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+        this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
     }
 
-    public override void Activate(object? activationParameters)
+    public override void Activate(object? activationParameters) 
     {
         base.Activate(activationParameters);
+        if (this.loaded)
+        {
+            Schedule.OnUiThread(
+                200,
+                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
+                DispatcherPriority.Background);
+        }
+    }
+
+    private void OnModelLoaded(ModelLoadedMessage message)
+    {
         if (!this.loaded)
         {
-            Task.Run(this.LoadThumbnails);
+            this.collectionThumbnails = this.astroPicModel.LoadCollectionThumbnails();
+            this.loaded = true;
+            this.ThumbnailsPanelViewModel.LoadThumnails(this.collectionThumbnails);
         }
         else
         {
@@ -34,13 +50,6 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
                 () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
                 DispatcherPriority.Background);
         }
-    }
-
-    private void LoadThumbnails()
-    {
-        this.collectionThumbnails = this.astroPicModel.LoadCollectionThumbnails();
-        this.loaded = true;
-        this.ThumbnailsPanelViewModel.LoadThumnails(this.collectionThumbnails);
     }
 
     private void OnToolbarCommand(ToolbarCommandMessage message)
@@ -129,7 +138,8 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
 
     private void ShowBadPicture()
     {
-        // TODO 
+        this.PictureViewModel.Title = "Bad picture!";
+        this.Logger.Warning("Bad picture!"); 
     }
 
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel

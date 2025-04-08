@@ -43,9 +43,19 @@ public sealed partial class AstroPicModel : ModelBase
     [JsonIgnore]
     internal HashSet<string> MruWallpapers { get; set; } = [];
 
+    [JsonIgnore]
+    public Dictionary<string, byte[]> ThumbnailCache { get; set; } = [];
+
+    [JsonIgnore]
+    public bool ThumbnailsLoaded { get; set; } = false;
+
+    [JsonIgnore]
+    public bool PingComplete { get; set; } = false;
+
+    [JsonIgnore]
+    public bool ModelLoadedNotified { get; set; } = false;
+
     #endregion Not serialized - No model changed event
-
-
 
     #region NOT serialized - WITH model changed event
 

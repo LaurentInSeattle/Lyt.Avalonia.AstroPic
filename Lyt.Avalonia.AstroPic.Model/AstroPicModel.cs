@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using System.Threading;
 using static Lyt.Avalonia.Persistence.FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -28,6 +29,7 @@ public sealed partial class AstroPicModel : ModelBase
     private readonly FileManagerModel fileManager;
     private readonly AstroPicService astroPicService;
     private readonly IWallpaperService wallpaperService;
+    private readonly Lock lockObject = new ();
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
@@ -84,6 +86,9 @@ public sealed partial class AstroPicModel : ModelBase
 
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<AstroPicModel>(model);
+
+            // Load the thumbnails
+            Task.Run(this.LoadThumbnailCache);
 
             // Check Internet by send a fire and forget ping request to Azure 
             this.IsInternetConnected = false;
@@ -167,5 +172,10 @@ public sealed partial class AstroPicModel : ModelBase
         {
             Trouble(ex);
         }
+        finally
+        {
+            this.PingComplete = true;
+            this.NotifyModelLoaded();
+        } 
     }
 }

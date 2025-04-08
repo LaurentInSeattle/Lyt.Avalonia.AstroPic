@@ -18,7 +18,7 @@
 			x:Name="DropBorder"
 			Margin="20 10 10 10"
 			Background="#20808080"
-			Width="480" Height="180"
+			Width="520" Height="180"
 			BorderThickness="0"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			DragDrop.AllowDrop="True"
@@ -42,8 +42,8 @@
 					/>
 				<TextBlock
 					Margin="0 0 0 10"
-					Text="Trascina e rilascia i file qui per aggiungerli alla raccolta di sfondi."
-					FontSize="14"
+					Text="Trascina e rilascia i file qui per aggiungerli alla collezione di sfondi."
+					FontSize="16"
 					TextAlignment="Center"
 					Foreground="{StaticResource PastelOrchid_0_080}"
 					VerticalAlignment="Bottom"
