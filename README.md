@@ -11,11 +11,13 @@ Downloads and manages images from various online providers:
 
 - Set image as Wallpaper (Windows Only for now)
 - Rotating wallpapers
+- Include your own images into the wallpaper collection.
 
 # TODO's, hopefully coming soon: 
 
+- In progress: Managing the image collection 
+
 - Support for more image providers 
-- Managing the image collection 
 - Autostart 
 - "Tray icon" app'
 - Localization

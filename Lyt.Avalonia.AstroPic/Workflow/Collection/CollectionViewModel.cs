@@ -85,6 +85,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
                     if ((imageBytes != null) && (imageBytes.Length > 256))
                     {
                         this.PictureViewModel.Select(pictureMetadata, imageBytes);
+                        showBadPicture = false;
                     }
                 }
             }
@@ -96,8 +97,39 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
 
         if (showBadPicture)
         {
-            // TODO 
+            this.ShowBadPicture();
         }
+    }
+
+    internal bool Select(string path, byte[] imageBytes)
+    {
+        // Here we receive the bytes of the image dropped in the drop zone 
+        try
+        {
+            PictureMetadata pictureMetadata = new ()
+            {
+                Provider = ProviderKey.Personal,
+                Date = DateTime.Now.Date,
+                MediaType = MediaType.Image,
+                Url = path,
+            };
+
+            this.PictureViewModel.Select(pictureMetadata, imageBytes);
+            this.PictureViewModel.AddToCollection();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            this.ShowBadPicture();
+        }
+
+        return false;
+    }
+
+    private void ShowBadPicture()
+    {
+        // TODO 
     }
 
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel

@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using Lyt.Avalonia.AstroPic.Model.DataObjects;
+using System;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -245,28 +247,42 @@ public sealed partial class AstroPicModel : ModelBase
         // But there will be many entries in the dictionary 
         try
         {
-            string? url = pictureMetadata.Url;
-            if (!string.IsNullOrWhiteSpace(url))
+            var picture = new Picture(pictureMetadata);
+            if (pictureMetadata.Provider == ProviderKey.Unknown)
             {
-                if (this.Pictures.ContainsKey(url))
-                {
-                    this.Logger.Warning(
-                        "Picture already added to collection: " +
-                        pictureMetadata.Provider.ToString());
-                    // TODO: Messenger info 
-                    return true;
-                }
+                throw new Exception("No provider");
+            }
+            else if (pictureMetadata.Provider == ProviderKey.Personal)
+            {
+                // Update picture paths and URL 
+                this.UpdatePersonalPictureData(picture);
             }
             else
             {
-                throw new Exception("Picture has no URL");
+                // Web provider 
+                string? url = pictureMetadata.Url;
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+                    if (this.Pictures.ContainsKey(url))
+                    {
+                        this.Logger.Warning(
+                            "Picture already added to collection: " +
+                            pictureMetadata.Provider.ToString());
+                        // TODO: Messenger info 
+                        return true;
+                    }
+                }
+                else
+                {
+                    throw new Exception("Picture has no URL");
+                }
             }
 
-            var picture = new Picture(pictureMetadata);
             if (imageBytes is not null &&
                 imageBytes.Length > JpgMinLength &&
                 thumbnailBytes is not null &&
-                thumbnailBytes.Length > JpgMinLength)
+                thumbnailBytes.Length > JpgMinLength &&
+                !string.IsNullOrWhiteSpace(pictureMetadata.Url))
             {
                 // Save images 
                 this.fileManager.Save<byte[]>(
@@ -275,7 +291,7 @@ public sealed partial class AstroPicModel : ModelBase
                     Area.User, Kind.BinaryNoExtension, picture.ThumbnailFilePath, thumbnailBytes);
 
                 // Save metadata 
-                this.Pictures.Add(url, picture);
+                this.Pictures.Add(pictureMetadata.Url, picture);
                 this.Save();
                 return true;
             }
@@ -292,6 +308,35 @@ public sealed partial class AstroPicModel : ModelBase
                 pictureMetadata.Provider.ToString() + "\n" + ex.ToString());
             return false;
         }
+    }
+
+    private void UpdatePersonalPictureData(Picture picture)
+    {
+        int ParsePath(string path)
+        {
+            path = path.Replace("Personal_", string.Empty);
+            string index = path[..6];
+            return int.Parse(index);
+        }
+
+        var personalPicturesIndices =
+            (from pic in this.Pictures.Values
+             where pic.PictureMetadata.Provider == ProviderKey.Personal
+             select ParsePath(pic.ImageFilePath)).ToList();
+        int index = 0;
+        if (personalPicturesIndices.Count == 0)
+        {
+            index = 1;
+        }
+        else
+        {
+            index = 1 + personalPicturesIndices.Max();
+        }
+
+        // extension includes the dot
+        string extension = Path.GetExtension(picture.ImageFilePath);
+        picture.ImageFilePath = string.Format("Personal_{0:D6}{1}", index, extension);
+        picture.ThumbnailFilePath= string.Format("Personal_{0:D6}_Thumb{1}", index, extension);
     }
 
     private async Task<PictureDownload> DownloadImage(ProviderKey provider)
@@ -422,13 +467,13 @@ public sealed partial class AstroPicModel : ModelBase
         }
 
         // 3 : Wait for completion 
-        Task.WaitAll(tasks); 
+        Task.WaitAll(tasks);
 
         // Reorder the list, most recent first 
-        var orderedList = 
-            ( from picture in list 
-              orderby picture.Item1.PictureMetadata.Date descending
-              select picture ).ToList();
+        var orderedList =
+            (from picture in list
+             orderby picture.Item1.PictureMetadata.Date descending
+             select picture).ToList();
         return orderedList;
     }
 }

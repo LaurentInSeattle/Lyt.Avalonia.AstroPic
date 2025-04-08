@@ -4,6 +4,8 @@ public enum ProviderKey
 {
     Unknown = 0,
 
+    Personal, 
+
     Nasa, 
     Bing, 
     EarthView,
