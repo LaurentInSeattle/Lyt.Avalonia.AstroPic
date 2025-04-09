@@ -43,10 +43,22 @@
 				<RowDefinition Height="200" />
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
-			<vm:DropView
-				Grid.Column="2" Grid.Row="0" 
-				DataContext="{Binding DropViewModel}"
-				/>
+			<Grid
+				Grid.Column="2" Grid.Row="0"
+				>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="80"/>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<vm:DropView
+					DataContext="{Binding DropViewModel}"
+					/>
+				<vm:StatisticsView
+					Grid.Column="2"
+					DataContext="{Binding StatisticsViewModel}"
+					/>
+			</Grid>
 			<shared:PictureView
 				Grid.Column="2" Grid.Row="1" 
 				DataContext="{Binding PictureViewModel}"

@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Service;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 public sealed class CollectionViewModel : Bindable<CollectionView>
 {
@@ -16,6 +14,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.toaster = toaster;
         this.PictureViewModel = new PictureViewModel();
         this.DropViewModel = new DropViewModel();
+        this.StatisticsViewModel = new StatisticsViewModel();
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
         this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
@@ -157,6 +156,12 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
     public DropViewModel DropViewModel
     {
         get => this.Get<DropViewModel?>() ?? throw new ArgumentNullException("DropViewModel");
+        set => this.Set(value);
+    }
+
+    public StatisticsViewModel StatisticsViewModel
+    {
+        get => this.Get<StatisticsViewModel?>() ?? throw new ArgumentNullException("StatisticsViewModel");
         set => this.Set(value);
     }
 

@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Workflow.Shared;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
