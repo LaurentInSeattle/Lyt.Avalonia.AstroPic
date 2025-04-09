@@ -1,28 +1,33 @@
-﻿
+﻿- Limit image size to HD (W:1920) or 4K (W:3840) via user setting
+
+- Validate images existence at loading time
+
+- Manage quotas 
 
 Experiment with Additional Image API web services, such as: 
 
 	Mars Rover API : https://api.nasa.gov/ 
+		DOABLE : To be implemented first 
 
-	https://cloudinary.com/image-api 
-
-	https://www.flickr.com/services/api/?ref=public_apis&utm_medium=website
+	https://api.openverse.org/v1/
+		DOABLE : Need to verify quality and effectiveness of the search service 
 
 	https://thecatapi.com/
-		DOABLE: https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=4 
+		DOABLE: but do we want all those cats ? 
+		https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=4 
 		https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t 
 
 	https://developers.google.com/photos
 
 	https://www.vecteezy.com/developers
 
-	https://api.openverse.org/v1/
-
 	https://www.mediawiki.org/wiki/API:Images 
 
 	https://www.shutterstock.com/developers/documentation
 
 	https://www.nationalgeographic.com/photo-of-the-day/  (Will require scraping)
+
+	https://www.flickr.com/services/api/?ref=public_apis&utm_medium=website
 
 Against licensing policy: 
 		https://unsplash.com/developers
@@ -33,6 +38,7 @@ Against licensing policy:
 
 
 Weird / Unusable / Slow 
+		https://cloudinary.com/image-api 
 		https://picsum.photos/
 		https://wallhaven.cc/help/api?ref=public_apis&utm_medium=website
 

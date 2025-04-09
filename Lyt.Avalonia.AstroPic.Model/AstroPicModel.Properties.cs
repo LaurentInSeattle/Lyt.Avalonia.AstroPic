@@ -39,7 +39,10 @@ public sealed partial class AstroPicModel : ModelBase
 
 
     #region Not serialized - No model changed event
-    
+
+    [JsonIgnore]
+    public Statistics Statistics{ get; set; } = new();
+
     [JsonIgnore]
     internal HashSet<string> MruWallpapers { get; set; } = [];
 

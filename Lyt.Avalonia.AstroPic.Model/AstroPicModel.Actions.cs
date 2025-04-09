@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
-using Lyt.Avalonia.AstroPic.Model.DataObjects;
-using System;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -481,6 +479,62 @@ public sealed partial class AstroPicModel : ModelBase
              orderby picture.Item1.PictureMetadata.Date descending
              select picture).ToList();
         return orderedList;
+    }
+
+    public void ValidateCollection()
+    {
+        const long imageMinSize = 64 * 1024;
+        const long thumbnailMinSize = 2 * 1024;
+
+        // Size on disk is not portable, requires p/invoke or WMI on Windows 
+        // therefore we only use an (very) raw estimate here with 100 KB per image
+        // which seems to match what can be seen in the app image storage folder 
+        const long clusteringAndFragmentationEstimatedSize = 20 * 1024;
+
+        int validImageCount = 0;
+        long sizeOnDisk = 0;
+        List<Picture> picturesToRemove = [];
+        foreach (var picture in this.Pictures.Values)
+        {
+            bool isOk = false; 
+            string imagePath = this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, picture.ImageFilePath); 
+            var imageFileInfo = new FileInfo(imagePath);
+            string thumbnailPath = this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, picture.ThumbnailFilePath);
+            var thumbnailFileInfo = new FileInfo(thumbnailPath);
+            if (imageFileInfo.Exists && thumbnailFileInfo.Exists)
+            {
+                long imageSize = imageFileInfo.Length;
+                long thumbnailSize = thumbnailFileInfo.Length;
+                if ((imageSize > imageMinSize) && (thumbnailSize > thumbnailMinSize))
+                {
+                    ++ validImageCount;
+                    sizeOnDisk += imageSize + 4 * clusteringAndFragmentationEstimatedSize;
+                    sizeOnDisk += thumbnailSize + clusteringAndFragmentationEstimatedSize;
+                    isOk = true;
+                }
+            }
+
+            if (!isOk)
+            {
+                picturesToRemove.Add(picture);
+            } 
+        }
+
+        // Silently remove from the collection all images that are missing, most likely that have been
+        // deleted or moved.
+        foreach (var picture in picturesToRemove)
+        {
+            string? url = picture.PictureMetadata.Url;
+            if (!string.IsNullOrWhiteSpace(url))
+            {
+                this.Pictures.Remove(url);
+            } 
+        }
+
+        this.Statistics =
+            new Statistics(
+                ImageCount: validImageCount,
+                SizeOnDiskKB: (int)((512 + sizeOnDisk) / 1024));
     }
 
     public void LoadThumbnailCache()

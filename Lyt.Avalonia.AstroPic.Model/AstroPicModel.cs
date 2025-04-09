@@ -87,6 +87,8 @@ public sealed partial class AstroPicModel : ModelBase
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<AstroPicModel>(model);
 
+            this.ValidateCollection(); 
+
             // Load the thumbnails
             Task.Run(this.LoadThumbnailCache);
 
