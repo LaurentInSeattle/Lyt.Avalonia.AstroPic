@@ -290,7 +290,7 @@ public sealed partial class AstroPicModel : ModelBase
                 this.fileManager.Save<byte[]>(
                     Area.User, Kind.BinaryNoExtension, picture.ThumbnailFilePath, thumbnailBytes);
 
-                // Save metadata 
+                // Add metadata 
                 this.Pictures.Add(pictureMetadata.Url, picture);
 
                 // Add thumbnail to cache, if needed
@@ -321,7 +321,38 @@ public sealed partial class AstroPicModel : ModelBase
 
     public void RemoveFromCollection(PictureMetadata pictureMetadata)
     {
-        // ToDO
+        try
+        {
+            string? url = pictureMetadata.Url;
+            if (!string.IsNullOrWhiteSpace(url) &&
+                this.Pictures.ContainsKey(url))
+            {
+                if (this.Pictures.TryGetValue(url, out Picture? maybePicture))
+                {
+                    if (maybePicture is Picture picture)
+                    {
+                        // Delete images 
+                        string imagePath = this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, picture.ImageFilePath);
+                        File.Delete(imagePath);
+                        string thumbnailPath = this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, picture.ThumbnailFilePath);
+                        File.Delete(thumbnailPath);
+
+                        // Remove metadata 
+                        this.Pictures.Remove(url);
+
+                        // Commit changes 
+                        this.Save();
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // TODO: Messenger warning 
+            this.Logger.Warning(
+                "Failed to remove picture from collection" +
+                pictureMetadata.Provider.ToString() + "\n" + ex.ToString());
+        }
     }
 
     private void UpdatePersonalPictureData(Picture picture)
