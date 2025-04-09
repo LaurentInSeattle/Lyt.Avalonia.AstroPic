@@ -1,4 +1,5 @@
 ﻿using Lyt.Avalonia.AstroPic.Service;
+using System.Collections.ObjectModel;
 
 namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
@@ -17,16 +18,15 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
 
     internal void LoadThumnails(List<Tuple<Picture, byte[]>> thumbnailsCollection)
     {
-        this.Thumbnails.Clear();
         List<ThumbnailViewModel> thumbnails = new(thumbnailsCollection.Count);
         foreach (var tuple in thumbnailsCollection)
         {
             thumbnails.Add(
                 new ThumbnailViewModel(
-                    this, tuple.Item1.PictureMetadata, tuple.Item2, isLarge:false ));
+                    this, tuple.Item1.PictureMetadata, tuple.Item2, isLarge: false));
         }
 
-        this.Thumbnails = thumbnails;
+        this.Thumbnails = [.. thumbnails];
         this.selectedMetadata = thumbnails[0].Metadata;
     }
 
@@ -63,9 +63,9 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         }
     }
 
-    public List<ThumbnailViewModel> Thumbnails
+    public ObservableCollection<ThumbnailViewModel> Thumbnails
     {
-        get => this.Get<List<ThumbnailViewModel>?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
+        get => this.Get<ObservableCollection<ThumbnailViewModel>?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
         set => this.Set(value);
     }
 }

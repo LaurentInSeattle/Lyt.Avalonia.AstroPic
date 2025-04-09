@@ -300,8 +300,10 @@ public sealed partial class AstroPicModel : ModelBase
                     this.Logger.Warning("Failed to add picture thumbnail in cache");
                 }
 
-                // Save the whole model to disk 
+                // Save the whole model to disk and notify 
                 this.Save();
+                this.Messenger.Publish(new CollectionChangedMessage());
+
                 return true;
             }
             else
@@ -340,8 +342,9 @@ public sealed partial class AstroPicModel : ModelBase
                         // Remove metadata 
                         this.Pictures.Remove(url);
 
-                        // Commit changes 
+                        // Commit changes and notify
                         this.Save();
+                        this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
                     }
                 }
             }

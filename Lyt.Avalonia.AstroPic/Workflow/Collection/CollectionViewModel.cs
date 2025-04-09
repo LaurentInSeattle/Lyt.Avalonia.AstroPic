@@ -19,6 +19,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
         this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
+        this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
     }
 
     public override void Activate(object? activationParameters) 
@@ -26,31 +27,36 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         base.Activate(activationParameters);
         if (this.loaded)
         {
-            Schedule.OnUiThread(
-                200,
-                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
-                DispatcherPriority.Background);
+            this.UpdateSelection();
         }
     }
 
-    private void OnModelLoaded(ModelLoadedMessage message)
+    private void OnModelLoaded(ModelLoadedMessage _)
     {
         if (!this.loaded)
         {
-            this.collectionThumbnails = this.astroPicModel.LoadCollectionThumbnails();
             this.loaded = true;
+            this.collectionThumbnails = this.astroPicModel.LoadCollectionThumbnails();
             this.ThumbnailsPanelViewModel.LoadThumnails(this.collectionThumbnails);
         }
         else
         {
-            // This needs to be scheduled because virtualization will most likely 'shake' and renew
-            // the bindings of views and previously bound view models 
-            Schedule.OnUiThread(
+            this.UpdateSelection();
+        }
+    }
+
+    private void OnCollectionChanged(CollectionChangedMessage message)
+    {
+        this.loaded = false;
+        this.OnModelLoaded(new());
+        this.UpdateSelection();
+    }
+
+    private void UpdateSelection()
+        =>  Schedule.OnUiThread(
                 200,
                 () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
                 DispatcherPriority.Background);
-        }
-    }
 
     private void OnToolbarCommand(ToolbarCommandMessage message)
     {
