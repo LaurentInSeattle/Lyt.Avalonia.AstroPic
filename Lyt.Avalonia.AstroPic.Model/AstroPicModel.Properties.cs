@@ -58,7 +58,11 @@ public sealed partial class AstroPicModel : ModelBase
     [JsonIgnore]
     public bool ModelLoadedNotified { get; set; } = false;
 
+    [JsonIgnore]
+    public bool ShowRecentImages { get; set; } = false;
+
     #endregion Not serialized - No model changed event
+
 
     #region NOT serialized - WITH model changed event
 

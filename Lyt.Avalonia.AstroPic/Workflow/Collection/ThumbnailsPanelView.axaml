@@ -7,6 +7,7 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
 	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
+	xmlns:toggle="clr-namespace:Lyt.Avalonia.Controls.Toggle;assembly=Lyt.Avalonia.Controls"
 	xmlns:panels="clr-namespace:Lyt.Avalonia.Controls.Panels;assembly=Lyt.Avalonia.Controls"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Collection"
 	x:DataType="vm:ThumbnailsPanelViewModel" 
@@ -29,18 +30,33 @@
 				Fill="#70000020"
 				HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 				/>
-			<glyphs:GlyphButton
-				Style="{StaticResource ToolbarIconButton}"
-				Behaviour="Tap"
-				HorizontalAlignment="Left" VerticalAlignment="Center"
-				Width="100" Height="56"
-				Margin="8 4 8 4"
-				GlyphSource="wallpaper"
-				ButtonBackground="BorderlessRectangle"
-				GlyphStrokeThickness="0"
-				GlyphAngle="0"
-				Text="Set as Wallpaper"
-			/>
+			<TextBlock
+				Grid.Row="1"
+				Margin="32 0 0 0"
+				Text="Servizio Web:"
+				FontSize="16"
+				TextAlignment="Center"
+				Foreground="{StaticResource PastelOrchid_0_080}"
+				VerticalAlignment="Center" HorizontalAlignment="Left"
+				/>
+			<ComboBox
+				Width="300"
+				Margin="8 0 8 0"
+				HorizontalAlignment="Center" VerticalAlignment="Center"
+				ItemsSource="{Binding Providers}"
+				SelectedIndex="{Binding ProvidersSelectedIndex}"
+				> 				
+			</ComboBox>
+			<toggle:ToggleSwitch
+				x:Name="ShowMruSwitch"
+				Margin="8 0 8 0"
+				Style="{StaticResource StandardToggleSwitch}"
+				TrueText="Recente"
+				FalseText="Tutto"
+				Height="30" Width="200"
+				HorizontalAlignment="Center" VerticalAlignment="Center"
+				Value="{Binding ShowMru}"
+				/>
 		</StackPanel>
 
 		<ScrollViewer
