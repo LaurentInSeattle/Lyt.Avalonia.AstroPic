@@ -14,6 +14,7 @@
 			<RowDefinition Height="70" />
 			<RowDefinition Height="36" />
 			<RowDefinition Height="36" />
+			<RowDefinition Height="36" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<TextBlock
@@ -37,6 +38,15 @@
 			Grid.Row="2"
 			Margin="32 0 0 0"
 			Text="{Binding SizeOnDiskText}"
+			FontSize="16"
+			TextAlignment="Center"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			/>
+		<TextBlock
+			Grid.Row="3"
+			Margin="32 0 0 0"
+			Text="{Binding AvailableDiskSpaceText}"
 			FontSize="16"
 			TextAlignment="Center"
 			Foreground="{StaticResource PastelOrchid_0_080}"
