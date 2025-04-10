@@ -18,7 +18,7 @@
 			x:Name="DropBorder"
 			Margin="20 10 10 10"
 			Background="#20808080"
-			Width="520" Height="180"
+			Width="560" Height="180"
 			BorderThickness="0"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			DragDrop.AllowDrop="True"

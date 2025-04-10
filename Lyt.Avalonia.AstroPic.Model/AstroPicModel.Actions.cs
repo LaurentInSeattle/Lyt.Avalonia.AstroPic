@@ -300,6 +300,7 @@ public sealed partial class AstroPicModel : ModelBase
 
                 // Save the whole model to disk and notify 
                 this.Save();
+                this.UpdateStatistics(isAdd: true);
                 this.Messenger.Publish(new CollectionChangedMessage());
 
                 return true;
@@ -342,6 +343,7 @@ public sealed partial class AstroPicModel : ModelBase
 
                         // Commit changes and notify
                         this.Save();
+                        this.UpdateStatistics(isAdd: false); 
                         this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
                     }
                 }
@@ -534,6 +536,17 @@ public sealed partial class AstroPicModel : ModelBase
         this.Statistics =
             new Statistics(
                 ImageCount: validImageCount,
+                SizeOnDiskKB: (int)((512 + sizeOnDisk) / 1024));
+    }
+
+    private void UpdateStatistics (bool isAdd)
+    {
+        // Yes we are cheating for the sake of being fast and efficient
+        int deltaKB = isAdd ? 333 : -299 ;
+        int sizeOnDisk = (this.Statistics.SizeOnDiskKB + deltaKB) * 1024;
+        this.Statistics =
+            new Statistics(
+                ImageCount: this.Pictures.Count,
                 SizeOnDiskKB: (int)((512 + sizeOnDisk) / 1024));
     }
 

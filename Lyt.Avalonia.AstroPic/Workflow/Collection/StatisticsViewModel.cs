@@ -19,7 +19,7 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
         var astroPicModel = App.GetRequiredService<AstroPicModel>();
         var statistics = astroPicModel.Statistics;
         this.ImageCountText =
-            string.Format("Immagine: {0} (Quota: {1})", statistics.ImageCount, astroPicModel.MaxImages);
+            string.Format("Immagine: {0} (Tutti i servizi - Quota: {1})", statistics.ImageCount, astroPicModel.MaxImages);
         int sizeOnDisk = (int)((statistics.SizeOnDiskKB + 512 + 1) / 1024);
         this.SizeOnDiskText =
             string.Format("Dimensione stimata su disco: {0} MB (Quota: {1} MB)", sizeOnDisk, astroPicModel.MaxStorageMB);
