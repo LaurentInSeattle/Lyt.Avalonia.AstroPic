@@ -10,7 +10,9 @@ public sealed class PictureViewModel : Bindable<PictureView>
     private readonly AstroPicModel astroPicModel;
 
     private PictureMetadata? pictureMetadata;
-    private byte[]? imageBytes; 
+    private byte[]? imageBytes;
+    private int imageWidth;
+    private int imageHeight;
 
     public PictureViewModel()
     {
@@ -24,6 +26,8 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.pictureMetadata = pictureMetadata;
         this.imageBytes = imageBytes;
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
+        this.imageWidth = (int)bitmap.Size.Width;
+        this.imageHeight = (int)bitmap.Size.Height;
         this.LoadImage(bitmap);
         var metadata = this.pictureMetadata;
         this.Provider = this.astroPicModel.ProviderName(metadata.Provider);
@@ -98,7 +102,18 @@ public sealed class PictureViewModel : Bindable<PictureView>
         var writeableBitmap = 
             WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), ThumbnailWidth) ; 
         byte[] thumbnailBytes = writeableBitmap.EncodeToJpeg();
-        this.astroPicModel.AddToCollection(this.pictureMetadata, this.imageBytes, thumbnailBytes);
+
+        // Resize image if necessary
+        int maxImageWidth = this.astroPicModel.MaxImageWidth;
+        byte[] adjustedImageBytes = this.imageBytes;
+        if ( this.imageWidth > maxImageWidth )
+        {
+            writeableBitmap =
+                WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), maxImageWidth);
+            adjustedImageBytes = writeableBitmap.EncodeToJpeg();
+        }
+
+        this.astroPicModel.AddToCollection(this.pictureMetadata, adjustedImageBytes, thumbnailBytes);
     }
 
     internal void RemoveFromCollection()

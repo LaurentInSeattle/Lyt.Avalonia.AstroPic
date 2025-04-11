@@ -21,6 +21,12 @@ public sealed partial class AstroPicModel : ModelBase
     public int MaxStorageMB { get; set; } = 64;
 
     [JsonRequired]
+    public int MaxImageWidth { get; set; } = 3840;
+
+    [JsonRequired]
+    public bool ShouldAutoCleanup { get; set; } = true;
+
+    [JsonRequired]
     public bool ShouldRotateWallpapers { get; set; } = true ;
 
     [JsonRequired]

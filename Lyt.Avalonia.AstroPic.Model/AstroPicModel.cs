@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
-using System.Threading;
 using static Lyt.Avalonia.Persistence.FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -18,6 +17,8 @@ public sealed partial class AstroPicModel : ModelBase
             WallpaperRotationMinutes = 3,
             MaxImages = 128,
             MaxStorageMB = 64,
+            MaxImageWidth = 3840,
+            ShouldAutoCleanup = true,
             Providers =
             [
                 new Provider(ProviderKey.Nasa, "Nasa APOD"),
