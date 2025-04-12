@@ -305,7 +305,7 @@ public sealed partial class AstroPicModel : ModelBase
         countToDelete = Math.Min(5, orderedList.Count);
         while (countToDelete > 0)
         {
-            if (this.Statistics.SizeOnDiskKB > this.MaxStorageMB * KB)
+            if (this.Statistics.SizeOnDiskKB < this.MaxStorageMB * KB)
             {
                 break;
             }
