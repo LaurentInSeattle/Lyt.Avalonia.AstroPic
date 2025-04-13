@@ -6,6 +6,7 @@
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>Lyt.Avalonia.AstroPic</RootNamespace>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<ApplicationIcon>Assets\Images\AstroPic.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,6 +27,7 @@
 
 	<ItemGroup>
 	  <Content Include="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
+	  <Content Include="Assets\Images\AstroPic.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

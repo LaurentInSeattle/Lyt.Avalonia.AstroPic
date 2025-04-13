@@ -76,7 +76,7 @@
 			Grid.Row="2"
 			Text="{Binding Description}"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
-			Margin="0 0 0 0"
+			Margin="8 0 8 0"
 			FontSize="18"
 			FontWeight="Normal"
 			Foreground="{StaticResource PastelOrchid_0_080}"
