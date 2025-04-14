@@ -12,9 +12,6 @@ public sealed partial class AstroPicModel : ModelBase
     public bool IsFirstRun { get; set; } = false;
 
     [JsonRequired]
-    public bool ShouldAutoStart { get; set; } = false;
-
-    [JsonRequired]
     public int MaxImages { get; set; } = 128;
 
     [JsonRequired]
@@ -25,6 +22,9 @@ public sealed partial class AstroPicModel : ModelBase
 
     [JsonRequired]
     public bool ShouldAutoCleanup { get; set; } = true;
+
+    [JsonRequired]
+    public bool ShouldAutoStart { get; set; } = false;
 
     [JsonRequired]
     public bool ShouldRotateWallpapers { get; set; } = true ;

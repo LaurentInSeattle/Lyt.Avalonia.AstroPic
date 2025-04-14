@@ -24,21 +24,21 @@
 			Background="Transparent"
 			>
 			<vm:ContainerControl
-				Foreground="Aquamarine"
-				Margin="16"
-				Title="Servizi di download di immagini"
-				Text="Servizi di download di immagini"
+				Foreground="{StaticResource FreshGreen_0_100}"
+				Margin="32"
+				Title="Servizi di download di immagini."
+				Text="Seleziona i servizi web da cui vuoi scaricare le immagini."
 				>
 				<vm:ContainerControl.ContainerControlContent>
 					<Rectangle
-						Width="200" Height="400"
+						Width="200" Height="200"
 						Fill="AntiqueWhite"
 					/>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="Firebrick"
-				Margin="16"
+				Foreground="{StaticResource OrangePeel_0_100}"
+				Margin="32"
 				Title="Impostazioni della quota disco"
 				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
 				>
@@ -91,7 +91,7 @@
 							Grid.Row="1" Grid.Column="2"
 							Height="32"
 							Minimum="16"
-							Maximum="2024"
+							Maximum="2048"
 							Value="{Binding MaxStorageMB}"
 							FormatString="N0"
 							ParsingNumberStyle="Integer"
@@ -138,23 +138,92 @@
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="Firebrick"
-				Margin="16"
+				Foreground="{StaticResource PastelOrchid_0_100}"
+				Margin="32"
 				Title="Controlli del sistema operativo"
-				Text="Controlli del sistema operativo"
+				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
 				>
 				<vm:ContainerControl.ContainerControlContent>
-					<Rectangle
-						Width="800" Height="600"
-						Fill="LightCoral"
-						/>
+					<Grid
+						Width="620" Height="250"
+						VerticalAlignment="Top"
+						>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="20" />
+							<ColumnDefinition Width="130" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Grid.Row="0"
+							Margin="20 0 0 0"
+							Text="All'avvio del sistema operativo:"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<toggle:ToggleSwitch
+							Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+							Margin="0"
+							Style="{StaticResource StandardToggleSwitch}"
+							TrueText="Avviare automaticamente l'applicazione."
+							FalseText="Non fare nulla."
+							Height="30" Width="600"
+							HorizontalAlignment="Center" VerticalAlignment="Center"
+							Value="{Binding ShouldAutoStart}"
+							/>
+						<TextBlock
+							Grid.Row="2"
+							Margin="20 0 0 0"
+							Text="Ruotare lo sfondo dello schermo?"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<toggle:ToggleSwitch
+							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+							Margin="0"
+							Style="{StaticResource StandardToggleSwitch}"
+							TrueText="Si, periodicamente."
+							FalseText="Non cambiarlo mai."
+							Height="30" Width="600"
+							HorizontalAlignment="Center" VerticalAlignment="Center"
+							Value="{Binding ShouldRotateWallpapers}"
+							/>
+						<TextBlock
+							Grid.Row="4"
+							Margin="20 0 0 0"
+							Text="Cambia sfondo dopo questi minuti:"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<NumericUpDown
+							Grid.Row="4" Grid.Column="2"
+							Height="32"
+							Minimum="3"
+							Maximum="2880"
+							Value="{Binding MaxImages}"
+							FormatString="N0"
+							ParsingNumberStyle="Integer"
+							/>
+					</Grid>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="Firebrick"
-				Margin="16"
+				Foreground="{StaticResource LightAqua_0_120}"
+				Margin="32"
 				Title="Promemoria importante..."
-				Text="Promemoria importante..."
+				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."
 				>
 				<vm:ContainerControl.ContainerControlContent>
 					<Rectangle

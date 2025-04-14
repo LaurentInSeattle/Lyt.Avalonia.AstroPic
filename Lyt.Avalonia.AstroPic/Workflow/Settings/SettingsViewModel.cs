@@ -10,12 +10,17 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
         this.DisablePropertyChangedLogging = true; 
     }
 
-    public int MaxImages { get => this.Get<int>(); set => this.Set(value); }
+    public decimal? MaxImages { get => this.Get<decimal?>(); set => this.Set(value); }
 
-    public int MaxStorageMB { get => this.Get<int>(); set => this.Set(value); } 
+    public decimal? MaxStorageMB { get => this.Get<decimal?>(); set => this.Set(value); } 
 
     public bool MaxImageWidth { get => this.Get<bool>(); set => this.Set(value); }
 
-    public bool ShouldAutoCleanup { get => this.Get<bool>(); set => this.Set(value); } 
+    public bool ShouldAutoCleanup { get => this.Get<bool>(); set => this.Set(value); }
 
+    public bool ShouldAutoStart { get => this.Get<bool>(); set => this.Set(value); }
+
+    public bool ShouldRotateWallpapers { get => this.Get<bool>(); set => this.Set(value); }
+
+    public decimal? WallpaperRotationMinutes { get => this.Get<decimal?>(); set => this.Set(value); }
 }
