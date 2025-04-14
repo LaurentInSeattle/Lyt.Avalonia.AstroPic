@@ -62,6 +62,7 @@ global using Lyt.Avalonia.Controls;
 global using Lyt.Avalonia.Controls.Glyphs;
 
 global using Lyt.Avalonia.Mvvm;
+global using Lyt.Avalonia.Mvvm.Animations;
 global using Lyt.Avalonia.Mvvm.Core;
 global using Lyt.Avalonia.Mvvm.Dialogs;
 global using Lyt.Avalonia.Mvvm.Extensions;
@@ -76,6 +77,7 @@ global using Lyt.Avalonia.Persistence;
 
 #endregion Framework 
 
+global using Lyt.Avalonia.AstroPic.Interfaces;
 global using Lyt.Avalonia.AstroPic.Messaging;
 global using Lyt.Avalonia.AstroPic.Model;
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;
@@ -88,4 +90,7 @@ global using Lyt.Avalonia.AstroPic.Utilities;
 global using Lyt.Avalonia.AstroPic.Workflow;
 global using Lyt.Avalonia.AstroPic.Workflow.Collection;
 global using Lyt.Avalonia.AstroPic.Workflow.Gallery;
+global using Lyt.Avalonia.AstroPic.Workflow.Intro;
+global using Lyt.Avalonia.AstroPic.Workflow.Settings;
 global using Lyt.Avalonia.AstroPic.Workflow.Shared;
+

@@ -140,6 +140,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
     //    this.Logger.Debug("Model update, property: " + msgProp + " method: " + msgMethod);
     //}
 
+    // TODO: Decide whether or not we are going to have a title bar !
     private void OnShowTitleBar(ShowTitleBarMessage message)
     {
         //this.TitleBarHeight = new GridLength(message.Show ? 42.0 : 0.0);
@@ -149,10 +150,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private void OnViewActivation(ViewActivationMessage message)
         => this.OnViewActivation(message.View, message.ActivationParameter, false);
 
-#pragma warning disable IDE0060 // Remove unused parameter
-    // Maybe needed later 
     private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
-#pragma warning restore IDE0060 
     {
         // Navigation also reset the wallpaper rotation timer
         this.rotatorTimer.Reset();
@@ -182,11 +180,13 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 break;
 
             case ActivatedView.Intro:
-                // this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
+                this.SetupToolbar<IntroToolbarViewModel, IntroToolbarView>();
+                this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
                 break;
 
             case ActivatedView.Settings:
-                // this.Activate<RunViewModel, RunView>(isFirstActivation, parameter);
+                this.SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
+                this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
                 break;
         }
     }
@@ -255,9 +255,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
         CreateAndBind<GalleryToolbarViewModel, GalleryToolbarView>();
         CreateAndBind<CollectionViewModel, CollectionView>();
         CreateAndBind<CollectionToolbarViewModel, CollectionToolbarView>();
-
-        // CreateAndBind<IntroViewModel, IntroView>();
-        // CreateAndBind<SettingsViewModel, SettingsView>();
+        CreateAndBind<IntroViewModel, IntroView>();
+        CreateAndBind<IntroToolbarViewModel, IntroToolbarView>();
+        CreateAndBind<SettingsViewModel, SettingsView>();
+        CreateAndBind<SettingsToolbarViewModel, SettingsToolbarView>();
     }
 
 #pragma warning disable IDE0079 

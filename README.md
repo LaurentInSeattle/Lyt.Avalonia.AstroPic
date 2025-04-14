@@ -1,4 +1,4 @@
-# Lyt.Avalonia.AstroPic
+# AstroPic ~ Image Downloader and Wallpaper App'
 Downloads and manages images from various online providers: 
 
 - the NASA Astronomy Pictures of the Day (APOD) 
@@ -18,9 +18,12 @@ Then...
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="520"/>
 
+# In progress: 
+
+- Handle user settings.
+
 # TODO's, hopefully coming soon: 
 
-- Handle user settings. (Hardcoded for now.)
 - Support for more image providers 
 - Autostart 
 - "Tray icon" app'

@@ -1,7 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Interfaces;
-using Lyt.Avalonia.Mvvm.Animations;
-
-namespace Lyt.Avalonia.AstroPic;
+﻿namespace Lyt.Avalonia.AstroPic;
 
 public partial class App : ApplicationBase
 {
@@ -29,9 +26,10 @@ public partial class App : ApplicationBase
            typeof(GalleryToolbarViewModel),
            typeof(CollectionViewModel),
            typeof(CollectionToolbarViewModel),
-
-           //typeof(SettingsViewModel),
-           //typeof(IntroViewModel),
+           typeof(SettingsViewModel),
+           typeof(SettingsToolbarViewModel),
+           typeof(IntroViewModel),
+           typeof(IntroToolbarViewModel),
 
            typeof(AstroPicService),
         ],

@@ -52,11 +52,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Workflow\Intro\" />
-	  <Folder Include="Workflow\Settings\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <AvaloniaResource Update="Assets\Theme\Sliders.axaml">
 	    <SubType>Designer</SubType>
 	  </AvaloniaResource>
@@ -68,6 +63,15 @@
 	  </Compile>
 	  <Compile Update="Workflow\Gallery\ThumbnailsPanelView.axaml.cs">
 	    <DependentUpon>ThumbnailsPanelView.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Workflow\Intro\IntroToolbarView.axaml.cs">
+	    <DependentUpon>IntroToolbarView.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Workflow\Settings\SettingsView.axaml.cs">
+	    <DependentUpon>SettingsView.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Workflow\Settings\SettingsToolbarView.axaml.cs">
+	    <DependentUpon>SettingsToolbarView.axaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
