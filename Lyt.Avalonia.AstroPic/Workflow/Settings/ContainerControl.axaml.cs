@@ -17,6 +17,39 @@ public partial class ContainerControl : UserControl
         } 
     }
 
+    /// <summary> Title Styled Property </summary>
+    public static readonly StyledProperty<string> TitleProperty =
+        AvaloniaProperty.Register<ContainerControl, string>(
+            nameof(Title),
+            defaultValue: string.Empty,
+            inherits: false,
+            defaultBindingMode: BindingMode.OneWay,
+            validate: null,
+            coerce: CoerceTitle,
+            enableDataValidation: false);
+
+    /// <summary> Gets or sets the Title property.</summary>
+    public string Title
+    {
+        get => this.GetValue(TitleProperty);
+        set
+        {
+            this.SetValue(TitleProperty, value);
+            this.titleTextBlock.Text = value;
+        }
+    }
+
+    /// <summary> Coerces the Title value. </summary>
+    private static string CoerceTitle(AvaloniaObject sender, string newText)
+    {
+        if (sender is ContainerControl containerControl)
+        {
+            containerControl.titleTextBlock.Text = newText;
+        }
+
+        return newText;
+    }
+
     /// <summary> Text Styled Property </summary>
     public static readonly StyledProperty<string> TextProperty =
         AvaloniaProperty.Register<ContainerControl, string>(
@@ -35,7 +68,7 @@ public partial class ContainerControl : UserControl
         set
         {
             this.SetValue(TextProperty, value);
-            this.textBlock.Text = value;
+            this.textTextBlock.Text = value;
         }
     }
 
@@ -44,7 +77,7 @@ public partial class ContainerControl : UserControl
     {
         if (sender is ContainerControl containerControl)
         {
-            containerControl.textBlock.Text = newText;
+            containerControl.textTextBlock.Text = newText;
         }
 
         return newText;

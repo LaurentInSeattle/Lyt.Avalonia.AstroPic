@@ -9,6 +9,7 @@
 	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
 	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
 	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
+	xmlns:toggle="clr-namespace:Lyt.Avalonia.Controls.Toggle;assembly=Lyt.Avalonia.Controls"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Settings"
 	x:DataType="vm:SettingsViewModel"
 	>
@@ -25,6 +26,7 @@
 			<vm:ContainerControl
 				Foreground="Aquamarine"
 				Margin="16"
+				Title="Servizi di download di immagini"
 				Text="Servizi di download di immagini"
 				>
 				<vm:ContainerControl.ContainerControlContent>
@@ -37,18 +39,108 @@
 			<vm:ContainerControl
 				Foreground="Firebrick"
 				Margin="16"
-				Text="Impostazioni della quota disco"
+				Title="Impostazioni della quota disco"
+				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
 				>
 				<vm:ContainerControl.ContainerControlContent>
-					<Rectangle
-						Width="800" Height="600"
-						Fill="LightCoral"
-						/>
+					<Grid
+						Width="620" Height="300"
+						VerticalAlignment="Top"
+						>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="20" />
+							<ColumnDefinition Width="130" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+							<RowDefinition Height="50" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Grid.Row="0"
+							Margin="20 0 0 0"
+							Text="Numero massimo di immagini:"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<NumericUpDown
+							Grid.Row="0" Grid.Column="2"
+							Height="32"
+							Minimum="8"
+							Maximum="1024"
+							Value="{Binding MaxImages}"
+							FormatString="N0"
+							ParsingNumberStyle="Integer"
+							/>
+						<TextBlock
+							Grid.Row="1"
+							Margin="20 0 0 0"
+							Text="Quota di spazio (MB) su disco per le immagini:"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<NumericUpDown
+							Grid.Row="1" Grid.Column="2"
+							Height="32"
+							Minimum="16"
+							Maximum="2024"
+							Value="{Binding MaxStorageMB}"
+							FormatString="N0"
+							ParsingNumberStyle="Integer"
+							/>
+						<TextBlock
+							Grid.Row="2"
+							Margin="20 0 0 0"
+							Text="Dimensione per l'archiviazione delle immagini:"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<toggle:ToggleSwitch
+							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+							Margin="0"
+							Style="{StaticResource StandardToggleSwitch}"
+							TrueText="Alta Definizione (HD)"
+							FalseText="Ultra Alta Definizione (UHD/4K)"
+							Height="30" Width="600"
+							HorizontalAlignment="Center" VerticalAlignment="Center"
+							Value="{Binding MaxImageWidth}"
+							/>
+						<TextBlock
+							Grid.Row="4"
+							Margin="20 0 0 0"
+							Text="Cosa fare se la quota viene superata?"
+							FontSize="18"
+							TextAlignment="Center"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Center" HorizontalAlignment="Right"
+							/>
+						<toggle:ToggleSwitch
+							Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+							Margin="0"
+							Style="{StaticResource StandardToggleSwitch}"
+							TrueText="Auto. elimina le vecchie immagini."
+							FalseText="Mostra solo un messaggio di avviso."
+							Height="30" Width="600"
+							HorizontalAlignment="Center" VerticalAlignment="Center"
+							Value="{Binding ShouldAutoCleanup}"
+							/>
+					</Grid>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
 				Foreground="Firebrick"
 				Margin="16"
+				Title="Controlli del sistema operativo"
 				Text="Controlli del sistema operativo"
 				>
 				<vm:ContainerControl.ContainerControlContent>
@@ -61,6 +153,7 @@
 			<vm:ContainerControl
 				Foreground="Firebrick"
 				Margin="16"
+				Title="Promemoria importante..."
 				Text="Promemoria importante..."
 				>
 				<vm:ContainerControl.ContainerControlContent>

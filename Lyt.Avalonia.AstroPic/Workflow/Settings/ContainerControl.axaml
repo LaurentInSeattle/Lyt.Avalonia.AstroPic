@@ -12,7 +12,8 @@
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions >
-			<RowDefinition Height="52" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="60" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Rectangle
@@ -24,24 +25,25 @@
 			/>
 		<ContentPresenter
 			x:Name="presenter"
-			Grid.Column="1" Grid.Row="1"
+			Grid.Column="1" Grid.Row="2"
 			Margin="4"
 			/>
 		<Rectangle 
 			x:Name="rectangle"
-			Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+			Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
 			Fill="Aquamarine"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			Width="4"
+			VerticalAlignment="Stretch" HorizontalAlignment="Center"
 			/>
 		<Rectangle
-			Grid.Column="1" Grid.Row="0" 
+			Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
 			Margin="4 0 0 0"
 			Fill="{StaticResource DeepBlue_1_100}"
 			Opacity="0.4"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 			/>
 		<TextBlock
-			x:Name="textBlock"
+			x:Name="titleTextBlock"
 			Grid.Row="0" Grid.Column="1" 
 			Text="Title"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -50,6 +52,19 @@
 			FontStyle="Normal"
 			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			x:Name="textTextBlock"
+			Grid.Row="1" Grid.Column="1"
+			MaxWidth="500"
+			Text="Text"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Margin="40 0 0 0"
+			FontSize="18"
+			FontStyle="Normal"
+			FontWeight="Normal"
+			Foreground="{StaticResource LightAqua_1_100}"
 			TextWrapping="Wrap"
 			/>
 	</Grid>
