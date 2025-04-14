@@ -31,7 +31,7 @@ public sealed partial class AstroPicModel : ModelBase
         foreach (var provider in this.Providers)
         {
             // Use ONLY enabled and selected providers 
-            if (!provider.IsSelected)
+            if (! provider.IsDownloadProvider || !provider.IsSelected)
             {
                 continue;
             }
@@ -207,5 +207,4 @@ public sealed partial class AstroPicModel : ModelBase
     private bool IsAlreadyInCollection(PictureMetadata picture)
         => !string.IsNullOrWhiteSpace(picture.Url) &&
             this.Pictures.ContainsKey(picture.Url);
-
 }

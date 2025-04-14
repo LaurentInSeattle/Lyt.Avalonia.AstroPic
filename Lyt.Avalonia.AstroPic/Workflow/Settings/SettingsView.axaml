@@ -1,4 +1,4 @@
-<UserControl 
+<UserControl
 	x:Class="Lyt.Avalonia.AstroPic.Workflow.Settings.SettingsView"
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,10 +10,66 @@
 	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
 	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Settings"
-	x:DataType="vm:SettingsViewModel" 
+	x:DataType="vm:SettingsViewModel"
 	>
-	<Grid
-		Background="MistyRose"
-		>		
-	</Grid>
+	<ScrollViewer
+		Margin="2"
+		Background="Transparent"
+		VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+		ScrollViewer.VerticalScrollBarVisibility="Auto"
+		>
+		<WrapPanel
+			Background="Transparent"
+			>
+			<vm:ContainerControl
+				Foreground="Aquamarine"
+				Margin="16"
+				Text="Servizi di download di immagini"
+				>
+				<vm:ContainerControl.ContainerControlContent>
+					<Rectangle
+						Width="200" Height="400"
+						Fill="AntiqueWhite"
+					/>
+				</vm:ContainerControl.ContainerControlContent>
+			</vm:ContainerControl>
+			<vm:ContainerControl
+				Foreground="Firebrick"
+				Margin="16"
+				Text="Impostazioni della quota disco"
+				>
+				<vm:ContainerControl.ContainerControlContent>
+					<Rectangle
+						Width="800" Height="600"
+						Fill="LightCoral"
+						/>
+				</vm:ContainerControl.ContainerControlContent>
+			</vm:ContainerControl>
+			<vm:ContainerControl
+				Foreground="Firebrick"
+				Margin="16"
+				Text="Controlli del sistema operativo"
+				>
+				<vm:ContainerControl.ContainerControlContent>
+					<Rectangle
+						Width="800" Height="600"
+						Fill="LightCoral"
+						/>
+				</vm:ContainerControl.ContainerControlContent>
+			</vm:ContainerControl>
+			<vm:ContainerControl
+				Foreground="Firebrick"
+				Margin="16"
+				Text="Promemoria importante..."
+				>
+				<vm:ContainerControl.ContainerControlContent>
+					<Rectangle
+						Width="400" Height="400"
+						Fill="LightCoral"
+						/>
+				</vm:ContainerControl.ContainerControlContent>
+			</vm:ContainerControl>
+		</WrapPanel>
+	</ScrollViewer>
 </UserControl>

@@ -8,4 +8,7 @@ public sealed record class Provider
 )
 {
     public bool IsLoaded { get; set; }  
+
+    public bool IsDownloadProvider 
+        => this.Key != ProviderKey.Unknown && this.Key != ProviderKey.Personal;
 }
