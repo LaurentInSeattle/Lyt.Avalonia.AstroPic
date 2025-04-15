@@ -24,7 +24,7 @@
 			Background="Transparent"
 			>
 			<vm:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_100}"
+				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Servizi di download di immagini."
 				Text="Seleziona i servizi web da cui vuoi scaricare le immagini."
@@ -61,7 +61,7 @@
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_100}"
+				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Impostazioni della quota disco"
 				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
@@ -164,7 +164,7 @@
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_100}"
+				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Controlli del sistema operativo"
 				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
@@ -247,7 +247,7 @@
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_100}"
+				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Promemoria importante..."
 				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."

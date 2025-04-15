@@ -12,25 +12,25 @@ public sealed partial class AstroPicModel : ModelBase
     public bool IsFirstRun { get; set; } = false;
 
     [JsonRequired]
-    public int MaxImages { get; set; } = 128;
+    public int MaxImages { get => this.Get<int>(); set => this.Set(value); }
 
     [JsonRequired]
-    public int MaxStorageMB { get; set; } = 64;
+    public int MaxStorageMB { get => this.Get<int>(); set => this.Set(value); }
 
     [JsonRequired]
-    public int MaxImageWidth { get; set; } = 3840;
+    public int MaxImageWidth { get => this.Get<int>(); set => this.Set(value); }
 
     [JsonRequired]
-    public bool ShouldAutoCleanup { get; set; } = true;
+    public bool ShouldAutoCleanup { get => this.Get<bool>(); set => this.Set(value); }
 
     [JsonRequired]
-    public bool ShouldAutoStart { get; set; } = false;
+    public bool ShouldAutoStart { get => this.Get<bool>(); set => this.Set(value); }
 
     [JsonRequired]
-    public bool ShouldRotateWallpapers { get; set; } = true ;
+    public bool ShouldRotateWallpapers { get => this.Get<bool>(); set => this.Set(value); }
 
     [JsonRequired]
-    public int WallpaperRotationMinutes { get; set; } = 5;
+    public int WallpaperRotationMinutes { get => this.Get<int>(); set => this.Set(value); }
 
     [JsonRequired]
     public Dictionary<string, Picture> Pictures { get; set; } = [];
@@ -76,6 +76,20 @@ public sealed partial class AstroPicModel : ModelBase
     // Asynchronous: Must raise Model Updated events 
     public bool IsInternetConnected { get => this.Get<bool>(); set => this.Set(value); }
 
-    #endregion NOT serialized - WITH model changed event    #region Samples 
+    #endregion NOT serialized - WITH model changed event    
 
+    public void UpdateProviderSelected(Provider provider, bool isSelected)
+    {
+        var modelProvider =
+            (from item in this.Providers
+             where item.Key == provider.Key
+             select item).FirstOrDefault();
+        if (modelProvider is null)
+        {
+            return;
+        }
+
+        provider.IsSelected = isSelected;
+        this.IsDirty = true;
+    }
 }
