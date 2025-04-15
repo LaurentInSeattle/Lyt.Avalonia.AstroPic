@@ -30,14 +30,38 @@
 				Text="Seleziona i servizi web da cui vuoi scaricare le immagini."
 				>
 				<vm:ContainerControl.ContainerControlContent>
-					<Rectangle
-						Width="200" Height="200"
-						Fill="AntiqueWhite"
-					/>
+					<Grid
+						Background="Transparent"
+						Width="420" Height="300"						
+						>
+						<ScrollViewer
+							Background="Transparent"
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							ScrollViewer.VerticalScrollBarVisibility="Auto"
+							>
+							<ItemsControl
+								x:Name="TemplatesItemControl"
+								ItemsSource="{Binding SelectProviders}"
+								Margin="0 0 24 0"
+								>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Vertical"/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<vm:SelectProviderView Margin="0 8 0 8" />
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</ScrollViewer>
+					</Grid>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource OrangePeel_0_100}"
+				Foreground="{StaticResource FreshGreen_0_100}"
 				Margin="32"
 				Title="Impostazioni della quota disco"
 				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
@@ -77,6 +101,7 @@
 							Value="{Binding MaxImages}"
 							FormatString="N0"
 							ParsingNumberStyle="Integer"
+							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
 						<TextBlock
 							Grid.Row="1"
@@ -95,6 +120,7 @@
 							Value="{Binding MaxStorageMB}"
 							FormatString="N0"
 							ParsingNumberStyle="Integer"
+							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
 						<TextBlock
 							Grid.Row="2"
@@ -138,7 +164,7 @@
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource PastelOrchid_0_100}"
+				Foreground="{StaticResource FreshGreen_0_100}"
 				Margin="32"
 				Title="Controlli del sistema operativo"
 				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
@@ -212,24 +238,34 @@
 							Height="32"
 							Minimum="3"
 							Maximum="2880"
-							Value="{Binding MaxImages}"
+							Value="{Binding WallpaperRotationMinutes}"
 							FormatString="N0"
 							ParsingNumberStyle="Integer"
+							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
 					</Grid>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 			<vm:ContainerControl
-				Foreground="{StaticResource LightAqua_0_120}"
+				Foreground="{StaticResource FreshGreen_0_100}"
 				Margin="32"
 				Title="Promemoria importante..."
 				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."
 				>
 				<vm:ContainerControl.ContainerControlContent>
-					<Rectangle
-						Width="400" Height="400"
-						Fill="LightCoral"
-						/>
+					<Grid
+						Width="420" Height="200"
+						> 						
+						<TextBlock
+							Margin="10 0 0 0"
+							Text="Si consiglia di utilizzare le immagini scaricate solo come sfondo del computer. Per qualsiasi altro utilizzo, commerciale o meno, è necessario contattare il titolare del copyright."
+							FontSize="24"
+							TextAlignment="Left"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							TextWrapping="Wrap"
+							/>
+					</Grid>
 				</vm:ContainerControl.ContainerControlContent>
 			</vm:ContainerControl>
 		</WrapPanel>

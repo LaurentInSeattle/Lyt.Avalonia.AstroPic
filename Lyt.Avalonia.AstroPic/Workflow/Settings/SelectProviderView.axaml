@@ -1,0 +1,45 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Settings.SelectProviderView"
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
+	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
+	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
+	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
+	xmlns:toggle="clr-namespace:Lyt.Avalonia.Controls.Toggle;assembly=Lyt.Avalonia.Controls"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Settings"
+	x:DataType="vm:SelectProviderViewModel"
+	>
+	<Grid
+		Width="380" Height="80"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="8" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="8" />
+		</Grid.RowDefinitions>
+		<TextBlock
+			Grid.Row="1"
+			Margin="10 0 0 0"
+			Text="{Binding ProviderName}"
+			FontSize="18"
+			TextAlignment="Center"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			/>
+		<toggle:ToggleSwitch
+			Grid.Row="2" 
+			Margin="0"
+			Style="{StaticResource StandardToggleSwitch}"
+			TrueText="Scaricamento"
+			FalseText="Ignora e salta questo servizio web"
+			Height="30" Width="360"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			Value="{Binding UseService}"
+			/>
+	</Grid>
+</UserControl>
