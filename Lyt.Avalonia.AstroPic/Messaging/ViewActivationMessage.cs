@@ -7,10 +7,10 @@ public sealed record class ViewActivationMessage(
     {
         Intro,
         Gallery,
+        Collection,
         Settings,
 
         GoBack,
         Exit,
-        Collection,
     }
 }

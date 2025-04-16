@@ -273,7 +273,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnInfo(object? _) => this.OnViewActivation(ActivatedView.Intro);
 
-    private void OnTray(object? _) { }
+    private void OnToTray(object? _) => App.ShowMainWindow(show:false); 
 
     private void OnExit(object? _) => ShellViewModel.OnExit();
 

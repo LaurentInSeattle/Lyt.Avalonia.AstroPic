@@ -1,5 +1,8 @@
 ﻿namespace Lyt.Avalonia.AstroPic;
 
+using static ToolbarCommandMessage;
+using static ViewActivationMessage;
+
 public partial class App : ApplicationBase
 {
     public const string Organization = "Lyt";
@@ -36,7 +39,7 @@ public partial class App : ApplicationBase
         [
             // Services 
             App.LoggerService,
-            App.OsSpecificWallpaperService(), 
+            App.OsSpecificWallpaperService(),
             new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
             new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
             new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
@@ -88,6 +91,8 @@ public partial class App : ApplicationBase
                 });
         }
 
+        this.SetupTrayIcon();
+
         logger.Debug("OnStartupBegin complete");
     }
 
@@ -111,4 +116,64 @@ public partial class App : ApplicationBase
 
     // Why does it need to be there ??? 
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
+
+    private void SetupTrayIcon()
+    {
+        var icons = new TrayIcons
+        {
+            new TrayIcon
+            {
+                Icon = new WindowIcon(
+                    new Bitmap(AssetLoader.Open(
+                        new Uri("avares://Lyt.Avalonia.AstroPic/Assets/Images/AstroPic.ico")))),
+                Menu =
+                [
+                    new NativeMenuItem("Apri la Collezione")
+                    {
+                         Command = new Command (this.OpenCollectionFromTray )
+                    },
+                    new NativeMenuItemSeparator(),
+                    new NativeMenuItem("Impostazioni")
+                    {
+                         Command = new Command (this.OpenSettingsFromTray )
+                    },
+                ]
+            }
+        };
+
+        TrayIcon.SetIcons(this, icons);
+    }
+
+    public static void ShowMainWindow(bool show = true)
+    {
+        Window mainWindow = App.MainWindow; 
+        if ( show )
+        {
+            mainWindow.Show();
+        }
+        else
+        {
+            mainWindow.Hide();
+        }
+
+        mainWindow.ShowInTaskbar = show;
+    }
+
+    private void OpenCollectionFromTray(object? _)
+    {
+        ShowMainWindow();
+        NavigateTo(ActivatedView.Collection);
+    }
+
+    private void OpenSettingsFromTray(object? _)
+    {
+        ShowMainWindow();
+        NavigateTo(ActivatedView.Settings);
+    }
+
+    private static void NavigateTo(ActivatedView view)
+    {
+        var messenger = App.GetRequiredService<IMessenger>();
+        messenger.Publish(new ViewActivationMessage(view));
+    }
 }
