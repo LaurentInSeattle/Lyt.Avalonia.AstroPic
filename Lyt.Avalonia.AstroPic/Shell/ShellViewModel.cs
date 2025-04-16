@@ -166,6 +166,15 @@ public sealed class ShellViewModel : Bindable<ShellView>
             activatedView = ActivatedView.Intro;
         }
 
+        bool programmaticNavigation = false;
+        ActivatedView hasBeenActivated= ActivatedView.Exit;
+        Bindable? currentViewModel = null; 
+        if (parameter is bool navigationType)
+        {
+            programmaticNavigation = navigationType;
+            currentViewModel = this.CurrentViewModel();
+        }
+
         switch (activatedView)
         {
             default:
@@ -175,8 +184,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 break;
 
             case ActivatedView.Collection:
-                this.SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
-                this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
+                if ( !( programmaticNavigation && currentViewModel is CollectionViewModel))
+                {
+                    this.SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
+                    this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
+                    hasBeenActivated = ActivatedView.Collection;
+                }
                 break;
 
             case ActivatedView.Intro:
@@ -185,9 +198,37 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 break;
 
             case ActivatedView.Settings:
-                this.SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
-                this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
+                if (!(programmaticNavigation && currentViewModel is CollectionViewModel))
+                {
+                    this.SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
+                    this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
+                    hasBeenActivated = ActivatedView.Settings;
+                }
                 break;
+        }
+
+        // Reflect in the navigation toolbar the programmatic change 
+        if (programmaticNavigation && (hasBeenActivated != ActivatedView.Exit) )
+        {
+            if (this.View is not ShellView view)
+            {
+                throw new Exception("No view: Failed to startup...");
+            }
+
+            var selector = view.SelectionGroup;
+            switch (hasBeenActivated)
+            {
+                default:
+                    break;
+
+                case ActivatedView.Collection:
+                    selector.Select(view.CollectionButton);
+                    break;
+
+                case ActivatedView.Settings:
+                    selector.Select(view.SettingsButton);
+                    break;
+            }
         }
     }
 
@@ -241,6 +282,18 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
     }
 
+    private Bindable? CurrentViewModel ()
+    {
+        object? currentView = this.View.ShellViewContent.Content;
+        if (currentView is Control control && 
+            control.DataContext is Bindable currentViewModel)
+        {
+            return currentViewModel; 
+        }
+
+        return null;
+    }
+
     private static void SetupWorkflow()
     {
         static void CreateAndBind<TViewModel, TControl>()
@@ -273,7 +326,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnInfo(object? _) => this.OnViewActivation(ActivatedView.Intro);
 
-    private void OnToTray(object? _) => App.ShowMainWindow(show:false); 
+    private void OnToTray(object? _) => App.Instance.ShowMainWindow(show:false); 
 
     private void OnExit(object? _) => ShellViewModel.OnExit();
 

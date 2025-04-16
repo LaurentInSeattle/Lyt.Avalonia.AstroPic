@@ -1,8 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic;
 
-using static ToolbarCommandMessage;
-using static ViewActivationMessage;
-
 public partial class App : ApplicationBase
 {
     public const string Organization = "Lyt";
@@ -53,7 +50,13 @@ public partial class App : ApplicationBase
         )
     {
         // This should be empty, use the OnStartup override
+        Instance = this;
+        Debug.WriteLine("App Instance created");
     }
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    public static App Instance { get; private set; }
+#pragma warning restore CS8618 
 
     private static Tuple<Type, Type> LoggerService =>
             Debugger.IsAttached ?
@@ -98,6 +101,8 @@ public partial class App : ApplicationBase
 
     protected override Task OnShutdownComplete()
     {
+        this.ClearTrayIcon();
+
         var logger = App.GetRequiredService<ILogger>();
         logger.Debug("On Shutdown Complete");
 
@@ -116,64 +121,4 @@ public partial class App : ApplicationBase
 
     // Why does it need to be there ??? 
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
-
-    private void SetupTrayIcon()
-    {
-        var icons = new TrayIcons
-        {
-            new TrayIcon
-            {
-                Icon = new WindowIcon(
-                    new Bitmap(AssetLoader.Open(
-                        new Uri("avares://Lyt.Avalonia.AstroPic/Assets/Images/AstroPic.ico")))),
-                Menu =
-                [
-                    new NativeMenuItem("Apri la Collezione")
-                    {
-                         Command = new Command (this.OpenCollectionFromTray )
-                    },
-                    new NativeMenuItemSeparator(),
-                    new NativeMenuItem("Impostazioni")
-                    {
-                         Command = new Command (this.OpenSettingsFromTray )
-                    },
-                ]
-            }
-        };
-
-        TrayIcon.SetIcons(this, icons);
-    }
-
-    public static void ShowMainWindow(bool show = true)
-    {
-        Window mainWindow = App.MainWindow; 
-        if ( show )
-        {
-            mainWindow.Show();
-        }
-        else
-        {
-            mainWindow.Hide();
-        }
-
-        mainWindow.ShowInTaskbar = show;
-    }
-
-    private void OpenCollectionFromTray(object? _)
-    {
-        ShowMainWindow();
-        NavigateTo(ActivatedView.Collection);
-    }
-
-    private void OpenSettingsFromTray(object? _)
-    {
-        ShowMainWindow();
-        NavigateTo(ActivatedView.Settings);
-    }
-
-    private static void NavigateTo(ActivatedView view)
-    {
-        var messenger = App.GetRequiredService<IMessenger>();
-        messenger.Publish(new ViewActivationMessage(view));
-    }
 }

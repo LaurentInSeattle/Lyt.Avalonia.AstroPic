@@ -88,6 +88,7 @@
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
+				x:Name="CollectionButton"
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
 				HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -102,6 +103,7 @@
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
+				x:Name="SettingsButton"
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
 				HorizontalAlignment="Left" VerticalAlignment="Center"
