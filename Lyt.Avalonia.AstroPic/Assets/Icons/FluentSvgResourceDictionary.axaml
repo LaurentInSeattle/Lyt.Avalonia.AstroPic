@@ -1,5 +1,19 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+	<!--  broom  -->
+	<DrawingGroup x:Key = "broomDrawingGroup">
+		<DrawingGroup>
+			<DrawingGroup.ClipGeometry>
+				<RectangleGeometry Rect="0,0,24,24" />
+			</DrawingGroup.ClipGeometry>
+			<GeometryDrawing Brush="#FF212121" >
+				<GeometryDrawing.Geometry>
+					<PathGeometry FillRule="NonZero" Figures="M22.4533,1.9228C22.7462,2.2157,22.7462,2.6906,22.4533,2.9835L15.5248,9.912C17.2598,12.1668,17.0945,15.4134,15.0287,17.4791L14.1973,18.3106 11.4101,22.4913C11.2855,22.6783 11.0836,22.7995 10.86,22.8217 10.6364,22.8438 10.4146,22.7645 10.2557,22.6056L1.7705,14.1204C1.6116,13.9615 1.5323,13.7397 1.5544,13.5161 1.5766,13.2925 1.6978,13.0906 1.8848,12.966L6.0657,10.1787 6.897,9.3474C8.9628,7.2817,12.2093,7.1163,14.4641,8.8514L21.3927,1.9228C21.6856,1.6299,22.1604,1.6299,22.4533,1.9228z M7.6041,10.7616L13.6145,16.772 13.9681,16.4185C15.6278,14.7588 15.6278,12.0678 13.9681,10.4081 12.3083,8.7484 9.6174,8.7484 7.9577,10.4081L7.6041,10.7616z M6.4479,11.7267L3.478,13.7066 10.6695,20.8981 12.6494,17.9282 6.4479,11.7267z" />
+				</GeometryDrawing.Geometry>
+			</GeometryDrawing>
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="broom" Drawing="{StaticResource broomDrawingGroup}" />
+	
 	<!--  add_circle  -->
 	<DrawingGroup x:Key = "add_circleDrawingGroup">
 		<DrawingGroup>

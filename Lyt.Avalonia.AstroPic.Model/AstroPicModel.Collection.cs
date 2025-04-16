@@ -175,33 +175,19 @@ public sealed partial class AstroPicModel : ModelBase
         }
     }
 
-    private void UpdatePersonalPictureData(Picture picture)
+    public void CleanupCollection(bool calledFromUi = false)
     {
-        static int ParsePath(string path)
+        if (!calledFromUi && !this.ShouldAutoCleanup)
         {
-            path = path.Replace("Personal_", string.Empty);
-            string index = path[..6];
-            return int.Parse(index);
+            return;
         }
 
-        var personalPicturesIndices =
-            (from pic in this.Pictures.Values
-             where pic.PictureMetadata.Provider == ProviderKey.Personal
-             select ParsePath(pic.ImageFilePath)).ToList();
-        int index = 0;
-        if (personalPicturesIndices.Count == 0)
+        if ((this.Statistics.ImageCount > this.MaxImages) ||
+            (this.Statistics.SizeOnDiskKB > this.MaxStorageMB * KB))
         {
-            index = 1;
+            this.DoCleanup();
+            this.ValidateCollection();
         }
-        else
-        {
-            index = 1 + personalPicturesIndices.Max();
-        }
-
-        // extension includes the dot
-        string extension = Path.GetExtension(picture.ImageFilePath);
-        picture.ImageFilePath = string.Format("Personal_{0:D6}{1}", index, extension);
-        picture.ThumbnailFilePath = string.Format("Personal_{0:D6}_Thumb{1}", index, extension);
     }
 
     private void ValidateCollection()
@@ -253,21 +239,6 @@ public sealed partial class AstroPicModel : ModelBase
             new Statistics(
                 ImageCount: validImageCount,
                 SizeOnDiskKB: (int)((512 + sizeOnDisk) / KB));
-    }
-
-    private void CleanupCollection()
-    {
-        if (!this.ShouldAutoCleanup)
-        {
-            return;
-        }
-
-        if ((this.Statistics.ImageCount > this.MaxImages) ||
-            (this.Statistics.SizeOnDiskKB > this.MaxStorageMB * KB))
-        {
-            this.DoCleanup();
-            this.ValidateCollection();
-        }
     }
 
     private void DoCleanup()
@@ -342,6 +313,35 @@ public sealed partial class AstroPicModel : ModelBase
         }
 
         return sizeOnDisk;
+    }
+
+    private void UpdatePersonalPictureData(Picture picture)
+    {
+        static int ParsePath(string path)
+        {
+            path = path.Replace("Personal_", string.Empty);
+            string index = path[..6];
+            return int.Parse(index);
+        }
+
+        var personalPicturesIndices =
+            (from pic in this.Pictures.Values
+             where pic.PictureMetadata.Provider == ProviderKey.Personal
+             select ParsePath(pic.ImageFilePath)).ToList();
+        int index = 0;
+        if (personalPicturesIndices.Count == 0)
+        {
+            index = 1;
+        }
+        else
+        {
+            index = 1 + personalPicturesIndices.Max();
+        }
+
+        // extension includes the dot
+        string extension = Path.GetExtension(picture.ImageFilePath);
+        picture.ImageFilePath = string.Format("Personal_{0:D6}{1}", index, extension);
+        picture.ThumbnailFilePath = string.Format("Personal_{0:D6}_Thumb{1}", index, extension);
     }
 
     private void UpdateStatisticsOnDelete(long deletedSizeOnDisk)

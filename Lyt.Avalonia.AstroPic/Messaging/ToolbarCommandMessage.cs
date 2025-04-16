@@ -20,5 +20,6 @@ public sealed record class ToolbarCommandMessage(
         AddToCollection,        // Gallery Only
         RemoveFromCollection,   // Collection Only
         SaveToDesktop,
+        Cleanup,
     }
 }

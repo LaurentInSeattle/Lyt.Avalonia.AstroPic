@@ -6,9 +6,11 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
 
     public SettingsViewModel(AstroPicModel astroPicModel)
     {
+        this.DisablePropertyChangedLogging = true;
+
         this.astroPicModel = astroPicModel;
         this.SelectProviders = [];
-        this.DisablePropertyChangedLogging = true;
+        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
     }
 
     protected override void OnViewLoaded()
@@ -21,6 +23,20 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
     {
         base.Activate(activationParameters);
         this.Populate();
+    }
+
+    private void OnToolbarCommand(ToolbarCommandMessage message)
+    {
+        switch (message.Command)
+        {
+            case ToolbarCommandMessage.ToolbarCommand.Cleanup:
+                this.astroPicModel.CleanupCollection(calledFromUi: true);
+                break;
+
+            // Ignore all other commands 
+            default:
+                break;
+        }
     }
 
     private void Populate()
