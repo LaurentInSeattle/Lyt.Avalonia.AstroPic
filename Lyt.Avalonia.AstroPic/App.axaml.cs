@@ -79,7 +79,7 @@ public partial class App : ApplicationBase
         // The localizer needs the File Manager, do not change the order.
         var localizer = App.GetRequiredService<ILocalizer>();
 
-        // TODO: FIX that ! 
+        // TODO: FIX that ! ( Configure should be part of the Interface ) 
         if (localizer is LocalizerModel localizerModel)
         {
             await localizerModel.Configure(
