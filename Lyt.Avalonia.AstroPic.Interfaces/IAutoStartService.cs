@@ -4,5 +4,5 @@ public interface IAutoStartService
 {
     void SetAutoStart(string applicationName, string applicationPath);
 
-    void ClearAutoStart(string applicationName);
+    void ClearAutoStart(string applicationName, string applicationPath);
 }

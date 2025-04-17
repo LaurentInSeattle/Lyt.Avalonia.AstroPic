@@ -137,7 +137,7 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
                 if (entryAssembly is not null)
                 {
                     var autoStartService = App.GetRequiredService<IAutoStartService>();
-                    autoStartService.ClearAutoStart(App.Application);
+                    autoStartService.ClearAutoStart(App.Application, entryAssembly.Location);
                     if (value)
                     {
                         autoStartService.SetAutoStart(App.Application, entryAssembly.Location);

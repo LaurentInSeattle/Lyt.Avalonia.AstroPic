@@ -1,72 +1,33 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.Versioning;
-using System.Security.AccessControl;
 
-using Microsoft.Win32;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 
 namespace Lyt.Avalonia.AstroPic.Desktop.Windows;
 
 using Lyt.Avalonia.AstroPic.Interfaces;
 
-// using IWshRuntimeLibrary;
-
 [SupportedOSPlatform("windows")]
 public sealed class AutoStartService : IAutoStartService
 {
+    public AutoStartService() { }
 
-    // C:\Users\Laurent\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-
-//private void CreateShortcut()
-//{
-//    object shDesktop = (object)"Desktop";
-//    WshShell shell = new WshShell();
-//    string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\Notepad.lnk";
-//    IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-//    shortcut.Description = "New shortcut for a Notepad";
-//    shortcut.Hotkey = "Ctrl+Shift+N";
-//    shortcut.TargetPath = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\notepad.exe";
-//    shortcut.Save();
-//}
-
-private const string RegistryKey = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-
-    public AutoStartService() => AutoStartService.AllowAccessToRegistry(); 
-
-    // See:    https://stackoverflow.com/questions/7927381/programmatically-assign-the-permission-to-a-registry-subkey    
-    private static void AllowAccessToRegistry ()
+    public void ClearAutoStart(string applicationName, string applicationPath)
     {
         try
         {
-            RegistryKey? key = Registry.CurrentUser.OpenSubKey(RegistryKey, writable: true);
-            if (key is null)
+            string startupPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            string shortcutPath = Path.Combine(startupPath, applicationName + ".lnk");
+            if (!File.Exists(shortcutPath))
             {
-                Debug.WriteLine("No key");
                 return;
-            } 
+            }
 
-            var rs = new RegistrySecurity();
-            rs = key.GetAccessControl();
-            string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
-            rs.AddAccessRule(
-                new RegistryAccessRule(
-                    currentUserStr,
-                    RegistryRights.WriteKey | RegistryRights.ReadKey | RegistryRights.Delete | RegistryRights.FullControl,
-                    AccessControlType.Allow));
-        }
-        catch (Exception ex)
-        {
-            if (Debugger.IsAttached) { Debugger.Break(); }
-            Debug.WriteLine(ex);
-        }
-    }
-
-    public void ClearAutoStart(string applicationName)
-    {
-        try
-        {
-            RegistryKey? rk = Registry.CurrentUser.OpenSubKey(RegistryKey, writable: true);
-            rk?.DeleteValue(applicationName, throwOnMissingValue: false);
+            // File.Delete(shortcutPath); 
         }
         catch (Exception ex)
         {
@@ -79,8 +40,7 @@ private const string RegistryKey = "Software\\Microsoft\\Windows\\CurrentVersion
     {
         try
         {
-            RegistryKey? rk = Registry.CurrentUser.OpenSubKey(RegistryKey, writable: true);
-            rk?.SetValue(applicationName, applicationPath, RegistryValueKind.String);
+            CreateShortcut(applicationName, applicationPath); 
         }
         catch (Exception ex)
         {
@@ -88,35 +48,29 @@ private const string RegistryKey = "Software\\Microsoft\\Windows\\CurrentVersion
             Debug.WriteLine(ex);
         }
     }
-}
 
-
-/*
- * 
-using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-
-namespace TestShortcut
-{
-    class Program
+    public static void CreateShortcut (string applicationName, string applicationPath)
     {
-        static void Main(string[] args)
+        string startupPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+        string shortcutPath = Path.Combine(startupPath, applicationName + ".lnk"); 
+        if ( File.Exists(shortcutPath) )
         {
-            IShellLink link = (IShellLink)new ShellLink();
-
-            // setup shortcut information
-            link.SetDescription("My Description");
-            link.SetPath(@"c:\MyPath\MyProgram.exe");
-
-            // save it
-            IPersistFile file = (IPersistFile)link;
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            file.Save(Path.Combine(desktopPath, "MyLink.lnk"), false);
+            return;
         }
+
+        // setup shortcut information
+        if ( applicationPath.EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase))
+        {
+            applicationPath = applicationPath.Replace(".dll", ".exe"); 
+        }
+
+        var link = (IShellLink)new ShellLink();
+        link.SetDescription(applicationName);
+        link.SetPath(applicationPath);
+        var file = (IPersistFile)link;
+        file.Save(shortcutPath, false);
     }
+
 
     [ComImport]
     [Guid("00021401-0000-0000-C000-000000000046")]
@@ -148,4 +102,4 @@ namespace TestShortcut
         void Resolve(IntPtr hwnd, int fFlags);
         void SetPath([MarshalAs(UnmanagedType.LPWStr)] string pszFile);
     }
-} */
+}

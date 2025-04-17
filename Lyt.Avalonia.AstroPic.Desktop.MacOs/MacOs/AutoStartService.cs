@@ -9,7 +9,7 @@ using Lyt.Avalonia.AstroPic.Interfaces;
 [SupportedOSPlatform("macOS")]
 public sealed class AutoStartService : IAutoStartService
 {
-    public void ClearAutoStart(string applicationName)
+    public void ClearAutoStart(string applicationName, string applicationPath)
     {
         // TODO 
     }
