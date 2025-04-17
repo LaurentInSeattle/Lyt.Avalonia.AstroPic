@@ -16,18 +16,18 @@ Then...
 
 # Just in...
 
-- "Tray icon" app'
+- "Tray icon" app' (Windows Only for now)
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
 # In progress: 
 
-- Autostart 
+- Autostart (Windows Only for now)
+- Support for more image providers 
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
 # TODO's, hopefully coming soon: 
 
-- Support for more image providers 
 - Localization
 - Mac OS support

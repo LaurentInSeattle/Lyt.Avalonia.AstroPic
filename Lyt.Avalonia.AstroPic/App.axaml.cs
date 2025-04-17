@@ -37,6 +37,7 @@ public partial class App : ApplicationBase
             // Services 
             App.LoggerService,
             App.OsSpecificWallpaperService(),
+            App.OsSpecificAutoStartService(),
             new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
             new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
             new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
@@ -64,7 +65,10 @@ public partial class App : ApplicationBase
                 new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
 
     private static Tuple<Type, Type> OsSpecificWallpaperService()
-        => App.OsSpecificService<IWallpaperService>("WallpaperService");
+        => ApplicationBase.OsSpecificService<IWallpaperService>("WallpaperService");
+
+    private static Tuple<Type, Type> OsSpecificAutoStartService()
+        => ApplicationBase.OsSpecificService<IAutoStartService>("AutoStartService");
 
     public bool RestartRequired { get; set; }
 

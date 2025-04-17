@@ -4,6 +4,8 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
 {
     private readonly AstroPicModel astroPicModel;
 
+    private bool isPopulating;
+
     public SettingsViewModel(AstroPicModel astroPicModel)
     {
         this.DisablePropertyChangedLogging = true;
@@ -41,28 +43,33 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
 
     private void Populate()
     {
-        lock (this.SelectProviders)
+        this.isPopulating = true;
         {
-            var modelProviders = this.astroPicModel.Providers;
-            List<SelectProviderViewModel> providers = new(modelProviders.Count);
-            foreach (Provider provider in modelProviders)
+            lock (this.SelectProviders)
             {
-                if (provider.IsDownloadProvider)
+                var modelProviders = this.astroPicModel.Providers;
+                List<SelectProviderViewModel> providers = new(modelProviders.Count);
+                foreach (Provider provider in modelProviders)
                 {
-                    providers.Add(new SelectProviderViewModel(this.astroPicModel, provider));
+                    if (provider.IsDownloadProvider)
+                    {
+                        providers.Add(new SelectProviderViewModel(this.astroPicModel, provider));
+                    }
                 }
+
+                this.SelectProviders = [.. providers];
             }
 
-            this.SelectProviders = [.. providers];
+            this.MaxImages = this.astroPicModel.MaxImages;
+            this.MaxStorageMB = this.astroPicModel.MaxStorageMB;
+            this.MaxImageWidth = this.astroPicModel.MaxImageWidth <= 1920;
+            this.ShouldAutoCleanup = this.astroPicModel.ShouldAutoCleanup;
+            this.ShouldAutoStart = this.astroPicModel.ShouldAutoStart;
+            this.ShouldRotateWallpapers = this.astroPicModel.ShouldRotateWallpapers;
+            this.WallpaperRotationMinutes = this.astroPicModel.WallpaperRotationMinutes;
         }
 
-        this.MaxImages = this.astroPicModel.MaxImages; 
-        this.MaxStorageMB = this.astroPicModel.MaxStorageMB;
-        this.MaxImageWidth = this.astroPicModel.MaxImageWidth <= 1920; 
-        this.ShouldAutoCleanup = this.astroPicModel.ShouldAutoCleanup;
-        this.ShouldAutoStart = this.astroPicModel.ShouldAutoStart;
-        this.ShouldRotateWallpapers = this.astroPicModel.ShouldRotateWallpapers;
-        this.WallpaperRotationMinutes = this.astroPicModel.WallpaperRotationMinutes; 
+        this.isPopulating = false;
     }
 
     public ObservableCollection<SelectProviderViewModel> SelectProviders
@@ -103,15 +110,52 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
         set
         {
             this.Set(value);
-            this.astroPicModel.MaxImageWidth = value ? 1920: 3840 ;
+            this.astroPicModel.MaxImageWidth = value ? 1920 : 3840;
         }
     }
 
-    public bool ShouldAutoCleanup { get => this.Get<bool>(); set => this.Set(value); }
+    public bool ShouldAutoCleanup
+    {
+        get => this.Get<bool>();
+        set
+        {
+            this.Set(value);
+            this.astroPicModel.ShouldAutoCleanup = value;
+        }
+    }
 
-    public bool ShouldAutoStart { get => this.Get<bool>(); set => this.Set(value); }
+    public bool ShouldAutoStart
+    {
+        get => this.Get<bool>();
+        set
+        {
+            this.Set(value);
+            this.astroPicModel.ShouldAutoStart = value;
+            if (!this.isPopulating)
+            {
+                var entryAssembly = Assembly.GetEntryAssembly();
+                if (entryAssembly is not null)
+                {
+                    var autoStartService = App.GetRequiredService<IAutoStartService>();
+                    autoStartService.ClearAutoStart(App.Application);
+                    if (value)
+                    {
+                        autoStartService.SetAutoStart(App.Application, entryAssembly.Location);
+                    }
+                }
+            }
+        }
+    }
 
-    public bool ShouldRotateWallpapers { get => this.Get<bool>(); set => this.Set(value); }
+    public bool ShouldRotateWallpapers
+    {
+        get => this.Get<bool>();
+        set
+        {
+            this.Set(value);
+            this.astroPicModel.ShouldRotateWallpapers = value;
+        }
+    }
 
     public decimal? WallpaperRotationMinutes
     {
