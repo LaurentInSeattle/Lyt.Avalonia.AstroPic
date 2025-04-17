@@ -13,6 +13,27 @@ public sealed class AutoStartService : IAutoStartService
 {
     private const string RegistryKey = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 
+    /*
+     * 
+
+See:    https://stackoverflow.com/questions/7927381/programmatically-assign-the-permission-to-a-registry-subkey
+
+Microsoft.Win32.RegistryKey key;
+key = Microsoft.Win32.Registry.LocalMachine;
+RegistrySecurity rs = new RegistrySecurity();
+rs = key.GetAccessControl();
+string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
+rs.AddAccessRule(
+    new RegistryAccessRule(
+        currentUserStr, 
+        RegistryRights.WriteKey 
+        | RegistryRights.ReadKey 
+        | RegistryRights.Delete 
+        | RegistryRights.FullControl, 
+        AccessControlType.Allow));
+
+     */
+
     public void ClearAutoStart(string applicationName)
     {
         try
