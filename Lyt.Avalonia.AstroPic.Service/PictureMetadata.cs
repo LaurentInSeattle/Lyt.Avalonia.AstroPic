@@ -1,4 +1,7 @@
-﻿namespace Lyt.Avalonia.AstroPic.Service;
+﻿using System.Globalization;
+using static System.Net.WebRequestMethods;
+
+namespace Lyt.Avalonia.AstroPic.Service;
 
 public class PictureMetadata
 {
@@ -64,6 +67,48 @@ public class PictureMetadata
         this.Title = nasaPicture.Title;
         this.Description = nasaPicture.Explanation;
         this.Copyright = nasaPicture.Copyright;
+    }
+
+    internal PictureMetadata(EpicPicture epicPicture)
+    {
+        // Example URL 
+        //  https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY
+        const string urlFormat =
+            "https://api.nasa.gov/EPIC/archive/natural/{0:D4}/{1:D2}/{2:D2}/png/{3}.png?api_key=DEMO_KEY";
+        try
+        {
+            // Can be bad ? 
+            string? photoPartialUrl = epicPicture.PhotoPartialUrl; 
+
+            // Date as: year, month, day followed by time: "2025-04-17 00:03:42"
+            string date = epicPicture.Date[..10];
+            string[] tokens = date.Split(['-'], StringSplitOptions.RemoveEmptyEntries);
+            if ((tokens.Length == 3) && (!string.IsNullOrWhiteSpace(photoPartialUrl)))
+            {
+                int year = int.Parse(tokens[0]);
+                int month = int.Parse(tokens[1]);
+                int day = int.Parse(tokens[2]);
+                this.Date = new DateTime(year, month, day);
+                this.Url = string.Format(urlFormat, year, month, day, epicPicture.PhotoPartialUrl);
+                this.Title = this.Date.ToLongDateString();
+            }
+            else
+            {
+                this.Title = epicPicture.Title;
+                throw new Exception("Bad date or bad url");
+            } 
+        } 
+        catch (Exception ex) 
+        {
+            Debug.WriteLine(ex);
+            this.Date = DateTime.Parse("05/12/1958", new CultureInfo ("en-US"));
+            this.Url = string.Empty;
+        }
+
+        this.Provider = ProviderKey.Epic;
+        this.MediaType = MediaType.Image ;
+        this.Description = string.Empty;
+        this.Copyright = epicPicture.Copyright;
     }
 
     public string? UrlFileExtension()

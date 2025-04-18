@@ -13,6 +13,9 @@ public class AstroPicService(ILogger logger)
                 case ProviderKey.Nasa:
                     return await NasaService.GetPictures();
 
+                case ProviderKey.Epic:
+                    return await EpicService.GetPictures();
+
                 case ProviderKey.Bing:
                     return await BingService.GetPictures();
 

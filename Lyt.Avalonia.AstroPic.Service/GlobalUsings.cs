@@ -25,5 +25,6 @@ global using Lyt.Avalonia.Interfaces.Logger;
 global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Service.Bing;
 global using Lyt.Avalonia.AstroPic.Service.EarthView;
+global using Lyt.Avalonia.AstroPic.Service.Epic;
 global using Lyt.Avalonia.AstroPic.Service.Nasa;
 

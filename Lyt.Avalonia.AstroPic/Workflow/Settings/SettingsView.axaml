@@ -99,7 +99,7 @@
 							Minimum="8"
 							Maximum="1024"
 							Value="{Binding MaxImages}"
-							FormatString="N0"
+							FormatString="N"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
@@ -118,7 +118,7 @@
 							Minimum="16"
 							Maximum="2048"
 							Value="{Binding MaxStorageMB}"
-							FormatString="N0"
+							FormatString="N"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
@@ -170,8 +170,9 @@
 				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
 				>
 				<vm:ContainerControl.ContainerControlContent>
+					<!-- Disabling Autostart widgets for now -->
 					<Grid
-						Width="620" Height="250"
+						Width="620" Height="150"
 						VerticalAlignment="Top"
 						>
 						<Grid.ColumnDefinitions>
@@ -180,8 +181,9 @@
 							<ColumnDefinition Width="130" />
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
-							<RowDefinition Height="50" />
-							<RowDefinition Height="50" />
+							<!-- Disabling Autostart widgets for now -->
+							<RowDefinition Height="0" />
+							<RowDefinition Height="0" />
 							<RowDefinition Height="50" />
 							<RowDefinition Height="50" />
 							<RowDefinition Height="50" />
@@ -239,7 +241,7 @@
 							Minimum="3"
 							Maximum="2880"
 							Value="{Binding WallpaperRotationMinutes}"
-							FormatString="N0"
+							FormatString="N"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>

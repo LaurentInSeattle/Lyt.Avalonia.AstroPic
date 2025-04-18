@@ -4,6 +4,7 @@ Downloads and manages images from various online providers:
 - the NASA Astronomy Pictures of the Day (APOD) 
 - Bing Wallpaper of the day 
 - Google Earth View images
+- NASA Epic (Camera onboard the DSCOVR spacecraft.)
 
 Then...
 - Set image as Wallpaper (Windows Only for now)
@@ -17,12 +18,12 @@ Then...
 # Just in...
 
 - "Tray icon" app' (Windows Only for now)
+- Support for the NASA Epic daily images
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
 # In progress: 
 
-- Autostart (Windows Only for now)
 - Support for more image providers 
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
@@ -31,3 +32,4 @@ Then...
 
 - Localization
 - Mac OS support
+- Autostart (Windows Only for now)

@@ -9,4 +9,5 @@ public enum ProviderKey
     Nasa, 
     Bing, 
     EarthView,
+    Epic,
 }
