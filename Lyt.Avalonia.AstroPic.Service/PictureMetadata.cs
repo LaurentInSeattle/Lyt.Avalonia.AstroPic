@@ -81,6 +81,8 @@ public class PictureMetadata
             string? photoPartialUrl = epicPicture.PhotoPartialUrl; 
 
             // Date as: year, month, day followed by time: "2025-04-17 00:03:42"
+            // This is the date of the day when the picture was taken
+            // We use it for URL and title 
             string date = epicPicture.Date[..10];
             string[] tokens = date.Split(['-'], StringSplitOptions.RemoveEmptyEntries);
             if ((tokens.Length == 3) && (!string.IsNullOrWhiteSpace(photoPartialUrl)))
@@ -91,6 +93,9 @@ public class PictureMetadata
                 this.Date = new DateTime(year, month, day);
                 this.Url = string.Format(urlFormat, year, month, day, epicPicture.PhotoPartialUrl);
                 this.Title = this.Date.ToLongDateString();
+
+                // Override date, so that it is one of today's picture 
+                this.Date = DateTime.Now.Date;
             }
             else
             {

@@ -32,7 +32,7 @@
 				<vm:ContainerControl.ContainerControlContent>
 					<Grid
 						Background="Transparent"
-						Width="420" Height="300"						
+						Width="400" Height="400"						
 						>
 						<ScrollViewer
 							Background="Transparent"
@@ -99,7 +99,7 @@
 							Minimum="8"
 							Maximum="1024"
 							Value="{Binding MaxImages}"
-							FormatString="N"
+							FormatString="N0"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
@@ -118,7 +118,7 @@
 							Minimum="16"
 							Maximum="2048"
 							Value="{Binding MaxStorageMB}"
-							FormatString="N"
+							FormatString="N0"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
@@ -188,6 +188,7 @@
 							<RowDefinition Height="50" />
 							<RowDefinition Height="50" />
 						</Grid.RowDefinitions>
+						<!-- Disabling Autostart widgets for now 
 						<TextBlock
 							Grid.Row="0"
 							Margin="20 0 0 0"
@@ -207,6 +208,7 @@
 							HorizontalAlignment="Center" VerticalAlignment="Center"
 							Value="{Binding ShouldAutoStart}"
 							/>
+						-->
 						<TextBlock
 							Grid.Row="2"
 							Margin="20 0 0 0"
@@ -241,7 +243,7 @@
 							Minimum="3"
 							Maximum="2880"
 							Value="{Binding WallpaperRotationMinutes}"
-							FormatString="N"
+							FormatString="N0"
 							ParsingNumberStyle="Integer"
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
