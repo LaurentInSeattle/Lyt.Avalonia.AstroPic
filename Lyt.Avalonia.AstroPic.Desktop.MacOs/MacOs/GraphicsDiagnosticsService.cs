@@ -9,9 +9,11 @@ using System.Diagnostics.CodeAnalysis;
 using Lyt.Avalonia.AstroPic.Interfaces;
 using System.Runtime.Versioning;
 
-namespace Lyt.Avalonia.AstroPic.Desktop.Windows;
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+namespace Lyt.Avalonia.AstroPic.Desktop.MacOs;
+#pragma warning restore IDE0130 
 
-[SupportedOSPlatform("windows")]
+[SupportedOSPlatform("macOS")]
 public class GraphicsDiagnosticsService : IGraphicsDiagnosticsService
 {
     [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "get_Current")]

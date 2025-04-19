@@ -38,6 +38,7 @@ public partial class App : ApplicationBase
             App.LoggerService,
             App.OsSpecificWallpaperService(),
             App.OsSpecificAutoStartService(),
+            App.OsSpecificGraphicsDiagnosticsService(),
             new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
             new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
             new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
@@ -63,6 +64,9 @@ public partial class App : ApplicationBase
             Debugger.IsAttached ?
                 new Tuple<Type, Type>(typeof(ILogger), typeof(LogViewerWindow)) :
                 new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
+
+    private static Tuple<Type, Type> OsSpecificGraphicsDiagnosticsService()
+        => ApplicationBase.OsSpecificService<IGraphicsDiagnosticsService>("GraphicsDiagnosticsService");
 
     private static Tuple<Type, Type> OsSpecificWallpaperService()
         => ApplicationBase.OsSpecificService<IWallpaperService>("WallpaperService");
@@ -99,6 +103,20 @@ public partial class App : ApplicationBase
         }
 
         this.SetupTrayIcon();
+
+        if (Debugger.IsAttached)
+        {
+            var graphics = App.GetRequiredService<IGraphicsDiagnosticsService>();
+            if (graphics.TryGetActiveRenderingMode(out ActiveRenderingMode? renderingMode))
+            {
+                logger.Debug("Rendering Mode: " + renderingMode);
+            }
+
+            if (graphics.TryGetActiveCompositionMode(out CompositionMode? compositionMode))
+            {
+                logger.Debug("Composition Mode: " + compositionMode);
+            }
+        } 
 
         logger.Debug("OnStartupBegin complete");
     }
