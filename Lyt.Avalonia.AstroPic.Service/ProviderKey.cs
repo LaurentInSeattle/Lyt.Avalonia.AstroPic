@@ -10,4 +10,5 @@ public enum ProviderKey
     Bing, 
     EarthView,
     Epic,
+    OpenVerse,
 }

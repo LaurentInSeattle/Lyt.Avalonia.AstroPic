@@ -22,6 +22,9 @@ public class AstroPicService(ILogger logger)
                 case ProviderKey.EarthView:
                     return await EarthViewService.GetPictures();
 
+                case ProviderKey.OpenVerse:
+                    return await OpenVerseService.GetPictures();
+
                 default:
                     break;
             }

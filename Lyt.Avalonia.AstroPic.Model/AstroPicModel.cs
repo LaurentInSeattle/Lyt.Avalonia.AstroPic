@@ -25,6 +25,7 @@ public sealed partial class AstroPicModel : ModelBase
                 new Provider(ProviderKey.Nasa, "Nasa APOD"),
                 new Provider(ProviderKey.Bing, "Bing Wallpaper"),
                 new Provider(ProviderKey.EarthView, "Google Earth View"),
+                new Provider(ProviderKey.OpenVerse, "OpenVerse.Org"),
             ]
         };
 

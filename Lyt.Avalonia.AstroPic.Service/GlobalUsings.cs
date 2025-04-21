@@ -27,4 +27,4 @@ global using Lyt.Avalonia.AstroPic.Service.Bing;
 global using Lyt.Avalonia.AstroPic.Service.EarthView;
 global using Lyt.Avalonia.AstroPic.Service.Epic;
 global using Lyt.Avalonia.AstroPic.Service.Nasa;
-
+global using Lyt.Avalonia.AstroPic.Service.OpenVerse;

@@ -69,6 +69,22 @@ public class PictureMetadata
         this.Copyright = nasaPicture.Copyright;
     }
 
+    internal PictureMetadata(OpenVersePicture openVersePicture)
+    {
+        this.Provider = ProviderKey.OpenVerse;
+        this.Date = DateTime.Parse(openVersePicture.Date);
+        this.MediaType = MediaType.Image ;
+        this.Url = openVersePicture.Url;
+        this.Title = openVersePicture.Title;
+
+        // TODO 
+        //this.Description = openVersePicture.Explanation;
+        // this.Copyright = openVersePicture.Copyright;
+
+        // Override date, so that it is one of today's picture 
+        this.Date = DateTime.Now.Date;
+    }
+
     internal PictureMetadata(EpicPicture epicPicture)
     {
         // Example URL 

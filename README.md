@@ -5,6 +5,7 @@ Downloads and manages images from various online providers:
 - Bing Wallpaper of the day 
 - Google Earth View images
 - NASA Epic (Camera onboard the DSCOVR spacecraft.)
+- OpenVerse.Org (Some refinements needed...)
 
 Then...
 - Set image as Wallpaper (Windows Only for now)
@@ -18,7 +19,7 @@ Then...
 # Just in...
 
 - "Tray icon" app' (Windows Only for now)
-- Support for the NASA Epic daily images
+- Support for the OpenVerse.Org image provider
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
