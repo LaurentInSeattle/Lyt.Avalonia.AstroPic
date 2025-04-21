@@ -1,8 +1,9 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service;
 
-public class AstroPicService(ILogger logger)
+public class AstroPicService(ILogger logger, IRandomizer randomizer)
 {
     private readonly ILogger logger = logger;
+    private readonly IRandomizer randomizer = randomizer;
 
     public async Task<List<PictureMetadata>> GetPictures(ProviderKey provider)
     {
@@ -23,7 +24,7 @@ public class AstroPicService(ILogger logger)
                     return await EarthViewService.GetPictures();
 
                 case ProviderKey.OpenVerse:
-                    return await OpenVerseService.GetPictures();
+                    return await OpenVerseService.GetPictures(this.randomizer);
 
                 default:
                     break;

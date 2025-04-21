@@ -45,6 +45,7 @@ public partial class App : ApplicationBase
             new Tuple<Type, Type>(typeof(IMessenger), typeof(Messenger)),
             new Tuple<Type, Type>(typeof(IProfiler), typeof(Profiler)),
             new Tuple<Type, Type>(typeof(IToaster), typeof(Toaster)),
+            new Tuple<Type, Type>(typeof(IRandomizer), typeof(Randomizer)),
         ],
         singleInstanceRequested: false,
         splashImageUri: null,

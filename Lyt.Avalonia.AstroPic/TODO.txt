@@ -2,17 +2,13 @@
 Experiment with Additional Image API web services, such as: 
 
 	Mars Rover API : https://api.nasa.gov/ 
-		Are these machines still returning picturez ? 
+		Are these machines still returning pictures ? 
 		DOABLE : Could be implemented 
 
 	https://thecatapi.com/
-		DOABLE: but do we want all those cats ? 
+		DOABLE: but.. Do we want to see all those cats ? 
 		https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=4 
 		https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t 
-
-	https://www.mediawiki.org/wiki/API:Images 
-
-	https://www.shutterstock.com/developers/documentation
 
 	https://www.nationalgeographic.com/photo-of-the-day/  (Will require scraping)
 
@@ -22,6 +18,7 @@ Against licensing policy:
 		https://pixabay.com/api/docs/
 			Only CC0 images
 			API does NOT return copyright / licence info 
+		https://www.shutterstock.com/developers/documentation
 
 
 Misc / Weird / Unusable / Slow 

@@ -5,7 +5,7 @@ Downloads and manages images from various online providers:
 - Bing Wallpaper of the day 
 - Google Earth View images
 - NASA Epic (Camera onboard the DSCOVR spacecraft.)
-- OpenVerse.Org (Some refinements needed...)
+- OpenVerse.Org
 
 Then...
 - Set image as Wallpaper (Windows Only for now)
@@ -25,12 +25,11 @@ Then...
 
 # In progress: 
 
-- Support for more image providers 
+- Localization
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
 # TODO's, hopefully coming soon: 
 
-- Localization
 - Mac OS support
 - Autostart (Windows Only for now)

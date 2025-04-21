@@ -21,6 +21,7 @@ global using RestSharp;
 
 global using Lyt.Avalonia.Interfaces.Messenger;
 global using Lyt.Avalonia.Interfaces.Logger;
+global using Lyt.Avalonia.Interfaces.Random;
 
 global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Service.Bing;

@@ -76,10 +76,8 @@ public class PictureMetadata
         this.MediaType = MediaType.Image ;
         this.Url = openVersePicture.Url;
         this.Title = openVersePicture.Title;
-
-        // TODO 
-        //this.Description = openVersePicture.Explanation;
-        // this.Copyright = openVersePicture.Copyright;
+        this.Copyright = string.Format("Copyright / Author: {0}" ,  openVersePicture.Creator);
+        this.Description = openVersePicture.Attribution; 
 
         // Override date, so that it is one of today's picture 
         this.Date = DateTime.Now.Date;

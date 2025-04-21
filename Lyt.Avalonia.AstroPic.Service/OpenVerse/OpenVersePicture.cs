@@ -5,6 +5,9 @@ internal class OpenVersePicture
     [JsonPropertyName("creator")]
     public string? Creator { get; init; }
 
+    [JsonPropertyName("attribution")]
+    public string? Attribution { get; init; }
+
     [JsonPropertyName("indexed_on")]
     public required string Date { get; init; }
 
@@ -19,4 +22,7 @@ internal class OpenVersePicture
 
     [JsonPropertyName("license_version")]
     public string? LicenseVersion { get; init; }
+
+    [JsonPropertyName("width")]
+    public int? Width { get; init; }
 }
