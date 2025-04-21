@@ -1,6 +1,9 @@
 ﻿
 Experiment with Additional Image API web services, such as: 
 
+	https://www.mediawiki.org/wiki/API:Images
+	https://github.com/wikimedia/mediawiki-api-demos/tree/master
+
 	Mars Rover API : https://api.nasa.gov/ 
 		Are these machines still returning pictures ? 
 		DOABLE : Could be implemented 
