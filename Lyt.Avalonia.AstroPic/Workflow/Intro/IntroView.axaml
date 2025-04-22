@@ -12,8 +12,60 @@
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Intro"
 	x:DataType="vm:IntroViewModel" 
 	>
-	<Grid
-		Background="MintCream"
-		>		
-	</Grid>
+	<ScrollViewer
+		Margin="2"
+		Background="Transparent"
+		VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+		ScrollViewer.VerticalScrollBarVisibility="Auto"
+		>
+		<WrapPanel
+			Background="Transparent"
+			>
+			<shared:ContainerControl
+				Foreground="{StaticResource FreshGreen_0_080}"
+				Margin="32"
+				Title="Termini di licenza."
+				Text="Questa applicazione vi viene fornita secondo i termini della licenza MIT."
+				>
+				<shared:ContainerControl.ContainerControlContent>
+					<Grid
+						Width="520" Height="260"
+						>
+						<TextBlock
+							Margin="10 0 0 0"
+							Text="Questa applicazione vi viene fornita secondo i termini della licenza MIT e pertanto, unitamente ad altri termini, non implica alcuna garanzia di alcun tipo. Utilizzando questa applicazione software, accettate pienamente i termini e le condizioni della licenza MIT."
+							FontSize="24"
+							TextAlignment="Left"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							TextWrapping="Wrap"
+							/>
+					</Grid>
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
+			<shared:ContainerControl
+				Foreground="{StaticResource FreshGreen_0_080}"
+				Margin="32"
+				Title="Promemoria importante..."
+				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."
+				>
+				<shared:ContainerControl.ContainerControlContent>
+					<Grid
+						Width="490" Height="260"
+						>
+						<TextBlock
+							Margin="10 0 0 0"
+							Text="Si consiglia di utilizzare le immagini scaricate solo come sfondo del computer. Per qualsiasi altro utilizzo, commerciale o meno, è necessario contattare il titolare del copyright."
+							FontSize="24"
+							TextAlignment="Left"
+							Foreground="{StaticResource PastelOrchid_0_080}"
+							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+							TextWrapping="Wrap"
+							/>
+					</Grid>
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
+		</WrapPanel>
+	</ScrollViewer>
 </UserControl>

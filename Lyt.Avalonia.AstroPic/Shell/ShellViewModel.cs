@@ -189,8 +189,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
         {
             default:
             case ActivatedView.Gallery:
-                this.SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
-                this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
+                if (!(programmaticNavigation && currentViewModel is GalleryViewModel))
+                {
+                    this.SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
+                    this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
+                    hasBeenActivated = ActivatedView.Gallery;
+                }
                 break;
 
             case ActivatedView.Collection:

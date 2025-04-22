@@ -27,7 +27,7 @@
 			GlyphSource="next"
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
-			Text="I Agree with the MIT Licence Terms, Continue"
+			Text="Accetto i termini della licenza MIT, Continua"
 			Command="{Binding NextCommand}"
 	    	/>
 	</StackPanel>

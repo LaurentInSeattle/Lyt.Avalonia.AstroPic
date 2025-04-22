@@ -1,4 +1,4 @@
-namespace Lyt.Avalonia.AstroPic.Workflow.Settings;
+namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 public partial class ContainerControl : UserControl
 {

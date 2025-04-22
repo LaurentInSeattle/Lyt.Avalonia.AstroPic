@@ -22,6 +22,7 @@ public sealed partial class AstroPicModel : ModelBase
             Providers =
             [
                 new Provider(ProviderKey.Personal, "Immagine Personale") { IsSelected = false},
+                new Provider(ProviderKey.Epic, "Nasa EPIC"),
                 new Provider(ProviderKey.Nasa, "Nasa APOD"),
                 new Provider(ProviderKey.Bing, "Bing Wallpaper"),
                 new Provider(ProviderKey.EarthView, "Google Earth View"),

@@ -1,5 +1,5 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.AstroPic.Workflow.Settings.ContainerControl"
+	x:Class="Lyt.Avalonia.AstroPic.Workflow.Shared.ContainerControl"
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

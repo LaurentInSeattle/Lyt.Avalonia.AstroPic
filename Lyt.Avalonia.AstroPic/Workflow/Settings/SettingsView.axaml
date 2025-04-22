@@ -23,16 +23,16 @@
 		<WrapPanel
 			Background="Transparent"
 			>
-			<vm:ContainerControl
+			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Servizi di download di immagini."
 				Text="Seleziona i servizi web da cui vuoi scaricare le immagini."
 				>
-				<vm:ContainerControl.ContainerControlContent>
+				<shared:ContainerControl.ContainerControlContent>
 					<Grid
 						Background="Transparent"
-						Width="400" Height="400"						
+						Width="400" Height="400"
 						>
 						<ScrollViewer
 							Background="Transparent"
@@ -58,15 +58,15 @@
 							</ItemsControl>
 						</ScrollViewer>
 					</Grid>
-				</vm:ContainerControl.ContainerControlContent>
-			</vm:ContainerControl>
-			<vm:ContainerControl
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
+			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Impostazioni della quota disco"
 				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
 				>
-				<vm:ContainerControl.ContainerControlContent>
+				<shared:ContainerControl.ContainerControlContent>
 					<Grid
 						Width="620" Height="300"
 						VerticalAlignment="Top"
@@ -161,15 +161,15 @@
 							Value="{Binding ShouldAutoCleanup}"
 							/>
 					</Grid>
-				</vm:ContainerControl.ContainerControlContent>
-			</vm:ContainerControl>
-			<vm:ContainerControl
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
+			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Controlli del sistema operativo"
 				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
 				>
-				<vm:ContainerControl.ContainerControlContent>
+				<shared:ContainerControl.ContainerControlContent>
 					<!-- Disabling Autostart widgets for now -->
 					<Grid
 						Width="620" Height="150"
@@ -248,18 +248,18 @@
 							BorderBrush="{StaticResource LightAqua_0_080}"
 							/>
 					</Grid>
-				</vm:ContainerControl.ContainerControlContent>
-			</vm:ContainerControl>
-			<vm:ContainerControl
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
+			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="Promemoria importante..."
 				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."
 				>
-				<vm:ContainerControl.ContainerControlContent>
+				<shared:ContainerControl.ContainerControlContent>
 					<Grid
 						Width="420" Height="200"
-						> 						
+						>
 						<TextBlock
 							Margin="10 0 0 0"
 							Text="Si consiglia di utilizzare le immagini scaricate solo come sfondo del computer. Per qualsiasi altro utilizzo, commerciale o meno, è necessario contattare il titolare del copyright."
@@ -270,8 +270,8 @@
 							TextWrapping="Wrap"
 							/>
 					</Grid>
-				</vm:ContainerControl.ContainerControlContent>
-			</vm:ContainerControl>
+				</shared:ContainerControl.ContainerControlContent>
+			</shared:ContainerControl>
 		</WrapPanel>
 	</ScrollViewer>
 </UserControl>
