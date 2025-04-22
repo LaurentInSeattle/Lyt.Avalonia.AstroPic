@@ -1,4 +1,20 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--  next  -->
+	<DrawingGroup x:Key = "nextDrawingGroup">
+		<DrawingGroup>
+			<DrawingGroup.ClipGeometry>
+				<RectangleGeometry Rect="0,0,24,24" />
+			</DrawingGroup.ClipGeometry>
+			<GeometryDrawing Brush="#FF212121" >
+				<GeometryDrawing.Geometry>
+					<PathGeometry FillRule="NonZero" Figures="M3.0001,4.753C3.0001,3.3452,4.5779,2.5136,5.7393,3.3094L16.2377,10.5028C17.2479,11.1949,17.2531,12.6839,16.2478,13.3831L5.7493,20.6847C4.589,21.4917,3.0001,20.6613,3.0001,19.248L3.0001,4.753z M4.8914,4.5468C4.7255,4.4331,4.5001,4.5519,4.5001,4.753L4.5001,19.248C4.5001,19.4499,4.7271,19.5685,4.8929,19.4532L15.3913,12.1517C15.5349,12.0518,15.5342,11.8391,15.3899,11.7402L4.8914,4.5468z M21,3.75C21,3.3358 20.6642,3 20.25,3 19.8358,3 19.5,3.3358 19.5,3.75L19.5,20.25C19.5,20.6642 19.8358,21 20.25,21 20.6642,21 21,20.6642 21,20.25L21,3.75z" />
+				</GeometryDrawing.Geometry>
+			</GeometryDrawing>
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="next" Drawing="{StaticResource nextDrawingGroup}" />
+
 	<!--  broom  -->
 	<DrawingGroup x:Key = "broomDrawingGroup">
 		<DrawingGroup>

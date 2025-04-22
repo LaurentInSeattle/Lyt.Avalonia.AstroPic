@@ -15,18 +15,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Remove="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
 	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
+	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaXaml Remove="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
 	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
+	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
 	  <AvaloniaXaml Remove="Assets\Theme\Sliders.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Assets\Icons\FluentSvgResourceDictionary - Copy.axaml" />
+	  <Content Include="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
 	  <Content Include="Assets\Images\AstroPic.ico" />
 	</ItemGroup>
 

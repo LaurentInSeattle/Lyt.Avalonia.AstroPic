@@ -51,7 +51,6 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
 
         this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
-        this.Messenger.Subscribe<ShowTitleBarMessage>(this.OnShowTitleBar);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
     }
 
@@ -114,22 +113,28 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private async void ActivateInitialView()
     {
-        int retries = 3;
-        while (retries > 0)
+        if (this.astroPicModel.IsFirstRun )
         {
-            this.Logger.Debug("ActivateInitialView: Internet connected: " + this.astroPicModel.IsInternetConnected);
-            if (this.astroPicModel.IsInternetConnected)
-            {
-                this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
-                this.Logger.Debug("OnViewLoaded OnViewActivation complete");
-                return;
-            }
-
-            await Task.Delay(100);
-            --retries;
+            this.OnViewActivation(ActivatedView.Intro, parameter: null, isFirstActivation: true);
         }
+        else
+        {
+            int retries = 3;
+            while (retries > 0)
+            {
+                this.Logger.Debug("ActivateInitialView: Internet connected: " + this.astroPicModel.IsInternetConnected);
+                if (this.astroPicModel.IsInternetConnected)
+                {
+                    this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
+                    this.Logger.Debug("OnViewLoaded OnViewActivation complete");
+                    return;
+                }
 
-        this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
+                await Task.Delay(100);
+                --retries;
+            }
+        } 
+
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
@@ -140,18 +145,23 @@ public sealed class ShellViewModel : Bindable<ShellView>
     //    this.Logger.Debug("Model update, property: " + msgProp + " method: " + msgMethod);
     //}
 
-    // TODO: Decide whether or not we are going to have a title bar !
-    private void OnShowTitleBar(ShowTitleBarMessage message)
-    {
-        //this.TitleBarHeight = new GridLength(message.Show ? 42.0 : 0.0);
-        //this.IsTitleBarVisible = message.Show;
-    }
-
     private void OnViewActivation(ViewActivationMessage message)
         => this.OnViewActivation(message.View, message.ActivationParameter, false);
 
     private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
     {
+        Bindable? CurrentViewModel()
+        {
+            object? currentView = this.View.ShellViewContent.Content;
+            if (currentView is Control control &&
+                control.DataContext is Bindable currentViewModel)
+            {
+                return currentViewModel;
+            }
+
+            return null;
+        }
+
         // Navigation also reset the wallpaper rotation timer
         this.rotatorTimer.Reset();
 
@@ -172,7 +182,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         if (parameter is bool navigationType)
         {
             programmaticNavigation = navigationType;
-            currentViewModel = this.CurrentViewModel();
+            currentViewModel = CurrentViewModel();
         }
 
         switch (activatedView)
@@ -216,20 +226,17 @@ public sealed class ShellViewModel : Bindable<ShellView>
             }
 
             var selector = view.SelectionGroup;
-            switch (hasBeenActivated)
+            var button = hasBeenActivated switch
             {
-                default:
-                    break;
-
-                case ActivatedView.Collection:
-                    selector.Select(view.CollectionButton);
-                    break;
-
-                case ActivatedView.Settings:
-                    selector.Select(view.SettingsButton);
-                    break;
-            }
+                ActivatedView.Intro => view.IntroButton,
+                ActivatedView.Collection => view.CollectionButton,
+                ActivatedView.Settings => view.SettingsButton,
+                _ => view.TodayButton,
+            };
+            selector.Select(button);
         }
+
+        this.MainToolbarIsVisible = CurrentViewModel () is not IntroViewModel;
     }
 
     private async static void OnExit()
@@ -241,7 +248,6 @@ public sealed class ShellViewModel : Bindable<ShellView>
     private void SetupToolbar<TViewModel, TControl>()
         where TViewModel : Bindable<TControl>
         where TControl : Control, new()
-
     {
         if (this.View is null)
         {
@@ -280,18 +286,6 @@ public sealed class ShellViewModel : Bindable<ShellView>
         {
             this.Profiler.MemorySnapshot(newViewModel.View.GetType().Name + ":  Activated");
         }
-    }
-
-    private Bindable? CurrentViewModel ()
-    {
-        object? currentView = this.View.ShellViewContent.Content;
-        if (currentView is Control control && 
-            control.DataContext is Bindable currentViewModel)
-        {
-            return currentViewModel; 
-        }
-
-        return null;
     }
 
     private static void SetupWorkflow()
@@ -345,4 +339,6 @@ public sealed class ShellViewModel : Bindable<ShellView>
     public ICommand ToTrayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand ExitCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+
+    public bool MainToolbarIsVisible { get => this.Get<bool>()!; set => this.Set(value); }
 }

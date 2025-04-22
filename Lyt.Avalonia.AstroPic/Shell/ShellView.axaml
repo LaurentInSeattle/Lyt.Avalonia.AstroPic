@@ -66,6 +66,7 @@
 			/>
 		<!-- View Selector - Main toolbar - Aligned left -->
 		<StackPanel
+			IsVisible="{Binding MainToolbarIsVisible}"
 			Orientation="Horizontal"
 			Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
 			Margin="460 0 0 0"
@@ -73,6 +74,7 @@
 			>
 			<glyphs:SelectionGroup x:Name="SelectionGroup" />
 			<glyphs:GlyphButton
+				x:Name="TodayButton"
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
 				HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -118,6 +120,7 @@
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
+				x:Name="IntroButton"
 				Style="{StaticResource ToolbarIconButton}"
 				Behaviour="Tap"
 				HorizontalAlignment="Left" VerticalAlignment="Center"
