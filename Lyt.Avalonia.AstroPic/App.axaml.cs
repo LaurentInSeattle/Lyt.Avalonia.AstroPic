@@ -30,6 +30,7 @@ public partial class App : ApplicationBase
            typeof(SettingsToolbarViewModel),
            typeof(IntroViewModel),
            typeof(IntroToolbarViewModel),
+           typeof(LanguageViewModel),
 
            typeof(AstroPicService),
         ],

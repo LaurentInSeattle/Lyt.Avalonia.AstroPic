@@ -1,4 +1,18 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<!--  flag  -->
+	<DrawingGroup x:Key = "flagDrawingGroup">
+		<DrawingGroup>
+			<DrawingGroup.ClipGeometry>
+				<RectangleGeometry Rect="0,0,24,24" />
+			</DrawingGroup.ClipGeometry>
+			<GeometryDrawing Brush="#FF212121" >
+				<GeometryDrawing.Geometry>
+					<PathGeometry FillRule="NonZero" Figures="M3,3.7481C3,3.3338,3.3358,2.9981,3.75,2.9981L20.2541,2.9981C20.8722,2.9981,21.225,3.7037,20.8541,4.1981L16.6898,9.7493 20.8541,15.3004C21.225,15.7948,20.8722,16.5005,20.2541,16.5005L4.5,16.5 4.5,21.2499C4.5,21.6296,4.2179,21.9434,3.8518,21.993L3.75,21.9999C3.3703,21.9999,3.0565,21.7177,3.0069,21.3517L3,21.2499 3,3.7481z M18.7539,4.4981L4.5,4.4981 4.5,15.0005 18.7539,15.0005 15.1522,10.1993C14.9522,9.9326,14.9522,9.5659,15.1522,9.2992L18.7539,4.4981z" />
+				</GeometryDrawing.Geometry>
+			</GeometryDrawing>
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="flag" Drawing="{StaticResource flagDrawingGroup}" />
 
 	<!--  next  -->
 	<DrawingGroup x:Key = "nextDrawingGroup">

@@ -206,6 +206,12 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 }
                 break;
 
+            case ActivatedView.Language:
+                // No toolbar
+                this.View.ShellViewToolbar.Content = null;
+                this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
+                break;
+
             case ActivatedView.Intro:
                 this.SetupToolbar<IntroToolbarViewModel, IntroToolbarView>();
                 this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
@@ -308,6 +314,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         CreateAndBind<CollectionToolbarViewModel, CollectionToolbarView>();
         CreateAndBind<IntroViewModel, IntroView>();
         CreateAndBind<IntroToolbarViewModel, IntroToolbarView>();
+        CreateAndBind<LanguageViewModel, LanguageView>();
         CreateAndBind<SettingsViewModel, SettingsView>();
         CreateAndBind<SettingsToolbarViewModel, SettingsToolbarView>();
     }
@@ -324,7 +331,9 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnInfo(object? _) => this.OnViewActivation(ActivatedView.Intro);
 
-    private void OnToTray(object? _) => App.Instance.ShowMainWindow(show:false); 
+    private void OnLanguage(object? _) => this.OnViewActivation(ActivatedView.Language);
+
+    private void OnToTray(object? _) => App.Instance.ShowMainWindow(show:false);
 
     private void OnExit(object? _) => ShellViewModel.OnExit();
 
@@ -339,6 +348,8 @@ public sealed class ShellViewModel : Bindable<ShellView>
     public ICommand SettingsCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand InfoCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+
+    public ICommand LanguageCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public ICommand ToTrayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 

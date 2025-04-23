@@ -12,5 +12,6 @@ public sealed record class ViewActivationMessage(
 
         GoBack,
         Exit,
+        Language,
     }
 }
