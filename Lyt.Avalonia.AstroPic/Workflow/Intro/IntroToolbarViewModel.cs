@@ -9,7 +9,11 @@ public sealed class IntroToolbarViewModel : Bindable<IntroToolbarView>
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
-    private void OnNext(object? _) => ActivateView(ActivatedView.Gallery);
+    private void OnNext(object? _)
+    {
+        bool programmaticNavigation = true; 
+        ActivateView(ActivatedView.Collection, programmaticNavigation);
+    } 
 
     public ICommand NextCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 

@@ -1,0 +1,89 @@
+<ResourceDictionary 
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+	>
+
+	<!-- é è ê -->
+	<!-- à ò -->
+
+	<system:String x:Key="Shell.AppName">Immagini Astronomiche </system:String>
+	
+	<system:String x:Key="Shell.About">Altro su...</system:String>
+	<system:String x:Key="Shell.Groups">Gruppi</system:String>
+	<system:String x:Key="Shell.NewGroup">Nuovo</system:String>
+	<system:String x:Key="Shell.NewGroupLong">Nuovo Gruppo</system:String>
+	<system:String x:Key="Shell.EditGroup">Modifica</system:String>
+	<system:String x:Key="Shell.DeleteGroup">Elimina</system:String>
+	<system:String x:Key="Shell.Settings">Impostazioni</system:String>
+	<system:String x:Key="Shell.Exit">Fine</system:String>
+	<system:String x:Key="Shell.Close">Chiudi</system:String>
+	<system:String x:Key="Shell.Save">Salva</system:String>
+	<system:String x:Key="Shell.Ready">Pronto.</system:String>
+	<system:String x:Key="Shell.Greetings">Benvenuto in Immagini Astronomiche!</system:String>
+
+	<system:String x:Key="Shell.Delete">Eliminare</system:String>
+	<system:String x:Key="Shell.GroupDelete.Question">Eliminare questo gruppo?</system:String>
+	<system:String x:Key="Shell.GroupDelete.Hint">Tutte le voci in questo gruppo verranno eliminate. Questa operazione non può essere annullata.</system:String>
+
+	<system:String x:Key="Shell.Deleted">Eliminato.</system:String>
+	<system:String x:Key="Shell.GroupDeleted">Questo gruppo è stato eliminato.</system:String>
+
+	<system:String x:Key="Shell.Error">Errore</system:String>
+	<system:String x:Key="Shell.FailGroupDelete">Impossibile eliminare questo gruppo.</system:String>
+
+	<system:String x:Key="Shell.NoGroups.Title">Nessun gruppo definito.</system:String>
+	<system:String x:Key="Shell.NoGroups.Hint">Crea un nuovo gruppo per iniziare...</system:String>
+
+	<system:String x:Key="Template.Copy">Copia</system:String>
+	<system:String x:Key="Toast.Dismiss">Chiudi</system:String>
+
+	<system:String x:Key="Group.NewTemplate">Nuovo...</system:String>
+	<system:String x:Key="Group.NewTemplateLong">Nuovo Testo</system:String>
+	<system:String x:Key="Group.NoSelection">Nessun gruppo selezionato...</system:String>
+
+	<system:String x:Key="NewEditView.Max64">Massimo 64 caratteri.</system:String>
+	<system:String x:Key="NewEditView.Max2048">Massimo 2048 caratteri.</system:String>
+
+	<system:String x:Key="NewEditGroupView.GroupName">Nome</system:String>
+	<system:String x:Key="NewEditGroupView.GroupDescription">Descrizione</system:String>
+	<system:String x:Key="NewEditGroupView.GroupIconName">Nome dell'icona</system:String>
+	<system:String x:Key="NewEditGroupView.StartTyping">Inizia a digitare per cercare...</system:String>
+	
+	<system:String x:Key="TemplateView.LinkNotFound.Title">404, Non trovato!</system:String>
+	<system:String x:Key="TemplateView.LinkNotFound.Hint">Impossibile aprire questo collegamento nel browser predefinito.</system:String>
+
+	<system:String x:Key="NewEditTemplateView.Changed.Format">Verrà modificato in {0}</system:String>
+	<system:String x:Key="NewEditTemplateView.Added.Format">Verrà aggiunto a {0}</system:String>
+
+	<system:String x:Key="NewEditTemplateView.TemplateName">Nome del testo modello</system:String>
+	<system:String x:Key="NewEditTemplateView.TemplateValue">Testo per questo modello</system:String>
+
+	<system:String x:Key="NewEditTemplateView.HideText.TrueText">Nascondi testo</system:String>
+	<system:String x:Key="NewEditTemplateView.HideText.FalseText">Normale</system:String>
+	<system:String x:Key="NewEditTemplateView.IsWebLink.TrueText">Collegamento</system:String>
+	<system:String x:Key="NewEditTemplateView.IsWebLink.FalseText">Standard</system:String>
+
+	<system:String x:Key="Settings.Language">Lingua Interfaccia Utente </system:String>
+	<system:String x:Key="Settings.French">Francese</system:String>
+	<system:String x:Key="Settings.English">Inglese (Stati Uniti)</system:String>
+	<system:String x:Key="Settings.Italian">Italiano</system:String>
+	<system:String x:Key="Settings.RestartRequired.Title">Riavvio necessario</system:String>
+	<system:String x:Key="Settings.RestartRequired.Hint">La modifica di questa preferenza richiede il riavvio dell'applicazione.</system:String>
+	<system:String x:Key="Settings.RestartRequired.Verb">Riavviare</system:String>
+
+	<system:String x:Key="TemplatesModel.GroupNameIsBlank">Il nome del gruppo non può essere lasciato vuoto.</system:String>
+	<system:String x:Key="TemplatesModel.DescriptionIsBlank">La descrizione del gruppo non può essere lasciata vuota.</system:String>
+	<system:String x:Key="TemplatesModel.IconNameIsBlank">È richiesto un nome per l'icona.</system:String>
+	<system:String x:Key="TemplatesModel.GroupNameIsTooLong">Il nome del gruppo è troppo lungo.</system:String>
+	<system:String x:Key="TemplatesModel.DescriptionIsTooLong">La descrizione del gruppo è troppo lunga.</system:String>
+	<system:String x:Key="TemplatesModel.IconNotAvailable">Impossibile trovare questa icona.</system:String>
+
+	<system:String x:Key="TemplatesModel.TemplateAlreadyExists">Esiste già un modello di testo con questo nome.</system:String>
+	<system:String x:Key="TemplatesModel.NoSuchTemplate">Questo testo modello non esiste.</system:String>
+	<system:String x:Key="TemplatesModel.TemplateNameIsBlank">Il nome del testo del modello non può essere lasciato vuoto.</system:String>
+	<system:String x:Key="TemplatesModel.TemplateValueIsBlank">Il testo in questo modello non può essere lasciato vuoto.</system:String>
+	<system:String x:Key="TemplatesModel.TemplateNameIsTooLong">Il nome di questo modello è troppo lungo.</system:String>
+	<system:String x:Key="TemplatesModel.TemplateValueIsTooLong">Il testo in questo modello è troppo lungo.</system:String>
+
+</ResourceDictionary>

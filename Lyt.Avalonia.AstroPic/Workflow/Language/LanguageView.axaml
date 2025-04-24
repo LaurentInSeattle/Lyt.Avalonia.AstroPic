@@ -14,13 +14,69 @@
 	Background="Transparent"
 	>
 	<Grid
-		Margin="2"
+		Margin="10 0 0 0"
 		VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		ShowGridLines="False"
 		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="640" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="120" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<TextBlock
+			Grid.Column="0" Grid.Row="1" 
+			Margin="20 0 0 0"
+			Text="Scegli la lingua dell'interfaccia utente."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="2" 
+			Margin="20 0 0 0"
+			Text="Choisissez le langage de l'interface utilisateur."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="3" 
+			Margin="20 0 0 0"
+			Text="Choose the user interface language."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="4" 
+			Margin="20 0 0 0"
+			Text="Elija el idioma de la interfaz de usuario."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
 		<ComboBox
+			Grid.Column="1" Grid.Row="1" Grid.RowSpan="4"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
 			x:Name="LanguageComboBox"
 			ItemsSource="{Binding Languages}"
-			Width="360" Height="80" MaxDropDownHeight="400"
+			SelectedIndex="{Binding SelectedLanguageIndex}"
+			Width="380" Height="74" MaxDropDownHeight="400"
 			>
 			<ComboBox.ItemsPanel>
 				<ItemsPanelTemplate>

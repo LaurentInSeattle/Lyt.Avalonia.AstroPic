@@ -6,8 +6,10 @@
 	<!-- é è ê -->	
 	<!-- à ò ç -->
 
-	<system:String x:Key="Shell.AppName">Texto Copieur</system:String>
+	<system:String x:Key="Shell.AppName">Images Astronomiques</system:String>
 	<system:String x:Key="Shell.About">A propos...</system:String>
+
+	
 	<system:String x:Key="Shell.Groups">Groupes</system:String>
 	<system:String x:Key="Shell.DeleteGroup">Supprimer</system:String>
 	<system:String x:Key="Shell.NewGroup">Nouveau</system:String>

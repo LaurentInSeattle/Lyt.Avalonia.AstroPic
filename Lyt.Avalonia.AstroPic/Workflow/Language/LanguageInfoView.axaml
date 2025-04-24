@@ -12,16 +12,16 @@
 		Height="64"
 		>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="140" />
+			<ColumnDefinition Width="180" />
 			<ColumnDefinition Width="60" />
-			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="20" />
 			<ColumnDefinition Width="60" />
 		</Grid.ColumnDefinitions>
 		<TextBlock
 			Grid.Column="0"
 			Text="{Binding Name}"
 			VerticalAlignment="Center"
-			FontSize="24"
+			FontSize="26"
 			FontWeight="DemiBold"
 			Margin="8"
 			Foreground="{StaticResource LightAqua_0_080}"

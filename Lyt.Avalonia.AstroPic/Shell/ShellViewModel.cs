@@ -83,7 +83,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
         }
 
         // Select default language 
-        string preferredLanguage = "it-IT";
+        string preferredLanguage = this.astroPicModel.Language;
         this.Logger.Debug("Language: " + preferredLanguage);
         this.localizer.SelectLanguage(preferredLanguage);
 

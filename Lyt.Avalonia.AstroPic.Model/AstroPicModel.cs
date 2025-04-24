@@ -33,6 +33,7 @@ public sealed partial class AstroPicModel : ModelBase
     private readonly FileManagerModel fileManager;
     private readonly AstroPicService astroPicService;
     private readonly IWallpaperService wallpaperService;
+    private readonly ILocalizer localizer; 
     private readonly Lock lockObject = new();
     private readonly FileId modelFileId;
 
@@ -52,11 +53,14 @@ public sealed partial class AstroPicModel : ModelBase
         FileManagerModel fileManager,
         AstroPicService astroPicService,
         IWallpaperService wallpaperService,
-        IMessenger messenger, ILogger logger) : base(messenger, logger)
+        ILocalizer localizer,
+        IMessenger messenger, 
+        ILogger logger) : base(messenger, logger)
     {
         this.fileManager = fileManager;
         this.astroPicService = astroPicService;
         this.wallpaperService = wallpaperService;
+        this.localizer = localizer;
         this.modelFileId = new FileId(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename);
         this.ShouldAutoSave = true;
     }
@@ -215,5 +219,11 @@ public sealed partial class AstroPicModel : ModelBase
             this.PingComplete = true;
             this.NotifyModelLoaded();
         }
+    }
+
+    public void SelectLanguage(string languageKey)
+    {
+        this.Language = languageKey;
+        this.localizer.SelectLanguage(languageKey);
     }
 }

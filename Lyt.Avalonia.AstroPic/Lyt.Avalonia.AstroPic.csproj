@@ -22,6 +22,7 @@
 	<ItemGroup>
 	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
 	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
+	  <AvaloniaXaml Remove="Assets\Languages\Lang_es-ES.axaml" />
 	  <AvaloniaXaml Remove="Assets\Theme\Sliders.axaml" />
 	</ItemGroup>
 

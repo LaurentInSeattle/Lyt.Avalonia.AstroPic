@@ -5,7 +5,7 @@ public sealed partial class AstroPicModel : ModelBase
     #region Serialized -  No model changed event
 
     [JsonRequired]
-    public string Language { get; set; } = AstroPicModel.DefaultLanguage;
+    public string Language { get => this.Get<string>()!; set => this.Set(value); } 
 
     /// <summary> This should stay true, ==> But... Just FOR NOW !  </summary>
     [JsonRequired]
