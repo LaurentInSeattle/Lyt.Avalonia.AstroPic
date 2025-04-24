@@ -9,9 +9,9 @@ public sealed class CollectionToolbarViewModel : Bindable<CollectionToolbarView>
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
-    private void OnWallpaper(object? _) => Command(ToolbarCommand.SetWallpaper);
+    private void OnWallpaper(object? _) => Command(ToolbarCommand.CollectionSetWallpaper);
     private void OnRemoveFromCollection(object? _) => Command(ToolbarCommand.RemoveFromCollection);
-    private void OnSaveToDesktop(object? _) => Command(ToolbarCommand.SaveToDesktop);
+    private void OnSaveToDesktop(object? _) => Command(ToolbarCommand.CollectionSaveToDesktop);
 
 #pragma warning restore CA1822
 #pragma warning restore IDE0051 // Remove unused private members

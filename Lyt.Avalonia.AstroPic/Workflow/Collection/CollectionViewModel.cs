@@ -61,7 +61,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
     {
         switch (message.Command)
         {
-            case ToolbarCommandMessage.ToolbarCommand.SetWallpaper:
+            case ToolbarCommandMessage.ToolbarCommand.CollectionSetWallpaper:
                 this.PictureViewModel.SetWallpaper();
                 break;
 
@@ -69,7 +69,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
                 this.PictureViewModel.RemoveFromCollection();
                 break;
 
-            case ToolbarCommandMessage.ToolbarCommand.SaveToDesktop:
+            case ToolbarCommandMessage.ToolbarCommand.CollectionSaveToDesktop:
                 this.PictureViewModel.SaveToDesktop();
                 break;
 

@@ -258,7 +258,7 @@
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
-						Width="420" Height="200"
+						Width="460" Height="200"
 						>
 						<TextBlock
 							Margin="10 0 0 0"

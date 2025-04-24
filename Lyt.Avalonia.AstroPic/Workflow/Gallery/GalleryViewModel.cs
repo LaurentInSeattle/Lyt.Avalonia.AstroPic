@@ -43,7 +43,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     {
         switch (message.Command)
         {
-            case ToolbarCommandMessage.ToolbarCommand.SetWallpaper:
+            case ToolbarCommandMessage.ToolbarCommand.GallerySetWallpaper:
                 this.PictureViewModel.SetWallpaper();
                 break;
 
@@ -51,7 +51,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
                 this.PictureViewModel.AddToCollection();
                 break;
 
-            case ToolbarCommandMessage.ToolbarCommand.SaveToDesktop:
+            case ToolbarCommandMessage.ToolbarCommand.GallerySaveToDesktop:
                 this.PictureViewModel.SaveToDesktop();
                 break;
 

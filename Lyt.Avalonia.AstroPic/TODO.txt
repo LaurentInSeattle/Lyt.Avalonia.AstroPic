@@ -1,4 +1,26 @@
 ﻿
+BUG : Commanding conflict for Zooming Gallery vs Collection
+
+BUG : Deletion of Model file 
+
+BUG : Invalid selections in Collection view 
+
+BUG : Zooming sometimes fails (Zoom Max ?)
+
+TODO: 
+
+Not enough variation when using Open Verse 
+
+Alert if quotas exceeded
+
+Thinner thumbnail view for Collection view 
+
+Complete Language view and workflow 
+
+NTH : Crop images ??? 
+
+--- 
+
 Experiment with Additional Image API web services, such as: 
 
 	https://www.mediawiki.org/wiki/API:Images
@@ -22,7 +44,6 @@ Against licensing policy:
 			Only CC0 images
 			API does NOT return copyright / licence info 
 		https://www.shutterstock.com/developers/documentation
-
 
 Misc / Weird / Unusable / Slow 
 		https://cloudinary.com/image-api 

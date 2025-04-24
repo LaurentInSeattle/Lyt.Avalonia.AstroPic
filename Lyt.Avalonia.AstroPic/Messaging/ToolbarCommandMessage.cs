@@ -13,13 +13,19 @@ public sealed record class ToolbarCommandMessage(
 
         // Right - Main toolbar in Shell view  
         ToTray, 
-        Close, 
+        Close,
 
-        // Gallery and Collection toolbars 
-        SetWallpaper,
+        // Gallery toolbar
+        GallerySetWallpaper,
+        GallerySaveToDesktop,
         AddToCollection,        // Gallery Only
+
+        // Collection toolbars 
+        CollectionSetWallpaper,
+        CollectionSaveToDesktop,
         RemoveFromCollection,   // Collection Only
-        SaveToDesktop,
+
+        // Settings toolbars 
         Cleanup,
     }
 }
