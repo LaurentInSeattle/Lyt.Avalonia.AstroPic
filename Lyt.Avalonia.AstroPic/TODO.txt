@@ -1,11 +1,7 @@
 ﻿
-BUG : Commanding conflict for Zooming Gallery vs Collection
-
 BUG : Deletion of Model file 
 
 BUG : Invalid selections in Collection view 
-
-BUG : Zooming sometimes fails (Zoom Max ?)
 
 TODO: 
 
@@ -17,7 +13,7 @@ Thinner thumbnail view for Collection view
 
 Complete Language view and workflow 
 
-NTH : Crop images ??? 
+NTH : Ability Crop images ??? 
 
 --- 
 

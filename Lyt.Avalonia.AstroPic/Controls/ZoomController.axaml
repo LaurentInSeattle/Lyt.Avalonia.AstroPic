@@ -20,6 +20,7 @@
 			Margin="0 8 0 8"
 			>
 			<glyphs:GlyphButton
+				x:Name="maxButton"
 				Style="{StaticResource TextButton}"
 				Text="Max"
 				Margin="0 0 0 8"
@@ -40,6 +41,7 @@
 				IsSnapToTickEnabled="True"
 				/>
 			<glyphs:GlyphButton
+				x:Name="minButton"
 				Style="{StaticResource TextButton}"
 				Text="Fit"
 				FontSize="13"

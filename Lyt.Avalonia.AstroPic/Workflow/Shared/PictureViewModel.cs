@@ -8,17 +8,24 @@ public sealed class PictureViewModel : Bindable<PictureView>
     public const int ThumbnailWidth = 280;
 
     private readonly AstroPicModel astroPicModel;
+    private readonly Bindable parent; 
 
     private PictureMetadata? pictureMetadata;
     private byte[]? imageBytes;
     private int imageWidth;
-    private int imageHeight;
 
-    public PictureViewModel()
+    public PictureViewModel(Bindable parent)
     {
+        this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
         this.DisablePropertyChangedLogging = true ;
+    }
+
+    protected override void OnViewLoaded() 
+    {
+        base.OnViewLoaded();
+        this.View.ZoomController.Tag = this.parent; 
     }
 
     internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
@@ -27,7 +34,6 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.imageBytes = imageBytes;
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.imageWidth = (int)bitmap.Size.Width;
-        this.imageHeight = (int)bitmap.Size.Height;
         this.LoadImage(bitmap);
         var metadata = this.pictureMetadata;
         this.Provider = this.astroPicModel.ProviderName(metadata.Provider);
@@ -69,11 +75,11 @@ public sealed class PictureViewModel : Bindable<PictureView>
         canvas.Height = bitmap.Size.Height;
         image.Source = bitmap;
 
-        // This is where it gets really weird
-        // this.View.InvalidateVisual() ; // does not work , even if dispatched 
-        // The view box in the zoom control is stuck to zero bounds 
-        this.ZoomFactor = 2.0;
-        Schedule.OnUiThread(50, () => { this.ZoomFactor = 1.0; }, DispatcherPriority.ApplicationIdle);
+        // Enforce property changed but.. I dont understand why dispatch is needed 
+        this.View.ZoomController.Max();
+        Schedule.OnUiThread(
+            50, () => { this.View.ZoomController.Min(); }, DispatcherPriority.Background);
+        
         if (this.pictureMetadata is not null)
         {
             Schedule.OnUiThread(
@@ -159,7 +165,14 @@ public sealed class PictureViewModel : Bindable<PictureView>
     }
 
     private void OnZoomRequest(ZoomRequestMessage message)
-        => this.ZoomFactor = message.ZoomFactor;
+    {
+        if (message.Tag != this.parent)
+        {
+            return ;
+        } 
+
+        this.ZoomFactor = message.ZoomFactor;
+    } 
 
     public double ZoomFactor { get => this.Get<double>(); set => this.Set(value); }
 

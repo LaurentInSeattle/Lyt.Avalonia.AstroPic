@@ -11,7 +11,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     {
         this.astroPicModel = astroPicModel;
         this.toaster = toaster;
-        this.PictureViewModel = new PictureViewModel();
+        this.PictureViewModel = new PictureViewModel(this);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
         this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);

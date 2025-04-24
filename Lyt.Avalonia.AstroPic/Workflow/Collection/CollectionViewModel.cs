@@ -12,7 +12,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
     {
         this.astroPicModel = astroPicModel;
         this.toaster = toaster;
-        this.PictureViewModel = new PictureViewModel();
+        this.PictureViewModel = new PictureViewModel(this);
         this.DropViewModel = new DropViewModel();
         this.StatisticsViewModel = new StatisticsViewModel();
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
