@@ -33,23 +33,23 @@ public sealed partial class AstroPicModel : ModelBase
     private readonly FileManagerModel fileManager;
     private readonly AstroPicService astroPicService;
     private readonly IWallpaperService wallpaperService;
-    private readonly Lock lockObject = new ();
+    private readonly Lock lockObject = new();
+    private readonly FileId modelFileId;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-#pragma warning disable IDE0021 // Use expression body for constructor 
     public AstroPicModel() : base(null, null)
     {
+        this.modelFileId = new FileId(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename);
         // Do not inject the FileManagerModel instance: a parameter-less ctor is required for Deserialization 
         // Empty CTOR required for deserialization 
         this.ShouldAutoSave = false;
     }
-#pragma warning restore IDE0021
 #pragma warning restore CS8625 
 #pragma warning restore CS8618
 
     public AstroPicModel(
-        FileManagerModel fileManager, 
+        FileManagerModel fileManager,
         AstroPicService astroPicService,
         IWallpaperService wallpaperService,
         IMessenger messenger, ILogger logger) : base(messenger, logger)
@@ -57,6 +57,7 @@ public sealed partial class AstroPicModel : ModelBase
         this.fileManager = fileManager;
         this.astroPicService = astroPicService;
         this.wallpaperService = wallpaperService;
+        this.modelFileId = new FileId(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename);
         this.ShouldAutoSave = true;
     }
 
@@ -65,7 +66,13 @@ public sealed partial class AstroPicModel : ModelBase
         NetworkChange.NetworkAvailabilityChanged -= this.OnNetworkAvailabilityChanged;
     }
 
-    public override async Task Initialize() => await this.Load();
+    public override async Task Initialize()
+    {
+        this.IsInitializing = true; 
+        await this.Load();
+        this.IsInitializing = false;
+        this.IsDirty = false;
+    }
 
     public override async Task Shutdown()
     {
@@ -77,16 +84,14 @@ public sealed partial class AstroPicModel : ModelBase
 
     public Task Load()
     {
-        string filename = AstroPicModel.AstroPicModelFilename;
         try
         {
-            if (!this.fileManager.Exists(Area.User, Kind.Json, filename))
+            if (!this.fileManager.Exists(this.modelFileId))
             {
-                this.fileManager.Save(Area.User, Kind.Json, filename, AstroPicModel.DefaultData);
+                this.fileManager.Save(this.modelFileId, AstroPicModel.DefaultData);
             }
 
-            AstroPicModel model =
-                this.fileManager.Load<AstroPicModel>(Area.User, Kind.Json, filename);
+            AstroPicModel model = this.fileManager.Load<AstroPicModel>(this.modelFileId);
 
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<AstroPicModel>(model);
@@ -101,12 +106,12 @@ public sealed partial class AstroPicModel : ModelBase
             this.IsInternetConnected = false;
             _ = this.Ping();
             NetworkChange.NetworkAvailabilityChanged += this.OnNetworkAvailabilityChanged;
-            
+
             return Task.CompletedTask;
         }
         catch (Exception ex)
         {
-            string msg = "Failed to load Model from " + filename;
+            string msg = "Failed to load Model from " + this.modelFileId.Filename;
             this.Logger.Fatal(msg);
             throw new Exception("", ex);
         }
@@ -119,14 +124,40 @@ public sealed partial class AstroPicModel : ModelBase
         // causing dirtyness, and in such case we must avoid the null crash and anyway there is no need to save anything.
         if (this.fileManager is not null)
         {
-            this.fileManager.Save(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename, this);
+#if DEBUG 
+            if (this.fileManager.Exists(this.modelFileId))
+            {
+                this.fileManager.Duplicate(this.modelFileId);
+            }
+#endif // DEBUG 
+
+            this.fileManager.Save(this.modelFileId, this);
+
+#if DEBUG 
+            try
+            {
+                string path = this.fileManager.MakePath(this.modelFileId);
+                var fileInfo = new FileInfo(path);
+                if ( fileInfo.Length < 1024 )
+                {
+                    if (Debugger.IsAttached) { Debugger.Break(); }
+                    this.Logger.Warning("Model file is too small!"); 
+                }
+            }
+            catch (Exception ex)
+            {
+                if ( Debugger.IsAttached ) {  Debugger.Break(); }
+                Debug.WriteLine(ex);
+            }
+#endif // DEBUG 
+
             base.Save();
         }
 
         return Task.CompletedTask;
     }
 
-    private const int PingTimeout = 5_000;
+    private const int PingTimeout = 12_000;
     private const string PingHost = "www.bing.com";
 
     private void OnNetworkAvailabilityChanged(object? sender, NetworkAvailabilityEventArgs e)
@@ -183,6 +214,6 @@ public sealed partial class AstroPicModel : ModelBase
         {
             this.PingComplete = true;
             this.NotifyModelLoaded();
-        } 
+        }
     }
 }

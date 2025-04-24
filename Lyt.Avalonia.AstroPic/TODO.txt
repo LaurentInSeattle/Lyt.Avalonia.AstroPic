@@ -1,6 +1,4 @@
 ﻿
-BUG : Deletion of Model file 
-
 BUG : Invalid selections in Collection view 
 
 TODO: 
