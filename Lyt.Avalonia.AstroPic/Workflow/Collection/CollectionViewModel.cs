@@ -14,7 +14,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         this.toaster = toaster;
         this.PictureViewModel = new PictureViewModel(this);
         this.DropViewModel = new DropViewModel();
-        this.StatisticsViewModel = new StatisticsViewModel();
+        this.StatisticsViewModel = new StatisticsViewModel(this.astroPicModel);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
         this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);

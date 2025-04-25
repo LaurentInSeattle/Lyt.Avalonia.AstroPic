@@ -175,6 +175,24 @@ public sealed partial class AstroPicModel : ModelBase
         }
     }
 
+    public bool AreQuotasExceeded()
+        => (this.Statistics.ImageCount > this.MaxImages) ||
+           (this.Statistics.SizeOnDiskKB > this.MaxStorageMB * KB);
+
+    public bool IsAvailableDiskSpaceLow()
+    {
+        long availableSpace = this.fileManager.AvailableFreeSpace(FileManagerModel.Area.User);
+        if (availableSpace > 0)
+        {
+            double availableSpaceGB = availableSpace / (1024.0 * 1024.0 * 1024.0);
+            return availableSpaceGB < 2.0;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void CleanupCollection(bool calledFromUi = false)
     {
         if (!calledFromUi && !this.ShouldAutoCleanup)
@@ -182,8 +200,7 @@ public sealed partial class AstroPicModel : ModelBase
             return;
         }
 
-        if ((this.Statistics.ImageCount > this.MaxImages) ||
-            (this.Statistics.SizeOnDiskKB > this.MaxStorageMB * KB))
+        if (this.AreQuotasExceeded())
         {
             this.DoCleanup();
             this.ValidateCollection();

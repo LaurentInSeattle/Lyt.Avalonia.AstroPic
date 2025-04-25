@@ -9,24 +9,38 @@
 	xmlns:vm="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Collection"
 	x:DataType="vm:StatisticsViewModel" 
 	>
-	<Grid>
+	<Grid
+		ShowGridLines="False"
+		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="70" />
+			<RowDefinition Height="54" />
 			<RowDefinition Height="36" />
-			<RowDefinition Height="36" />
-			<RowDefinition Height="36" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="32" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<TextBlock
 			Text="Statistiche"
+			Margin="0 10 0 0"
+			Foreground="{StaticResource PastelOrchid_0_080}"
 			FontSize="24"
 			FontWeight="DemiBold"
 			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			/>
 		<TextBlock
+			Text="{Binding AlertText}"
 			Grid.Row="1"
+			FontSize="20"
+			Margin="32 0 0 0"
+			FontWeight="DemiBold"
+			TextAlignment="Center"
+			Foreground="{StaticResource PastelOrchid_2_100_Color}"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			/>
+		<TextBlock
+			Grid.Row="2"
 			Margin="32 0 0 0"
 			Text="{Binding ImageCountText}"
 			FontSize="16"
@@ -35,7 +49,7 @@
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			/>
 		<TextBlock
-			Grid.Row="2"
+			Grid.Row="3"
 			Margin="32 0 0 0"
 			Text="{Binding SizeOnDiskText}"
 			FontSize="16"
@@ -44,7 +58,7 @@
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			/>
 		<TextBlock
-			Grid.Row="3"
+			Grid.Row="4"
 			Margin="32 0 0 0"
 			Text="{Binding AvailableDiskSpaceText}"
 			FontSize="16"
