@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Service;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
 {
@@ -11,7 +9,7 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     public const double SmallBorderHeight = 212;
 
     public const double LargeImageHeight = 200;
-    public const double SmallImageHeight = 140;
+    public const double SmallImageHeight = 160;
 
     public const int LargeThumbnailWidth = 360;
     public const int SmallThumbnailWidth = 240;

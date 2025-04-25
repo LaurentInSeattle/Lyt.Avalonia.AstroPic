@@ -5,10 +5,6 @@ TODO:
 
 Not enough variation when using Open Verse 
 
-Alert if quotas exceeded
-
-Thinner thumbnail view for Collection view 
-
 Complete Language view and workflow 
 
 NTH : Ability Crop images ??? 

@@ -17,7 +17,7 @@
 		CornerRadius="4"
 		>
 		<Grid
-			Margin="4"
+			Margin="2"
 			>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="36" />
