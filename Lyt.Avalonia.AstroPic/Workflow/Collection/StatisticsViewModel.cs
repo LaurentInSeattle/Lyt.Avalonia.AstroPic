@@ -18,7 +18,7 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
     private void UpdateStatistics()
     {
         var statistics = this.astroPicModel.Statistics;
-        string formatImageCount = this.Localizer.Lookup("Collection.Stats.AvailableDiskSpaceFormat");
+        string formatImageCount = this.Localizer.Lookup("Collection.Stats.ImageCountFormat");
         this.ImageCountText =
             string.Format(formatImageCount, statistics.ImageCount, this.astroPicModel.MaxImages);
         int sizeOnDisk = (int)((statistics.SizeOnDiskKB + 512 + 1) / 1024);

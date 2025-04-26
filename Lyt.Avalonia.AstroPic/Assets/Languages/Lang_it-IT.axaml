@@ -4,8 +4,7 @@
 	xmlns:system="clr-namespace:System;assembly=System.Runtime"
 	>
 
-	<!-- é è ê -->
-	<!-- à ò -->
+	<!-- é è ê à ò -->
 
 	<!-- Shell -->
 	<system:String x:Key="Shell.AppName">Immagini Astronomiche </system:String>
@@ -31,7 +30,7 @@
 
 	<system:String x:Key="Collection.Stats.AlertTextQuota">Troppe immagini nella collezione!</system:String>
 	<system:String x:Key="Collection.Stats.AlertTextSpace">Attento al spazio disponibile su disco!</system:String>
-	<system:String x:Key="Collection.Stats.ImageCountFormat">"Immagine: {0} (Tutti i servizi - Quota: {1})"</system:String>
+	<system:String x:Key="Collection.Stats.ImageCountFormat">Immagine: {0} (Tutti i servizi - Quota: {1})</system:String>
 	<system:String x:Key="Collection.Stats.SizeOnDiskFormat">Dimensione stimata su disco: {0} MB (Quota: {1} MB)</system:String>
 	<system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Spazio disponibile su disco: {0:F1} GB</system:String>
 
@@ -39,6 +38,17 @@
 	<system:String x:Key="Collection.Thumbs.All">Tutto</system:String>
 	<system:String x:Key="Collection.Thumbs.Recent">Recente</system:String>
 
+	<!-- Gallery  -->
+
+	<!-- Intro  -->
+
+	<!-- Settings  -->
+
+	<!-- Shared  -->
+
+	<!-- Tray  -->
+
+	<!-- Model / Service -->
 
 
 	<system:String x:Key="Shell.Groups">Gruppi</system:String>

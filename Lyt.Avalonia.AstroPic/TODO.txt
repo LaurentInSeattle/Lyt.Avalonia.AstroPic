@@ -3,6 +3,8 @@ BUG : Invalid selections in Collection view
 
 TODO: 
 
+Info about current wallpaper from tray icon menu 
+
 Not enough variation when using Open Verse 
 
 Complete Language view and workflow 
