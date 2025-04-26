@@ -14,13 +14,13 @@
 	x:DataType="vm:SelectProviderViewModel"
 	>
 	<Grid
-		Width="380" Height="80"
+		Width="380" Height="70"
 		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="8" />
+			<RowDefinition Height="4" />
+			<RowDefinition Height="30" />
 			<RowDefinition Height="32" />
-			<RowDefinition Height="32" />
-			<RowDefinition Height="8" />
+			<RowDefinition Height="4" />
 		</Grid.RowDefinitions>
 		<TextBlock
 			Grid.Row="1"
@@ -35,8 +35,8 @@
 			Grid.Row="2" 
 			Margin="0"
 			Style="{StaticResource StandardToggleSwitch}"
-			TrueText="Scaricamento"
-			FalseText="Ignora e salta questo servizio web"
+			TrueText="{DynamicResource Settings.Services.Downloaded}"
+			FalseText="{DynamicResource Settings.Services.Skip}"
 			Height="30" Width="360"
 			HorizontalAlignment="Right" VerticalAlignment="Center"
 			Value="{Binding UseService}"

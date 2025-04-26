@@ -26,8 +26,8 @@
 			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
-				Title="Servizi di download di immagini."
-				Text="Seleziona i servizi web da cui vuoi scaricare le immagini."
+				Title="{DynamicResource Settings.Services.Title}"
+				Text="{DynamicResource Settings.Services.Subtitle}"
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
@@ -52,7 +52,7 @@
 								</ItemsControl.ItemsPanel>
 								<ItemsControl.ItemTemplate>
 									<DataTemplate>
-										<vm:SelectProviderView Margin="0 8 0 8" />
+										<vm:SelectProviderView Margin="0 2 0 2" />
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>
 							</ItemsControl>
@@ -63,8 +63,8 @@
 			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
-				Title="Impostazioni della quota disco"
-				Text="Utilizza queste impostazioni per limitare (o forse non limitare) l'utilizzo dello spazio su disco per le immagini nella tua collezione."
+				Title="{DynamicResource Settings.Quota.Title}"
+				Text="{DynamicResource Settings.Quota.Subtitle}"
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
@@ -87,7 +87,7 @@
 						<TextBlock
 							Grid.Row="0"
 							Margin="20 0 0 0"
-							Text="Numero massimo di immagini:"
+							Text="{DynamicResource Settings.Quota.ImageCount}"
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -106,7 +106,7 @@
 						<TextBlock
 							Grid.Row="1"
 							Margin="20 0 0 0"
-							Text="Quota di spazio (MB) su disco per le immagini:"
+							Text="{DynamicResource Settings.Quota.DiskSpace}"
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -125,7 +125,7 @@
 						<TextBlock
 							Grid.Row="2"
 							Margin="20 0 0 0"
-							Text="Dimensione per l'archiviazione delle immagini:"
+							Text="{DynamicResource Settings.Quota.ImageSize}"
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -135,8 +135,8 @@
 							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
 							Margin="0"
 							Style="{StaticResource StandardToggleSwitch}"
-							TrueText="Alta Definizione (HD)"
-							FalseText="Ultra Alta Definizione (UHD/4K)"
+							TrueText="{DynamicResource Settings.Quota.ImageSize.True}"
+							FalseText="{DynamicResource Settings.Quota.ImageSize.False}"
 							Height="30" Width="600"
 							HorizontalAlignment="Center" VerticalAlignment="Center"
 							Value="{Binding MaxImageWidth}"
@@ -144,7 +144,7 @@
 						<TextBlock
 							Grid.Row="4"
 							Margin="20 0 0 0"
-							Text="Cosa fare se la quota viene superata?"
+							Text="{DynamicResource Settings.Quota.Exceeded}"							
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -154,8 +154,8 @@
 							Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
 							Margin="0"
 							Style="{StaticResource StandardToggleSwitch}"
-							TrueText="Auto. elimina le vecchie immagini."
-							FalseText="Mostra solo un messaggio di avviso."
+							TrueText="{DynamicResource Settings.Quota.Exceeded.True}"	
+							FalseText="{DynamicResource Settings.Quota.Exceeded.False}"	
 							Height="30" Width="600"
 							HorizontalAlignment="Center" VerticalAlignment="Center"
 							Value="{Binding ShouldAutoCleanup}"
@@ -166,8 +166,8 @@
 			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
-				Title="Controlli del sistema operativo"
-				Text="Scegli alcune impostazioni del sistema operativo per gestire le tue immagini."
+				Title="{DynamicResource Settings.Os.Title}"		
+				Text="{DynamicResource Settings.Os.Subtitle}"
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<!-- Disabling Autostart widgets for now -->
@@ -212,7 +212,7 @@
 						<TextBlock
 							Grid.Row="2"
 							Margin="20 0 0 0"
-							Text="Ruotare lo sfondo dello schermo?"
+							Text="{DynamicResource Settings.Os.Rotate}"
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -222,8 +222,8 @@
 							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
 							Margin="0"
 							Style="{StaticResource StandardToggleSwitch}"
-							TrueText="Si, periodicamente."
-							FalseText="Non cambiarlo mai."
+							TrueText="{DynamicResource Settings.Os.Rotate.True}"
+							FalseText="{DynamicResource Settings.Os.Rotate.False}"
 							Height="30" Width="600"
 							HorizontalAlignment="Center" VerticalAlignment="Center"
 							Value="{Binding ShouldRotateWallpapers}"
@@ -231,7 +231,7 @@
 						<TextBlock
 							Grid.Row="4"
 							Margin="20 0 0 0"
-							Text="Cambia sfondo dopo questi minuti:"
+							Text="{DynamicResource Settings.Os.Rotate.Minutes}"
 							FontSize="18"
 							TextAlignment="Center"
 							Foreground="{StaticResource PastelOrchid_0_080}"
@@ -253,8 +253,8 @@
 			<shared:ContainerControl
 				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
-				Title="Promemoria importante..."
-				Text="Alcune cose importanti da ricordare sulle immagini scaricate..."
+				Title="{DynamicResource Settings.ReminderTitle}"
+				Text="{DynamicResource Settings.ReminderSubtitle}"
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
@@ -262,7 +262,7 @@
 						>
 						<TextBlock
 							Margin="10 0 0 0"
-							Text="Si consiglia di utilizzare le immagini scaricate solo come sfondo del computer. Per qualsiasi altro utilizzo, commerciale o meno, è necessario contattare il titolare del copyright."
+							Text="{DynamicResource Settings.ReminderText}"
 							FontSize="24"
 							TextAlignment="Left"
 							Foreground="{StaticResource PastelOrchid_0_080}"

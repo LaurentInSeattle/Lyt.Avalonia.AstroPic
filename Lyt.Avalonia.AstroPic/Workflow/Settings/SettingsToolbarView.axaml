@@ -28,7 +28,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
-			Text="Ripulire Adesso"
+			Text="{DynamicResource Settings.CleanupNow}"
 			Command="{Binding CleanupCommand}"
 			/>
 	</StackPanel>
