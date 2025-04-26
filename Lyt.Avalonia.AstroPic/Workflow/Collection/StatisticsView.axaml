@@ -21,7 +21,7 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<TextBlock
-			Text="Statistiche"
+			Text="{DynamicResource Collection.Statistics}"
 			Margin="0 10 0 0"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			FontSize="24"

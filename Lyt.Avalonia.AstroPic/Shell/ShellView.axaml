@@ -84,7 +84,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
-				Text="Oggi"
+				Text="{DynamicResource Shell.Today}"
 				IsSelected="True"
 				Command="{Binding TodayCommand}"
 				Group="{Binding ElementName=SelectionGroup}"
@@ -100,7 +100,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
-				Text="Collezione"
+				Text="{DynamicResource Shell.Collection}"
 				Command="{Binding CollectionCommand}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
@@ -129,7 +129,7 @@
 				GlyphSource="flag"
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
-				Text="Lingua"
+				Text="{DynamicResource Shell.Language}"
 				Command="{Binding LanguageCommand}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
@@ -165,7 +165,7 @@
 				GlyphSource="swipe_down"
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
-				Text="All'icona"
+				Text="{DynamicResource Shell.ToTray}"
 				Command="{Binding ToTrayCommand}"
 				/>
 			<glyphs:GlyphButton

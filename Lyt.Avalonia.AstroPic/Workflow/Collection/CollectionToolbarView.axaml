@@ -28,7 +28,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
-			Text="Imposta Sfondi"
+			Text="{DynamicResource Collection.SetWallpaper}"
 			Command="{Binding WallpaperCommand}"
 			/>
 		<glyphs:GlyphButton
@@ -41,7 +41,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
-			Text="Rimuovi"
+			Text="{DynamicResource Collection.Remove}"
 			Command="{Binding RemoveFromCollectionCommand}"
 			/>
 		<glyphs:GlyphButton
@@ -54,7 +54,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
-			Text="Salva sul Desktop"
+			Text="{DynamicResource Collection.SaveToDesktop}"
 			Command="{Binding SaveToDesktopCommand}"
 			/>
 	</StackPanel>

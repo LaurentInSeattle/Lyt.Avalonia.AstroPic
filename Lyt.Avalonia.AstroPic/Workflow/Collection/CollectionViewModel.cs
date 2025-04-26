@@ -3,15 +3,15 @@
 public sealed class CollectionViewModel : Bindable<CollectionView>
 {
     private readonly AstroPicModel astroPicModel;
-    private readonly IToaster toaster;
+    private readonly ILocalizer localizer;
 
     private bool loaded;
     private List<Tuple<Picture, byte[]>>? collectionThumbnails;
 
-    public CollectionViewModel(AstroPicModel astroPicModel, IToaster toaster)
+    public CollectionViewModel(AstroPicModel astroPicModel, ILocalizer localizer)
     {
         this.astroPicModel = astroPicModel;
-        this.toaster = toaster;
+        this.localizer = localizer;
         this.PictureViewModel = new PictureViewModel(this);
         this.DropViewModel = new DropViewModel();
         this.StatisticsViewModel = new StatisticsViewModel(this.astroPicModel);
@@ -143,8 +143,8 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
 
     private void ShowBadPicture()
     {
-        this.PictureViewModel.Title = "Bad picture!";
-        this.Logger.Warning("Bad picture!"); 
+        this.PictureViewModel.Title = this.localizer.Lookup("Collection.BadPicture") ;
+        this.Logger.Warning("Collection: Bad picture!"); 
     }
 
     public ThumbnailsPanelViewModel ThumbnailsPanelViewModel

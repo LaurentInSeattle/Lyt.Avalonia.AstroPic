@@ -33,7 +33,7 @@
 					/>
 				<TextBlock
 					Margin="0 10 0 0"
-					Text="Zona di Rilascio"
+					Text="{DynamicResource Collection.DropZone}"
 					FontSize="24"
 					FontWeight="DemiBold"
 					TextAlignment="Center"
@@ -42,7 +42,7 @@
 					/>
 				<TextBlock
 					Margin="0 0 0 10"
-					Text="Trascina e rilascia i file qui per aggiungerli alla collezione di sfondi."
+					Text="{DynamicResource Collection.DropZoneHelp}"
 					FontSize="16"
 					TextAlignment="Center"
 					Foreground="{StaticResource PastelOrchid_0_080}"

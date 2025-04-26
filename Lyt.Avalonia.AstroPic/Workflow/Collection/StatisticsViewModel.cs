@@ -11,27 +11,27 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
         this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
     }
 
-    private void OnModelLoaded(ModelLoadedMessage _)
-            => this.UpdateStatistics();
+    private void OnModelLoaded(ModelLoadedMessage _) => this.UpdateStatistics();
 
-    private void OnCollectionChanged(CollectionChangedMessage message)
-            => this.UpdateStatistics();
+    private void OnCollectionChanged(CollectionChangedMessage message) => this.UpdateStatistics();
 
     private void UpdateStatistics()
     {
         var statistics = this.astroPicModel.Statistics;
+        string formatImageCount = this.Localizer.Lookup("Collection.Stats.AvailableDiskSpaceFormat");
         this.ImageCountText =
-            string.Format("Immagine: {0} (Tutti i servizi - Quota: {1})", statistics.ImageCount, this.astroPicModel.MaxImages);
+            string.Format(formatImageCount, statistics.ImageCount, this.astroPicModel.MaxImages);
         int sizeOnDisk = (int)((statistics.SizeOnDiskKB + 512 + 1) / 1024);
+        string formatSizeOnDisk = this.Localizer.Lookup("Collection.Stats.SizeOnDiskFormat");        
         this.SizeOnDiskText =
-            string.Format("Dimensione stimata su disco: {0} MB (Quota: {1} MB)", sizeOnDisk, this.astroPicModel.MaxStorageMB);
+            string.Format(formatSizeOnDisk, sizeOnDisk, this.astroPicModel.MaxStorageMB);
         var fileManager = App.GetRequiredService<FileManagerModel>();
         long availableSpace = fileManager.AvailableFreeSpace(FileManagerModel.Area.User);
         if (availableSpace > 0)
         {
             double availableSpaceGB = availableSpace / (1024.0 * 1024.0 * 1024.0);
-            this.AvailableDiskSpaceText =
-                string.Format("Spazio disponibile su disco: {0:F1} GB", availableSpaceGB);
+            string formatSpace = this.Localizer.Lookup("Collection.Stats.AvailableDiskSpaceFormat"); 
+            this.AvailableDiskSpaceText =string.Format(formatSpace, availableSpaceGB);
         }
         else
         {
@@ -42,13 +42,15 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
         this.AlertText = string.Empty;
         if ( this.astroPicModel.IsAvailableDiskSpaceLow())
         {
-            this.AlertText = "Attento al spazio disponibile su disco!";
+            // "Attento al spazio disponibile su disco!";
+            this.AlertText = this.Localizer.Lookup("Collection.Stats.AlertTextSpace");
         }
         else
         {
             if (this.astroPicModel.AreQuotasExceeded())
             {
-                this.AlertText = "Troppe immagini nella collezione!";
+                // "Troppe immagini nella collezione!";
+                this.AlertText = this.Localizer.Lookup("Collection.Stats.AlertTextQuota"); 
             }
         } 
     }
