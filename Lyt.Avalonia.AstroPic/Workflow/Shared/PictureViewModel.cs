@@ -124,7 +124,7 @@ public sealed class PictureViewModel : Bindable<PictureView>
 
     internal void RemoveFromCollection()
     {
-        this.Provider = "Nessuna Immagine";
+        this.Provider = this.Localizer.Lookup("Shared.NoImage");
         this.Title = string.Empty;
         this.Copyright = string.Empty; 
 
@@ -159,7 +159,8 @@ public sealed class PictureViewModel : Bindable<PictureView>
             this.Logger.Error(msg);
             var toaster = ApplicationBase.GetRequiredService<IToaster>();
             toaster.Show(
-                "File System Error", "Could not save image file",
+                this.Localizer.Lookup("Shared.FileErrorTitle"),
+                this.Localizer.Lookup("Shared.FileErrorText"),
                 10_000, InformationLevel.Warning);
         }
     }

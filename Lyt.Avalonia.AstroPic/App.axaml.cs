@@ -91,18 +91,13 @@ public partial class App : ApplicationBase
 
         // The localizer needs the File Manager, do not change the order.
         var localizer = App.GetRequiredService<ILocalizer>();
-
-        // TODO: FIX that ! ( Configure should be part of the Interface ) 
-        if (localizer is LocalizerModel localizerModel)
-        {
-            await localizerModel.Configure(
-                new LocalizerConfiguration
-                {
-                    AssemblyName = App.AssemblyName,
-                    Languages = ["en-US", "fr-FR", "it-IT"],
-                    // Use default for all other config parameters 
-                });
-        }
+        await localizer.Configure(
+            new LocalizerConfiguration
+            {
+                AssemblyName = App.AssemblyName,
+                Languages = ["en-US", "fr-FR", "it-IT", "es-ES"],
+                // Use default for all other config parameters 
+            });
 
         this.SetupTrayIcon();
 

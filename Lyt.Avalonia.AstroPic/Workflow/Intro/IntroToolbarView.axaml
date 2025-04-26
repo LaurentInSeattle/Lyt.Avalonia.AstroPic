@@ -23,11 +23,11 @@
 			Behaviour="Tap"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Width="260" Height="56"
-			Margin="4"
+			Margin="0 4 4 4"
 			GlyphSource="next"
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
-			Text="Accetto i termini della licenza MIT, Continua"
+			Text="{DynamicResource Intro.AgreeMIT}"
 			Command="{Binding NextCommand}"
 	    	/>
 	</StackPanel>

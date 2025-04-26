@@ -81,18 +81,26 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
 
     private void OnDownloadProgress(ServiceProgressMessage message)
     {
-        string start = message.IsBegin ? "Starting downloading " : "Completed downloading ";
-        string middle = message.IsMetadata ? " image metadata " : " image ";
+        string start = message.IsBegin ?
+            this.Localizer.Lookup("Gallery.StartingDownloading") :
+            this.Localizer.Lookup("Gallery.CompletedDownloading"); 
+        string middle = message.IsMetadata ? 
+            this.Localizer.Lookup("Gallery.ImageMetadata") :
+            this.Localizer.Lookup("Gallery.Image");
         string provider = message.Provider.ToString().BeautifyEnumString();
-        string end = " for provider ";
-        this.ProgressMessage = string.Concat(start, middle, end, provider);
+        string end = this.Localizer.Lookup("Gallery.ForProvider");
+        this.ProgressMessage = string.Concat(start, " " , middle, " " , end, " " , provider);
     }
 
     private void LoadImages(List<PictureDownload> downloads)
     {
         this.ThumbnailsPanelViewModel.LoadImages(downloads);
         Schedule.OnUiThread(
-            200, () => { this.ProgressMessage = "Downloads complete!"; }, DispatcherPriority.Background);
+            200, () => 
+            {
+                string msg = this.Localizer.Lookup("Gallery.DownloadsComplete");
+                this.ProgressMessage = msg; 
+            }, DispatcherPriority.Background);
     }
 
     internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)

@@ -4,10 +4,18 @@ using static ViewActivationMessage;
 
 public partial class App : ApplicationBase
 {
-    private bool isShowingMainWindow; 
+    private bool isShowingMainWindow;
 
     private void SetupTrayIcon()
     {
+        // TODO: Fix that (if possible) 
+        // Tray will localize only at app startup 
+        // Tray will not re-localize when language is changed
+
+        var localizer = App.GetRequiredService<ILocalizer>();
+        string openCollection = localizer.Lookup("Tray.OpenCollection");
+        string settings = localizer.Lookup("Tray.Settings");
+        string imageInfo = localizer.Lookup("Tray.ImageInfo");
         var trayIcon = new TrayIcon
         {
             Icon = new WindowIcon(
@@ -15,15 +23,20 @@ public partial class App : ApplicationBase
                     new Uri("avares://Lyt.Avalonia.AstroPic/Assets/Images/AstroPic.ico")))),
             Menu =
             [
-                new NativeMenuItem("Apri la Collezione")
-                    {
-                         Command = new Command (this.OpenCollectionFromTray )
-                    },
-                    new NativeMenuItemSeparator(),
-                    new NativeMenuItem("Impostazioni")
-                    {
-                         Command = new Command (this.OpenSettingsFromTray )
-                    },
+                new NativeMenuItem(openCollection)
+                {
+                    Command = new Command (this.OpenCollectionFromTray)
+                },
+                new NativeMenuItemSeparator(),
+                new NativeMenuItem(settings)
+                {
+                    Command = new Command (this.OpenSettingsFromTray)
+                },
+                new NativeMenuItemSeparator(),
+                new NativeMenuItem(imageInfo)
+                {
+                    Command = new Command (this.ShowImageInfoFromTray)
+                },
             ],
         };
 
@@ -41,8 +54,8 @@ public partial class App : ApplicationBase
     {
         if (this.isShowingMainWindow)
         {
-            return ;
-        } 
+            return;
+        }
 
         // Do not navigate, just show the window if needed 
         this.ShowMainWindow();
@@ -65,7 +78,7 @@ public partial class App : ApplicationBase
         }
 
         mainWindow.ShowInTaskbar = show;
-        this.isShowingMainWindow = show; 
+        this.isShowingMainWindow = show;
     }
 
     private void OpenCollectionFromTray(object? _)
@@ -88,9 +101,14 @@ public partial class App : ApplicationBase
         NavigateTo(ActivatedView.Settings);
     }
 
+    private void ShowImageInfoFromTray(object? _)
+    {
+        // TODO
+    }
+
     private static void NavigateTo(ActivatedView view)
     {
-        bool programmaticNavigation = true ;
+        bool programmaticNavigation = true;
         var messenger = App.GetRequiredService<IMessenger>();
         messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
     }
