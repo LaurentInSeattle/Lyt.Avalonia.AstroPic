@@ -1,8 +1,8 @@
-﻿namespace Lyt.Avalonia.AstroPic;
+﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
 using static ViewActivationMessage;
 
-public partial class App : ApplicationBase
+public sealed partial class ShellViewModel : Bindable<ShellView>
 {
     private bool isShowingMainWindow;
 
@@ -43,10 +43,10 @@ public partial class App : ApplicationBase
         trayIcon.Clicked += this.OnTrayIconClicked;
 
         var icons = new TrayIcons { trayIcon };
-        TrayIcon.SetIcons(this, icons);
+        TrayIcon.SetIcons(App.Instance, icons);
     }
 
-    private void ClearTrayIcon() => TrayIcon.SetIcons(this, null);
+    private static void ClearTrayIcon() => TrayIcon.SetIcons(App.Instance, null);
 
     //     Raised when the TrayIcon is clicked. Note, this is only supported on Win32 and
     //     some Linux distributions, on OSX this event is not raised.
@@ -88,7 +88,7 @@ public partial class App : ApplicationBase
             this.ShowMainWindow();
         }
 
-        NavigateTo(ActivatedView.Collection);
+        this.NavigateTo(ActivatedView.Collection);
     }
 
     private void OpenSettingsFromTray(object? _)
@@ -98,7 +98,7 @@ public partial class App : ApplicationBase
             this.ShowMainWindow();
         }
 
-        NavigateTo(ActivatedView.Settings);
+        this.NavigateTo(ActivatedView.Settings);
     }
 
     private void ShowImageInfoFromTray(object? _)
@@ -106,10 +106,10 @@ public partial class App : ApplicationBase
         // TODO
     }
 
-    private static void NavigateTo(ActivatedView view)
+    private void NavigateTo(ActivatedView view)
     {
         bool programmaticNavigation = true;
-        var messenger = App.GetRequiredService<IMessenger>();
-        messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
+        this.messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
     }
 }
+

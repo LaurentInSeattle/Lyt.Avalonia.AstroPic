@@ -178,7 +178,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.Close}"
-				Command="{Binding ExitCommand}"
+				Command="{Binding CloseCommand}"
 				/>
 		</StackPanel>
 

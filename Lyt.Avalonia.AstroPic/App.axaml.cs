@@ -99,8 +99,6 @@ public partial class App : ApplicationBase
                 // Use default for all other config parameters 
             });
 
-        this.SetupTrayIcon();
-
         if (Debugger.IsAttached)
         {
             var graphics = App.GetRequiredService<IGraphicsDiagnosticsService>();
@@ -120,8 +118,6 @@ public partial class App : ApplicationBase
 
     protected override Task OnShutdownComplete()
     {
-        this.ClearTrayIcon();
-
         var logger = App.GetRequiredService<ILogger>();
         logger.Debug("On Shutdown Complete");
 

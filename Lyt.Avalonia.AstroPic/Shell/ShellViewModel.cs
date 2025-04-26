@@ -5,7 +5,7 @@ using static ViewActivationMessage;
 
 // https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
 
-public sealed class ShellViewModel : Bindable<ShellView>
+public sealed partial class ShellViewModel : Bindable<ShellView>
 {
     private const int MinutesToMillisecs = 60 * 1_000;
 
@@ -91,9 +91,11 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
         // Create all statics views and bind them 
         ShellViewModel.SetupWorkflow();
-
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
+
+        this.SetupTrayIcon();
+        this.Logger.Debug("OnViewLoaded SetupTrayIcon complete");
 
         // Ready 
         this.toaster.Host = this.View.ToasterHost;
@@ -167,7 +169,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
         if (activatedView == ActivatedView.Exit)
         {
-            ShellViewModel.OnExit();
+            OnExit();
         }
 
         if (activatedView == ActivatedView.GoBack)
@@ -218,7 +220,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
                 break;
 
             case ActivatedView.Settings:
-                if (!(programmaticNavigation && currentViewModel is CollectionViewModel))
+                if (!(programmaticNavigation && currentViewModel is SettingsViewModel))
                 {
                     this.SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
                     this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
@@ -249,8 +251,10 @@ public sealed class ShellViewModel : Bindable<ShellView>
         this.MainToolbarIsVisible = CurrentViewModel () is not IntroViewModel;
     }
 
-    private async static void OnExit()
+    private static async void OnExit()
     {
+        ClearTrayIcon();
+
         var application = App.GetRequiredService<IApplicationBase>();
         await application.Shutdown();
     }
@@ -333,9 +337,9 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     private void OnLanguage(object? _) => this.OnViewActivation(ActivatedView.Language);
 
-    private void OnToTray(object? _) => App.Instance.ShowMainWindow(show:false);
+    private void OnToTray(object? _) => this.ShowMainWindow(show:false);
 
-    private void OnExit(object? _) => ShellViewModel.OnExit();
+    private void OnClose(object? _) => OnExit();
 
 #pragma warning restore CA1822
 #pragma warning restore IDE0051 // Remove unused private members
@@ -353,7 +357,7 @@ public sealed class ShellViewModel : Bindable<ShellView>
 
     public ICommand ToTrayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
-    public ICommand ExitCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
+    public ICommand CloseCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
 
     public bool MainToolbarIsVisible { get => this.Get<bool>()!; set => this.Set(value); }
 }
