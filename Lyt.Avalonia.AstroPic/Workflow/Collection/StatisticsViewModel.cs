@@ -9,11 +9,14 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
         this.astroPicModel = astroPicModel;
         this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
         this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
     private void OnModelLoaded(ModelLoadedMessage _) => this.UpdateStatistics();
 
     private void OnCollectionChanged(CollectionChangedMessage message) => this.UpdateStatistics();
+
+    private void OnLanguageChanged(LanguageChangedMessage message) => this.UpdateStatistics();
 
     private void UpdateStatistics()
     {

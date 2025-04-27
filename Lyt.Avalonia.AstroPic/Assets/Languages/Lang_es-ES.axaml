@@ -10,7 +10,7 @@
 	<system:String x:Key="Toast.Dismiss">Close</system:String>
 
 	<!-- Shell -->
-	<system:String x:Key="Shell.AppName">Astronomy Pictures</system:String>
+	<system:String x:Key="Shell.AppName">Imágenes de Astronomía</system:String>
 	<system:String x:Key="Shell.About">About...</system:String>
 	<system:String x:Key="Shell.Today">Today</system:String>
 	<system:String x:Key="Shell.Collection">Collection</system:String>
