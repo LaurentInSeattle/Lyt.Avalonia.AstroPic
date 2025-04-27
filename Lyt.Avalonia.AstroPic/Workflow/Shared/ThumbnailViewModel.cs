@@ -37,11 +37,12 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.ImageHeight = isLarge ? LargeImageHeight : SmallImageHeight;
         this.FontSize = isLarge ? LargeFontSize : SmallFontSize;
         var model = App.GetRequiredService<AstroPicModel>();
-        string provider = model.ProviderName(this.Metadata.Provider);
+        string providerName = model.ProviderName(this.Metadata.Provider);
+        string providerLocalized = this.Localizer.Lookup(providerName, failSilently:true); 
         this.Provider =
             isLarge ?
-                provider :
-                string.Concat(provider, "  ~  " + metadata.Date.ToShortDateString()); 
+                providerLocalized :
+                string.Concat(providerLocalized, "  ~  " + metadata.Date.ToShortDateString()); 
         var bitmap =
             isLarge  ?
                 WriteableBitmap.DecodeToWidth(

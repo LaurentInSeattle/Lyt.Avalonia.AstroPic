@@ -23,12 +23,13 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         this.ShowMru = this.astroPicModel.ShowRecentImages;
         var list = new List<string>
         {
-            "Tutti i servizi."
+            this.Localizer.Lookup ( "Collection.Thumbs.AllServices")
         };
 
         foreach (var provider in this.providers)
         {
-            list.Add(provider.Name);
+            string providerLocalized = this.Localizer.Lookup(provider.Name);
+            list.Add(providerLocalized);
         }
 
         this.Providers = list;
@@ -85,7 +86,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
     {
         if ((this.allThumbnails is not null) && (this.allThumbnails.Count > 0))
         {
-            if ( this.ProvidersSelectedIndex == 0) 
+            if (this.ProvidersSelectedIndex == 0)
             {
                 if (this.ShowMru)
                 {
@@ -97,14 +98,14 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
                     // Nothing to do: just copy the source list
                     this.filteredThumbnails = [.. this.allThumbnails];
                 }
-            } 
+            }
             else // this.ProvidersSelectedIndex > 0
             {
-                ProviderKey key = this.providers[this.ProvidersSelectedIndex - 1 ].Key;
+                ProviderKey key = this.providers[this.ProvidersSelectedIndex - 1].Key;
                 var selectedThumbnails =
                     (from thumbnail in this.allThumbnails
                      where thumbnail.Metadata.Provider == key
-                     select thumbnail); 
+                     select thumbnail);
                 if (this.ShowMru)
                 {
                     // thumbnails are already ordered by date, just take a few 
@@ -118,7 +119,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         }
         else
         {
-            this.filteredThumbnails = null; 
+            this.filteredThumbnails = null;
         }
 
         if (this.filteredThumbnails is not null)

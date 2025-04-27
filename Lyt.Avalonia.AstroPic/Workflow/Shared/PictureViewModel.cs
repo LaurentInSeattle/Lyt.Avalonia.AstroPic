@@ -36,7 +36,8 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.imageWidth = (int)bitmap.Size.Width;
         this.LoadImage(bitmap);
         var metadata = this.pictureMetadata;
-        this.Provider = this.astroPicModel.ProviderName(metadata.Provider);
+        string providerName = this.astroPicModel.ProviderName(metadata.Provider);
+        this.Provider = this.Localizer.Lookup(providerName, failSilently: true);
         this.Title = string.IsNullOrWhiteSpace(metadata.Title) ? string.Empty : metadata.Title;
         this.Copyright = string.IsNullOrWhiteSpace(metadata.Copyright) ? string.Empty : metadata.Copyright;
         this.Description = string.IsNullOrWhiteSpace(metadata.Description) ? string.Empty : metadata.Description;

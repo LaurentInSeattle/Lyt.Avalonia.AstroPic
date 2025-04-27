@@ -165,23 +165,27 @@ public sealed partial class AstroPicModel : ModelBase
                         }
                         else
                         {
-                            throw new Exception("Picture already downloaded.");
+                            // Picture already downloaded.
+                            throw new Exception("Model.AlreadyDownloaded");
                         }
                     }
                     else
                     {
-                        throw new Exception("Picture metadata has no URL.");
+                        // Picture metadata has no URL.
+                        throw new Exception("Model.NoUrl");                        
                     }
                 }
                 else
                 {
-                    throw new Exception("Picture is not an image.");
+                    // Picture is not a valid image.
+                    throw new Exception("Model.NotAnImage");
                 }
             }
             else
             {
                 // Nasa Astronomy Picture of the Day can be a video 
-                string msg = "The Picture of the Day is actually a video clip.";
+                // The Picture of the Day is actually a video clip.
+                string msg = "Model.TodayIsVideo";
                 this.ReportError(provider, msg);
                 throw new Exception("Failed to retrieve picture metadata.");
             }

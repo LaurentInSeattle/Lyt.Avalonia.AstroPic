@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Model;
+﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
+
+namespace Lyt.Avalonia.AstroPic.Model;
 
 public sealed partial class AstroPicModel : ModelBase
 {
@@ -77,6 +79,11 @@ public sealed partial class AstroPicModel : ModelBase
     public bool IsInternetConnected { get => this.Get<bool>(); set => this.Set(value); }
 
     #endregion NOT serialized - WITH model changed event    
+
+    public Provider? MaybeProviderFromKey(ProviderKey key)
+         => (from item in this.Providers
+             where item.Key == key
+             select item).FirstOrDefault();
 
     public void UpdateProviderSelected(Provider provider, bool isSelected)
     {

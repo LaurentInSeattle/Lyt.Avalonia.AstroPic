@@ -21,7 +21,7 @@ public sealed partial class AstroPicModel : ModelBase
             ShouldAutoCleanup = true,
             Providers =
             [
-                new Provider(ProviderKey.Personal, "Immagine Personale") { IsSelected = false},
+                new Provider(ProviderKey.Personal, "Model.Provider.Personal") { IsSelected = false},
                 new Provider(ProviderKey.Epic, "Nasa EPIC"),
                 new Provider(ProviderKey.Nasa, "Nasa APOD"),
                 new Provider(ProviderKey.Bing, "Bing Wallpaper"),

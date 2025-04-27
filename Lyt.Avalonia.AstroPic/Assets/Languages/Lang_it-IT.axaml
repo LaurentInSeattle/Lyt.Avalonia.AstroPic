@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:system="clr-namespace:System;assembly=System.Runtime"
 	>
-
+	
 	<!-- é è ê à ò ì -->
 
 	<!-- Shell -->
@@ -35,6 +35,7 @@
 	<system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Spazio disponibile su disco: {0:F1} GB</system:String>
 
 	<system:String x:Key="Collection.Thumbs.WebService">Servizio Web:</system:String>
+	<system:String x:Key="Collection.Thumbs.AllServices">Tutti i servizi.</system:String>
 	<system:String x:Key="Collection.Thumbs.All">Tutto</system:String>
 	<system:String x:Key="Collection.Thumbs.Recent">Recente</system:String>
 
@@ -106,7 +107,8 @@
 	<system:String x:Key="Model.TodayIsVideo">La foto del giorno è in realtà una clip video.</system:String>
 	<system:String x:Key="Model.Provider.Personal">Immagine Personale</system:String>
 
-	<!-- Potentially reusable messages  - For someday or another app' -->
+	<!-- Potentially reusable messages  - For someday or in another app' -->
+	<!-- No need to translate for now -->
 	<!-- 
 	<system:String x:Key="Shell.New">Nuovo</system:String>
 	<system:String x:Key="Shell.Edit">Modifica</system:String>

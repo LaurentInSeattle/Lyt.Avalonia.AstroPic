@@ -7,83 +7,105 @@
 	<!-- é è ê -->
 	<!-- à ò -->
 
-	<system:String x:Key="Shell.AppName">Immagini Astronomiche </system:String>
-	
-	<system:String x:Key="Shell.About">Altro su...</system:String>
-	<system:String x:Key="Shell.Groups">Gruppi</system:String>
-	<system:String x:Key="Shell.NewGroup">Nuovo</system:String>
-	<system:String x:Key="Shell.NewGroupLong">Nuovo Gruppo</system:String>
-	<system:String x:Key="Shell.EditGroup">Modifica</system:String>
-	<system:String x:Key="Shell.DeleteGroup">Elimina</system:String>
-	<system:String x:Key="Shell.Settings">Impostazioni</system:String>
-	<system:String x:Key="Shell.Exit">Fine</system:String>
-	<system:String x:Key="Shell.Close">Chiudi</system:String>
-	<system:String x:Key="Shell.Save">Salva</system:String>
-	<system:String x:Key="Shell.Ready">Pronto.</system:String>
-	<system:String x:Key="Shell.Greetings">Benvenuto in Immagini Astronomiche!</system:String>
+	<!-- Shell -->
+	<system:String x:Key="Shell.AppName">Astronomy Pictures</system:String>
+	<system:String x:Key="Shell.About">About...</system:String>
+	<system:String x:Key="Shell.Today">Today</system:String>
+	<system:String x:Key="Shell.Collection">Collection</system:String>
+	<system:String x:Key="Shell.Settings">Settings</system:String>
+	<system:String x:Key="Shell.Language">Language</system:String>
+	<system:String x:Key="Shell.ToTray">To Tray Icon</system:String>
+	<system:String x:Key="Shell.Exit">Quit</system:String>
+	<system:String x:Key="Shell.Close">Close</system:String>
+	<system:String x:Key="Shell.Ready">Ready.</system:String>
+	<system:String x:Key="Shell.Greetings">Welcome to Astronomy Pictures!</system:String>
 
-	<system:String x:Key="Shell.Delete">Eliminare</system:String>
-	<system:String x:Key="Shell.GroupDelete.Question">Eliminare questo gruppo?</system:String>
-	<system:String x:Key="Shell.GroupDelete.Hint">Tutte le voci in questo gruppo verranno eliminate. Questa operazione non può essere annullata.</system:String>
+	<!-- Collection -->
+	<system:String x:Key="Collection.SetWallpaper">Use as Wallpaper</system:String>
+	<system:String x:Key="Collection.Remove">Remove</system:String>
+	<system:String x:Key="Collection.SaveToDesktop">Save to Desktop</system:String>
+	<system:String x:Key="Collection.BadPicture">Can't download this picture!</system:String>
+	<system:String x:Key="Collection.DropZone">Drag and Drop Zone</system:String>
+	<system:String x:Key="Collection.DropZoneHelp">Drag and drop files here to add them to your wallpaper collection.</system:String>
 
-	<system:String x:Key="Shell.Deleted">Eliminato.</system:String>
-	<system:String x:Key="Shell.GroupDeleted">Questo gruppo è stato eliminato.</system:String>
+	<system:String x:Key="Collection.Statistics">Statistics</system:String>
+	<system:String x:Key="Collection.Stats.AlertTextQuota">Too many images in your collection!</system:String>
+	<system:String x:Key="Collection.Stats.AlertTextSpace">Pay attention to the available space on disk!</system:String>
+	<system:String x:Key="Collection.Stats.ImageCountFormat">Images: {0} (All services - Quota: {1})</system:String>
+	<system:String x:Key="Collection.Stats.SizeOnDiskFormat">Estimated disk space usage: {0} MB (Quota: {1} MB)</system:String>
+	<system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Available space on disk: {0:F1} GB</system:String>
 
-	<system:String x:Key="Shell.Error">Errore</system:String>
-	<system:String x:Key="Shell.FailGroupDelete">Impossibile eliminare questo gruppo.</system:String>
+	<system:String x:Key="Collection.Thumbs.WebService">Web Service:</system:String>
+	<system:String x:Key="Collection.Thumbs.AllServices">All services.</system:String>
+	<system:String x:Key="Collection.Thumbs.All">All</system:String>
+	<system:String x:Key="Collection.Thumbs.Recent">Recent</system:String>
 
-	<system:String x:Key="Shell.NoGroups.Title">Nessun gruppo definito.</system:String>
-	<system:String x:Key="Shell.NoGroups.Hint">Crea un nuovo gruppo per iniziare...</system:String>
+	<!-- Gallery  -->
+	<system:String x:Key="Gallery.SetWallpaper">Use as Wallpaper</system:String>
+	<system:String x:Key="Gallery.Add">Add</system:String>
+	<system:String x:Key="Gallery.SaveToDesktop">Save to Desktop</system:String>
 
-	<system:String x:Key="Template.Copy">Copia</system:String>
-	<system:String x:Key="Toast.Dismiss">Chiudi</system:String>
+	<system:String x:Key="Gallery.StartingDownloading">Download in progress</system:String>
+	<system:String x:Key="Gallery.CompletedDownloading">Download complete</system:String>
+	<system:String x:Key="Gallery.ImageMetadata">image metadata </system:String>
+	<system:String x:Key="Gallery.Image">image</system:String>
+	<system:String x:Key="Gallery.ForProvider">for service </system:String>
+	<system:String x:Key="Gallery.DownloadsComplete">All downloads complete!</system:String>
 
-	<system:String x:Key="Group.NewTemplate">Nuovo...</system:String>
-	<system:String x:Key="Group.NewTemplateLong">Nuovo Testo</system:String>
-	<system:String x:Key="Group.NoSelection">Nessun gruppo selezionato...</system:String>
+	<!-- Intro  -->
+	<system:String x:Key="Intro.AgreeMIT">I accept the terms of the MIT License, Continue.</system:String>
+	<system:String x:Key="Intro.LicenseTitle">License Terms</system:String>
+	<system:String x:Key="Intro.LicenseSubtitle">This application is provided to you under the terms of the MIT License.</system:String>
+	<system:String x:Key="Intro.LicenseTerms">This application is provided to you under the terms of the MIT License and, together with other terms, implies no warranty of any kind. By using this software, you fully agree to the terms and conditions of the MIT License.</system:String>
+	<system:String x:Key="Intro.ReminderTitle">Important Reminder</system:String>
+	<system:String x:Key="Intro.ReminderSubtitle">Some important points to remember about downloaded images...</system:String>
+	<system:String x:Key="Intro.ReminderText">You are advised to use the downloaded images only as wallpaper. For any other use, commercial or otherwise, please contact the copyright holder.</system:String>
 
-	<system:String x:Key="NewEditView.Max64">Massimo 64 caratteri.</system:String>
-	<system:String x:Key="NewEditView.Max2048">Massimo 2048 caratteri.</system:String>
+	<!-- Settings  -->
+	<system:String x:Key="Settings.CleanupNow">Cleanup Now</system:String>
 
-	<system:String x:Key="NewEditGroupView.GroupName">Nome</system:String>
-	<system:String x:Key="NewEditGroupView.GroupDescription">Descrizione</system:String>
-	<system:String x:Key="NewEditGroupView.GroupIconName">Nome dell'icona</system:String>
-	<system:String x:Key="NewEditGroupView.StartTyping">Inizia a digitare per cercare...</system:String>
-	
-	<system:String x:Key="TemplateView.LinkNotFound.Title">404, Non trovato!</system:String>
-	<system:String x:Key="TemplateView.LinkNotFound.Hint">Impossibile aprire questo collegamento nel browser predefinito.</system:String>
+	<system:String x:Key="Settings.Services.Title">Image download services</system:String>
+	<system:String x:Key="Settings.Services.Subtitle">Select the web services from which you want to download images.</system:String>
+	<system:String x:Key="Settings.Services.Downloaded">Download</system:String>
+	<system:String x:Key="Settings.Services.Skip">Ignore and Skip</system:String>
 
-	<system:String x:Key="NewEditTemplateView.Changed.Format">Verrà modificato in {0}</system:String>
-	<system:String x:Key="NewEditTemplateView.Added.Format">Verrà aggiunto a {0}</system:String>
+	<system:String x:Key="Settings.Quota.Title">Disc usage settings</system:String>
+	<system:String x:Key="Settings.Quota.Subtitle">Use this setting to limit (or not limit) the use of space on your disc for the image in your collection.</system:String>
+	<system:String x:Key="Settings.Quota.ImageCount">Maximum count of images:</system:String>
+	<system:String x:Key="Settings.Quota.DiskSpace">Space quota (MB) on the disc for the images:</system:String>
+	<system:String x:Key="Settings.Quota.ImageSize">Dimensions for image archiving:</system:String>
+	<system:String x:Key="Settings.Quota.ImageSize.True">High Definition (HD)</system:String>
+	<system:String x:Key="Settings.Quota.ImageSize.False">Ultra High Definition (UHD/4K)</system:String>
+	<system:String x:Key="Settings.Quota.Exceeded">What should be done when quotas are exceeded:</system:String>
+	<system:String x:Key="Settings.Quota.Exceeded.True">Delete old images.</system:String>
+	<system:String x:Key="Settings.Quota.Exceeded.False">Only show a warning message.</system:String>
 
-	<system:String x:Key="NewEditTemplateView.TemplateName">Nome del testo modello</system:String>
-	<system:String x:Key="NewEditTemplateView.TemplateValue">Testo per questo modello</system:String>
+	<system:String x:Key="Settings.Os.Title">Operating System Settings</system:String>
+	<system:String x:Key="Settings.Os.Subtitle">Choose some operating system settings to manage your images.</system:String>
+	<system:String x:Key="Settings.Os.Rotate">Rotate desktop screen wallpapers?</system:String>
+	<system:String x:Key="Settings.Os.Rotate.True">Yes, periodically.</system:String>
+	<system:String x:Key="Settings.Os.Rotate.False">Never</system:String>
+	<system:String x:Key="Settings.Os.Rotate.Minutes">Change wallpaper after: (minutes)</system:String>
 
-	<system:String x:Key="NewEditTemplateView.HideText.TrueText">Nascondi testo</system:String>
-	<system:String x:Key="NewEditTemplateView.HideText.FalseText">Normale</system:String>
-	<system:String x:Key="NewEditTemplateView.IsWebLink.TrueText">Collegamento</system:String>
-	<system:String x:Key="NewEditTemplateView.IsWebLink.FalseText">Standard</system:String>
+	<system:String x:Key="Settings.ReminderTitle">Important Reminder</system:String>
+	<system:String x:Key="Settings.ReminderSubtitle">Some important points to remember about downloaded images...</system:String>
+	<system:String x:Key="Settings.ReminderText">You are advised to use the downloaded images only as wallpaper. For any other use, commercial or otherwise, please contact the copyright holder.</system:String>
 
-	<system:String x:Key="Settings.Language">Lingua Interfaccia Utente </system:String>
-	<system:String x:Key="Settings.French">Francese</system:String>
-	<system:String x:Key="Settings.English">Inglese (Stati Uniti)</system:String>
-	<system:String x:Key="Settings.Italian">Italiano</system:String>
-	<system:String x:Key="Settings.RestartRequired.Title">Riavvio necessario</system:String>
-	<system:String x:Key="Settings.RestartRequired.Hint">La modifica di questa preferenza richiede il riavvio dell'applicazione.</system:String>
-	<system:String x:Key="Settings.RestartRequired.Verb">Riavviare</system:String>
+	<!-- Shared  -->
+	<system:String x:Key="Shared.NoImage">No image</system:String>
+	<system:String x:Key="Shared.FileErrorTitle">File system error.</system:String>
+	<system:String x:Key="Shared.FileErrorText">Could not save the image file.</system:String>
 
-	<system:String x:Key="TemplatesModel.GroupNameIsBlank">Il nome del gruppo non può essere lasciato vuoto.</system:String>
-	<system:String x:Key="TemplatesModel.DescriptionIsBlank">La descrizione del gruppo non può essere lasciata vuota.</system:String>
-	<system:String x:Key="TemplatesModel.IconNameIsBlank">È richiesto un nome per l'icona.</system:String>
-	<system:String x:Key="TemplatesModel.GroupNameIsTooLong">Il nome del gruppo è troppo lungo.</system:String>
-	<system:String x:Key="TemplatesModel.DescriptionIsTooLong">La descrizione del gruppo è troppo lunga.</system:String>
-	<system:String x:Key="TemplatesModel.IconNotAvailable">Impossibile trovare questa icona.</system:String>
+	<!-- Tray  -->
+	<system:String x:Key="Tray.OpenCollection">Open the image collection</system:String>
+	<system:String x:Key="Tray.Settings">Settings</system:String>
+	<system:String x:Key="Tray.ImageInfo">About this image...</system:String>
 
-	<system:String x:Key="TemplatesModel.TemplateAlreadyExists">Esiste già un modello di testo con questo nome.</system:String>
-	<system:String x:Key="TemplatesModel.NoSuchTemplate">Questo testo modello non esiste.</system:String>
-	<system:String x:Key="TemplatesModel.TemplateNameIsBlank">Il nome del testo del modello non può essere lasciato vuoto.</system:String>
-	<system:String x:Key="TemplatesModel.TemplateValueIsBlank">Il testo in questo modello non può essere lasciato vuoto.</system:String>
-	<system:String x:Key="TemplatesModel.TemplateNameIsTooLong">Il nome di questo modello è troppo lungo.</system:String>
-	<system:String x:Key="TemplatesModel.TemplateValueIsTooLong">Il testo in questo modello è troppo lungo.</system:String>
+	<!-- Model / Service -->
+	<system:String x:Key="Model.AlreadyDownloaded">The image has already been downloaded.</system:String>
+	<system:String x:Key="Model.NoUrl">The image has no URL.</system:String>
+	<system:String x:Key="Model.NotAnImage">The image is not valid.</system:String>
+	<system:String x:Key="Model.TodayIsVideo">The photo of the day is actually a video clip.</system:String>
+	<system:String x:Key="Model.Provider.Personal">Personal Image</system:String>
 
 </ResourceDictionary>

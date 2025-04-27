@@ -1,4 +1,6 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
+﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
 public sealed class GalleryViewModel : Bindable<GalleryView>
 {
@@ -73,33 +75,42 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
 
     private void OnDownloadError(ServiceErrorMessage message)
     {
+        var provider = this.astroPicModel.MaybeProviderFromKey(message.Provider);
+        if (provider is null)
+        {
+            // Should never happen 
+            if (Debugger.IsAttached) { Debugger.Break(); }
+            return;
+        }
+
+        string providerLocalized = this.Localizer.Lookup(provider.Name);
+        string errorLocalized = this.Localizer.Lookup(message.ErrorKey);
         this.toaster.Dismiss();
         this.toaster.Show(
-            message.Provider.ToString().BeautifyEnumString(),
-            message.ErrorKey, 10_000, InformationLevel.Warning);
+            providerLocalized, errorLocalized, 10_000, InformationLevel.Warning);
     }
 
     private void OnDownloadProgress(ServiceProgressMessage message)
     {
         string start = message.IsBegin ?
             this.Localizer.Lookup("Gallery.StartingDownloading") :
-            this.Localizer.Lookup("Gallery.CompletedDownloading"); 
-        string middle = message.IsMetadata ? 
+            this.Localizer.Lookup("Gallery.CompletedDownloading");
+        string middle = message.IsMetadata ?
             this.Localizer.Lookup("Gallery.ImageMetadata") :
             this.Localizer.Lookup("Gallery.Image");
         string provider = message.Provider.ToString().BeautifyEnumString();
         string end = this.Localizer.Lookup("Gallery.ForProvider");
-        this.ProgressMessage = string.Concat(start, " " , middle, " " , end, " " , provider);
+        this.ProgressMessage = string.Concat(start, " ", middle, " ", end, " ", provider);
     }
 
     private void LoadImages(List<PictureDownload> downloads)
     {
         this.ThumbnailsPanelViewModel.LoadImages(downloads);
         Schedule.OnUiThread(
-            200, () => 
+            200, () =>
             {
                 string msg = this.Localizer.Lookup("Gallery.DownloadsComplete");
-                this.ProgressMessage = msg; 
+                this.ProgressMessage = msg;
             }, DispatcherPriority.Background);
     }
 
