@@ -18,14 +18,13 @@ Then...
 
 # Just in...
 
-- "Tray icon" app' (Windows Only for now)
-- Support for the OpenVerse.Org image provider
+- Localization for Italian, French and English
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
 # In progress: 
 
-- Localization
+- Localization for Spanish 
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 

@@ -6,6 +6,9 @@
 	
 	<!-- é è ê à ò ì -->
 
+	<!-- Toast-->
+	<system:String x:Key="Toast.Dismiss">Chiudi</system:String>
+
 	<!-- Shell -->
 	<system:String x:Key="Shell.AppName">Immagini Astronomiche </system:String>
 	<system:String x:Key="Shell.Today">Oggi</system:String>
@@ -117,7 +120,6 @@
 	<system:String x:Key="Shell.Deleted">Eliminato.</system:String>
 	<system:String x:Key="Shell.Error">Errore</system:String>
 	<system:String x:Key="Template.Copy">Copia</system:String>
-	<system:String x:Key="Toast.Dismiss">Chiudi</system:String>
 
 	<system:String x:Key="Settings.Language">Lingua Interfaccia Utente </system:String>
 	<system:String x:Key="Settings.French">Francese</system:String>

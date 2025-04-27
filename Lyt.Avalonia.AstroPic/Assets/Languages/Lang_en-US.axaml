@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
 	>
+	<!-- Toast-->
+	<system:String x:Key="Toast.Dismiss">Close</system:String>
 
 	<!-- Shell -->
 	<system:String x:Key="Shell.AppName">Astronomy Pictures</system:String>

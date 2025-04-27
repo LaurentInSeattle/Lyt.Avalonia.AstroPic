@@ -9,12 +9,9 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 {
     private const int MinutesToMillisecs = 60 * 1_000;
 
-    // TODO: Cleanup this list of services when ready 
     private readonly AstroPicModel astroPicModel;
-    private readonly IDialogService dialogService;
     private readonly IToaster toaster;
     private readonly IMessenger messenger;
-    private readonly IProfiler profiler;
     private readonly ILocalizer localizer;
     private readonly TimeoutTimer rotatorTimer;
     private readonly TimeoutTimer downloadRetriesTimer;
@@ -31,16 +28,12 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
     #endregion To please the XAML viewer 
 
     public ShellViewModel(
-        AstroPicModel astroPicModel,
-        ILocalizer localizer,
-        IDialogService dialogService, IToaster toaster, IMessenger messenger, IProfiler profiler)
+        AstroPicModel astroPicModel, ILocalizer localizer, IToaster toaster, IMessenger messenger)
     {
         this.astroPicModel = astroPicModel;
         this.localizer = localizer;
-        this.dialogService = dialogService;
         this.toaster = toaster;
         this.messenger = messenger;
-        this.profiler = profiler;
 
         this.downloadRetriesTimer = new TimeoutTimer(this.OnDownloadRetriesTimer, 1 * MinutesToMillisecs);
         this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 3 * MinutesToMillisecs);
@@ -52,6 +45,15 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
         this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+    }
+
+    private void OnLanguageChanged(LanguageChangedMessage message)
+    {
+        // We need to destroy and recreate the tray icon, so that it will be properly localized
+        // since its native menu will not respond to dynamic property changes 
+        ShellViewModel.ClearTrayIcon();
+        this.SetupTrayIcon();
     }
 
     private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
@@ -115,7 +117,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     private async void ActivateInitialView()
     {
-        if (this.astroPicModel.IsFirstRun )
+        if (this.astroPicModel.IsFirstRun)
         {
             this.OnViewActivation(ActivatedView.Intro, parameter: null, isFirstActivation: true);
         }
@@ -135,7 +137,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
                 await Task.Delay(100);
                 --retries;
             }
-        } 
+        }
 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
@@ -179,8 +181,8 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         }
 
         bool programmaticNavigation = false;
-        ActivatedView hasBeenActivated= ActivatedView.Exit;
-        Bindable? currentViewModel = null; 
+        ActivatedView hasBeenActivated = ActivatedView.Exit;
+        Bindable? currentViewModel = null;
         if (parameter is bool navigationType)
         {
             programmaticNavigation = navigationType;
@@ -200,7 +202,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
                 break;
 
             case ActivatedView.Collection:
-                if ( !( programmaticNavigation && currentViewModel is CollectionViewModel))
+                if (!(programmaticNavigation && currentViewModel is CollectionViewModel))
                 {
                     this.SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
                     this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
@@ -230,7 +232,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         }
 
         // Reflect in the navigation toolbar the programmatic change 
-        if (programmaticNavigation && (hasBeenActivated != ActivatedView.Exit) )
+        if (programmaticNavigation && (hasBeenActivated != ActivatedView.Exit))
         {
             if (this.View is not ShellView view)
             {
@@ -248,7 +250,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
             selector.Select(button);
         }
 
-        this.MainToolbarIsVisible = CurrentViewModel () is not IntroViewModel;
+        this.MainToolbarIsVisible = CurrentViewModel() is not IntroViewModel;
     }
 
     private static async void OnExit()
@@ -337,7 +339,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     private void OnLanguage(object? _) => this.OnViewActivation(ActivatedView.Language);
 
-    private void OnToTray(object? _) => this.ShowMainWindow(show:false);
+    private void OnToTray(object? _) => this.ShowMainWindow(show: false);
 
     private void OnClose(object? _) => OnExit();
 

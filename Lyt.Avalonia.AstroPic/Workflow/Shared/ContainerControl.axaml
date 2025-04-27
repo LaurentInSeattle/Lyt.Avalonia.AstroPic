@@ -57,7 +57,7 @@
 		<TextBlock
 			x:Name="textTextBlock"
 			Grid.Row="1" Grid.Column="1"
-			MaxWidth="500"
+			MaxWidth="600"
 			Text="Text"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Margin="40 0 0 0"

@@ -18,6 +18,7 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     public readonly byte[] ImageBytes;
 
     private readonly ISelectListener parent;
+    private readonly bool isLarge;
 
     /// <summary> 
     /// Creates a thumbnail from a full (large) image - use for downloads 
@@ -33,16 +34,11 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.parent = parent;
         this.Metadata = metadata;
         this.ImageBytes = imageBytes;
+        this.isLarge = isLarge; 
         this.BorderHeight = isLarge ? LargeBorderHeight : SmallBorderHeight;
         this.ImageHeight = isLarge ? LargeImageHeight : SmallImageHeight;
         this.FontSize = isLarge ? LargeFontSize : SmallFontSize;
-        var model = App.GetRequiredService<AstroPicModel>();
-        string providerName = model.ProviderName(this.Metadata.Provider);
-        string providerLocalized = this.Localizer.Lookup(providerName, failSilently:true); 
-        this.Provider =
-            isLarge ?
-                providerLocalized :
-                string.Concat(providerLocalized, "  ~  " + metadata.Date.ToShortDateString()); 
+        this.SetThumbnailTitle(); 
         var bitmap =
             isLarge  ?
                 WriteableBitmap.DecodeToWidth(
@@ -50,7 +46,12 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
                     isLarge ? LargeThumbnailWidth : SmallThumbnailWidth) :
                 WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.Thumbnail = bitmap;
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
+
+    // We need to reload the thumbnail view title, so that it will be properly localized
+    private void OnLanguageChanged(LanguageChangedMessage message)
+        => this.SetThumbnailTitle(); 
 
     internal void OnSelect() => this.parent.OnSelect(this);
 
@@ -73,7 +74,18 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         {
             this.View.Select();
         } 
-    } 
+    }
+
+    private void SetThumbnailTitle()
+    {
+        var model = App.GetRequiredService<AstroPicModel>();
+        string providerName = model.ProviderName(this.Metadata.Provider);
+        string providerLocalized = this.Localizer.Lookup(providerName, failSilently: true);
+        this.Provider =
+            this.isLarge ?
+                providerLocalized :
+                string.Concat(providerLocalized, "  ~  " + this.Metadata.Date.ToShortDateString());
+    }
 
     public double FontSize { get => this.Get<double>()!; set => this.Set(value); }
 
