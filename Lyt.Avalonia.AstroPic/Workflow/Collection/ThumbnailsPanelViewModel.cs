@@ -21,6 +21,14 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
               orderby provider.Name
               select provider )];
         this.ShowMru = this.astroPicModel.ShowRecentImages;
+        this.PopulateComboBox();
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+    }
+
+    private void OnLanguageChanged(LanguageChangedMessage message) => this.PopulateComboBox();
+
+    private void PopulateComboBox ()
+    {
         var list = new List<string>
         {
             this.Localizer.Lookup ( "Collection.Thumbs.AllServices")
@@ -28,7 +36,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
 
         foreach (var provider in this.providers)
         {
-            string providerLocalized = this.Localizer.Lookup(provider.Name);
+            string providerLocalized = this.Localizer.Lookup(provider.Name, failSilently: true);
             list.Add(providerLocalized);
         }
 
@@ -86,7 +94,12 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
     {
         if ((this.allThumbnails is not null) && (this.allThumbnails.Count > 0))
         {
-            if (this.ProvidersSelectedIndex == 0)
+            if (this.ProvidersSelectedIndex < 0)
+            {
+                // Temporarily without a selection : do nothing
+                return; 
+            }
+            else if (this.ProvidersSelectedIndex == 0)
             {
                 if (this.ShowMru)
                 {
