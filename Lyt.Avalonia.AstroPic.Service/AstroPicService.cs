@@ -33,7 +33,7 @@ public class AstroPicService(ILogger logger, IRandomizer randomizer)
         }
         catch (Exception ex)
         {
-            string msg = "Exception thrown: " + ex.Message +"\n" + ex.Message;
+            string msg = "Exception thrown: " + ex.Message +"\n" + ex;
             this.logger.Error(msg);
             throw;
         }

@@ -14,9 +14,6 @@ public sealed class Picture
     public PictureMetadata PictureMetadata { get; set; } = new(); 
 
     [JsonRequired]
-    public Rating Rating { get; set; } = Rating.Normal;
-
-    [JsonRequired]
     public bool Keep { get; set; } = false;
 
     [JsonRequired]

@@ -173,7 +173,7 @@
 				Behaviour="Tap"
 				HorizontalAlignment="Left" VerticalAlignment="Center"
 				Width="82" Height="56"
-				Margin="4 12 4 12"
+				Margin="8 4 8 4"
 				GlyphSource="dismiss"
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"

@@ -25,7 +25,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage message) => this.PopulateComboBox();
+    private void OnLanguageChanged(LanguageChangedMessage _) => this.PopulateComboBox();
 
     private void PopulateComboBox ()
     {
