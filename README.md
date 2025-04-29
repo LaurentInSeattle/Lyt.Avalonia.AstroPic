@@ -18,13 +18,13 @@ Then...
 
 # Just in...
 
-- Localization for Italian, French and English
+- Localization for Spanish, Italian, French and English
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
 # In progress: 
 
-- Localization for Spanish 
+- Image information overlay 
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
