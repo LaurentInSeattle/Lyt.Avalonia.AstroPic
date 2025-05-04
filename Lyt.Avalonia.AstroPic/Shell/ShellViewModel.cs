@@ -189,13 +189,28 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
             currentViewModel = CurrentViewModel();
         }
 
+        void NoToolbar() => this.View.ShellViewToolbar.Content = null;
+
+        void SetupToolbar<TViewModel, TControl>()
+            where TViewModel : Bindable<TControl>
+            where TControl : Control, new()
+        {
+            if (this.View is null)
+            {
+                throw new Exception("No view: Failed to startup...");
+            }
+
+            var newViewModel = App.GetRequiredService<TViewModel>();
+            this.View.ShellViewToolbar.Content = newViewModel.View;
+        }
+
         switch (activatedView)
         {
             default:
             case ActivatedView.Gallery:
                 if (!(programmaticNavigation && currentViewModel is GalleryViewModel))
                 {
-                    this.SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
+                    SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
                     this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
                     hasBeenActivated = ActivatedView.Gallery;
                 }
@@ -204,27 +219,26 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
             case ActivatedView.Collection:
                 if (!(programmaticNavigation && currentViewModel is CollectionViewModel))
                 {
-                    this.SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
+                    SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
                     this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
                     hasBeenActivated = ActivatedView.Collection;
                 }
                 break;
 
             case ActivatedView.Language:
-                // No toolbar
-                this.View.ShellViewToolbar.Content = null;
+                NoToolbar();
                 this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
                 break;
 
             case ActivatedView.Intro:
-                this.SetupToolbar<IntroToolbarViewModel, IntroToolbarView>();
+                SetupToolbar<IntroToolbarViewModel, IntroToolbarView>();
                 this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
                 break;
 
             case ActivatedView.Settings:
                 if (!(programmaticNavigation && currentViewModel is SettingsViewModel))
                 {
-                    this.SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
+                    SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
                     this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
                     hasBeenActivated = ActivatedView.Settings;
                 }
@@ -261,19 +275,6 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         await application.Shutdown();
     }
 
-    private void SetupToolbar<TViewModel, TControl>()
-        where TViewModel : Bindable<TControl>
-        where TControl : Control, new()
-    {
-        if (this.View is null)
-        {
-            throw new Exception("No view: Failed to startup...");
-        }
-
-        var newViewModel = App.GetRequiredService<TViewModel>();
-        this.View.ShellViewToolbar.Content = newViewModel.View;
-    }
-
     private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
         where TViewModel : Bindable<TControl>
         where TControl : Control, new()
@@ -306,23 +307,15 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     private static void SetupWorkflow()
     {
-        static void CreateAndBind<TViewModel, TControl>()
-             where TViewModel : Bindable<TControl>
-             where TControl : Control, new()
-        {
-            var vm = App.GetRequiredService<TViewModel>();
-            vm.CreateViewAndBind();
-        }
-
-        CreateAndBind<GalleryViewModel, GalleryView>();
-        CreateAndBind<GalleryToolbarViewModel, GalleryToolbarView>();
-        CreateAndBind<CollectionViewModel, CollectionView>();
-        CreateAndBind<CollectionToolbarViewModel, CollectionToolbarView>();
-        CreateAndBind<IntroViewModel, IntroView>();
-        CreateAndBind<IntroToolbarViewModel, IntroToolbarView>();
-        CreateAndBind<LanguageViewModel, LanguageView>();
-        CreateAndBind<SettingsViewModel, SettingsView>();
-        CreateAndBind<SettingsToolbarViewModel, SettingsToolbarView>();
+        App.GetRequiredService<GalleryViewModel>().CreateViewAndBind();
+        App.GetRequiredService<GalleryToolbarViewModel>().CreateViewAndBind();
+        App.GetRequiredService<CollectionViewModel>().CreateViewAndBind();
+        App.GetRequiredService<CollectionToolbarViewModel>().CreateViewAndBind();
+        App.GetRequiredService<IntroViewModel>().CreateViewAndBind();
+        App.GetRequiredService<IntroToolbarViewModel>().CreateViewAndBind();
+        App.GetRequiredService<LanguageViewModel>().CreateViewAndBind();
+        App.GetRequiredService<SettingsViewModel>().CreateViewAndBind();
+        App.GetRequiredService<SettingsToolbarViewModel>().CreateViewAndBind();
     }
 
 #pragma warning disable IDE0079 
