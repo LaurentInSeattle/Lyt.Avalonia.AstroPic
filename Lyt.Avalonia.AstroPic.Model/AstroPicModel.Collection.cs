@@ -204,6 +204,7 @@ public sealed partial class AstroPicModel : ModelBase
         {
             this.DoCleanup();
             this.ValidateCollection();
+            this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
         }
     }
 

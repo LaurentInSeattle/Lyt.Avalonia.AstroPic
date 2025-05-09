@@ -105,7 +105,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         {
             this.toaster.Show(
                 this.localizer.Lookup("Shell.Ready"), this.localizer.Lookup("Shell.Greetings"),
-                3_000, InformationLevel.Info);
+                1_600, InformationLevel.Info);
         }
 
         // Delay a bit the launch of the gallery so that there is time to ping 
