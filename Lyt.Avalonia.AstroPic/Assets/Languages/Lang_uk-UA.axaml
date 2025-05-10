@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Закривати</system:String>
+
+    <system:String x:Key="Shell.AppName">Астрономія фотографії</system:String>
+
+    <system:String x:Key="Shell.About">Про ...</system:String>
+
+    <system:String x:Key="Shell.Today">Сьогодні</system:String>
+
+    <system:String x:Key="Shell.Collection">Колекція</system:String>
+
+    <system:String x:Key="Shell.Settings">Налаштування</system:String>
+
+    <system:String x:Key="Shell.Language">Мова</system:String>
+
+    <system:String x:Key="Shell.ToTray">До ікони лотка</system:String>
+
+    <system:String x:Key="Shell.Exit">Кинути</system:String>
+
+    <system:String x:Key="Shell.Close">Закривати</system:String>
+
+    <system:String x:Key="Shell.Ready">Готовий.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Ласкаво просимо до фотографій астрономії!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">Використовуйте як шпалери</system:String>
+
+    <system:String x:Key="Collection.Remove">Видалити</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">Збережіть на робочому столі</system:String>
+
+    <system:String x:Key="Collection.BadPicture">Не вдається завантажити цю картинку!</system:String>
+
+    <system:String x:Key="Collection.DropZone">Зона перетягування</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Перетягніть сюди файли, щоб додати їх до вашої колекції шпалер.</system:String>
+
+    <system:String x:Key="Collection.Statistics">Статистика</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">Занадто багато зображень у вашій колекції!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">Зверніть увагу на доступний простір на диску!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Зображення: {0} (Усі служби - Квота: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Орієнтовне використання простору диска: {0} MB (Quota: {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Доступний простір на диску: {0:F1} gb</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Веб -служба:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Всі послуги.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Все</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Недавній</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Використовуйте як шпалери</system:String>
+
+    <system:String x:Key="Gallery.Add">Додавання</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Збережіть на робочому столі</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Завантажити</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Завантажити завершено</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">Метадані зображення</system:String>
+
+    <system:String x:Key="Gallery.Image">зображення</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">для обслуговування</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">Всі завантаження завершені!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Я приймаю умови ліцензії MIT, продовжуйте.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Умови ліцензії</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Ця заявка надається вам за умовами ліцензії MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Ця заявка надається вам за умовами ліцензії MIT і разом з іншими умовами не передбачає жодної гарантії.  Використовуючи це програмне забезпечення, ви повністю погоджуєтесь з умовами ліцензії MIT.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Важливе нагадування</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Деякі важливі моменти, які слід пам’ятати про завантажені зображення ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Вам рекомендується використовувати завантажені зображення лише як шпалери.  Для будь -якого іншого використання, комерційного чи іншим способом зверніться до власника авторських прав.</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Очищення зараз</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Служби завантаження зображень</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Виберіть веб -служби, з яких ви хочете завантажити зображення.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Завантажувати</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Ігноруйте та пропустіть</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">Налаштування використання диска</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Використовуйте цей параметр, щоб обмежити (або не обмежити) використання місця на вашому диску для зображення у вашій колекції.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">Максимальна кількість зображень:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Простірна квота (MB) на диску для зображень:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Розміри для архівування зображень:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Високе визначення (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ультра високе визначення (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Що робити, коли квоти перевищують:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Видалити старі зображення.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Показати лише попереджувальне повідомлення.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Налаштування операційної системи</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Виберіть деякі налаштування операційної системи для управління своїми зображеннями.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">Обертати шпалери на екрані робочого столу?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Так, періодично.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Ніколи</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Змініть шпалери після: (хвилини)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Важливе нагадування</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Деякі важливі моменти, які слід пам’ятати про завантажені зображення ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Вам рекомендується використовувати завантажені зображення лише як шпалери.  Для будь -якого іншого використання, комерційного чи іншим способом зверніться до власника авторських прав.</system:String>
+
+    <system:String x:Key="Shared.NoImage">Немає зображення</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Помилка файлової системи.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Не вдалося зберегти файл зображення.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Відкрийте колекцію зображень</system:String>
+
+    <system:String x:Key="Tray.Settings">Налаштування</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">Про це зображення ...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">Зображення вже завантажено.</system:String>
+
+    <system:String x:Key="Model.NoUrl">Зображення не має URL -адреси.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">Зображення не дійсне.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">Фото дня - це насправді відеокліп.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Особистий образ</system:String>
+
+</ResourceDictionary>

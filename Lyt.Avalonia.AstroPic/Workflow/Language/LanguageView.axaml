@@ -28,6 +28,8 @@
 			<RowDefinition Height="60" />
 			<RowDefinition Height="60" />
 			<RowDefinition Height="60" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="60" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<TextBlock
@@ -64,6 +66,26 @@
 			Grid.Column="0" Grid.Row="4" 
 			Margin="20 0 0 0"
 			Text="Elija el idioma de la interfaz de usuario."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="5"
+			Margin="20 0 0 0"
+			Text="Виберіть мову інтерфейсу користувача."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="6"
+			Margin="20 0 0 0"
+			Text="Изберете езика на потребителския интерфейс."
 			FontSize="24"
 			TextAlignment="Left"
 			Foreground="{StaticResource PastelOrchid_0_080}"

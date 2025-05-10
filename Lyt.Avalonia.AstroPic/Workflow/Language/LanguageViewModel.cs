@@ -4,10 +4,12 @@ public sealed class LanguageViewModel : Bindable<LanguageView>
 {
     private static readonly List<LanguageInfoViewModel> SupportedLanguages =
     [
+        new LanguageInfoViewModel("uk-UA", "Українська мова" , "Ukraine.png", string.Empty) ,
         new LanguageInfoViewModel("it-IT", "Italiano" , "Italy.png" , "San_Marino.png" ) ,
         new LanguageInfoViewModel("fr-FR", "Français" , "France.png" , "Quebec.png" ) ,
         new LanguageInfoViewModel("en-US", "English" , "United_Kingdom.png" , "Canada.png" ) ,
         new LanguageInfoViewModel("es-ES", "Español" , "Spain.png" , "Mexico.png" ) ,
+        new LanguageInfoViewModel("bg-BG", "Български език" , "Bulgaria.png" , string.Empty ) ,
     ];
 
     private readonly AstroPicModel astroPicModel;

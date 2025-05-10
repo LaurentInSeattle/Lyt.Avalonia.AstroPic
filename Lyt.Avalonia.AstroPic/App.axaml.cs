@@ -95,7 +95,7 @@ public partial class App : ApplicationBase
             new LocalizerConfiguration
             {
                 AssemblyName = App.AssemblyName,
-                Languages = ["en-US", "fr-FR", "it-IT", "es-ES"],
+                Languages = ["en-US", "fr-FR", "it-IT", "es-ES", "uk-UA", "bg-BG"],
                 // Use default for all other config parameters 
             });
 

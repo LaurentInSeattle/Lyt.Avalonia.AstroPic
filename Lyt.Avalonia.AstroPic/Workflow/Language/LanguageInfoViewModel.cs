@@ -8,8 +8,15 @@ public sealed class LanguageInfoViewModel : Bindable<LanguageInfoView>
     {
         this.Key = key;
         this.Name = name;
-        this.FlagOne = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagOne)));
-        this.FlagTwo = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagTwo))); 
+        if (string.IsNullOrWhiteSpace(flagTwo))
+        {
+            this.FlagTwo = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagOne)));
+        } 
+        else
+        {
+            this.FlagOne = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagOne)));
+            this.FlagTwo = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagTwo)));
+        }
     }
 
     public string Key { get => this.Get<string>()!; set => this.Set(value); }

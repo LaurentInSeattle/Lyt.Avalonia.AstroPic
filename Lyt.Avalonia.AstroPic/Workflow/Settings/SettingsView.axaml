@@ -32,7 +32,7 @@
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
 						Background="Transparent"
-						Width="400" Height="400"
+						Width="520" Height="400"
 						>
 						<ScrollViewer
 							Background="Transparent"
@@ -68,7 +68,7 @@
 				>
 				<shared:ContainerControl.ContainerControlContent>
 					<Grid
-						Width="620" Height="300"
+						Width="640" Height="300"
 						VerticalAlignment="Top"
 						>
 						<Grid.ColumnDefinitions>
@@ -137,7 +137,7 @@
 							Style="{StaticResource StandardToggleSwitch}"
 							TrueText="{DynamicResource Settings.Quota.ImageSize.True}"
 							FalseText="{DynamicResource Settings.Quota.ImageSize.False}"
-							Height="30" Width="600"
+							Height="30" Width="630"
 							HorizontalAlignment="Center" VerticalAlignment="Center"
 							Value="{Binding MaxImageWidth}"
 							/>

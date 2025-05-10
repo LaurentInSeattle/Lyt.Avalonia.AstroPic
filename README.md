@@ -14,11 +14,16 @@ Then...
 - Managing the image collection 
 - Handle user settings.
 
+Localization: 
+- Machine translated: Ukrainian, Bulgarian. 
+- Human translated: Spanish, Italian, French and English
+ 
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 
 # Just in...
 
-- Localization for Spanish, Italian, French and English
+- Localization for Ukrainian an Bulgarian using this translation tool: 
+ https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 

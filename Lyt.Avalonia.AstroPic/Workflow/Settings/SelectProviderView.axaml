@@ -14,7 +14,7 @@
 	x:DataType="vm:SelectProviderViewModel"
 	>
 	<Grid
-		Width="380" Height="70"
+		Width="500" Height="70"
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="4" />
@@ -37,7 +37,7 @@
 			Style="{StaticResource StandardToggleSwitch}"
 			TrueText="{DynamicResource Settings.Services.Downloaded}"
 			FalseText="{DynamicResource Settings.Services.Skip}"
-			Height="30" Width="360"
+			Height="30" Width="480"
 			HorizontalAlignment="Right" VerticalAlignment="Center"
 			Value="{Binding UseService}"
 			/>

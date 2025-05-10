@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Затворете</system:String>
+
+    <system:String x:Key="Shell.AppName">Снимки Aстрономията</system:String>
+
+    <system:String x:Key="Shell.About">За ...</system:String>
+
+    <system:String x:Key="Shell.Today">Днес</system:String>
+
+    <system:String x:Key="Shell.Collection">Колекция</system:String>
+
+    <system:String x:Key="Shell.Settings">Настройки</system:String>
+
+    <system:String x:Key="Shell.Language">Език</system:String>
+
+    <system:String x:Key="Shell.ToTray">За икона на табла</system:String>
+
+    <system:String x:Key="Shell.Exit">Напусна</system:String>
+
+    <system:String x:Key="Shell.Close">Затворете</system:String>
+
+    <system:String x:Key="Shell.Ready">Готов.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Добре дошли в Astronomy Pictures!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">Използвайте като тапет</system:String>
+
+    <system:String x:Key="Collection.Remove">Извадете</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">Запазете на работния плот</system:String>
+
+    <system:String x:Key="Collection.BadPicture">Не мога да изтегля тази снимка!</system:String>
+
+    <system:String x:Key="Collection.DropZone">Плъзнете и пуснете зона</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Плъзнете и пуснете файлове тук, за да ги добавите към вашата колекция от тапети.</system:String>
+
+    <system:String x:Key="Collection.Statistics">Статистика</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">Твърде много изображения във вашата колекция!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">Обърнете внимание на наличното пространство на диска!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Изображения: {0} (всички услуги - квота: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Използване на прогнозно дисково пространство: {0} MB (квота: {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Налично пространство на диск: {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Уеб услуга:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Всички услуги.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Всички</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Скоро</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Използвайте като тапет</system:String>
+
+    <system:String x:Key="Gallery.Add">Добавяне</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Запазете на работния плот</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Изтеглете в ход</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Изтеглете пълна</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">Метаданни на изображението</system:String>
+
+    <system:String x:Key="Gallery.Image">изображение</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">за обслужване</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">Всички изтегляния завършват!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Приемам условията на лиценза MIT, продължете.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Лицензни условия</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Това заявление ви се предоставя при условията на лиценза MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Това заявление ви се предоставя при условията на лиценза MIT и заедно с други условия не предполага никаква гаранция от какъвто и да е вид.  Използвайки този софтуер, вие напълно се съгласявате с условията на лиценза за MIT.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Важно напомняне</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Някои важни точки, които трябва да запомните за изтеглените изображения ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Почистване сега</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Услуги за изтегляне на изображения</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Изберете уеб услугите, от които искате да изтеглите изображения.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Изтегляне</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Игнорирайте и прескачайте</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">Настройки за използване на диска</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Използвайте тази настройка, за да ограничите (или не ограничете) използването на пространство на вашия диск за изображението във вашата колекция.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">Максимален брой изображения:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Космическа квота (MB) на диска за изображенията:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Размери за архивиране на изображения:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Висока разделителна способност (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ултра висока разделителна способност (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Какво трябва да се направи, когато квотите са надвишени:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Изтриване на стари изображения.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Покажете само предупредително съобщение.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Настройки на операционната система</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Изберете някои настройки на операционната система, за да управлявате вашите изображения.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">Завъртете тапетите за екран на работния плот?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Да, периодично.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Никога</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Сменете тапетите след: (минути)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Важно напомняне</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Някои важни точки, които трябва да запомните за изтеглените изображения ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
+
+    <system:String x:Key="Shared.NoImage">Няма изображение</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Грешка в файловата система.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Не можа да запази файла с изображения.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Отворете колекцията на изображения</system:String>
+
+    <system:String x:Key="Tray.Settings">Настройки</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">За това изображение ...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">Изображението вече е изтеглено.</system:String>
+
+    <system:String x:Key="Model.NoUrl">Изображението няма URL адрес.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">Изображението не е валидно.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">Снимката на деня всъщност е видеоклип.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Личен образ</system:String>
+
+</ResourceDictionary>
