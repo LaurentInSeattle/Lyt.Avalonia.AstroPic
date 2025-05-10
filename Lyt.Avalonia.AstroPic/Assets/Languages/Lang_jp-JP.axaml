@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">近い</system:String>
+
+    <system:String x:Key="Shell.AppName">天文学の写真</system:String>
+
+    <system:String x:Key="Shell.About">について...</system:String>
+
+    <system:String x:Key="Shell.Today">今日</system:String>
+
+    <system:String x:Key="Shell.Collection">コレクション</system:String>
+
+    <system:String x:Key="Shell.Settings">設定</system:String>
+
+    <system:String x:Key="Shell.Language">言語</system:String>
+
+    <system:String x:Key="Shell.ToTray">トレイアイコンに</system:String>
+
+    <system:String x:Key="Shell.Exit">やめる</system:String>
+
+    <system:String x:Key="Shell.Close">近い</system:String>
+
+    <system:String x:Key="Shell.Ready">準備ができて。</system:String>
+
+    <system:String x:Key="Shell.Greetings">天文学の写真へようこそ！</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">壁紙として使用します</system:String>
+
+    <system:String x:Key="Collection.Remove">取り除く</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">デスクトップに保存します</system:String>
+
+    <system:String x:Key="Collection.BadPicture">この写真をダウンロードできません！</system:String>
+
+    <system:String x:Key="Collection.DropZone">ドラッグアンドドロップゾーン</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">ここにファイルをドラッグアンドドロップして、壁紙コレクションに追加します。</system:String>
+
+    <system:String x:Key="Collection.Statistics">統計</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">コレクションの画像が多すぎます！</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">ディスク上の利用可能なスペースに注意してください！</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">画像：{0}（すべてのサービス - クォータ：{1}）</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">推定ディスクスペース使用量：{0} MB（quota：{1} MB）</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">ディスク上の利用可能なスペース：{0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Webサービス：</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">すべてのサービス。</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">全て</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">最近の</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">壁紙として使用します</system:String>
+
+    <system:String x:Key="Gallery.Add">追加</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">デスクトップに保存します</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">進行中のダウンロード</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">完全にダウンロードしてください</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">画像メタデータ</system:String>
+
+    <system:String x:Key="Gallery.Image">画像</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">サービス用</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">すべてのダウンロードが完了しました！</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">MITライセンスの条件を受け入れます。</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">ライセンス条件</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">このアプリケーションは、MITライセンスの条件に基づいて提供されます。</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">このアプリケーションは、MITライセンスの条件の下でお客様に提供され、他の条件とともに、いかなる種類の保証も意味しません。 このソフトウェアを使用することにより、MITライセンスの条件に完全に同意します。</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">重要なリマインダー</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">ダウンロードされた画像について覚えておくべきいくつかの重要なポイント...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">ダウンロードした画像を壁紙としてのみ使用することをお勧めします。 コマーシャルまたはその他のその他の使用については、著作権所有者にお問い合わせください。</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">今すぐクリーンアップ</system:String>
+
+    <system:String x:Key="Settings.Services.Title">画像ダウンロードサービス</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">画像をダウンロードするWebサービスを選択します。</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">ダウンロード</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">無視してスキップします</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">ディスク使用設定</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">この設定を使用して、コレクションの画像にディスク上のスペースの使用を制限（または制限しません）。</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">画像の最大カウント：</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">画像のディスク上のスペースクォータ（MB）：</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">画像アーカイブの寸法：</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">高解像度（HD）</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">超高解像度（UHD/4K）</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">クォータを超えたときに何をすべきか：</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">古い画像を削除します。</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">警告メッセージのみを表示します。</system:String>
+
+    <system:String x:Key="Settings.Os.Title">オペレーティングシステム設定</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">画像を管理するには、いくつかのオペレーティングシステム設定を選択してください。</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">デスクトップ画面の壁紙を回転させますか？</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">はい、定期的に。</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">一度もない</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">後に壁紙を変更する：（分）</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">重要なリマインダー</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">ダウンロードされた画像について覚えておくべきいくつかの重要なポイント...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">ダウンロードした画像を壁紙としてのみ使用することをお勧めします。 コマーシャルまたはその他のその他の使用については、著作権所有者にお問い合わせください。</system:String>
+
+    <system:String x:Key="Shared.NoImage">画像はありません</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">ファイルシステムエラー。</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">画像ファイルを保存できませんでした。</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">画像コレクションを開きます</system:String>
+
+    <system:String x:Key="Tray.Settings">設定</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">この画像について...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">画像はすでにダウンロードされています。</system:String>
+
+    <system:String x:Key="Model.NoUrl">画像にはURLがありません。</system:String>
+
+    <system:String x:Key="Model.NotAnImage">画像は無効です。</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">その日の写真は実際にはビデオクリップです。</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">個人的なイメージ</system:String>
+
+</ResourceDictionary>

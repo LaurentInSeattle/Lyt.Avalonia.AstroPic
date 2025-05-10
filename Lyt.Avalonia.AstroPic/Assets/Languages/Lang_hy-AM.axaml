@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Սերտ</system:String>
+
+    <system:String x:Key="Shell.AppName">Աստղագիտության նկարներ</system:String>
+
+    <system:String x:Key="Shell.About">...</system:String>
+
+    <system:String x:Key="Shell.Today">Այսօր</system:String>
+
+    <system:String x:Key="Shell.Collection">Հավաքածու</system:String>
+
+    <system:String x:Key="Shell.Settings">Կարգավորումներ</system:String>
+
+    <system:String x:Key="Shell.Language">Լեզու</system:String>
+
+    <system:String x:Key="Shell.ToTray">Tray Icon- ին</system:String>
+
+    <system:String x:Key="Shell.Exit">Թողնել</system:String>
+
+    <system:String x:Key="Shell.Close">Սերտ</system:String>
+
+    <system:String x:Key="Shell.Ready">Պատրաստ:</system:String>
+
+    <system:String x:Key="Shell.Greetings">Բարի գալուստ աստղագիտության նկարներ:</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">Օգտագործեք որպես պաստառ</system:String>
+
+    <system:String x:Key="Collection.Remove">Հեռացնել</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">Խնայեք աշխատասեղանին</system:String>
+
+    <system:String x:Key="Collection.BadPicture">Հնարավոր չէ ներբեռնել այս նկարը:</system:String>
+
+    <system:String x:Key="Collection.DropZone">Քաշեք եւ կաթիլային գոտի</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Քաշեք եւ թողեք ֆայլերը այստեղ `դրանք ձեր պաստառների հավաքածուն ավելացնելու համար:</system:String>
+
+    <system:String x:Key="Collection.Statistics">Վիճակագրություն</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">Չափազանց շատ պատկերներ ձեր հավաքածուի մեջ:</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">Ուշադրություն դարձրեք սկավառակի վրա առկա տարածքին:</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Նկարներ, {0} (Բոլոր ծառայությունները `քվոտա, {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Մոտավոր սկավառակի տարածքի օգտագործումը. {0} MB (քվոտա, {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Հասանելի տարածք սկավառակի վրա. {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Վեբ ծառայություն.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Բոլոր ծառայություններ:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Բոլորը</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Վերջերս</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Օգտագործեք որպես պաստառ</system:String>
+
+    <system:String x:Key="Gallery.Add">Ավելացնել</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Խնայեք աշխատասեղանին</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Ներբեռնեք ընթացքի մեջ</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Ներբեռնեք ամբողջական</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">պատկերի մետատվյալ</system:String>
+
+    <system:String x:Key="Gallery.Image">պատկեր</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">Ծառայության համար</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">Բոլոր ներլցումները ավարտված են:</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Ես ընդունում եմ MIT լիցենզիայի պայմանները, շարունակվում են:</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Լիցենզիայի պայմանները</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Այս ծրագիրը ձեզ տրամադրվում է MIT լիցենզիայի պայմաններով:</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Այս ծրագիրը ձեզ տրամադրվում է MIT լիցենզիայի պայմաններով եւ, այլ պայմաններով, ենթադրում է որեւէ տեսակի երաշխիք:  Օգտագործելով այս ծրագիրը, դուք լիովին համաձայն եք MIT լիցենզիայի պայմաններին եւ պայմաններին:</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Կարեւոր հիշեցում</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Ներբեռնված պատկերների մասին հիշելու որոշ կարեւոր կետեր...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Մաքրել հիմա</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Պատկերի ներբեռնման ծառայություններ</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Ընտրեք վեբ ծառայություններ, որոնցից ցանկանում եք ներբեռնել պատկերներ:</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Ներբեռնեք</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Անտեսել եւ բաց թողնել</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">Սկավառակի օգտագործման պարամետրեր</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Օգտագործեք այս պարամետրը `ձեր հավաքածուի պատկերի համար ձեր սկավառակի վրա տարածքի օգտագործումը սահմանափակելուց (կամ ոչ սահմանափակել):</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">Պատկերների առավելագույն քանակը.</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Տիեզերական քվոտան (MB) սկավառակի վրա պատկերների համար.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Պատկերների արխիվացման չափերը.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Բարձր սահմանում (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ultra High Definition (UHD / 4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Ինչ պետք է արվի, երբ քվոտաները գերազանցվեն.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Delete նջել հին պատկերները:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Միայն նախազգուշական հաղորդագրություն ցույց տվեք:</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Օպերացիոն համակարգի կարգավորումներ</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Ընտրեք գործառնական համակարգի որոշ պարամետրեր `ձեր պատկերները կառավարելու համար:</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">Պտտեք աշխատասեղանի էկրանի պաստառները:</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Այո, պարբերաբար:</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Երբեք</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Փոխեք պաստառներից հետո. (Րոպեներ)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Կարեւոր հիշեցում</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Ներբեռնված պատկերների մասին հիշելու որոշ կարեւոր կետեր...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
+
+    <system:String x:Key="Shared.NoImage">Ոչ մի պատկեր</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Ֆայլերի համակարգի սխալ:</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Չկարողացավ պահպանել պատկերի ֆայլը:</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Բացեք պատկերի հավաքածուն</system:String>
+
+    <system:String x:Key="Tray.Settings">Կարգավորումներ</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">Այս պատկերի մասին...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">Պատկերը արդեն ներբեռնվել է:</system:String>
+
+    <system:String x:Key="Model.NoUrl">Պատկերը URL չունի:</system:String>
+
+    <system:String x:Key="Model.NotAnImage">Պատկերը վավեր չէ:</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">Օրվա լուսանկարը իրականում տեսահոլովակ է:</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Անձնական պատկեր</system:String>
+
+</ResourceDictionary>

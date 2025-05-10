@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Κοντά</system:String>
+
+    <system:String x:Key="Shell.AppName">Εικόνες αστρονομίας</system:String>
+
+    <system:String x:Key="Shell.About">Για...</system:String>
+
+    <system:String x:Key="Shell.Today">Σήμερα</system:String>
+
+    <system:String x:Key="Shell.Collection">Συλλογή</system:String>
+
+    <system:String x:Key="Shell.Settings">Ρυθμίσεις</system:String>
+
+    <system:String x:Key="Shell.Language">Γλώσσα</system:String>
+
+    <system:String x:Key="Shell.ToTray">Στο εικονίδιο του δίσκου</system:String>
+
+    <system:String x:Key="Shell.Exit">Εγκαταλείπω</system:String>
+
+    <system:String x:Key="Shell.Close">Κοντά</system:String>
+
+    <system:String x:Key="Shell.Ready">Ετοιμος.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Καλώς ήλθατε στις φωτογραφίες της αστρονομίας!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">Χρησιμοποιήστε ως ταπετσαρία</system:String>
+
+    <system:String x:Key="Collection.Remove">Αφαιρώ</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">Αποθήκευση στην επιφάνεια εργασίας</system:String>
+
+    <system:String x:Key="Collection.BadPicture">Δεν είναι δυνατή η λήψη αυτής της εικόνας!</system:String>
+
+    <system:String x:Key="Collection.DropZone">Σύνθεση και πτώση ζώνης</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Σύρετε και ρίξτε τα αρχεία εδώ για να τα προσθέσετε στη συλλογή ταπετσαρών σας.</system:String>
+
+    <system:String x:Key="Collection.Statistics">Στατιστική</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">Πάρα πολλές εικόνες στη συλλογή σας!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">Δώστε προσοχή στον διαθέσιμο χώρο στο δίσκο!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Εικόνες: {0} (Όλες οι υπηρεσίες - ποσοστώσεις: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Εκτιμώμενη χρήση χώρου δίσκου: {0} MB (ποσόστωση: {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Διαθέσιμος χώρος στο δίσκο: {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Υπηρεσία ιστού:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Όλες οι υπηρεσίες.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Ολοι</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Πρόσφατος</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Χρησιμοποιήστε ως ταπετσαρία</system:String>
+
+    <system:String x:Key="Gallery.Add">Προσθέτω</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Αποθήκευση στην επιφάνεια εργασίας</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Λήψη σε εξέλιξη</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Ολοκληρωμένη λήψη</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">μεταδεδομένα εικόνας</system:String>
+
+    <system:String x:Key="Gallery.Image">εικών</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">για εξυπηρέτηση</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">Όλες οι λήψεις ολοκληρώνουν!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Αποδέχομαι τους όρους της άδειας MIT, συνεχίζω.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Όροι άδειας</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Αυτή η αίτηση παρέχεται σε εσάς υπό τους όρους της άδειας MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Αυτή η αίτηση παρέχεται σε εσάς υπό τους όρους της άδειας MIT και, μαζί με άλλους όρους, δεν συνεπάγεται καμία εγγύηση οποιουδήποτε είδους.  Χρησιμοποιώντας αυτό το λογισμικό, συμφωνείτε πλήρως με τους όρους και τις προϋποθέσεις της άδειας MIT.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Σημαντική υπενθύμιση</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Μερικά σημαντικά σημεία που πρέπει να θυμάστε για τις λήψεις εικόνων ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Καθαρισμός τώρα</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Υπηρεσίες λήψης εικόνων</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Επιλέξτε τις υπηρεσίες ιστού από τις οποίες θέλετε να κατεβάσετε εικόνες.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Κατεβάζω</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Αγνοήστε και παραλείψτε</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">Ρυθμίσεις χρήσης δίσκου</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Χρησιμοποιήστε αυτήν τη ρύθμιση για να περιορίσετε (ή να μην περιορίσετε) τη χρήση του χώρου στο δίσκο σας για την εικόνα της συλλογής σας.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">Μέγιστος αριθμός εικόνων:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Διαστημική ποσόστωση (MB) στο δίσκο για τις εικόνες:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Διαστάσεις για αρχειοθέτηση εικόνων:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Υψηλής ευκρίνειας (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ultra High Definition (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Τι πρέπει να γίνει όταν υπερβαίνουν τις ποσοστώσεις:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Διαγράψτε παλιές εικόνες.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Δείξτε μόνο ένα προειδοποιητικό μήνυμα.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Ρυθμίσεις λειτουργικού συστήματος</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Επιλέξτε ορισμένες ρυθμίσεις λειτουργικού συστήματος για να διαχειριστείτε τις εικόνες σας.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">Περιστρέψτε ταπετσαρίες οθόνης επιφάνειας εργασίας;</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Ναι, περιοδικά.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Ποτέ</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Αλλάξτε ταπετσαρία μετά από: (λεπτά)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Σημαντική υπενθύμιση</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Μερικά σημαντικά σημεία που πρέπει να θυμάστε για τις λήψεις εικόνων ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
+
+    <system:String x:Key="Shared.NoImage">Χωρίς εικόνα</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Σφάλμα συστήματος αρχείων.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Δεν ήταν δυνατή η αποθήκευση του αρχείου εικόνας.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Ανοίξτε τη συλλογή εικόνων</system:String>
+
+    <system:String x:Key="Tray.Settings">Ρυθμίσεις</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">Σχετικά με αυτήν την εικόνα ...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">Η εικόνα έχει ήδη μεταφορτωθεί.</system:String>
+
+    <system:String x:Key="Model.NoUrl">Η εικόνα δεν έχει διεύθυνση URL.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">Η εικόνα δεν είναι έγκυρη.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">Η φωτογραφία της ημέρας είναι στην πραγματικότητα ένα βίντεο κλιπ.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Προσωπική εικόνα</system:String>
+
+</ResourceDictionary>
