@@ -29,11 +29,14 @@ Localization:
 
 # In progress: 
 
+- Machine localization: Armenian, Greek. 
 - Image information overlay 
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
-# TODO's, hopefully coming soon: 
+# Given up, On hold: 
 
-- Mac OS support
-- Autostart (Windows Only for now)
+- Mac OS support. (No machine for testing.)
+
+- Autostart: Tired to struggle with account security and permissions  
+
