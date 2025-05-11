@@ -22,7 +22,7 @@
 			Style="{StaticResource ToolbarIconButton}"
 			Behaviour="Tap"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Width="100" Height="56"
+			Width="120" Height="56"
 			Margin="8 4 8 4"
 			GlyphSource="broom"
 			ButtonBackground="BorderlessRectangle"

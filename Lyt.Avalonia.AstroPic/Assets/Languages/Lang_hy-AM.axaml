@@ -7,9 +7,9 @@
 
     <system:String x:Key="Toast.Dismiss">Սերտ</system:String>
 
-    <system:String x:Key="Shell.AppName">Աստղագիտության նկարներ</system:String>
+    <system:String x:Key="Shell.AppName">Տիեզերական նկարներ</system:String>
 
-    <system:String x:Key="Shell.About">...</system:String>
+    <system:String x:Key="Shell.About">Տեղեկատվություն</system:String>
 
     <system:String x:Key="Shell.Today">Այսօր</system:String>
 

@@ -24,12 +24,15 @@
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="120" />
-			<RowDefinition Height="60" />
-			<RowDefinition Height="60" />
-			<RowDefinition Height="60" />
-			<RowDefinition Height="60" />
-			<RowDefinition Height="60" />
-			<RowDefinition Height="60" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
+			<RowDefinition Height="54" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<TextBlock
@@ -86,6 +89,36 @@
 			Grid.Column="0" Grid.Row="6"
 			Margin="20 0 0 0"
 			Text="Изберете езика на потребителския интерфейс."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="7"
+			Margin="20 0 0 0"
+			Text="ユーザーインターフェイス言語を選択します。"
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="8"
+			Margin="20 0 0 0"
+			Text="Επιλέξτε τη γλώσσα διεπαφής χρήστη."
+			FontSize="24"
+			TextAlignment="Left"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Column="0" Grid.Row="9"
+			Margin="20 0 0 0"
+			Text="Ընտրեք օգտվողի միջերեսի լեզուն:"
 			FontSize="24"
 			TextAlignment="Left"
 			Foreground="{StaticResource PastelOrchid_0_080}"

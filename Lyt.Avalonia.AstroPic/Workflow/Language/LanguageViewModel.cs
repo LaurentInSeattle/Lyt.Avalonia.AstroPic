@@ -8,8 +8,13 @@ public sealed class LanguageViewModel : Bindable<LanguageView>
         new LanguageInfoViewModel("it-IT", "Italiano" , "Italy.png" , "San_Marino.png" ) ,
         new LanguageInfoViewModel("fr-FR", "Français" , "France.png" , "Quebec.png" ) ,
         new LanguageInfoViewModel("en-US", "English" , "United_Kingdom.png" , "Canada.png" ) ,
+        
         new LanguageInfoViewModel("es-ES", "Español" , "Spain.png" , "Mexico.png" ) ,
         new LanguageInfoViewModel("bg-BG", "Български език" , "Bulgaria.png" , string.Empty ) ,
+        new LanguageInfoViewModel("el-GR", "Ελληνικά" , "Greece.png", "Cyprus.png" ) ,
+        new LanguageInfoViewModel("jp-JP", "日本語", "Japan.png" , string.Empty ) ,
+
+        new LanguageInfoViewModel("hy-AM", "Հայերէն", "Armenia.png" , string.Empty ) ,
     ];
 
     private readonly AstroPicModel astroPicModel;
