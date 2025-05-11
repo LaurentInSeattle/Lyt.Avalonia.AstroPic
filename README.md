@@ -15,28 +15,25 @@ Then...
 - Handle user settings.
 
 Localization: 
-- Machine translated: Ukrainian, Bulgarian. 
+- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, Japanese. 
 - Human translated: Spanish, Italian, French and English
  
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 
 # Just in...
 
-- Localization for Ukrainian an Bulgarian using this translation tool: 
+- Image information overlay 
+- Localization for additional language using this translation tool: 
  https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
-
-# In progress: 
-
-- Machine localization: Armenian, Greek. 
-- Image information overlay 
-
-<p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
 # Given up, On hold: 
 
 - Mac OS support. (No machine for testing.)
 
 - Autostart: Tired to struggle with account security and permissions  
+
+<p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
+
 

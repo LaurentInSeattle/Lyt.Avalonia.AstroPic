@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
-
-namespace Lyt.Avalonia.AstroPic.Model;
+﻿namespace Lyt.Avalonia.AstroPic.Model;
 
 public sealed partial class AstroPicModel : ModelBase
 {
@@ -47,6 +45,9 @@ public sealed partial class AstroPicModel : ModelBase
 
 
     #region Not serialized - No model changed event
+
+    [JsonIgnore]
+    public WallpaperInfo WallpaperInfo { get; set; } = new();
 
     [JsonIgnore]
     public Statistics Statistics{ get; set; } = new();

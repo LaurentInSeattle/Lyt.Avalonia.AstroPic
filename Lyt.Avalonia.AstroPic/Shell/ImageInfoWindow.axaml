@@ -1,0 +1,64 @@
+<Window 
+    x:Class="Lyt.Avalonia.AstroPic.Shell.ImageInfoWindow"
+
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+    
+    Title=""
+    Background="Transparent"
+    CanResize="False"
+    Focusable="False"
+    IsHitTestVisible="True"
+    ShowInTaskbar="False"
+    Topmost="True"
+    SizeToContent="WidthAndHeight"
+    SystemDecorations="None"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Normal"
+    >
+    <Border 
+        Background="Transparent"
+        BorderBrush="{StaticResource LightAqua_0_120}"		
+        BorderThickness="1"
+        Width="720" 
+        CornerRadius="8"
+        >
+        <Grid
+            Margin="4"
+            x:Name="Grid"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Rectangle
+                Grid.Row="0" Grid.RowSpan="2"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Fill="#B0000020"
+                RadiusX="6" RadiusY="6"
+                />
+            <TextBlock
+                Grid.Row="0"
+                x:Name="TitleText"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontSize="24"
+                FontWeight="DemiBold"
+                Foreground="{StaticResource PastelOrchid_0_080}"
+                TextWrapping="Wrap"
+                />
+            <TextBlock
+                Grid.Row="1"
+                x:Name="DescriptionText"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Margin="8"
+                FontSize="18"
+                FontWeight="Normal"
+                Foreground="{StaticResource PastelOrchid_0_080}"
+                TextWrapping="Wrap"
+            />
+        </Grid>
+    </Border>
+</Window>

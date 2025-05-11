@@ -20,6 +20,11 @@ public sealed partial class AstroPicModel : ModelBase
             this.fileManager.Save<byte[]>(fileId, imageBytes);
             this.SetWallpaper(path);
             this.fileManager.Delete(fileId);
+
+            if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+            {
+                this.WallpaperInfo = new WallpaperInfo(pictureMetadata.Title, pictureMetadata.Description);
+            } 
         }
         catch (Exception ex)
         {

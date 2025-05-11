@@ -103,7 +103,16 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     private void ShowImageInfoFromTray(object? _)
     {
-        // TODO
+        var wallpaperInfo = this.astroPicModel.WallpaperInfo;
+        if (wallpaperInfo is not null)
+        {
+            if (!string.IsNullOrWhiteSpace(wallpaperInfo.Title))
+            {
+                var window = new ImageInfoWindow();
+                window.Update(wallpaperInfo);
+                window.Show();
+            }
+        } 
     }
 
     private void NavigateTo(ActivatedView view)
