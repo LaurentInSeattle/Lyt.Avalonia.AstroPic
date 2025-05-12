@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using Lyt.Avalonia.AstroPic.Service;
+using System.Xml.Linq;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
@@ -20,11 +22,7 @@ public sealed partial class AstroPicModel : ModelBase
             this.fileManager.Save<byte[]>(fileId, imageBytes);
             this.SetWallpaper(path);
             this.fileManager.Delete(fileId);
-
-            if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
-            {
-                this.WallpaperInfo = new WallpaperInfo(pictureMetadata.Title, pictureMetadata.Description);
-            } 
+            this.SetWallpaperInfo(pictureMetadata);
         }
         catch (Exception ex)
         {
@@ -48,7 +46,7 @@ public sealed partial class AstroPicModel : ModelBase
             this.MruWallpapers.Clear();
         }
 
-        List<string> files = [];
+        List<Picture> pictures = [];
         foreach (var picture in this.Pictures.Values)
         {
             string name = picture.ImageFilePath;
@@ -58,19 +56,33 @@ public sealed partial class AstroPicModel : ModelBase
                 continue;
             }
 
-            files.Add(path);
+            pictures.Add(picture);
         }
 
-        if (files.Count == 1)
+        Picture selectedPicture; 
+        if (pictures.Count == 1)
         {
             this.MruWallpapers.Clear();
             this.Logger.Info("MRU Wallpapers cleared");
-            this.SetWallpaper(files[0]);
+            selectedPicture = pictures[0];
         }
         else
         {
-            int index = this.random.Next(files.Count);
-            this.SetWallpaper(files[index]);
+            int index = this.random.Next(pictures.Count);
+            selectedPicture = pictures[index];
+        }
+
+        string wallpaperPath = 
+            this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, selectedPicture.ImageFilePath);
+        this.SetWallpaper(wallpaperPath);
+        this.SetWallpaperInfo(selectedPicture.PictureMetadata) ;
+    }
+
+    private void SetWallpaperInfo (PictureMetadata pictureMetadata)
+    {
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+        {
+            this.WallpaperInfo = new WallpaperInfo(pictureMetadata.Title, pictureMetadata.Description);
         }
     }
 
