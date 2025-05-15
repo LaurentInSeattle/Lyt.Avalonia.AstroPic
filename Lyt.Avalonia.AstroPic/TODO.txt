@@ -8,7 +8,11 @@ TODO:
 
 - Complete workflow for initial run (language view, followed by Intro)
 
-NTH : Ability Crop images ??? 
+- Use Translator Service to translate image title and description.
+
+NTH: 
+
+- Ability Crop images ??? 
 
 --- 
 
