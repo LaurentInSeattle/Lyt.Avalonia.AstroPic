@@ -25,6 +25,7 @@
 			>
 			<Grid>
 				<Rectangle 				
+					x:Name="DropRectangle"
 					StrokeDashArray="5, 2" 
 					Stroke="{StaticResource LightAqua_1_100}" 
 					StrokeThickness="4" 
