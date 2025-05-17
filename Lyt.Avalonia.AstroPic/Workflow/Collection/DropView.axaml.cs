@@ -4,8 +4,8 @@ using static Lyt.Avalonia.Controls.Utilities;
 
 public partial class DropView : UserControl
 {
-    private static SolidColorBrush? normalBrush;
-    private static SolidColorBrush? hotBrush;
+    private static readonly SolidColorBrush? normalBrush;
+    private static readonly SolidColorBrush? hotBrush;
 
     static DropView()
     {
