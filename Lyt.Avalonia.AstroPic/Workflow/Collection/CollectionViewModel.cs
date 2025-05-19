@@ -122,7 +122,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
         {
             PictureMetadata pictureMetadata = new ()
             {
-                Provider = ProviderKey.Personal,
+                Provider = Service.ProviderKey.Personal,
                 Date = DateTime.Now.Date,
                 MediaType = MediaType.Image,
                 Url = path,

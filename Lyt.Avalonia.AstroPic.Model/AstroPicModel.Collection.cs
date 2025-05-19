@@ -142,8 +142,7 @@ public sealed partial class AstroPicModel : ModelBase
         try
         {
             string? url = pictureMetadata.Url;
-            if (!string.IsNullOrWhiteSpace(url) &&
-                this.Pictures.ContainsKey(url))
+            if (!string.IsNullOrWhiteSpace(url) && this.Pictures.ContainsKey(url))
             {
                 if (this.Pictures.TryGetValue(url, out Picture? maybePicture))
                 {
@@ -162,6 +161,35 @@ public sealed partial class AstroPicModel : ModelBase
                         this.Save();
                         this.UpdateStatistics(isAdd: false);
                         this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // TODO: Messenger warning 
+            this.Logger.Warning(
+                "Failed to remove picture from collection" +
+                pictureMetadata.Provider.ToString() + "\n" + ex.ToString());
+        }
+    }
+
+    public void Update (PictureMetadata pictureMetadata)
+    {
+        try
+        {
+            string? url = pictureMetadata.Url;
+            if (!string.IsNullOrWhiteSpace(url) && this.Pictures.ContainsKey(url))
+            {
+                if (this.Pictures.TryGetValue(url, out Picture? maybePicture))
+                {
+                    if (maybePicture is Picture picture)
+                    {
+                        // Update metadata 
+                        picture.PictureMetadata = pictureMetadata;
+
+                        // Commit changes
+                        this.Save();
                     }
                 }
             }

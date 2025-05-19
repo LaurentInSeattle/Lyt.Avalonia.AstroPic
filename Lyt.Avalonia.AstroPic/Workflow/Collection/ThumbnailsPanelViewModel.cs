@@ -114,7 +114,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
             }
             else // this.ProvidersSelectedIndex > 0
             {
-                ProviderKey key = this.providers[this.ProvidersSelectedIndex - 1].Key;
+                Service.ProviderKey key = this.providers[this.ProvidersSelectedIndex - 1].Key;
                 var selectedThumbnails =
                     (from thumbnail in this.allThumbnails
                      where thumbnail.Metadata.Provider == key

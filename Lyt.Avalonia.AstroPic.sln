@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Interfaces", "Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj", "{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.Translator.Service", "..\Lyt.Avalonia.Framework\Lyt.Avalonia.Translator.Service\Lyt.Avalonia.Translator.Service.csproj", "{07D25B58-C933-1781-7022-C8D8010E7A81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDF594CF-07BE-4A48-8F1E-56FFEFF58C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D25B58-C933-1781-7022-C8D8010E7A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D25B58-C933-1781-7022-C8D8010E7A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D25B58-C933-1781-7022-C8D8010E7A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D25B58-C933-1781-7022-C8D8010E7A81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{9C34DA41-0836-77C1-6BE5-37F92A902C2F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6C151D29-9502-21F6-3646-7D8EC1E556D6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0FC1BB10-30C6-E701-E669-F5F2F393B3A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{07D25B58-C933-1781-7022-C8D8010E7A81} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E3516D3-0E36-4C81-B932-CD881041D5CF}

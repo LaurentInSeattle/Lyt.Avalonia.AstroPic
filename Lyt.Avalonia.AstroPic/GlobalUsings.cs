@@ -77,6 +77,8 @@ global using Lyt.Avalonia.Persistence;
 
 #endregion Framework 
 
+global using Lyt.Avalonia.Translator.Service; 
+
 global using Lyt.Avalonia.AstroPic.Interfaces;
 global using Lyt.Avalonia.AstroPic.Messaging;
 global using Lyt.Avalonia.AstroPic.Model;

@@ -1,14 +1,14 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-using global::Avalonia.Controls;
-using static FileManagerModel; 
+using static FileManagerModel;
+using static Lyt.Avalonia.Translator.Service.Google.Language;
 
 public sealed class PictureViewModel : Bindable<PictureView>
 {
     public const int ThumbnailWidth = 280;
 
     private readonly AstroPicModel astroPicModel;
-    private readonly Bindable parent; 
+    private readonly Bindable parent;
 
     private PictureMetadata? pictureMetadata;
     private byte[]? imageBytes;
@@ -19,13 +19,13 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
-        this.DisablePropertyChangedLogging = true ;
+        this.DisablePropertyChangedLogging = true;
     }
 
-    protected override void OnViewLoaded() 
+    protected override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.View.ZoomController.Tag = this.parent; 
+        this.View.ZoomController.Tag = this.parent;
     }
 
     internal void Select(PictureMetadata pictureMetadata, byte[] imageBytes)
@@ -35,34 +35,108 @@ public sealed class PictureViewModel : Bindable<PictureView>
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.imageWidth = (int)bitmap.Size.Width;
         this.LoadImage(bitmap);
-        var metadata = this.pictureMetadata;
-        string providerName = this.astroPicModel.ProviderName(metadata.Provider);
+        string providerName = this.astroPicModel.ProviderName(pictureMetadata.Provider);
         this.Provider = this.Localizer.Lookup(providerName, failSilently: true);
-        this.Title = string.IsNullOrWhiteSpace(metadata.Title) ? string.Empty : metadata.Title;
-        this.Copyright = string.IsNullOrWhiteSpace(metadata.Copyright) ? string.Empty : metadata.Copyright;
-        this.Description = string.IsNullOrWhiteSpace(metadata.Description) ? string.Empty : metadata.Description;
-        double height = 0.0; 
-        if (!string.IsNullOrWhiteSpace(metadata.Description))
+        this.Title =
+            string.IsNullOrWhiteSpace(pictureMetadata.Title) ? string.Empty : pictureMetadata.Title;
+        this.Copyright =
+            string.IsNullOrWhiteSpace(pictureMetadata.Copyright) ? string.Empty : pictureMetadata.Copyright;
+        this.Description =
+            string.IsNullOrWhiteSpace(pictureMetadata.Description) ? string.Empty : pictureMetadata.Description;
+        double height = 0.0;
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Description))
         {
-            if (metadata.Description.Length < 150)
+            if (pictureMetadata.Description.Length < 150)
             {
                 height = 40.0;
             }
-            else if (metadata.Description.Length < 400)
+            else if (pictureMetadata.Description.Length < 400)
             {
                 height = 80.0;
             }
-            else if (metadata.Description.Length < 800)
+            else if (pictureMetadata.Description.Length < 800)
             {
                 height = 120.0;
             }
-            else 
+            else
             {
                 height = 160.0;
             }
         }
 
-        this.DescriptionHeight =new GridLength(height, GridUnitType.Pixel); 
+        this.DescriptionHeight = new GridLength(height, GridUnitType.Pixel);
+        this.TranslateMetadata(pictureMetadata);
+    }
+
+    private void TranslateMetadata(PictureMetadata pictureMetadata)
+    {
+        string? currentLanguage = this.Localizer.CurrentLanguage;
+        if (string.IsNullOrWhiteSpace(currentLanguage))
+        {
+            return;
+        }
+
+        if (currentLanguage == "en-US")
+        {
+            return;
+        }
+
+        // title translation is available: 
+        if ((currentLanguage == pictureMetadata.TranslationLanguage) &&
+         !string.IsNullOrWhiteSpace(pictureMetadata.TranslatedTitle))
+        {
+            this.Title = pictureMetadata.TranslatedTitle;
+        }
+
+        // description translation is available: 
+        if ((currentLanguage == pictureMetadata.TranslationLanguage) &&
+         !string.IsNullOrWhiteSpace(pictureMetadata.TranslatedDescription))
+        {
+            this.Description = pictureMetadata.TranslatedDescription;
+        }
+
+        Task.Run(() => { this.TranslateMetadataThread(pictureMetadata, currentLanguage); });
+    }
+
+    private async void TranslateMetadataThread(PictureMetadata pictureMetadata, string currentLanguage)
+    {
+        bool updateModel = false;
+        var translator = ApplicationBase.GetRequiredService<TranslatorService>();
+        string sourceKey = LanguageKeyFromCultureKey("en-US");
+        string currentLanguageKey = LanguageKeyFromCultureKey(currentLanguage);
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+        {
+            (bool success, string translatedTitle) =
+                await translator.Translate(
+                    Translator.Service.ProviderKey.Google,
+                    pictureMetadata.Title, sourceKey, currentLanguageKey);
+            if (success && !string.IsNullOrWhiteSpace(translatedTitle))
+            {
+                pictureMetadata.TranslatedTitle = translatedTitle;
+                updateModel = true;
+                Dispatch.OnUiThread(() => { this.Title = translatedTitle; });
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Description))
+        {
+            (bool success, string translatedDescription) =
+                await translator.Translate(
+                    Translator.Service.ProviderKey.Google,
+                    pictureMetadata.Description, sourceKey, currentLanguageKey);
+            if (success && !string.IsNullOrWhiteSpace(translatedDescription))
+            {
+                pictureMetadata.TranslatedDescription = translatedDescription;
+                updateModel = true;
+                Dispatch.OnUiThread(() => { this.Description = translatedDescription; });
+            }
+        }
+
+        if (updateModel)
+        {
+            pictureMetadata.TranslationLanguage = currentLanguage;
+            this.astroPicModel.Update(pictureMetadata);
+        }
     }
 
     private void LoadImage(WriteableBitmap bitmap)
@@ -80,23 +154,23 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.View.ZoomController.Max();
         Schedule.OnUiThread(
             50, () => { this.View.ZoomController.Min(); }, DispatcherPriority.Background);
-        
+
         if (this.pictureMetadata is not null)
         {
             Schedule.OnUiThread(
-                250, 
+                250,
                 () => { this.Profiler.MemorySnapshot(this.pictureMetadata.Provider.ToString()); }, DispatcherPriority.ApplicationIdle);
-        } 
+        }
     }
 
-    internal void SetWallpaper() 
+    internal void SetWallpaper()
     {
         if (this.pictureMetadata is null || this.imageBytes is null)
         {
             return;
         }
 
-        this.astroPicModel.SetWallpaper(this.pictureMetadata, this.imageBytes); 
+        this.astroPicModel.SetWallpaper(this.pictureMetadata, this.imageBytes);
     }
 
     internal void AddToCollection()
@@ -106,14 +180,14 @@ public sealed class PictureViewModel : Bindable<PictureView>
             return;
         }
 
-        var writeableBitmap = 
-            WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), ThumbnailWidth) ; 
+        var writeableBitmap =
+            WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), ThumbnailWidth);
         byte[] thumbnailBytes = writeableBitmap.EncodeToJpeg();
 
         // Resize image if necessary
         int maxImageWidth = this.astroPicModel.MaxImageWidth;
         byte[] adjustedImageBytes = this.imageBytes;
-        if ( this.imageWidth > maxImageWidth )
+        if (this.imageWidth > maxImageWidth)
         {
             writeableBitmap =
                 WriteableBitmap.DecodeToWidth(new MemoryStream(this.imageBytes), maxImageWidth);
@@ -127,7 +201,7 @@ public sealed class PictureViewModel : Bindable<PictureView>
     {
         this.Provider = this.Localizer.Lookup("Shared.NoImage");
         this.Title = string.Empty;
-        this.Copyright = string.Empty; 
+        this.Copyright = string.Empty;
 
         var canvas = this.View.Canvas;
         canvas.Children.Clear();
@@ -136,7 +210,7 @@ public sealed class PictureViewModel : Bindable<PictureView>
             this.astroPicModel.RemoveFromCollection(this.pictureMetadata);
             this.pictureMetadata = null;
             this.imageBytes = null;
-        } 
+        }
     }
 
     internal void SaveToDesktop()
@@ -156,7 +230,7 @@ public sealed class PictureViewModel : Bindable<PictureView>
         }
         catch (Exception ex)
         {
-            string msg = "Failed to save image file: \n" + ex.ToString() ;
+            string msg = "Failed to save image file: \n" + ex.ToString();
             this.Logger.Error(msg);
             var toaster = ApplicationBase.GetRequiredService<IToaster>();
             toaster.Show(
@@ -170,11 +244,11 @@ public sealed class PictureViewModel : Bindable<PictureView>
     {
         if (message.Tag != this.parent)
         {
-            return ;
-        } 
+            return;
+        }
 
         this.ZoomFactor = message.ZoomFactor;
-    } 
+    }
 
     public double ZoomFactor { get => this.Get<double>(); set => this.Set(value); }
 
