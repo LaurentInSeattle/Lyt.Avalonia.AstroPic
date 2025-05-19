@@ -80,10 +80,20 @@ public sealed partial class AstroPicModel : ModelBase
 
     private void SetWallpaperInfo (PictureMetadata pictureMetadata)
     {
-        if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.TranslatedTitle))
         {
-            this.WallpaperInfo = new WallpaperInfo(pictureMetadata.Title, pictureMetadata.Description);
+            this.WallpaperInfo = 
+                new WallpaperInfo(
+                    pictureMetadata.TranslatedTitle, pictureMetadata.TranslatedDescription);
         }
+        else
+        {
+            if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+            {
+                this.WallpaperInfo = 
+                    new WallpaperInfo(pictureMetadata.Title, pictureMetadata.Description);
+            }
+        } 
     }
 
     private void SetWallpaper(string path)
