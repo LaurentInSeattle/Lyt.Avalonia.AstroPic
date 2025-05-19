@@ -15,13 +15,14 @@ Then...
 - Handle user settings.
 
 Localization: 
-- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, Japanese. 
+- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, Japanese, Chinese, Korean. 
 - Human translated: Spanish, Italian, French and English
  
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 
 # Just in...
 
+- Now showing translated image title and descriptions.
 - Image information overlay 
 - Localization for additional language using this translation tool: 
  https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator
