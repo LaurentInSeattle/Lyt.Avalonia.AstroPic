@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">닫다</system:String>
+
+    <system:String x:Key="Shell.AppName">천문학 사진</system:String>
+
+    <system:String x:Key="Shell.About">에 대한...</system:String>
+
+    <system:String x:Key="Shell.Today">오늘</system:String>
+
+    <system:String x:Key="Shell.Collection">수집</system:String>
+
+    <system:String x:Key="Shell.Settings">설정</system:String>
+
+    <system:String x:Key="Shell.Language">언어</system:String>
+
+    <system:String x:Key="Shell.ToTray">트레이 아이콘에</system:String>
+
+    <system:String x:Key="Shell.Exit">그만두다</system:String>
+
+    <system:String x:Key="Shell.Close">닫다</system:String>
+
+    <system:String x:Key="Shell.Ready">준비가 된.</system:String>
+
+    <system:String x:Key="Shell.Greetings">천문학 사진에 오신 것을 환영합니다!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">벽지로 사용하십시오</system:String>
+
+    <system:String x:Key="Collection.Remove">제거하다</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">데스크탑에 저장하십시오</system:String>
+
+    <system:String x:Key="Collection.BadPicture">이 사진을 다운로드 할 수 없습니다!</system:String>
+
+    <system:String x:Key="Collection.DropZone">드래그 앤 드롭 존</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">여기에 파일을 드래그 앤 드롭하여 벽지 컬렉션에 추가하십시오.</system:String>
+
+    <system:String x:Key="Collection.Statistics">통계</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">컬렉션에 너무 많은 이미지!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">디스크의 사용 가능한 공간에주의하십시오!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">이미지 : {0} (모든 서비스 - 할당량 : {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">예상 디스크 공간 사용 : {0} MB (할당량 : {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">디스크에서 사용 가능한 공간 : {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">웹 서비스 :</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">모든 서비스.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">모두</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">최근의</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">벽지로 사용하십시오</system:String>
+
+    <system:String x:Key="Gallery.Add">추가하다</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">데스크탑에 저장하십시오</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">진행중인 다운로드</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">전체 다운로드</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">이미지 메타 데이터</system:String>
+
+    <system:String x:Key="Gallery.Image">영상</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">서비스를 위해</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">모든 다운로드가 완료되었습니다!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">MIT 라이센스의 조건을 수락합니다.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">라이센스 조건</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">이 신청서는 MIT 라이센스의 조건에 따라 귀하에게 제공됩니다.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">이 신청서는 MIT 라이센스의 조건에 따라 귀하에게 제공되며 다른 약관과 함께 어떠한 종류의 보증도 의미하지 않습니다.  이 소프트웨어를 사용하면 MIT 라이센스의 이용 약관에 전적으로 동의합니다.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">중요한 알림</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">다운로드 된 이미지에 대해 기억해야 할 몇 가지 중요한 사항 ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">다운로드 된 이미지를 벽지로만 사용하는 것이 좋습니다.  다른 용도로 상업적이든 다른 용도로 보려면 저작권 보유자에게 문의하십시오.</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">지금 청소</system:String>
+
+    <system:String x:Key="Settings.Services.Title">이미지 다운로드 서비스</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">이미지를 다운로드하려는 웹 서비스를 선택하십시오.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">다운로드</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">무시하고 건너 뛰십시오</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">디스크 사용 설정</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">이 설정을 사용하여 컬렉션의 이미지에 대한 디스크의 공간 사용을 제한 (또는 제한하지 않음).</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">최대 이미지 수 :</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">이미지 디스크의 우주 할당량 (MB) :</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">이미지 아카이브 크기 :</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">고화질 (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">울트라 고화질 (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">할당량을 초과 할 때 수행해야 할 일 :</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">오래된 이미지를 삭제하십시오.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">경고 메시지 만 표시합니다.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">운영 체제 설정</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">이미지를 관리하려면 일부 운영 체제 설정을 선택하십시오.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">데스크탑 화면 벽지 회전?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">예, 주기적으로.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">절대</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">이후에 벽지 변경 : (분)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">중요한 알림</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">다운로드 된 이미지에 대해 기억해야 할 몇 가지 중요한 사항 ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">다운로드 된 이미지를 벽지로만 사용하는 것이 좋습니다.  다른 용도로 상업적이든 다른 용도로 보려면 저작권 보유자에게 문의하십시오.</system:String>
+
+    <system:String x:Key="Shared.NoImage">이미지가 없습니다</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">파일 시스템 오류.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">이미지 파일을 저장할 수 없습니다.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">이미지 수집을 엽니 다</system:String>
+
+    <system:String x:Key="Tray.Settings">설정</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">이 이미지에 대해 ...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">이미지가 이미 다운로드되었습니다.</system:String>
+
+    <system:String x:Key="Model.NoUrl">이미지에는 URL이 없습니다.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">이미지가 유효하지 않습니다.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">오늘의 사진은 실제로 비디오 클립입니다.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">개인 이미지</system:String>
+
+</ResourceDictionary>

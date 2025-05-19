@@ -4,13 +4,11 @@
 
 TODO: 
 
+- Should translate title and description when rotating wallpaper or look it up on demand.
+
 - Not enough variation when using Open Verse 
 
 - Complete workflow for initial run (language view, followed by Intro)
-
-- Use Translator Service to translate image title and description.
-
-- Date Time: Culture sensitive 
 
 NTH: 
 

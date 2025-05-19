@@ -100,7 +100,7 @@ public partial class App : ApplicationBase
                 [
                     "en-US", "fr-FR", "it-IT", "es-ES", 
                     "uk-UA", "bg-BG", "el-GR", "hy-AM", 
-                    "jp-JP"
+                    "jp-JP", "ko-KO", "zh-CN", "zh-TW"
                 ],
                 // Use default for all other config parameters 
             });

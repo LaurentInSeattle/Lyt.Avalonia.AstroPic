@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">關閉</system:String>
+
+    <system:String x:Key="Shell.AppName">天文學圖片</system:String>
+
+    <system:String x:Key="Shell.About">關於...</system:String>
+
+    <system:String x:Key="Shell.Today">今天</system:String>
+
+    <system:String x:Key="Shell.Collection">收藏</system:String>
+
+    <system:String x:Key="Shell.Settings">設定</system:String>
+
+    <system:String x:Key="Shell.Language">語言</system:String>
+
+    <system:String x:Key="Shell.ToTray">要托盤圖標</system:String>
+
+    <system:String x:Key="Shell.Exit">辭職</system:String>
+
+    <system:String x:Key="Shell.Close">關閉</system:String>
+
+    <system:String x:Key="Shell.Ready">準備好。</system:String>
+
+    <system:String x:Key="Shell.Greetings">歡迎來到天文學圖片！</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">用作牆紙</system:String>
+
+    <system:String x:Key="Collection.Remove">消除</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">保存到桌面</system:String>
+
+    <system:String x:Key="Collection.BadPicture">無法下載這張照片！</system:String>
+
+    <system:String x:Key="Collection.DropZone">拖動區</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">在此處拖放文件以將其添加到您的牆紙集合中。</system:String>
+
+    <system:String x:Key="Collection.Statistics">統計數據</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">收藏中的圖像太多了！</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">注意磁盤上可用的空間！</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">圖像：{0}（所有服務 - 配額：{1}）</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">估計的磁盤空間用法：{0} MB（配額：{1} MB）</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">磁盤上的可用空間：{0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">網絡服務：</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">所有服務。</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">全部</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">最近的</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">用作牆紙</system:String>
+
+    <system:String x:Key="Gallery.Add">添加</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">保存到桌面</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">下載正在進行中</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">下載完整</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">圖像元數據</system:String>
+
+    <system:String x:Key="Gallery.Image">圖像</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">服務</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">所有下載均已完成！</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">我接受麻省理工學院許可證的條款，繼續。</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">許可條款</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">根據MIT許可證的條款向您提供此申請。</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">根據MIT許可證的條款向您提供此申請，並與其他條款一起表示沒有任何形式的保證。通過使用此軟件，您可以完全同意MIT許可證的條款和條件。</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">重要的提醒</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">關於下載圖像的一些要點值得記住...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">建議您僅將下載的圖像用作牆紙。對於任何其他用途，商業或其他用途，請聯繫版權持有人。</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">現在清理</system:String>
+
+    <system:String x:Key="Settings.Services.Title">圖像下載服務</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">選擇要從中下載圖像的Web服務。</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">下載</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">忽略和跳過</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">光盤使用設置</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">使用此設置限制（或不限制）光盤上的空間用於收藏中的圖像。</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">圖像的最大計數：</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">圖像光盤上的空間配額（MB）：</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">圖像歸檔的尺寸：</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">高清（HD）</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">超高清（UHD/4K）</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">超過配額時應該做什麼：</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">刪除舊圖像。</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">僅顯示警告信息。</system:String>
+
+    <system:String x:Key="Settings.Os.Title">操作系統設置</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">選擇一些操作系統設置來管理您的圖像。</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">旋轉桌面屏幕壁紙？</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">是的，定期。</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">絕不</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">更改壁紙之後：（分鐘）</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">重要的提醒</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">關於下載圖像的一些要點值得記住...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">建議您僅將下載的圖像用作牆紙。對於任何其他用途，商業或其他用途，請聯繫版權持有人。</system:String>
+
+    <system:String x:Key="Shared.NoImage">沒有圖像</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">文件系統錯誤。</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">無法保存圖像文件。</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">打開圖像集</system:String>
+
+    <system:String x:Key="Tray.Settings">設定</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">關於這個圖像...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">圖像已經下載。</system:String>
+
+    <system:String x:Key="Model.NoUrl">圖像沒有URL。</system:String>
+
+    <system:String x:Key="Model.NotAnImage">圖像無效。</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">當天的照片實際上是一個視頻剪輯。</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">個人形象</system:String>
+
+</ResourceDictionary>
