@@ -6,6 +6,7 @@ public sealed class LanguageInfoViewModel : Bindable<LanguageInfoView>
 
     public LanguageInfoViewModel(string key, string name, string flagOne, string flagTwo)
     {
+        this.DisablePropertyChangedLogging = true; 
         this.Key = key;
         this.Name = name;
         if (string.IsNullOrWhiteSpace(flagTwo))

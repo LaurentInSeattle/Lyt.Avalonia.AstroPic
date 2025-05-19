@@ -21,14 +21,14 @@
 			>
 			<glyphs:GlyphButton
 				x:Name="maxButton"
-				Style="{StaticResource TextButton}"
-				Text="Max"
+				Style="{StaticResource IconButton}"
 				Margin="0 0 0 8"
 				Padding="0"
 				Width="36" Height="36"
 				FontSize="13"
 				Click="OnButtonMaxClick"
 				HorizontalAlignment="Center"
+				GlyphSource="zoom_in"
 				/>
 			<Slider
 				x:Name="Slider"
@@ -42,14 +42,14 @@
 				/>
 			<glyphs:GlyphButton
 				x:Name="minButton"
-				Style="{StaticResource TextButton}"
-				Text="Fit"
+				Style="{StaticResource IconButton}"
 				FontSize="13"
 				Margin="0 8 0 0"
 				Padding="0"
 				Width="36" Height="36"
 				Click="OnButtonMinClick"
 				HorizontalAlignment="Center"
+				GlyphSource="zoom_fit"
 				/>
 		</StackPanel>
 	</Border>

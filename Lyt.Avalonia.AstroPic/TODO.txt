@@ -1,6 +1,6 @@
 ﻿BUG:
 
-- Invalid selections in Collection view 
+- Invalid selections in Collection view when activating view 
 
 TODO: 
 
@@ -9,6 +9,8 @@ TODO:
 - Complete workflow for initial run (language view, followed by Intro)
 
 - Use Translator Service to translate image title and description.
+
+- Date Time: Culture sensitive 
 
 NTH: 
 

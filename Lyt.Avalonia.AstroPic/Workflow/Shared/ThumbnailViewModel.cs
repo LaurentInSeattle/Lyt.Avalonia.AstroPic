@@ -81,10 +81,18 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         var model = App.GetRequiredService<AstroPicModel>();
         string providerName = model.ProviderName(this.Metadata.Provider);
         string providerLocalized = this.Localizer.Lookup(providerName, failSilently: true);
+        string? currentLanguage = this.Localizer.CurrentLanguage;
+        if (!string.IsNullOrEmpty(currentLanguage))
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(currentLanguage);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(currentLanguage);
+        }
+
+        string dateString = this.Metadata.Date.ToShortDateString();
         this.Provider =
             this.isLarge ?
                 providerLocalized :
-                string.Concat(providerLocalized, "  ~  " + this.Metadata.Date.ToShortDateString());
+                string.Concat(providerLocalized, "  ~  ", dateString );
     }
 
     public double FontSize { get => this.Get<double>()!; set => this.Set(value); }

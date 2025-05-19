@@ -88,6 +88,8 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         string preferredLanguage = this.astroPicModel.Language;
         this.Logger.Debug("Language: " + preferredLanguage);
         this.localizer.SelectLanguage(preferredLanguage);
+        Thread.CurrentThread.CurrentCulture = new CultureInfo(preferredLanguage);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(preferredLanguage);
 
         this.Logger.Debug("OnViewLoaded language loaded");
 

@@ -45,6 +45,17 @@
 		Hot="{StaticResource      LightAqua_0_040}"
 		/>
 
+	<ControlTheme x:Key="IconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Layout" Value="IconOnly"/>
+		<Setter Property="ButtonBackground" Value="BorderOnly"/>
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+	</ControlTheme>
+
 	<ControlTheme x:Key="ToolbarIconButton" TargetType="glyphs:GlyphButton">
 		<Setter Property="Layout" Value="IconTextBelow"/>
 		<Setter Property="ButtonBackground" Value="BorderOnly"/>
