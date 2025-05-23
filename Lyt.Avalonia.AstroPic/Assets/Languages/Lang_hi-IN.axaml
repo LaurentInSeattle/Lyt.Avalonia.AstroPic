@@ -1,0 +1,166 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">बंद करना</system:String>
+
+    <system:String x:Key="Shell.AppName">खगोल विज्ञान चित्र</system:String>
+
+    <system:String x:Key="Shell.About">के बारे में...</system:String>
+
+    <system:String x:Key="Shell.Today">आज</system:String>
+
+    <system:String x:Key="Shell.Collection">संग्रह</system:String>
+
+    <system:String x:Key="Shell.Settings">सेटिंग</system:String>
+
+    <system:String x:Key="Shell.Language">भाषा</system:String>
+
+    <system:String x:Key="Shell.ToTray">टू ट्रे आइकन</system:String>
+
+    <system:String x:Key="Shell.Exit">छोड़ना</system:String>
+
+    <system:String x:Key="Shell.Close">बंद करना</system:String>
+
+    <system:String x:Key="Shell.Ready">तैयार।</system:String>
+
+    <system:String x:Key="Shell.Greetings">खगोल विज्ञान चित्रों में आपका स्वागत है!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">वॉलपेपर के रूप में उपयोग करें</system:String>
+
+    <system:String x:Key="Collection.Remove">निकालना</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">डेस्कटॉप के लिए सहेजें</system:String>
+
+    <system:String x:Key="Collection.BadPicture">इस तस्वीर को डाउनलोड नहीं कर सकते!</system:String>
+
+    <system:String x:Key="Collection.DropZone">ड्रैग एंड ड्रॉप ज़ोन</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">अपने वॉलपेपर संग्रह में उन्हें जोड़ने के लिए फ़ाइलों को यहां खींचें और ड्रॉप करें।</system:String>
+
+    <system:String x:Key="Collection.Statistics">आंकड़े</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">आपके संग्रह में बहुत सारी छवियां!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">डिस्क पर उपलब्ध स्थान पर ध्यान दें!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">चित्र: {0} (सभी सेवाएं - कोटा: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">अनुमानित डिस्क स्थान उपयोग: {0} एमबी (कोटा: {1} एमबी)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">डिस्क पर उपलब्ध स्थान: {0: f1} gb</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">वेब सेवा:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">सभी सेवाएं।</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">सभी</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">हाल ही का</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">वॉलपेपर के रूप में उपयोग करें</system:String>
+
+    <system:String x:Key="Gallery.Add">जोड़ना</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">डेस्कटॉप के लिए सहेजें</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">डाउनलोड जारी है</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">डाउनलोड पूर्ण</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">छवि मेटाडेटा</system:String>
+
+    <system:String x:Key="Gallery.Image">छवि</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">सेवा के लिए</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">सभी डाउनलोड पूरा!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">मैं MIT लाइसेंस की शर्तों को स्वीकार करता हूं, जारी रखता हूं।</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">लाइसेंस शर्तों</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">यह एप्लिकेशन आपको MIT लाइसेंस की शर्तों के तहत प्रदान किया जाता है।</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">यह एप्लिकेशन आपको MIT लाइसेंस की शर्तों के तहत प्रदान किया जाता है और अन्य शर्तों के साथ, किसी भी तरह की कोई वारंटी नहीं है।  इस सॉफ़्टवेयर का उपयोग करके, आप MIT लाइसेंस के नियमों और शर्तों से पूरी तरह सहमत हैं।</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">महत्वपूर्ण अनुस्मारक</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">डाउनलोड की गई छवियों के बारे में याद करने के लिए कुछ महत्वपूर्ण बिंदु ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">आपको केवल वॉलपेपर के रूप में डाउनलोड की गई छवियों का उपयोग करने की सलाह दी जाती है।  किसी अन्य उपयोग के लिए, वाणिज्यिक या अन्यथा, कृपया कॉपीराइट धारक से संपर्क करें।</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">अब सफाई</system:String>
+
+    <system:String x:Key="Settings.Services.Title">छवि डाउनलोड सेवाएं</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">उन वेब सेवाओं का चयन करें जिनसे आप छवियां डाउनलोड करना चाहते हैं।</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">डाउनलोड करना</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">अनदेखा करना और छोड़ देना</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">डिस्क उपयोग सेटिंग्स</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">इस सेटिंग का उपयोग अपने संग्रह में छवि के लिए अपने डिस्क पर स्थान के उपयोग को सीमित करने (या सीमित नहीं) करने के लिए करें।</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">छवियों की अधिकतम गिनती:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">छवियों के लिए डिस्क पर अंतरिक्ष कोटा (एमबी):</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">छवि संग्रह के लिए आयाम:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">उच्च परिभाषा (एचडी)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">अल्ट्रा हाई डेफिनिशन (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">कोटा से अधिक होने पर क्या किया जाना चाहिए:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">पुरानी छवियों को हटाएं।</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">केवल एक चेतावनी संदेश दिखाएं।</system:String>
+
+    <system:String x:Key="Settings.Os.Title">ऑपरेटिंग सिस्टम सेटिंग्स</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">अपनी छवियों को प्रबंधित करने के लिए कुछ ऑपरेटिंग सिस्टम सेटिंग्स चुनें।</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">डेस्कटॉप स्क्रीन वॉलपेपर घुमाएं?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">हाँ, समय -समय पर।</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">कभी नहीं</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">वॉलपेपर के बाद बदलें: (मिनट)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">महत्वपूर्ण अनुस्मारक</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">डाउनलोड की गई छवियों के बारे में याद करने के लिए कुछ महत्वपूर्ण बिंदु ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">आपको केवल वॉलपेपर के रूप में डाउनलोड की गई छवियों का उपयोग करने की सलाह दी जाती है।  किसी अन्य उपयोग के लिए, वाणिज्यिक या अन्यथा, कृपया कॉपीराइट धारक से संपर्क करें।</system:String>
+
+    <system:String x:Key="Shared.NoImage">चित्र उपलब्द नहीं है</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">फ़ाइल सिस्टम त्रुटि।</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">छवि फ़ाइल को सहेज नहीं सका।</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">छवि संग्रह खोलें</system:String>
+
+    <system:String x:Key="Tray.Settings">सेटिंग</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">इस छवि के बारे में ...</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">छवि पहले ही डाउनलोड हो चुकी है।</system:String>
+
+    <system:String x:Key="Model.NoUrl">छवि का कोई URL नहीं है।</system:String>
+
+    <system:String x:Key="Model.NotAnImage">छवि मान्य नहीं है।</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">दिन की तस्वीर वास्तव में एक वीडियो क्लिप है।</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">व्यक्तिगत छवि</system:String>
+
+</ResourceDictionary>

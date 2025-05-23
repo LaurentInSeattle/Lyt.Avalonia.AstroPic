@@ -38,6 +38,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.Translator.Service", "..\Lyt.Avalonia.Framework\Lyt.Avalonia.Translator.Service\Lyt.Avalonia.Translator.Service.csproj", "{07D25B58-C933-1781-7022-C8D8010E7A81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Messenger", "..\Lyt.Avalonia.Framework\Lyt.Messenger\Lyt.Messenger.csproj", "{BC7AC4F3-B23E-2E6B-A651-1844E619C879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Utilities", "..\Lyt.Avalonia.Framework\Lyt.Utilities\Lyt.Utilities.csproj", "{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +96,14 @@ Global
 		{07D25B58-C933-1781-7022-C8D8010E7A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D25B58-C933-1781-7022-C8D8010E7A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D25B58-C933-1781-7022-C8D8010E7A81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC7AC4F3-B23E-2E6B-A651-1844E619C879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7AC4F3-B23E-2E6B-A651-1844E619C879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC7AC4F3-B23E-2E6B-A651-1844E619C879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC7AC4F3-B23E-2E6B-A651-1844E619C879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +116,8 @@ Global
 		{6C151D29-9502-21F6-3646-7D8EC1E556D6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0FC1BB10-30C6-E701-E669-F5F2F393B3A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{07D25B58-C933-1781-7022-C8D8010E7A81} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BC7AC4F3-B23E-2E6B-A651-1844E619C879} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{9363ADFD-7A3B-1F10-6FFB-9C856A8032ED} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E3516D3-0E36-4C81-B932-CD881041D5CF}
