@@ -1,6 +1,4 @@
-﻿using Lyt.Avalonia.Interfaces.Dispatch;
-
-namespace Lyt.Avalonia.AstroPic;
+﻿namespace Lyt.Avalonia.AstroPic;
 
 public partial class App : ApplicationBase
 {

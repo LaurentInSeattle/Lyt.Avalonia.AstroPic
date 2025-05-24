@@ -1,7 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 using static FileManagerModel;
-using static Lyt.Avalonia.Translator.Service.Google.Language;
+using static Lyt.Translator.Service.Google.Language;
 
 public sealed class PictureViewModel : Bindable<PictureView>
 {

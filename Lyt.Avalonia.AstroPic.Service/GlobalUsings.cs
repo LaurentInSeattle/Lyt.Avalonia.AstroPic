@@ -19,9 +19,9 @@ global using System.Threading.Tasks;
 global using RestSharp;
 
 
-global using Lyt.Avalonia.Interfaces.Messenger;
-global using Lyt.Avalonia.Interfaces.Logger;
-global using Lyt.Avalonia.Interfaces.Random;
+global using Lyt.Framework.Interfaces.Messaging;
+global using Lyt.Framework.Interfaces.Logging;
+global using Lyt.Framework.Interfaces.Randomizing;
 
 global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Service.Bing;

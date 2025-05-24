@@ -15,12 +15,12 @@ global using System.Net.Sockets;
 global using System.Text.Json.Serialization;
 global using System.Threading.Tasks;
 
-global using Lyt.Avalonia.Interfaces.Localization;
-global using Lyt.Avalonia.Interfaces.Logger;
-global using Lyt.Avalonia.Interfaces.Model;
-global using Lyt.Avalonia.Interfaces.Messenger;
-global using Lyt.Avalonia.Model;
-global using Lyt.Avalonia.Persistence;
+global using Lyt.Framework.Interfaces.Localizing;
+global using Lyt.Framework.Interfaces.Logging;
+global using Lyt.Framework.Interfaces.Modeling;
+global using Lyt.Framework.Interfaces.Messaging;
+global using Lyt.Model;
+global using Lyt.Persistence;
 
 global using Lyt.Avalonia.AstroPic.Interfaces;
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;

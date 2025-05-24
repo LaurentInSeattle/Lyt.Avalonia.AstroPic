@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
-using static Lyt.Avalonia.Persistence.FileManagerModel;
+using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
 {
