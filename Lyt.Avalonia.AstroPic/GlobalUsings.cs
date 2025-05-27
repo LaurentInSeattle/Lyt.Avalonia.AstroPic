@@ -71,15 +71,20 @@ global using Lyt.Avalonia.Mvvm.Toasting;
 global using Lyt.Avalonia.Mvvm.Utilities;
 
 global using Lyt.Avalonia.Localizer;
+
 global using Lyt.Model;
 global using Lyt.Persistence;
-
 global using Lyt.Messaging;
+global using Lyt.Mvvm;
 global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Profiling;
 global using Lyt.Utilities.Randomizing;
 
 #endregion Framework 
+
+global using CommunityToolkit.Mvvm;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
 
 global using Lyt.Translator.Service; 
 

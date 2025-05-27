@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
+public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>
 {
     public const double LargeFontSize = 24.0;
     public const double SmallFontSize = 16.0;
@@ -20,6 +20,21 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
     private readonly ISelectListener parent;
     private readonly bool isLarge;
 
+    [ObservableProperty]
+    private double fontSize;
+
+    [ObservableProperty]
+    private double borderHeight;
+
+    [ObservableProperty]
+    private double imageHeight;
+
+    [ObservableProperty]
+    private string provider;
+
+    [ObservableProperty]
+    private WriteableBitmap thumbnail;
+
     /// <summary> 
     /// Creates a thumbnail from a full (large) image - use for downloads 
     /// - OR - 
@@ -29,8 +44,6 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         ISelectListener parent, 
         PictureMetadata metadata, byte[] imageBytes, bool isLarge = true )        
     {
-        this.DisablePropertyChangedLogging = true;
-
         this.parent = parent;
         this.Metadata = metadata;
         this.ImageBytes = imageBytes;
@@ -38,6 +51,7 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
         this.BorderHeight = isLarge ? LargeBorderHeight : SmallBorderHeight;
         this.ImageHeight = isLarge ? LargeImageHeight : SmallImageHeight;
         this.FontSize = isLarge ? LargeFontSize : SmallFontSize;
+        this.Provider = string.Empty;
         this.SetThumbnailTitle(); 
         var bitmap =
             isLarge  ?
@@ -94,14 +108,4 @@ public sealed class ThumbnailViewModel : Bindable<ThumbnailView>
                 providerLocalized :
                 string.Concat(providerLocalized, "  ~  ", dateString );
     }
-
-    public double FontSize { get => this.Get<double>()!; set => this.Set(value); }
-
-    public double BorderHeight { get => this.Get<double>()!; set => this.Set(value); }
-
-    public double ImageHeight { get => this.Get<double>()!; set => this.Set(value); }
-
-    public string Provider { get => this.Get<string>()!; set => this.Set(value); }
-
-    public WriteableBitmap Thumbnail { get => this.Get<WriteableBitmap>()!; set => this.Set(value); }
 }

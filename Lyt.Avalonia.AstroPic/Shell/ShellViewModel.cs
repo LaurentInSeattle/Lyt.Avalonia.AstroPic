@@ -1,18 +1,17 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
+using CommunityToolkit.Mvvm.Input;
 using static MessagingExtensions;
 using static ViewActivationMessage;
 
 // https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
 
-public sealed partial class ShellViewModel : Bindable<ShellView>
+public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
     private const int MinutesToMillisecs = 60 * 1_000;
 
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
-    private readonly IMessenger messenger;
-    private readonly ILocalizer localizer;
     private readonly TimeoutTimer rotatorTimer;
     private readonly TimeoutTimer downloadRetriesTimer;
 
@@ -27,13 +26,10 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     #endregion To please the XAML viewer 
 
-    public ShellViewModel(
-        AstroPicModel astroPicModel, ILocalizer localizer, IToaster toaster, IMessenger messenger)
+    public ShellViewModel(AstroPicModel astroPicModel, IToaster toaster)
     {
         this.astroPicModel = astroPicModel;
-        this.localizer = localizer;
         this.toaster = toaster;
-        this.messenger = messenger;
 
         this.downloadRetriesTimer = new TimeoutTimer(this.OnDownloadRetriesTimer, 1 * MinutesToMillisecs);
         this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 3 * MinutesToMillisecs);
@@ -74,7 +70,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
     private void OnRotatorTimer() => this.astroPicModel.RotateWallpaper();
 
-    protected override void OnViewLoaded()
+    public override void OnViewLoaded()
     {
         this.Logger.Debug("OnViewLoaded begins");
 
@@ -87,7 +83,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         // Select default language 
         string preferredLanguage = this.astroPicModel.Language;
         this.Logger.Debug("Language: " + preferredLanguage);
-        this.localizer.SelectLanguage(preferredLanguage);
+        this.Localizer.SelectLanguage(preferredLanguage);
         Thread.CurrentThread.CurrentCulture = new CultureInfo(preferredLanguage);
         Thread.CurrentThread.CurrentUICulture = new CultureInfo(preferredLanguage);
 
@@ -106,7 +102,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         if (true)
         {
             this.toaster.Show(
-                this.localizer.Lookup("Shell.Ready"), this.localizer.Lookup("Shell.Greetings"),
+                this.Localizer.Lookup("Shell.Ready"), this.Localizer.Lookup("Shell.Greetings"),
                 1_600, InformationLevel.Info);
         }
 
@@ -229,7 +225,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
 
             case ActivatedView.Language:
                 NoToolbar();
-                this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
+                // this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
                 break;
 
             case ActivatedView.Intro:
@@ -320,41 +316,33 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         App.GetRequiredService<SettingsToolbarViewModel>().CreateViewAndBind();
     }
 
+    [RelayCommand]
+    public void OnToday() => this.OnViewActivation(ActivatedView.Gallery);
+
+    [RelayCommand]
+    public void OnCollection() => this.OnViewActivation(ActivatedView.Collection);
+
+    [RelayCommand]
+    public void OnSettings() => this.OnViewActivation(ActivatedView.Settings);
+
+    [RelayCommand]
+    public void OnInfo() => this.OnViewActivation(ActivatedView.Intro);
+
+    [RelayCommand]
+    public void OnLanguage() => this.OnViewActivation(ActivatedView.Language);
+
+    [RelayCommand]
+    public void OnToTray() => this.ShowMainWindow(show: false);
+
 #pragma warning disable IDE0079 
-#pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
-    private void OnToday(object? _) => this.OnViewActivation(ActivatedView.Gallery);
-
-    private void OnCollection(object? _) => this.OnViewActivation(ActivatedView.Collection);
-
-    private void OnSettings(object? _) => this.OnViewActivation(ActivatedView.Settings);
-
-    private void OnInfo(object? _) => this.OnViewActivation(ActivatedView.Intro);
-
-    private void OnLanguage(object? _) => this.OnViewActivation(ActivatedView.Language);
-
-    private void OnToTray(object? _) => this.ShowMainWindow(show: false);
-
-    private void OnClose(object? _) => OnExit();
+    [RelayCommand]
+    public void OnClose() => OnExit();
 
 #pragma warning restore CA1822
-#pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore IDE0079
 
-    public ICommand TodayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand CollectionCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand SettingsCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand InfoCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand LanguageCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand ToTrayCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public ICommand CloseCommand { get => this.Get<ICommand>()!; set => this.Set(value); }
-
-    public bool MainToolbarIsVisible { get => this.Get<bool>()!; set => this.Set(value); }
+    [ObservableProperty]
+    public bool mainToolbarIsVisible ; 
 }

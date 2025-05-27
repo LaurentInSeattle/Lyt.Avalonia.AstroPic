@@ -1,18 +1,24 @@
 namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-public partial class PictureView : UserControl
+public partial class PictureView : UserControl, IView
 {
     public PictureView()
     {
         this.InitializeComponent();
-        this.DataContextChanged += this.OnDataContextChanged; 
-    }
-
-    private void OnDataContextChanged(object? sender, EventArgs e)
-    {
-        if (this.DataContext is PictureViewModel pictureViewModel)
+        this.DataContextChanged += (s, e) =>
         {
-            pictureViewModel.BindOnDataContextChanged(this);
-        }
+            if (this.DataContext is PictureViewModel pictureViewModel)
+            {
+                pictureViewModel.BindOnDataContextChanged(this);
+            }
+        };
+
+        this.Loaded += (s, e) =>
+        {
+            if (this.DataContext is not null && this.DataContext is ViewModel viewModel)
+            {
+                viewModel.OnViewLoaded();
+            }
+        };
     }
 }

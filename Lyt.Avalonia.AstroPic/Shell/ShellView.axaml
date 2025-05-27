@@ -86,7 +86,7 @@
 				GlyphAngle="0"
 				Text="{DynamicResource Shell.Today}"
 				IsSelected="True"
-				Command="{Binding TodayCommand}"
+				Command="{Binding OnToday}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
@@ -101,7 +101,7 @@
 				GlyphStrokeThickness="0"
 				GlyphAngle="0"
 				Text="{DynamicResource Shell.Collection}"
-				Command="{Binding CollectionCommand}"
+				Command="{Binding OnCollection}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
@@ -116,7 +116,7 @@
 				GlyphStrokeThickness="0"
 				GlyphAngle="20"
 				Text="{DynamicResource Shell.Settings}"
-				Command="{Binding SettingsCommand}"
+				Command="{Binding OnSettings}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
@@ -130,7 +130,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.Language}"
-				Command="{Binding LanguageCommand}"
+				Command="{Binding OnLanguage}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 			<glyphs:GlyphButton
@@ -144,7 +144,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.About}"
-				Command="{Binding InfoCommand}"
+				Command="{Binding OnInfo}"
 				Group="{Binding ElementName=SelectionGroup}"
 				/>
 		</StackPanel>
@@ -166,7 +166,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.ToTray}"
-				Command="{Binding ToTrayCommand}"
+				Command="{Binding OnToTray}"
 				/>
 			<glyphs:GlyphButton
 				Style="{StaticResource ToolbarIconButton}"
@@ -178,7 +178,7 @@
 				ButtonBackground="BorderlessRectangle"
 				GlyphStrokeThickness="0"
 				Text="{DynamicResource Shell.Close}"
-				Command="{Binding CloseCommand}"
+				Command="{Binding OnClose}"
 				/>
 		</StackPanel>
 

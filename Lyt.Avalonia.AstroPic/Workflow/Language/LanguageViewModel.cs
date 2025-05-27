@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Language;
 
-public sealed class LanguageViewModel : Bindable<LanguageView>
+public sealed partial class LanguageViewModel : ViewModel<LanguageView>
 {
     private static readonly List<LanguageInfoViewModel> SupportedLanguages =
     [
@@ -51,29 +51,22 @@ public sealed class LanguageViewModel : Bindable<LanguageView>
         this.isInitializing = false;
     }
 
-    public int SelectedLanguageIndex 
+    [ObservableProperty]
+    private int selectedLanguageIndex ; 
+
+    partial void OnSelectedLanguageIndexChanged(int value)
     { 
-        get => this.Get<int>();
-        set
+        // Do not change the language when initializing 
+        if (this.isInitializing)
         {
-            // Update the UI...
-            this.Set(value);
-
-            // ... But do not change the language when initializing 
-            if (this.isInitializing)
-            {
-                return; 
-            } 
-
-            string languageKey = this.Languages[value].Key; 
-            Debug.WriteLine("Selected language: " + languageKey);
-            this.astroPicModel.SelectLanguage (languageKey);
+            return; 
         } 
+
+        string languageKey = this.Languages[value].Key; 
+        Debug.WriteLine("Selected language: " + languageKey);
+        this.astroPicModel.SelectLanguage (languageKey);
     }
-    
-    public ObservableCollection<LanguageInfoViewModel> Languages
-    {
-        get => this.Get<ObservableCollection<LanguageInfoViewModel>?>() ?? throw new ArgumentNullException("Languages");
-        set => this.Set(value);
-    }
+
+    [ObservableProperty]    
+    private ObservableCollection<LanguageInfoViewModel> languages; 
 }

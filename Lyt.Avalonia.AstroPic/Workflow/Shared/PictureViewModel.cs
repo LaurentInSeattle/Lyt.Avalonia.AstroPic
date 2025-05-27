@@ -3,12 +3,30 @@
 using static FileManagerModel;
 using static Lyt.Translator.Service.Google.Language;
 
-public sealed class PictureViewModel : Bindable<PictureView>
+public sealed partial class PictureViewModel : ViewModel<PictureView>
 {
     public const int ThumbnailWidth = 280;
 
     private readonly AstroPicModel astroPicModel;
     private readonly Bindable parent;
+
+    [ObservableProperty]
+    private double zoomFactor;
+
+    [ObservableProperty]
+    private string provider;
+
+    [ObservableProperty]
+    private string title;
+
+    [ObservableProperty]
+    private string copyright;
+
+    [ObservableProperty]
+    private string description;
+
+    [ObservableProperty]
+    private GridLength descriptionHeight;
 
     private PictureMetadata? pictureMetadata;
     private byte[]? imageBytes;
@@ -19,10 +37,14 @@ public sealed class PictureViewModel : Bindable<PictureView>
         this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
-        this.DisablePropertyChangedLogging = true;
+
+        this.Provider = string.Empty;
+        this.Title = string.Empty;
+        this.Copyright = string.Empty;
+        this.Description = string.Empty;
     }
 
-    protected override void OnViewLoaded()
+    public override void OnViewLoaded()
     {
         base.OnViewLoaded();
         this.View.ZoomController.Tag = this.parent;
@@ -249,16 +271,4 @@ public sealed class PictureViewModel : Bindable<PictureView>
 
         this.ZoomFactor = message.ZoomFactor;
     }
-
-    public double ZoomFactor { get => this.Get<double>(); set => this.Set(value); }
-
-    public string Provider { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string Title { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string Copyright { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string Description { get => this.Get<string>()!; set => this.Set(value); }
-
-    public GridLength DescriptionHeight { get => this.Get<GridLength>(); set => this.Set(value); }
 }

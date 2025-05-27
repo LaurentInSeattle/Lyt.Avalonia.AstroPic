@@ -1,12 +1,23 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Language;
 
-public sealed class LanguageInfoViewModel : Bindable<LanguageInfoView>
+public sealed partial class LanguageInfoViewModel : ViewModel<LanguageInfoView>
 {
     private const string UriPath = "avares://Lyt.Avalonia.AstroPic/Assets/Images/Flags/";
 
+    [ObservableProperty]
+    private string key;
+
+    [ObservableProperty]
+    private string name;
+
+    [ObservableProperty]
+    private Bitmap? flagOne;
+
+    [ObservableProperty]
+    private Bitmap flagTwo;
+
     public LanguageInfoViewModel(string key, string name, string flagOne, string flagTwo)
     {
-        this.DisablePropertyChangedLogging = true; 
         this.Key = key;
         this.Name = name;
         if (string.IsNullOrWhiteSpace(flagTwo))
@@ -19,12 +30,4 @@ public sealed class LanguageInfoViewModel : Bindable<LanguageInfoView>
             this.FlagTwo = new Bitmap(AssetLoader.Open(new Uri(UriPath + flagTwo)));
         }
     }
-
-    public string Key { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string Name { get => this.Get<string>()!; set => this.Set(value); }
-
-    public Bitmap FlagOne { get => this.Get<Bitmap>()!; set => this.Set(value); }
-
-    public Bitmap FlagTwo { get => this.Get<Bitmap>()!; set => this.Set(value); }
 }

@@ -2,7 +2,7 @@
 
 using static ViewActivationMessage;
 
-public sealed partial class ShellViewModel : Bindable<ShellView>
+public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
     private bool isShowingMainWindow;
 
@@ -12,10 +12,9 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         // Tray will localize only at app startup 
         // Tray will not re-localize when language is changed
 
-        var localizer = App.GetRequiredService<ILocalizer>();
-        string openCollection = localizer.Lookup("Tray.OpenCollection");
-        string settings = localizer.Lookup("Tray.Settings");
-        string imageInfo = localizer.Lookup("Tray.ImageInfo");
+        string openCollection = this.Localizer.Lookup("Tray.OpenCollection");
+        string settings = this.Localizer.Lookup("Tray.Settings");
+        string imageInfo = this.Localizer.Lookup("Tray.ImageInfo");
         var trayIcon = new TrayIcon
         {
             Icon = new WindowIcon(
@@ -25,17 +24,17 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
             [
                 new NativeMenuItem(openCollection)
                 {
-                    Command = new Command (this.OpenCollectionFromTray)
+                    Command = new RelayCommand (this.OpenCollectionFromTray)
                 },
                 new NativeMenuItemSeparator(),
                 new NativeMenuItem(settings)
                 {
-                    Command = new Command (this.OpenSettingsFromTray)
+                    Command = new RelayCommand(this.OpenSettingsFromTray)
                 },
                 new NativeMenuItemSeparator(),
                 new NativeMenuItem(imageInfo)
                 {
-                    Command = new Command (this.ShowImageInfoFromTray)
+                    Command = new RelayCommand(this.ShowImageInfoFromTray)
                 },
             ],
         };
@@ -81,7 +80,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         this.isShowingMainWindow = show;
     }
 
-    private void OpenCollectionFromTray(object? _)
+    private void OpenCollectionFromTray()
     {
         if (!this.isShowingMainWindow)
         {
@@ -91,7 +90,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         this.NavigateTo(ActivatedView.Collection);
     }
 
-    private void OpenSettingsFromTray(object? _)
+    private void OpenSettingsFromTray()
     {
         if (!this.isShowingMainWindow)
         {
@@ -101,7 +100,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
         this.NavigateTo(ActivatedView.Settings);
     }
 
-    private void ShowImageInfoFromTray(object? _)
+    private void ShowImageInfoFromTray()
     {
         var wallpaperInfo = this.astroPicModel.WallpaperInfo;
         if (wallpaperInfo is not null)
@@ -118,7 +117,7 @@ public sealed partial class ShellViewModel : Bindable<ShellView>
     private void NavigateTo(ActivatedView view)
     {
         bool programmaticNavigation = true;
-        this.messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
+        this.Messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
     }
 }
 

@@ -2,7 +2,7 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 using static Avalonia.Controls.Utilities;
 
-public partial class ThumbnailView : UserControl
+public partial class ThumbnailView : UserControl, IView
 {
     private static readonly SolidColorBrush insideBrush;
     private static readonly SolidColorBrush pressedBrush;
