@@ -1,21 +1,43 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Settings;
 
-public sealed class SettingsViewModel : Bindable<SettingsView>
+public sealed partial class SettingsViewModel : ViewModel<SettingsView>
 {
     private readonly AstroPicModel astroPicModel;
+
+    [ObservableProperty]
+    private ObservableCollection<SelectProviderViewModel> selectProviders;
+
+    [ObservableProperty]
+    private decimal? maxImages;
+
+    [ObservableProperty]
+    private decimal? maxStorageMB;
+
+    [ObservableProperty]
+    private bool maxImageWidth;
+
+    [ObservableProperty]
+    private bool shouldAutoCleanup;
+
+    [ObservableProperty]
+    private bool shouldAutoStart;
+
+    [ObservableProperty]
+    private bool shouldRotateWallpapers;
+
+    [ObservableProperty]
+    private decimal? wallpaperRotationMinutes;
 
     private bool isPopulating;
 
     public SettingsViewModel(AstroPicModel astroPicModel)
     {
-        this.DisablePropertyChangedLogging = true;
-
         this.astroPicModel = astroPicModel;
         this.SelectProviders = [];
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
     }
 
-    protected override void OnViewLoaded()
+    public override void OnViewLoaded()
     {
         base.OnViewLoaded();
         this.Populate();
@@ -72,101 +94,54 @@ public sealed class SettingsViewModel : Bindable<SettingsView>
         this.isPopulating = false;
     }
 
-    public ObservableCollection<SelectProviderViewModel> SelectProviders
+    partial void OnMaxImagesChanged(decimal? value)
     {
-        get => this.Get<ObservableCollection<SelectProviderViewModel>?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
-        set => this.Set(value);
+        if (TryConvertToInt(value, out int converted))
+        {
+            this.astroPicModel.MaxImages = converted;
+        }
     }
 
-    public decimal? MaxImages
+    partial void OnMaxStorageMBChanged(decimal? value)
     {
-        get => this.Get<decimal?>();
-        set
+        if (TryConvertToInt(value, out int converted))
         {
-            this.Set(value);
-            if (TryConvertToInt(value, out int converted))
+            this.astroPicModel.MaxStorageMB = converted;
+        }
+    }
+
+    partial void OnMaxImageWidthChanged(bool value)
+        => this.astroPicModel.MaxImageWidth = value ? 1920 : 3840;
+
+    partial void OnShouldAutoCleanupChanged(bool value)
+        => this.astroPicModel.ShouldAutoCleanup = value;
+
+    partial void OnShouldAutoStartChanged(bool value)
+    {
+        this.astroPicModel.ShouldAutoStart = value;
+        if (!this.isPopulating)
+        {
+            var entryAssembly = Assembly.GetEntryAssembly();
+            if (entryAssembly is not null)
             {
-                this.astroPicModel.MaxImages = converted;
-            }
-        }
-    }
-
-    public decimal? MaxStorageMB
-    {
-        get => this.Get<decimal?>();
-        set
-        {
-            this.Set(value);
-            if (TryConvertToInt(value, out int converted))
-            {
-                this.astroPicModel.MaxStorageMB = converted;
-            }
-        }
-    }
-
-    public bool MaxImageWidth
-    {
-        get => this.Get<bool>();
-        set
-        {
-            this.Set(value);
-            this.astroPicModel.MaxImageWidth = value ? 1920 : 3840;
-        }
-    }
-
-    public bool ShouldAutoCleanup
-    {
-        get => this.Get<bool>();
-        set
-        {
-            this.Set(value);
-            this.astroPicModel.ShouldAutoCleanup = value;
-        }
-    }
-
-    public bool ShouldAutoStart
-    {
-        get => this.Get<bool>();
-        set
-        {
-            this.Set(value);
-            this.astroPicModel.ShouldAutoStart = value;
-            if (!this.isPopulating)
-            {
-                var entryAssembly = Assembly.GetEntryAssembly();
-                if (entryAssembly is not null)
+                var autoStartService = App.GetRequiredService<IAutoStartService>();
+                autoStartService.ClearAutoStart(App.Application, entryAssembly.Location);
+                if (value)
                 {
-                    var autoStartService = App.GetRequiredService<IAutoStartService>();
-                    autoStartService.ClearAutoStart(App.Application, entryAssembly.Location);
-                    if (value)
-                    {
-                        autoStartService.SetAutoStart(App.Application, entryAssembly.Location);
-                    }
+                    autoStartService.SetAutoStart(App.Application, entryAssembly.Location);
                 }
             }
         }
     }
 
-    public bool ShouldRotateWallpapers
-    {
-        get => this.Get<bool>();
-        set
-        {
-            this.Set(value);
-            this.astroPicModel.ShouldRotateWallpapers = value;
-        }
-    }
+    partial void OnShouldRotateWallpapersChanged(bool value)
+            => this.astroPicModel.ShouldRotateWallpapers = value;
 
-    public decimal? WallpaperRotationMinutes
+    partial void OnWallpaperRotationMinutesChanged(decimal? value)
     {
-        get => this.Get<decimal?>();
-        set
+        if (TryConvertToInt(value, out int converted))
         {
-            this.Set(value);
-            if (TryConvertToInt(value, out int converted))
-            {
-                this.astroPicModel.WallpaperRotationMinutes = converted;
-            }
+            this.astroPicModel.WallpaperRotationMinutes = converted;
         }
     }
 

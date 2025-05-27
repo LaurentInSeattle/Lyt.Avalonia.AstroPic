@@ -1,6 +1,6 @@
 namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
-public partial class GalleryToolbarView : UserControl
+public partial class GalleryToolbarView : UserControl, IView
 {
     public GalleryToolbarView() => this.InitializeComponent();
 }

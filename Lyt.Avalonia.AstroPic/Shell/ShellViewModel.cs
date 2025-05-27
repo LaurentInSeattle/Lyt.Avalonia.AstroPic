@@ -152,11 +152,11 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
     {
-        Bindable? CurrentViewModel()
+        ViewModel? CurrentViewModel()
         {
             object? currentView = this.View.ShellViewContent.Content;
             if (currentView is Control control &&
-                control.DataContext is Bindable currentViewModel)
+                control.DataContext is ViewModel currentViewModel)
             {
                 return currentViewModel;
             }
@@ -180,7 +180,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         bool programmaticNavigation = false;
         ActivatedView hasBeenActivated = ActivatedView.Exit;
-        Bindable? currentViewModel = null;
+        ViewModel? currentViewModel = null;
         if (parameter is bool navigationType)
         {
             programmaticNavigation = navigationType;
@@ -190,8 +190,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         void NoToolbar() => this.View.ShellViewToolbar.Content = null;
 
         void SetupToolbar<TViewModel, TControl>()
-            where TViewModel : Bindable<TControl>
-            where TControl : Control, new()
+            where TViewModel : ViewModel<TControl>
+            where TControl : Control, IView, new()
         {
             if (this.View is null)
             {
@@ -225,7 +225,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
             case ActivatedView.Language:
                 NoToolbar();
-                // this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
+                this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
                 break;
 
             case ActivatedView.Intro:
@@ -274,8 +274,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     }
 
     private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
-        where TViewModel : Bindable<TControl>
-        where TControl : Control, new()
+        where TViewModel : ViewModel<TControl>
+        where TControl : Control, IView, new()
     {
         if (this.View is null)
         {
@@ -284,7 +284,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         var newViewModel = App.GetRequiredService<TViewModel>();
         object? currentView = this.View.ShellViewContent.Content;
-        if (currentView is Control control && control.DataContext is Bindable currentViewModel)
+        if (currentView is Control control && control.DataContext is ViewModel currentViewModel)
         {
             if (newViewModel == currentViewModel)
             {

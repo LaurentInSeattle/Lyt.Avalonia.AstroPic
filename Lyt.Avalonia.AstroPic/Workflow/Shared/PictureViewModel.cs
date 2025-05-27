@@ -8,7 +8,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
     public const int ThumbnailWidth = 280;
 
     private readonly AstroPicModel astroPicModel;
-    private readonly Bindable parent;
+    private readonly ViewModel parent;
 
     [ObservableProperty]
     private double zoomFactor;
@@ -32,7 +32,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
     private byte[]? imageBytes;
     private int imageWidth;
 
-    public PictureViewModel(Bindable parent)
+    public PictureViewModel(ViewModel parent)
     {
         this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();

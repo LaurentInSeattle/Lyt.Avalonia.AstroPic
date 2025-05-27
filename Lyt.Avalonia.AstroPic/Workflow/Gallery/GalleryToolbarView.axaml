@@ -29,7 +29,7 @@
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
 			Text="{DynamicResource Gallery.SetWallpaper}"
-			Command="{Binding WallpaperCommand}"
+			Command="{Binding OnWallpaper}"
 			/>
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
@@ -42,7 +42,7 @@
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
 			Text="{DynamicResource Gallery.Add}"
-			Command="{Binding AddToCollectionCommand}"
+			Command="{Binding OnAddToCollection}"
 			/>
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
@@ -55,7 +55,7 @@
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
 			Text="{DynamicResource Gallery.SaveToDesktop}"
-			Command="{Binding SaveToDesktopCommand}"
+			Command="{Binding OnSaveToDesktop}"
 			/>
 	</StackPanel>
 

@@ -28,7 +28,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			Text="{DynamicResource Intro.AgreeMIT}"
-			Command="{Binding NextCommand}"
+			Command="{Binding OnNext}"
 	    	/>
 	</StackPanel>
 

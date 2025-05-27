@@ -1,17 +1,27 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed class CollectionViewModel : Bindable<CollectionView>
+public sealed partial class CollectionViewModel : ViewModel<CollectionView>
 {
     private readonly AstroPicModel astroPicModel;
-    private readonly ILocalizer localizer;
+
+    [ObservableProperty]
+    private ThumbnailsPanelViewModel thumbnailsPanelViewModel;
+
+    [ObservableProperty]
+    private DropViewModel dropViewModel;
+
+    [ObservableProperty]
+    private StatisticsViewModel statisticsViewModel;
+
+    [ObservableProperty]
+    private PictureViewModel pictureViewModel;
 
     private bool loaded;
     private List<Tuple<Picture, byte[]>>? collectionThumbnails;
 
-    public CollectionViewModel(AstroPicModel astroPicModel, ILocalizer localizer)
+    public CollectionViewModel(AstroPicModel astroPicModel)
     {
         this.astroPicModel = astroPicModel;
-        this.localizer = localizer;
         this.PictureViewModel = new PictureViewModel(this);
         this.DropViewModel = new DropViewModel();
         this.StatisticsViewModel = new StatisticsViewModel(this.astroPicModel);
@@ -143,31 +153,7 @@ public sealed class CollectionViewModel : Bindable<CollectionView>
 
     private void ShowBadPicture()
     {
-        this.PictureViewModel.Title = this.localizer.Lookup("Collection.BadPicture") ;
+        this.PictureViewModel.Title = this.Localizer.Lookup("Collection.BadPicture") ;
         this.Logger.Warning("Collection: Bad picture!"); 
-    }
-
-    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel
-    {
-        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
-        set => this.Set(value);
-    }
-
-    public DropViewModel DropViewModel
-    {
-        get => this.Get<DropViewModel?>() ?? throw new ArgumentNullException("DropViewModel");
-        set => this.Set(value);
-    }
-
-    public StatisticsViewModel StatisticsViewModel
-    {
-        get => this.Get<StatisticsViewModel?>() ?? throw new ArgumentNullException("StatisticsViewModel");
-        set => this.Set(value);
-    }
-
-    public PictureViewModel PictureViewModel
-    {
-        get => this.Get<PictureViewModel?>() ?? throw new ArgumentNullException("PictureViewModel");
-        set => this.Set(value);
     }
 }

@@ -1,11 +1,18 @@
-﻿using Lyt.Avalonia.AstroPic.Model.DataObjects;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
-namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
-
-public sealed class GalleryViewModel : Bindable<GalleryView>
+public sealed partial class GalleryViewModel : ViewModel<GalleryView>
 {
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
+
+    [ObservableProperty]
+    private string progressMessage;
+
+    [ObservableProperty]
+    private ThumbnailsPanelViewModel thumbnailsPanelViewModel;
+
+    [ObservableProperty]
+    private PictureViewModel pictureViewModel;
 
     private bool downloaded;
 
@@ -13,6 +20,7 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     {
         this.astroPicModel = astroPicModel;
         this.toaster = toaster;
+        this.progressMessage =  string.Empty;
         this.PictureViewModel = new PictureViewModel(this);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
         this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
@@ -118,19 +126,5 @@ public sealed class GalleryViewModel : Bindable<GalleryView>
     {
         this.PictureViewModel.Select(pictureMetadata, imageBytes);
         this.ProgressMessage = string.Empty;
-    }
-
-    public string ProgressMessage { get => this.Get<string>()!; set => this.Set(value); }
-
-    public ThumbnailsPanelViewModel ThumbnailsPanelViewModel
-    {
-        get => this.Get<ThumbnailsPanelViewModel?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
-        set => this.Set(value);
-    }
-
-    public PictureViewModel PictureViewModel
-    {
-        get => this.Get<PictureViewModel?>() ?? throw new ArgumentNullException("PictureViewModel");
-        set => this.Set(value);
     }
 }
