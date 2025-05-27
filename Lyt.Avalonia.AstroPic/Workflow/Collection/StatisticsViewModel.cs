@@ -1,12 +1,28 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed class StatisticsViewModel : Bindable<StatisticsView>
+public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
 {
-    private readonly AstroPicModel astroPicModel; 
+    private readonly AstroPicModel astroPicModel;
+
+    [ObservableProperty]
+    private string imageCountText;
+
+    [ObservableProperty]
+    private string sizeOnDiskText;
+
+    [ObservableProperty]
+    private string availableDiskSpaceText;
+
+    [ObservableProperty]
+    private string alertText;
 
     public StatisticsViewModel(AstroPicModel astroPicModel)
     {
         this.astroPicModel = astroPicModel;
+        this.AlertText = string.Empty;
+        this.ImageCountText = string.Empty;
+        this.SizeOnDiskText = string.Empty;
+        this.AvailableDiskSpaceText = string.Empty;
         this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
         this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
@@ -57,12 +73,4 @@ public sealed class StatisticsViewModel : Bindable<StatisticsView>
             }
         } 
     }
-
-    public string ImageCountText { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string SizeOnDiskText { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string AvailableDiskSpaceText { get => this.Get<string>()!; set => this.Set(value); }
-
-    public string AlertText { get => this.Get<string>()!; set => this.Set(value); }
 }

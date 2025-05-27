@@ -43,7 +43,7 @@
 				Width="270"
 				Margin="8 0 8 0"
 				HorizontalAlignment="Center" VerticalAlignment="Center"
-				ItemsSource="{Binding Providers}"
+				ItemsSource="{Binding ProviderNames}"
 				SelectedIndex="{Binding ProvidersSelectedIndex}"
 				Foreground="{StaticResource LightAqua_1_100}"
 				FontSize="16"

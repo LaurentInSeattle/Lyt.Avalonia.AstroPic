@@ -1,12 +1,24 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 // See if we can create a base class 
-public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, ISelectListener
+public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanelView>, ISelectListener
 {
     private readonly AstroPicModel astroPicModel;
     private readonly CollectionViewModel collectionViewModel;
     private readonly List<Provider> providers;
 
+    [ObservableProperty]
+    private bool showMru;
+
+    [ObservableProperty]
+    private ObservableCollection<ThumbnailViewModel> thumbnails;
+
+    [ObservableProperty]
+    private List<string> providerNames;
+
+    [ObservableProperty]
+    private int providersSelectedIndex; 
+        
     private PictureMetadata? selectedMetadata;
     private List<ThumbnailViewModel>? allThumbnails;
     private List<ThumbnailViewModel>? filteredThumbnails;
@@ -16,6 +28,7 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         this.astroPicModel = App.GetRequiredService<AstroPicModel>();
         this.collectionViewModel = collectionViewModel;
         this.Thumbnails = [];
+        this.ProviderNames = [];
         this.providers =
             [.. ( from provider in this.astroPicModel.Providers
               orderby provider.Name
@@ -34,13 +47,13 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
             this.Localizer.Lookup ( "Collection.Thumbs.AllServices")
         };
 
-        foreach (var provider in this.providers)
+        foreach (Provider provider in this.providers)
         {
-            string providerLocalized = this.Localizer.Lookup(provider.Name, failSilently: true);
-            list.Add(providerLocalized);
+            string providerNameLocalized = this.Localizer.Lookup(provider.Name, failSilently: true);
+            list.Add(providerNameLocalized);
         }
 
-        this.Providers = list;
+        this.ProviderNames = list;
         this.ProvidersSelectedIndex = 0; // all
     }
 
@@ -147,32 +160,11 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView>, IS
         }
     }
 
-    public ObservableCollection<ThumbnailViewModel> Thumbnails
-    {
-        get => this.Get<ObservableCollection<ThumbnailViewModel>?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
-        set => this.Set(value);
-    }
+    partial void OnProvidersSelectedIndexChanged(int value) => this.Filter();
 
-    public List<string>? Providers { get => this.Get<List<string>?>(); set => this.Set(value); }
-
-    public int ProvidersSelectedIndex
+    partial void OnShowMruChanged (bool value)
     {
-        get => this.Get<int>();
-        set
-        {
-            this.Set(value);
-            this.Filter();
-        }
-    }
-
-    public bool ShowMru
-    {
-        get => this.Get<bool>();
-        set
-        {
-            this.Set(value);
-            this.astroPicModel.ShowRecentImages = value;
-            this.Filter();
-        }
+        this.astroPicModel.ShowRecentImages = value;
+        this.Filter();
     }
 }

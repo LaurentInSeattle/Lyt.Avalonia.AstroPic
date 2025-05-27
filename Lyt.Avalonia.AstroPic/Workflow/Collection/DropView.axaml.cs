@@ -2,7 +2,7 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 using static Lyt.Avalonia.Controls.Utilities;
 
-public partial class DropView : UserControl
+public partial class DropView : UserControl, IView
 {
     private static readonly SolidColorBrush? normalBrush;
     private static readonly SolidColorBrush? hotBrush;

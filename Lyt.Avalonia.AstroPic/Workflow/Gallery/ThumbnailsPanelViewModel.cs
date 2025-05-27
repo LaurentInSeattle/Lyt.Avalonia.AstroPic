@@ -1,8 +1,11 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
-public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView> , ISelectListener
+public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanelView> , ISelectListener
 {
     private readonly GalleryViewModel galleryViewModel;
+
+    [ObservableProperty]
+    private List<ThumbnailViewModel> thumbnails;
 
     private PictureMetadata? selectedMetadata;
 
@@ -68,11 +71,5 @@ public sealed class ThumbnailsPanelViewModel : Bindable<ThumbnailsPanelView> , I
                 }
             }
         }
-    }
-
-    public List<ThumbnailViewModel> Thumbnails
-    {
-        get => this.Get<List<ThumbnailViewModel>?>() ?? throw new ArgumentNullException("ThumbnailsPanelViewModel");
-        set => this.Set(value);
     }
 }

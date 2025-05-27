@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed class DropViewModel : Bindable<DropView>
+public sealed partial class DropViewModel : ViewModel<DropView>
 {
     /// <summary> Returns true if the path is a valid image file. </summary>
     internal bool OnDrop(string path)
