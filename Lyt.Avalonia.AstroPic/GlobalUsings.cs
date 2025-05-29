@@ -21,6 +21,9 @@ global using System.Windows.Input;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
 
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+
 #endregion System 
 
 #region Avalonia 
@@ -50,6 +53,7 @@ global using Avalonia.Threading;
 #region Framework 
 
 global using Lyt.Framework.Interfaces;
+global using Lyt.Framework.Interfaces.Binding;
 global using Lyt.Framework.Interfaces.Localizing;
 global using Lyt.Framework.Interfaces.Logging;
 global using Lyt.Framework.Interfaces.Messaging;
@@ -82,10 +86,6 @@ global using Lyt.Utilities.Randomizing;
 
 #endregion Framework 
 
-global using CommunityToolkit.Mvvm;
-global using CommunityToolkit.Mvvm.ComponentModel;
-global using CommunityToolkit.Mvvm.Input;
-
 global using Lyt.Translator.Service; 
 
 global using Lyt.Avalonia.AstroPic.Interfaces;
@@ -94,11 +94,9 @@ global using Lyt.Avalonia.AstroPic.Model;
 global using Lyt.Avalonia.AstroPic.Model.DataObjects;
 global using Lyt.Avalonia.AstroPic.Model.Messaging;
 
-
 global using Lyt.Avalonia.AstroPic.Service;
 global using Lyt.Avalonia.AstroPic.Shell;
 global using Lyt.Avalonia.AstroPic.Utilities;
-global using Lyt.Avalonia.AstroPic.Workflow;
 global using Lyt.Avalonia.AstroPic.Workflow.Collection;
 global using Lyt.Avalonia.AstroPic.Workflow.Gallery;
 global using Lyt.Avalonia.AstroPic.Workflow.Intro;
