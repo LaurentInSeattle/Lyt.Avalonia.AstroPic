@@ -5,25 +5,25 @@ public class AstroPicService(ILogger logger, IRandomizer randomizer)
     private readonly ILogger logger = logger;
     private readonly IRandomizer randomizer = randomizer;
 
-    public async Task<List<PictureMetadata>> GetPictures(ProviderKey provider)
+    public async Task<List<PictureMetadata>> GetPictures(ImageProviderKey provider)
     {
         try
         {
             switch (provider)
             {
-                case ProviderKey.Nasa:
+                case ImageProviderKey.Nasa:
                     return await NasaService.GetPictures();
 
-                case ProviderKey.Epic:
+                case ImageProviderKey.Epic:
                     return await EpicService.GetPictures();
 
-                case ProviderKey.Bing:
+                case ImageProviderKey.Bing:
                     return await BingService.GetPictures();
 
-                case ProviderKey.EarthView:
+                case ImageProviderKey.EarthView:
                     return await EarthViewService.GetPictures();
 
-                case ProviderKey.OpenVerse:
+                case ImageProviderKey.OpenVerse:
                     return await OpenVerseService.GetPictures(this.randomizer);
 
                 default:

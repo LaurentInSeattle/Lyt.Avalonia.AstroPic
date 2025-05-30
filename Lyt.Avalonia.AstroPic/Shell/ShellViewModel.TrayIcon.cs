@@ -8,10 +8,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private void SetupTrayIcon()
     {
-        // TODO: Fix that (if possible) 
-        // Tray will localize only at app startup 
-        // Tray will not re-localize when language is changed
-
         string openCollection = this.Localizer.Lookup("Tray.OpenCollection");
         string settings = this.Localizer.Lookup("Tray.Settings");
         string imageInfo = this.Localizer.Lookup("Tray.ImageInfo");

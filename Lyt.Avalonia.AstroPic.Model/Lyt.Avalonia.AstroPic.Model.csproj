@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
     <ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
+    <ProjectReference Include="..\..\Lyt.Framework\Lyt.Translator.Service\Lyt.Translator.Service.csproj" />
     <ProjectReference Include="..\Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj" />
     <ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
   </ItemGroup>

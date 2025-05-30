@@ -20,6 +20,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
     private int providersSelectedIndex; 
         
     private PictureMetadata? selectedMetadata;
+    private ThumbnailViewModel? selectedThumbnail; 
     private List<ThumbnailViewModel>? allThumbnails;
     private List<ThumbnailViewModel>? filteredThumbnails;
 
@@ -70,10 +71,12 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
         this.Filter();
     }
 
+    public ThumbnailViewModel? SelectedThumbnail => this.selectedThumbnail; 
     public void OnSelect(object selectedObject)
     {
         if (selectedObject is ThumbnailViewModel thumbnailViewModel)
         {
+            this.selectedThumbnail = thumbnailViewModel; 
             var pictureMetadata = thumbnailViewModel.Metadata;
             if (this.selectedMetadata is null || this.selectedMetadata != pictureMetadata)
             {
@@ -127,7 +130,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
             }
             else // this.ProvidersSelectedIndex > 0
             {
-                Service.ProviderKey key = this.providers[this.ProvidersSelectedIndex - 1].Key;
+                Service.ImageProviderKey key = this.providers[this.ProvidersSelectedIndex - 1].Key;
                 var selectedThumbnails =
                     (from thumbnail in this.allThumbnails
                      where thumbnail.Metadata.Provider == key
@@ -152,6 +155,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
         {
             this.Thumbnails = [.. this.filteredThumbnails];
             this.selectedMetadata = this.filteredThumbnails[0].Metadata;
+            this.OnSelect(this.Thumbnails[0]);
         }
         else
         {

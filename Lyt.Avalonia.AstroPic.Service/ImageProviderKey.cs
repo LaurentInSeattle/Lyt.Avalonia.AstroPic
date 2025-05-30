@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Service;
 
-public enum ProviderKey
+public enum ImageProviderKey
 {
     Unknown = 0,
 

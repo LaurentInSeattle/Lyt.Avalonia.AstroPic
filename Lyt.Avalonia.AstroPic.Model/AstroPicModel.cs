@@ -21,17 +21,18 @@ public sealed partial class AstroPicModel : ModelBase
             ShouldAutoCleanup = true,
             Providers =
             [
-                new Provider(ProviderKey.Personal, "Model.Provider.Personal") { IsSelected = false},
-                new Provider(ProviderKey.Epic, "Nasa EPIC"),
-                new Provider(ProviderKey.Nasa, "Nasa APOD"),
-                new Provider(ProviderKey.Bing, "Bing Wallpaper"),
-                new Provider(ProviderKey.EarthView, "Google Earth View"),
-                new Provider(ProviderKey.OpenVerse, "OpenVerse.Org"),
+                new Provider(ImageProviderKey.Personal, "Model.Provider.Personal") { IsSelected = false},
+                new Provider(ImageProviderKey.Epic, "Nasa EPIC"),
+                new Provider(ImageProviderKey.Nasa, "Nasa APOD"),
+                new Provider(ImageProviderKey.Bing, "Bing Wallpaper"),
+                new Provider(ImageProviderKey.EarthView, "Google Earth View"),
+                new Provider(ImageProviderKey.OpenVerse, "OpenVerse.Org"),
             ]
         };
 
     private readonly FileManagerModel fileManager;
     private readonly AstroPicService astroPicService;
+    private readonly TranslatorService translatorService;
     private readonly IWallpaperService wallpaperService;
     private readonly ILocalizer localizer; 
     private readonly Lock lockObject = new();
@@ -52,6 +53,7 @@ public sealed partial class AstroPicModel : ModelBase
     public AstroPicModel(
         FileManagerModel fileManager,
         AstroPicService astroPicService,
+        TranslatorService translatorService, 
         IWallpaperService wallpaperService,
         ILocalizer localizer,
         IMessenger messenger, 
@@ -59,6 +61,7 @@ public sealed partial class AstroPicModel : ModelBase
     {
         this.fileManager = fileManager;
         this.astroPicService = astroPicService;
+        this.translatorService = translatorService;
         this.wallpaperService = wallpaperService;
         this.localizer = localizer;
         this.modelFileId = new FileId(Area.User, Kind.Json, AstroPicModel.AstroPicModelFilename);

@@ -37,6 +37,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
         this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
         this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
+        this.Messenger.Subscribe<TranslationMessage>(this.OnTranslation, withUiDispatch: true);
 
         this.Provider = string.Empty;
         this.Title = string.Empty;
@@ -82,7 +83,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
             }
             else
             {
-                height = 160.0;
+                height = 180.0;
             }
         }
 
@@ -117,47 +118,24 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
             this.Description = pictureMetadata.TranslatedDescription;
         }
 
-        Task.Run(() => { this.TranslateMetadataThread(pictureMetadata, currentLanguage); });
+        Task.Run(async () => 
+        { 
+            await this.astroPicModel.TranslateMetadata(pictureMetadata, currentLanguage);
+        });
     }
 
-    private async void TranslateMetadataThread(PictureMetadata pictureMetadata, string currentLanguage)
+    private void OnTranslation(TranslationMessage message)
     {
-        bool updateModel = false;
-        var translator = ApplicationBase.GetRequiredService<TranslatorService>();
-        string sourceKey = LanguageKeyFromCultureKey("en-US");
-        string currentLanguageKey = LanguageKeyFromCultureKey(currentLanguage);
-        if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+        string translatedTitle = message.Title;
+        if (!string.IsNullOrWhiteSpace(translatedTitle))
         {
-            (bool success, string translatedTitle) =
-                await translator.Translate(
-                    Translator.Service.ProviderKey.Google,
-                    pictureMetadata.Title, sourceKey, currentLanguageKey);
-            if (success && !string.IsNullOrWhiteSpace(translatedTitle))
-            {
-                pictureMetadata.TranslatedTitle = translatedTitle;
-                updateModel = true;
-                Dispatch.OnUiThread(() => { this.Title = translatedTitle; });
-            }
+            this.Title = translatedTitle;
         }
 
-        if (!string.IsNullOrWhiteSpace(pictureMetadata.Description))
+        string translatedDescription = message.Description;
+        if (!string.IsNullOrWhiteSpace(translatedDescription))
         {
-            (bool success, string translatedDescription) =
-                await translator.Translate(
-                    Translator.Service.ProviderKey.Google,
-                    pictureMetadata.Description, sourceKey, currentLanguageKey);
-            if (success && !string.IsNullOrWhiteSpace(translatedDescription))
-            {
-                pictureMetadata.TranslatedDescription = translatedDescription;
-                updateModel = true;
-                Dispatch.OnUiThread(() => { this.Description = translatedDescription; });
-            }
-        }
-
-        if (updateModel)
-        {
-            pictureMetadata.TranslationLanguage = currentLanguage;
-            this.astroPicModel.Update(pictureMetadata);
+            this.Description= translatedDescription;
         }
     }
 

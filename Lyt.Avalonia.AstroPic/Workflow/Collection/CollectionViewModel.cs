@@ -1,4 +1,7 @@
-﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
+﻿using Lyt.Avalonia.AstroPic.Service;
+using Lyt.Avalonia.AstroPic.Workflow.Shared;
+
+namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 public sealed partial class CollectionViewModel : ViewModel<CollectionView>
 {
@@ -64,7 +67,14 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
     private void UpdateSelection()
         =>  Schedule.OnUiThread(
                 200,
-                () => { this.ThumbnailsPanelViewModel.UpdateSelection(); },
+                () => 
+                {
+                    this.ThumbnailsPanelViewModel.UpdateSelection();
+                    if ( this.ThumbnailsPanelViewModel.SelectedThumbnail is ThumbnailViewModel thumbnailViewModel)
+                    {
+                           this.Select(thumbnailViewModel.Metadata, thumbnailViewModel.ImageBytes);
+                    }
+                },
                 DispatcherPriority.Background);
 
     private void OnToolbarCommand(ToolbarCommandMessage message)
@@ -132,7 +142,7 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
         {
             PictureMetadata pictureMetadata = new ()
             {
-                Provider = Service.ProviderKey.Personal,
+                Provider = Service.ImageProviderKey.Personal,
                 Date = DateTime.Now.Date,
                 MediaType = MediaType.Image,
                 Url = path,

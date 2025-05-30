@@ -1,10 +1,10 @@
 ﻿BUG:
 
-- Invalid selections in Collection view when activating view 
-
 TODO: 
 
-- Should translate title and description when rotating wallpaper or look it up on demand.
+- Add some help hints in 'About' view: location of images, etc. 
+
+- Auto translate to Hindi and Bengali 
 
 - Not enough variation when using Open Verse 
 
@@ -13,6 +13,8 @@ TODO:
 NTH: 
 
 - Ability Crop images ??? 
+
+- Ability Rotate images ??? (Would be good for NASA Apod)
 
 --- 
 

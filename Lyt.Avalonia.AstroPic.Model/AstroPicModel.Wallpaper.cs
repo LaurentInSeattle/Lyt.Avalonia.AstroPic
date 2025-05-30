@@ -1,14 +1,12 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
-using Lyt.Avalonia.AstroPic.Service;
-using System.Xml.Linq;
 using static FileManagerModel;
 
 public sealed partial class AstroPicModel : ModelBase
 {
     public void SetWallpaper(PictureMetadata pictureMetadata, byte[] imageBytes)
     {
-        ProviderKey provider = pictureMetadata.Provider;
+        ImageProviderKey provider = pictureMetadata.Provider;
         try
         {
             string name = provider.ToString();
@@ -75,7 +73,13 @@ public sealed partial class AstroPicModel : ModelBase
         string wallpaperPath = 
             this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, selectedPicture.ImageFilePath);
         this.SetWallpaper(wallpaperPath);
-        this.SetWallpaperInfo(selectedPicture.PictureMetadata) ;
+        var metadata = selectedPicture.PictureMetadata;
+        this.SetWallpaperInfo(metadata) ;
+        Task.Run(async () =>
+        {
+            await this.TranslateMetadata(metadata, this.Language);
+            this.SetWallpaperInfo(metadata);
+        });
     }
 
     private void SetWallpaperInfo (PictureMetadata pictureMetadata)

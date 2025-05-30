@@ -17,14 +17,14 @@ public class PictureMetadata
 
     public PictureMetadata()
     {
-        this.Provider = ProviderKey.Unknown;
+        this.Provider = ImageProviderKey.Unknown;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
     }
 
     internal PictureMetadata(EarthViewPicture earthViewPicture)
     {
-        this.Provider = ProviderKey.EarthView;
+        this.Provider = ImageProviderKey.EarthView;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
         this.Url = earthViewPicture.PhotoUrl;
@@ -36,7 +36,7 @@ public class PictureMetadata
 
     internal PictureMetadata(BingPicture bingPicture)
     {
-        this.Provider = ProviderKey.Bing;
+        this.Provider = ImageProviderKey.Bing;
         this.Date = DateTime.Now.Date;
         this.MediaType = MediaType.Image;
         this.Url = string.Concat(BingService.Endpoint, bingPicture.PartialUrl);
@@ -60,7 +60,7 @@ public class PictureMetadata
 
     internal PictureMetadata(NasaPicture nasaPicture)
     {
-        this.Provider = ProviderKey.Nasa;
+        this.Provider = ImageProviderKey.Nasa;
         this.Date = DateTime.Parse(nasaPicture.Date);
         this.MediaType = nasaPicture.MediaType == "image" ? MediaType.Image : MediaType.Video;
         this.Url = nasaPicture.HdImageUrl;
@@ -71,7 +71,7 @@ public class PictureMetadata
 
     internal PictureMetadata(OpenVersePicture openVersePicture)
     {
-        this.Provider = ProviderKey.OpenVerse;
+        this.Provider = ImageProviderKey.OpenVerse;
         this.Date = DateTime.Parse(openVersePicture.Date);
         this.MediaType = MediaType.Image ;
         this.Url = openVersePicture.Url;
@@ -124,7 +124,7 @@ public class PictureMetadata
             this.Url = string.Empty;
         }
 
-        this.Provider = ProviderKey.Epic;
+        this.Provider = ImageProviderKey.Epic;
         this.MediaType = MediaType.Image ;
         this.Description = string.Empty;
         this.Copyright = epicPicture.Copyright;
@@ -163,7 +163,7 @@ public class PictureMetadata
     }
 
     [JsonRequired]
-    public ProviderKey Provider { get; set; }
+    public ImageProviderKey Provider { get; set; }
 
     [JsonRequired]
     public DateTime Date { get; set; }

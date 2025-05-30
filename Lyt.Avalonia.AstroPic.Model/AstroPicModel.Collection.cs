@@ -12,10 +12,10 @@ public sealed partial class AstroPicModel : ModelBase
     // therefore we only use an (very) raw estimate here with 100 KB per image
     // which seems to match what can be seen in the app image storage folder 
     private const long ClusteringAndFragmentationEstimatedSize = 20 * KB;
-
+    
     private readonly Random random = new((int)DateTime.Now.Ticks);
 
-    public string ProviderName(ProviderKey key)
+    public string ProviderName(ImageProviderKey key)
     {
         string? name =
             (from provider in this.Providers 
@@ -24,8 +24,8 @@ public sealed partial class AstroPicModel : ModelBase
              .FirstOrDefault();
         if (string.IsNullOrWhiteSpace(name))
         {
-            this.Logger.Warning("Undefined Provider!");
-            return "Unknown Provider";
+            this.Logger.Warning("Undefined Image Provider!");
+            return "Unknown Image Provider";
         }
 
         return name;
@@ -63,11 +63,11 @@ public sealed partial class AstroPicModel : ModelBase
         try
         {
             var picture = new Picture(pictureMetadata);
-            if (pictureMetadata.Provider == ProviderKey.Unknown)
+            if (pictureMetadata.Provider == ImageProviderKey.Unknown)
             {
                 throw new Exception("No provider");
             }
-            else if (pictureMetadata.Provider == ProviderKey.Personal)
+            else if (pictureMetadata.Provider == ImageProviderKey.Personal)
             {
                 // Update picture paths and URL 
                 this.UpdatePersonalPictureData(picture);
@@ -372,7 +372,7 @@ public sealed partial class AstroPicModel : ModelBase
 
         var personalPicturesIndices =
             (from pic in this.Pictures.Values
-             where pic.PictureMetadata.Provider == ProviderKey.Personal
+             where pic.PictureMetadata.Provider == ImageProviderKey.Personal
              select ParsePath(pic.ImageFilePath)).ToList();
         int index = 0;
         if (personalPicturesIndices.Count == 0)

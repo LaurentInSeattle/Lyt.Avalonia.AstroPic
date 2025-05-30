@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Model;
 
+using static Lyt.Translator.Service.Google.Language;
+
 public sealed partial class AstroPicModel : ModelBase
 {
     #region Serialized -  No model changed event
@@ -39,7 +41,7 @@ public sealed partial class AstroPicModel : ModelBase
     public List<Provider> Providers { get; set; } = [];
 
     [JsonRequired]
-    public Dictionary<ProviderKey, PictureMetadata> LastUpdate { get; set; } = [];
+    public Dictionary<ImageProviderKey, PictureMetadata> LastUpdate { get; set; } = [];
 
     #endregion Serialized -  No model changed event
 
@@ -81,7 +83,7 @@ public sealed partial class AstroPicModel : ModelBase
 
     #endregion NOT serialized - WITH model changed event    
 
-    public Provider? MaybeProviderFromKey(ProviderKey key)
+    public Provider? MaybeProviderFromKey(ImageProviderKey key)
          => (from item in this.Providers
              where item.Key == key
              select item).FirstOrDefault();
@@ -100,4 +102,47 @@ public sealed partial class AstroPicModel : ModelBase
         provider.IsSelected = isSelected;
         this.IsDirty = true;
     }
+
+    public async Task TranslateMetadata(PictureMetadata pictureMetadata, string currentLanguage)
+    {
+        bool updateModel = false;
+        TranslationMessage translationMessage = new() ;
+        string sourceKey = LanguageKeyFromCultureKey("en-US");
+        string currentLanguageKey = LanguageKeyFromCultureKey(currentLanguage);
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Title))
+        {
+            (bool success, string translatedTitle) =
+                await this.translatorService.Translate(
+                    ProviderKey.Google,
+                    pictureMetadata.Title, sourceKey, currentLanguageKey);
+            if (success && !string.IsNullOrWhiteSpace(translatedTitle))
+            {
+                pictureMetadata.TranslatedTitle = translatedTitle;
+                translationMessage.Title = translatedTitle; 
+                updateModel = true;
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(pictureMetadata.Description))
+        {
+            (bool success, string translatedDescription) =
+                await this.translatorService.Translate(
+                    ProviderKey.Google,
+                    pictureMetadata.Description, sourceKey, currentLanguageKey);
+            if (success && !string.IsNullOrWhiteSpace(translatedDescription))
+            {
+                pictureMetadata.TranslatedDescription = translatedDescription;
+                translationMessage.Description = translatedDescription;
+                updateModel = true;
+            }
+        }
+
+        if (updateModel)
+        {
+            pictureMetadata.TranslationLanguage = currentLanguage;
+            this.Update(pictureMetadata);
+            this.Messenger.Publish(translationMessage); 
+        }
+    }
+
 }

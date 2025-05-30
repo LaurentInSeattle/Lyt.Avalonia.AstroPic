@@ -136,7 +136,7 @@ public sealed partial class AstroPicModel : ModelBase
         return downloads;
     }
 
-    private async Task<PictureDownload> DownloadImage(ProviderKey provider)
+    private async Task<PictureDownload> DownloadImage(ImageProviderKey provider)
     {
         var empty = new PictureDownload(new(), []);
         try
@@ -201,10 +201,10 @@ public sealed partial class AstroPicModel : ModelBase
         return empty;
     }
 
-    private void ReportError(ProviderKey provider, string message)
+    private void ReportError(ImageProviderKey provider, string message)
         => this.Messenger.Publish(new ServiceErrorMessage(provider, message));
 
-    private void Report(ProviderKey provider, bool isMetadata, bool isBegin)
+    private void Report(ImageProviderKey provider, bool isMetadata, bool isBegin)
         => this.Messenger.Publish(
             new ServiceProgressMessage(provider, IsMetadata: isMetadata, IsBegin: isBegin));
 
