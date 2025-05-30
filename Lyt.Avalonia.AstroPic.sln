@@ -9,11 +9,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{184BED44-874B-4B60-A947-00E3EC9B53BA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		AboutImageServices.txt = AboutImageServices.txt
 		AstroPicCollectionScreenshot.png = AstroPicCollectionScreenshot.png
 		AstroPicScreenshot.png = AstroPicScreenshot.png
 		AstroPicSettingsScreenshot.png = AstroPicSettingsScreenshot.png
 		LICENSE = LICENSE
 		README.md = README.md
+		Lyt.Avalonia.AstroPic\TODO.txt = Lyt.Avalonia.AstroPic\TODO.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic", "Lyt.Avalonia.AstroPic\Lyt.Avalonia.AstroPic.csproj", "{DC4D24E2-05F4-4191-9147-9255F6F3AC77}"
