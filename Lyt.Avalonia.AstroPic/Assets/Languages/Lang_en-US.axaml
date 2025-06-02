@@ -60,6 +60,9 @@
 	<system:String x:Key="Intro.ReminderSubtitle">Some important points to remember about downloaded images...</system:String>
 	<system:String x:Key="Intro.ReminderText">You are advised to use the downloaded images only as wallpaper. For any other use, commercial or otherwise, please contact the copyright holder.</system:String>
 
+	<!-- Language  -->
+	<system:String x:Key="Language.Continue">Continue</system:String>
+
 	<!-- Settings  -->
 	<system:String x:Key="Settings.CleanupNow">Cleanup Now</system:String>
 
@@ -99,6 +102,7 @@
 	<system:String x:Key="Tray.OpenCollection">Open the image collection</system:String>
 	<system:String x:Key="Tray.Settings">Settings</system:String>
 	<system:String x:Key="Tray.ImageInfo">About this image...</system:String>
+	<system:String x:Key="Tray.Quit">Quit</system:String>
 
 	<!-- Model / Service -->
 	<system:String x:Key="Model.AlreadyDownloaded">The image has already been downloaded.</system:String>

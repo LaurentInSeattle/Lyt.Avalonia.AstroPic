@@ -17,7 +17,7 @@
 	<system:String x:Key="Shell.Language">Lingua</system:String>
 	<system:String x:Key="Shell.About">Altro su...</system:String>
 	<system:String x:Key="Shell.ToTray">All'icona</system:String>
-	<system:String x:Key="Shell.Exit">Fine</system:String>
+	<system:String x:Key="Shell.Exit">Esci</system:String>
 	<system:String x:Key="Shell.Close">Chiudi</system:String>
 	<system:String x:Key="Shell.Ready">Pronto.</system:String>
 	<system:String x:Key="Shell.Greetings">Benvenuto a Immagini Astronomiche!</system:String>
@@ -63,6 +63,9 @@
 	<system:String x:Key="Intro.ReminderSubtitle">Alcune cose importanti da ricordare sulle immagini scaricate...</system:String>
 	<system:String x:Key="Intro.ReminderText">Si consiglia di utilizzare le immagini scaricate solo come sfondo del computer. Per qualsiasi altro utilizzo, commerciale o meno, è necessario contattare il titolare del copyright.</system:String>
 
+	<!-- Language  -->
+	<system:String x:Key="Language.Continue">Continua</system:String>
+
 	<!-- Settings  -->
 	<system:String x:Key="Settings.CleanupNow">Ripulire Adesso</system:String>
 
@@ -101,7 +104,8 @@
 	<!-- Tray  -->
 	<system:String x:Key="Tray.OpenCollection">Apri la Collezione</system:String>
 	<system:String x:Key="Tray.Settings">Impostazioni</system:String>
-	<system:String x:Key="Tray.ImageInfo">Informazioni su questa immagine.</system:String>
+	<system:String x:Key="Tray.ImageInfo">Informazioni su questa immagine...</system:String>
+	<system:String x:Key="Tray.Quit">Esci</system:String>
 
 	<!-- Model / Service -->
 	<system:String x:Key="Model.AlreadyDownloaded">L'immagine è già stata scaricata.</system:String>

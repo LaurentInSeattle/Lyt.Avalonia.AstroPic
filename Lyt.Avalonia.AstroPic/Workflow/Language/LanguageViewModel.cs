@@ -19,6 +19,10 @@ public sealed partial class LanguageViewModel : ViewModel<LanguageView>
         new LanguageInfoViewModel("ko-KO", "한국인 - 조선어", "South_Korea.png" , "North_Korea.png") ,
         new LanguageInfoViewModel("zh-CN", "簡體 中文", "China.png" , string.Empty ) ,
         new LanguageInfoViewModel("zh-TW", "繁體 中文", "Taiwan.png" , string.Empty ) ,
+
+        // Hindi and Bengali hi-IN /  bn-BD 
+        //new LanguageInfoViewModel("zh-TW", "繁體 中文", "Taiwan.png" , string.Empty ) ,
+        //new LanguageInfoViewModel("zh-TW", "繁體 中文", "Taiwan.png" , string.Empty ) ,
     ];
 
     private readonly AstroPicModel astroPicModel;

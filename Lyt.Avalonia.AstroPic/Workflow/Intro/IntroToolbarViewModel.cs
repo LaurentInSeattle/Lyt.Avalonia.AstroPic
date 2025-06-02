@@ -17,8 +17,8 @@ public sealed partial class IntroToolbarViewModel : ViewModel<IntroToolbarView>
 
         bool programmaticNavigation = true; 
         ActivateView(ActivatedView.Collection, programmaticNavigation);
-    } 
+    }
 
-#pragma warning restore CA1822
+#pragma warning restore CA1822 // Mark members as static
 #pragma warning restore IDE0079
 }

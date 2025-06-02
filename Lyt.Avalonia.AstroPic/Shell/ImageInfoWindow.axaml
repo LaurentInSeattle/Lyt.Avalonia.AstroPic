@@ -26,39 +26,47 @@
         Width="720" 
         CornerRadius="8"
         >
-        <Grid
-            Margin="4"
-            x:Name="Grid"
+        <Border
+            Background="Transparent"
+            BorderBrush="DarkBlue"
+            BorderThickness="1"
+            CornerRadius="8"
+            Margin="1"
             >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="64" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Rectangle
-                Grid.Row="0" Grid.RowSpan="2"
-                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                Fill="#B0000020"
-                RadiusX="6" RadiusY="6"
+            <Grid
+                Margin="4"
+                x:Name="Grid"
+                >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Rectangle
+                    Grid.Row="0" Grid.RowSpan="2"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Fill="#C0000020"
+                    RadiusX="6" RadiusY="6"
+                    />
+                <TextBlock
+                    Grid.Row="0"
+                    x:Name="TitleText"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="DemiBold"
+                    Foreground="{StaticResource PastelOrchid_0_080}"
+                    TextWrapping="Wrap"
+                    />
+                <TextBlock
+                    Grid.Row="1"
+                    x:Name="DescriptionText"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Margin="8"
+                    FontSize="18"
+                    FontWeight="Normal"
+                    Foreground="{StaticResource PastelOrchid_0_080}"
+                    TextWrapping="Wrap"
                 />
-            <TextBlock
-                Grid.Row="0"
-                x:Name="TitleText"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                FontSize="24"
-                FontWeight="DemiBold"
-                Foreground="{StaticResource PastelOrchid_0_080}"
-                TextWrapping="Wrap"
-                />
-            <TextBlock
-                Grid.Row="1"
-                x:Name="DescriptionText"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                Margin="8"
-                FontSize="18"
-                FontWeight="Normal"
-                Foreground="{StaticResource PastelOrchid_0_080}"
-                TextWrapping="Wrap"
-            />
-        </Grid>
+            </Grid>
+        </Border>
     </Border>
 </Window>

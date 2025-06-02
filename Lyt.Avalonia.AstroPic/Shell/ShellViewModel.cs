@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
-using CommunityToolkit.Mvvm.Input;
 using static MessagingExtensions;
 using static ViewActivationMessage;
 
@@ -117,7 +116,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     {
         if (this.astroPicModel.IsFirstRun)
         {
-            this.OnViewActivation(ActivatedView.Intro, parameter: null, isFirstActivation: true);
+            bool programmaticNavigation = true; 
+            this.OnViewActivation(
+                ActivatedView.Language, parameter: programmaticNavigation, isFirstActivation: true);
         }
         else
         {
@@ -139,13 +140,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
-
-    //private void OnModelUpdated(ModelUpdateMessage message)
-    //{
-    //    string msgProp = string.IsNullOrWhiteSpace(message.PropertyName) ? "<unknown>" : message.PropertyName;
-    //    string msgMethod = string.IsNullOrWhiteSpace(message.MethodName) ? "<unknown>" : message.MethodName;
-    //    this.Logger.Debug("Model update, property: " + msgProp + " method: " + msgMethod);
-    //}
 
     private void OnViewActivation(ViewActivationMessage message)
         => this.OnViewActivation(message.View, message.ActivationParameter, false);
@@ -224,8 +218,17 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 break;
 
             case ActivatedView.Language:
-                NoToolbar();
+                if ( this.astroPicModel.IsFirstRun)
+                {
+                    SetupToolbar<LanguageToolbarViewModel, LanguageToolbarView>();
+                }
+                else
+                {
+                    NoToolbar();
+                }
+
                 this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
+                hasBeenActivated = ActivatedView.Language;
                 break;
 
             case ActivatedView.Intro:
@@ -257,12 +260,15 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 ActivatedView.Intro => view.IntroButton,
                 ActivatedView.Collection => view.CollectionButton,
                 ActivatedView.Settings => view.SettingsButton,
+                ActivatedView.Language => view.FlagButton,
                 _ => view.TodayButton,
             };
             selector.Select(button);
         }
-
-        this.MainToolbarIsVisible = CurrentViewModel() is not IntroViewModel;
+        
+        bool mainToolbarIsHidden = 
+            this.astroPicModel.IsFirstRun || CurrentViewModel() is IntroViewModel;
+        this.MainToolbarIsVisible = !mainToolbarIsHidden; 
     }
 
     private static async void OnExit()
@@ -312,6 +318,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         App.GetRequiredService<IntroViewModel>().CreateViewAndBind();
         App.GetRequiredService<IntroToolbarViewModel>().CreateViewAndBind();
         App.GetRequiredService<LanguageViewModel>().CreateViewAndBind();
+        App.GetRequiredService<LanguageToolbarViewModel>().CreateViewAndBind();
         App.GetRequiredService<SettingsViewModel>().CreateViewAndBind();
         App.GetRequiredService<SettingsToolbarViewModel>().CreateViewAndBind();
     }

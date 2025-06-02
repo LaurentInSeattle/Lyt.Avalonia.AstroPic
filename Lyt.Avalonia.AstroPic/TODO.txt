@@ -3,11 +3,11 @@
 
 TODO: Priorities  
 
-- Complete workflow for initial run (language view, followed by Intro)
-
-- Ability Rotate images (Would be good for NASA Apod)
+- Build event for Translator CLI 
 
 TODO: Later  
+
+- Ability to Rotate images by 90 degrees (Would be good for NASA Apod)
 
 - Add some help hints in 'About' view: location of images, etc. 
 

@@ -11,6 +11,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         string openCollection = this.Localizer.Lookup("Tray.OpenCollection");
         string settings = this.Localizer.Lookup("Tray.Settings");
         string imageInfo = this.Localizer.Lookup("Tray.ImageInfo");
+        string exit = this.Localizer.Lookup("Tray.Quit");
         var trayIcon = new TrayIcon
         {
             Icon = new WindowIcon(
@@ -22,7 +23,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 {
                     Command = new RelayCommand (this.OpenCollectionFromTray)
                 },
-                new NativeMenuItemSeparator(),
                 new NativeMenuItem(settings)
                 {
                     Command = new RelayCommand(this.OpenSettingsFromTray)
@@ -31,6 +31,11 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 new NativeMenuItem(imageInfo)
                 {
                     Command = new RelayCommand(this.ShowImageInfoFromTray)
+                },
+                new NativeMenuItemSeparator(),
+                new NativeMenuItem(exit)
+                {
+                    Command = new RelayCommand(this.QuitFromTray)
                 },
             ],
         };
@@ -108,6 +113,16 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 window.Show();
             }
         } 
+    }
+
+    private void QuitFromTray()
+    {
+        Schedule.OnUiThread(50,
+            async () =>
+            {
+                var application = App.GetRequiredService<IApplicationBase>();
+                await application.Shutdown();
+            }, DispatcherPriority.Normal);
     }
 
     private void NavigateTo(ActivatedView view)

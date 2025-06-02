@@ -9,7 +9,7 @@ public partial class ImageInfoWindow : Window
         this.InitializeComponent();
         this.closeTimer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromSeconds(7),
+            Interval = TimeSpan.FromSeconds(8),
         };
 
         this.closeTimer.Tick += this.OnCloseTimerTick;

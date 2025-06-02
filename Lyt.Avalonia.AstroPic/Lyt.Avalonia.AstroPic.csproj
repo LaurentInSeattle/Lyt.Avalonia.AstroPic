@@ -73,6 +73,9 @@
 	  <Compile Update="Workflow\Intro\IntroToolbarView.axaml.cs">
 	    <DependentUpon>IntroToolbarView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Language\LanguageToolbarView.axaml.cs">
+	    <DependentUpon>LanguageToolbarView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Language\LanguageView.axaml.cs">
 	    <DependentUpon>LanguageView.axaml</DependentUpon>
 	  </Compile>

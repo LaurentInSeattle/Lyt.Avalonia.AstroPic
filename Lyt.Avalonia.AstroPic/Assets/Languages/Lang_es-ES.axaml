@@ -61,6 +61,9 @@
 	<system:String x:Key="Intro.ReminderSubtitle">Algunos puntos importantes sobre las imágenes descargadas...</system:String>
 	<system:String x:Key="Intro.ReminderText">Se recomienda usar las imágenes descargadas solo como fondo de pantalla. Para cualquier otro uso, comercial o no, contacta al titular de los derechos de autor.</system:String>
 
+	<!-- Language  -->
+	<system:String x:Key="Language.Continue">Continuar</system:String>
+
 	<!-- Settings  -->
 	<system:String x:Key="Settings.CleanupNow">Limpiar ahora</system:String>
 
@@ -100,6 +103,7 @@
 	<system:String x:Key="Tray.OpenCollection">Abrir colección</system:String>
 	<system:String x:Key="Tray.Settings">Configuración</system:String>
 	<system:String x:Key="Tray.ImageInfo">Acerca de esta imagen...</system:String>
+	<system:String x:Key="Tray.Quit">Salir</system:String>
 
 	<!-- Model / Service -->
 	<system:String x:Key="Model.AlreadyDownloaded">La imagen ya fue descargada.</system:String>

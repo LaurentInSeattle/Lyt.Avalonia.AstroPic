@@ -62,7 +62,9 @@
     <system:String x:Key="Intro.ReminderSubtitle">Quelques points importants à retenir concernant les images téléchargées...</system:String>
     <system:String x:Key="Intro.ReminderText">Il vous est recommandé d'utiliser les images téléchargées uniquement comme fond d'écran. Pour toute autre utilisation, commerciale ou non, veuillez contacter le détenteur des droits d'auteur.</system:String>
 
-    <!-- Settings  -->
+	<!-- Language  -->
+	<system:String x:Key="Language.Continue">Continuer</system:String>
+	<!-- Settings  -->
     <system:String x:Key="Settings.CleanupNow">Nettoyez Maintenant</system:String>
 
     <system:String x:Key="Settings.Services.Title">Services de téléchargement d'images.</system:String>
@@ -100,9 +102,10 @@
     <!-- Tray  -->
     <system:String x:Key="Tray.OpenCollection">Ouvrir la Collection</system:String>
     <system:String x:Key="Tray.Settings">Réglages</system:String>
-    <system:String x:Key="Tray.ImageInfo">A propos de cette image.</system:String>
+    <system:String x:Key="Tray.ImageInfo">A propos de cette image...</system:String>
+	<system:String x:Key="Tray.Quit">Quitter</system:String>
 
-    <!-- Model / Service -->
+	<!-- Model / Service -->
     <system:String x:Key="Model.AlreadyDownloaded">Cette image a deja été téléchargée.</system:String>
     <system:String x:Key="Model.NoUrl">Cette image n'a pas d'URL.</system:String>
     <system:String x:Key="Model.NotAnImage">Cette image n'est pas valide.</system:String>
