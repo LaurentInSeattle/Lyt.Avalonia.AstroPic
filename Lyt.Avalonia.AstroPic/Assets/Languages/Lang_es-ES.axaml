@@ -1,115 +1,170 @@
+
 <ResourceDictionary 
-	xmlns="https://github.com/avaloniaui"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:system="clr-namespace:System;assembly=System.Runtime"
-	>
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
 
-	<!-- Toast-->
-	<system:String x:Key="Toast.Dismiss">Cerrar</system:String>
+    <system:String x:Key="Toast.Dismiss">Cerrar</system:String>
 
-	<!-- Shell -->
-	<system:String x:Key="Shell.AppName">Imágenes Astronómicas</system:String>
-	<system:String x:Key="Shell.About">Acerca de...</system:String>
-	<system:String x:Key="Shell.Today">Hoy</system:String>
-	<system:String x:Key="Shell.Collection">Colección</system:String>
-	<system:String x:Key="Shell.Settings">Configuración</system:String>
-	<system:String x:Key="Shell.Language">Idioma</system:String>
-	<system:String x:Key="Shell.ToTray">A la bandeja</system:String>
-	<system:String x:Key="Shell.Exit">Salir</system:String>
-	<system:String x:Key="Shell.Close">Cerrar</system:String>
-	<system:String x:Key="Shell.Ready">Listo.</system:String>
-	<system:String x:Key="Shell.Greetings">¡Bienvenido a Imágenes Astronómicas!</system:String>
+    <system:String x:Key="Shell.AppName">Imágenes Astronómicas</system:String>
 
-	<!-- Collection -->
-	<system:String x:Key="Collection.SetWallpaper">Usar como fondo</system:String>
-	<system:String x:Key="Collection.Remove">Eliminar</system:String>
-	<system:String x:Key="Collection.SaveToDesktop">Guardar en 'Desktop'</system:String>
-	<system:String x:Key="Collection.BadPicture">¡No se puede descargar esta imagen!</system:String>
-	<system:String x:Key="Collection.DropZone">Zona de arrastrar y soltar</system:String>
-	<system:String x:Key="Collection.DropZoneHelp">Arrastra y suelta archivos aquí para añadirlos a tu colección de fondos.</system:String>
+    <system:String x:Key="Shell.About">Acerca de...</system:String>
 
-	<system:String x:Key="Collection.Statistics">Estadísticas</system:String>
-	<system:String x:Key="Collection.Stats.AlertTextQuota">¡Demasiadas imágenes en tu colección!</system:String>
-	<system:String x:Key="Collection.Stats.AlertTextSpace">¡Atención al espacio disponible en disco!</system:String>
-	<system:String x:Key="Collection.Stats.ImageCountFormat">Imágenes: {0} (Todos los servicios - Cupo: {1})</system:String>
-	<system:String x:Key="Collection.Stats.SizeOnDiskFormat">Uso estimado de disco: {0} MB (Cupo: {1} MB)</system:String>
-	<system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Espacio libre en disco: {0:F1} GB</system:String>
+    <system:String x:Key="Shell.Today">Hoy</system:String>
 
-	<system:String x:Key="Collection.Thumbs.WebService">Servicio web:</system:String>
-	<system:String x:Key="Collection.Thumbs.AllServices">Todos los servicios.</system:String>
-	<system:String x:Key="Collection.Thumbs.All">Todos</system:String>
-	<system:String x:Key="Collection.Thumbs.Recent">Recientes</system:String>
+    <system:String x:Key="Shell.Collection">Colección</system:String>
 
-	<!-- Gallery  -->
-	<system:String x:Key="Gallery.SetWallpaper">Usar como fondo</system:String>
-	<system:String x:Key="Gallery.Add">Añadir</system:String>
-	<system:String x:Key="Gallery.SaveToDesktop">Guardar en el escritorio</system:String>
+    <system:String x:Key="Shell.Settings">Configuración</system:String>
 
-	<system:String x:Key="Gallery.StartingDownloading">Descarga en progreso</system:String>
-	<system:String x:Key="Gallery.CompletedDownloading">Descarga completada</system:String>
-	<system:String x:Key="Gallery.ImageMetadata">metadatos de la imagen </system:String>
-	<system:String x:Key="Gallery.Image">imagen</system:String>
-	<system:String x:Key="Gallery.ForProvider">para el servicio </system:String>
-	<system:String x:Key="Gallery.DownloadsComplete">¡Todas las descargas completadas!</system:String>
+    <system:String x:Key="Shell.Language">Idioma</system:String>
 
-	<!-- Intro  -->
-	<system:String x:Key="Intro.AgreeMIT">Acepto los términos de la Licencia MIT, Continuar.</system:String>
-	<system:String x:Key="Intro.LicenseTitle">Términos de la Licencia</system:String>
-	<system:String x:Key="Intro.LicenseSubtitle">Esta aplicación se proporciona bajo los términos de la Licencia MIT.</system:String>
-	<system:String x:Key="Intro.LicenseTerms">Esta aplicación se proporciona bajo los términos de la Licencia MIT y, junto con otros términos, no incluye garantía de ningún tipo. Al usar este software, aceptas completamente los términos y condiciones de la Licencia MIT.</system:String>
-	<system:String x:Key="Intro.ReminderTitle">Recordatorio Importante</system:String>
-	<system:String x:Key="Intro.ReminderSubtitle">Algunos puntos importantes sobre las imágenes descargadas...</system:String>
-	<system:String x:Key="Intro.ReminderText">Se recomienda usar las imágenes descargadas solo como fondo de pantalla. Para cualquier otro uso, comercial o no, contacta al titular de los derechos de autor.</system:String>
+    <system:String x:Key="Shell.ToTray">A la bandeja</system:String>
 
-	<!-- Language  -->
-	<system:String x:Key="Language.Continue">Continuar</system:String>
+    <system:String x:Key="Shell.Exit">Salir</system:String>
 
-	<!-- Settings  -->
-	<system:String x:Key="Settings.CleanupNow">Limpiar ahora</system:String>
+    <system:String x:Key="Shell.Close">Cerrar</system:String>
 
-	<system:String x:Key="Settings.Services.Title">Servicios de descarga de imágenes</system:String>
-	<system:String x:Key="Settings.Services.Subtitle">Selecciona los servicios web desde los que deseas descargar imágenes.</system:String>
-	<system:String x:Key="Settings.Services.Downloaded">Descargar</system:String>
-	<system:String x:Key="Settings.Services.Skip">Ignorar y omitir</system:String>
+    <system:String x:Key="Shell.Ready">Listo.</system:String>
 
-	<system:String x:Key="Settings.Quota.Title">Configuración de uso de disco</system:String>
-	<system:String x:Key="Settings.Quota.Subtitle">Usa esta opción para limitar (o no) el espacio en disco para las imágenes de tu colección.</system:String>
-	<system:String x:Key="Settings.Quota.ImageCount">Número máximo de imágenes:</system:String>
-	<system:String x:Key="Settings.Quota.DiskSpace">Cupo de espacio (MB) en disco para imágenes:</system:String>
-	<system:String x:Key="Settings.Quota.ImageSize">Dimensiones para archivar imágenes:</system:String>
-	<system:String x:Key="Settings.Quota.ImageSize.True">Alta Definición (HD)</system:String>
-	<system:String x:Key="Settings.Quota.ImageSize.False">Ultra Alta Definición (UHD/4K)</system:String>
-	<system:String x:Key="Settings.Quota.Exceeded">Acción al superar el cupo:</system:String>
-	<system:String x:Key="Settings.Quota.Exceeded.True">Eliminar imágenes antiguas.</system:String>
-	<system:String x:Key="Settings.Quota.Exceeded.False">Solo mostrar advertencia.</system:String>
+    <system:String x:Key="Shell.Greetings">¡Bienvenido a Imágenes Astronómicas!</system:String>
 
-	<system:String x:Key="Settings.Os.Title">Configuración del Sistema Operativo</system:String>
-	<system:String x:Key="Settings.Os.Subtitle">Configura cómo se gestionan las imágenes en tu sistema.</system:String>
-	<system:String x:Key="Settings.Os.Rotate">¿Rotar fondos de pantalla?</system:String>
-	<system:String x:Key="Settings.Os.Rotate.True">Sí, periódicamente.</system:String>
-	<system:String x:Key="Settings.Os.Rotate.False">Nunca</system:String>
-	<system:String x:Key="Settings.Os.Rotate.Minutes">Cambiar fondo cada: (minutos)</system:String>
+    <system:String x:Key="Collection.SetWallpaper">Usar como fondo</system:String>
 
-	<system:String x:Key="Settings.ReminderTitle">Recordatorio Importante</system:String>
-	<system:String x:Key="Settings.ReminderSubtitle">Algunos puntos importantes sobre las imágenes descargadas...</system:String>
-	<system:String x:Key="Settings.ReminderText">Se recomienda usar las imágenes descargadas solo como fondo de pantalla. Para cualquier otro uso, comercial o no, contacta al titular de los derechos de autor.</system:String>
+    <system:String x:Key="Collection.Remove">Eliminar</system:String>
 
-	<!-- Shared  -->
-	<system:String x:Key="Shared.NoImage">Sin imagen</system:String>
-	<system:String x:Key="Shared.FileErrorTitle">Error del sistema de archivos.</system:String>
-	<system:String x:Key="Shared.FileErrorText">No se pudo guardar la imagen.</system:String>
+    <system:String x:Key="Collection.SaveToDesktop">Guardar en 'Desktop'</system:String>
 
-	<!-- Tray  -->
-	<system:String x:Key="Tray.OpenCollection">Abrir colección</system:String>
-	<system:String x:Key="Tray.Settings">Configuración</system:String>
-	<system:String x:Key="Tray.ImageInfo">Acerca de esta imagen...</system:String>
-	<system:String x:Key="Tray.Quit">Salir</system:String>
+    <system:String x:Key="Collection.BadPicture">¡No se puede descargar esta imagen!</system:String>
 
-	<!-- Model / Service -->
-	<system:String x:Key="Model.AlreadyDownloaded">La imagen ya fue descargada.</system:String>
-	<system:String x:Key="Model.NoUrl">La imagen no tiene URL.</system:String>
-	<system:String x:Key="Model.NotAnImage">La imagen no es válida.</system:String>
-	<system:String x:Key="Model.TodayIsVideo">La foto del día es un vídeo.</system:String>
-	<system:String x:Key="Model.Provider.Personal">Imagen personal</system:String>
+    <system:String x:Key="Collection.DropZone">Zona de arrastrar y soltar</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Arrastra y suelta archivos aquí para añadirlos a tu colección de fondos.</system:String>
+
+    <system:String x:Key="Collection.Statistics">Estadísticas</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">¡Demasiadas imágenes en tu colección!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">¡Atención al espacio disponible en disco!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Imágenes: {0} (Todos los servicios - Cupo: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Uso estimado de disco: {0} MB (Cupo: {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Espacio libre en disco: {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Servicio web:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Todos los servicios.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Todos</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Recientes</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Usar como fondo</system:String>
+
+    <system:String x:Key="Gallery.Add">Añadir</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Guardar en el escritorio</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Descarga en progreso</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Descarga completada</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">metadatos de la imagen</system:String>
+
+    <system:String x:Key="Gallery.Image">imagen</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">para el servicio</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">¡Todas las descargas completadas!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Acepto los términos de la Licencia MIT, Continuar.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Términos de la Licencia</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Esta aplicación se proporciona bajo los términos de la Licencia MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Esta aplicación se proporciona bajo los términos de la Licencia MIT y, junto con otros términos, no incluye garantía de ningún tipo. Al usar este software, aceptas completamente los términos y condiciones de la Licencia MIT.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Recordatorio Importante</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Algunos puntos importantes sobre las imágenes descargadas...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Se recomienda usar las imágenes descargadas solo como fondo de pantalla. Para cualquier otro uso, comercial o no, contacta al titular de los derechos de autor.</system:String>
+
+    <system:String x:Key="Language.Continue">Continuar</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Limpiar ahora</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Servicios de descarga de imágenes</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Selecciona los servicios web desde los que deseas descargar imágenes.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Descargar</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Ignorar y omitir</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">Configuración de uso de disco</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Usa esta opción para limitar (o no) el espacio en disco para las imágenes de tu colección.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">Número máximo de imágenes:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Cupo de espacio (MB) en disco para imágenes:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Dimensiones para archivar imágenes:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Alta Definición (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ultra Alta Definición (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Acción al superar el cupo:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Eliminar imágenes antiguas.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Solo mostrar advertencia.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Configuración del Sistema Operativo</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Configura cómo se gestionan las imágenes en tu sistema.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">¿Rotar fondos de pantalla?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Sí, periódicamente.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Nunca</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Cambiar fondo cada: (minutos)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Recordatorio Importante</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Algunos puntos importantes sobre las imágenes descargadas...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Se recomienda usar las imágenes descargadas solo como fondo de pantalla. Para cualquier otro uso, comercial o no, contacta al titular de los derechos de autor.</system:String>
+
+    <system:String x:Key="Shared.NoImage">Sin imagen</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Error del sistema de archivos.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">No se pudo guardar la imagen.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Abrir colección</system:String>
+
+    <system:String x:Key="Tray.Settings">Configuración</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">Acerca de esta imagen...</system:String>
+
+    <system:String x:Key="Tray.Quit">Salir</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">La imagen ya fue descargada.</system:String>
+
+    <system:String x:Key="Model.NoUrl">La imagen no tiene URL.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">La imagen no es válida.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">La foto del día es un vídeo.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Imagen personal</system:String>
 
 </ResourceDictionary>

@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
 
+    <system:String x:Key="Language.Continue">Շարունակել</system:String>
+
     <system:String x:Key="Settings.CleanupNow">Մաքրել հիմա</system:String>
 
     <system:String x:Key="Settings.Services.Title">Պատկերի ներբեռնման ծառայություններ</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">Կարգավորումներ</system:String>
 
     <system:String x:Key="Tray.ImageInfo">Այս պատկերի մասին...</system:String>
+
+    <system:String x:Key="Tray.Quit">Թողնել</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">Պատկերը արդեն ներբեռնվել է:</system:String>
 

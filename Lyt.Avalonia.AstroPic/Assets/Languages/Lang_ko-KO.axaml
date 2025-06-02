@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">다운로드 된 이미지를 벽지로만 사용하는 것이 좋습니다.  다른 용도로 상업적이든 다른 용도로 보려면 저작권 보유자에게 문의하십시오.</system:String>
 
+    <system:String x:Key="Language.Continue">계속하다</system:String>
+
     <system:String x:Key="Settings.CleanupNow">지금 청소</system:String>
 
     <system:String x:Key="Settings.Services.Title">이미지 다운로드 서비스</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">설정</system:String>
 
     <system:String x:Key="Tray.ImageInfo">이 이미지에 대해 ...</system:String>
+
+    <system:String x:Key="Tray.Quit">그만두다</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">이미지가 이미 다운로드되었습니다.</system:String>
 

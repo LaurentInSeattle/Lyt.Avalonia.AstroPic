@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">ダウンロードした画像を壁紙としてのみ使用することをお勧めします。 コマーシャルまたはその他のその他の使用については、著作権所有者にお問い合わせください。</system:String>
 
+    <system:String x:Key="Language.Continue">続く</system:String>
+
     <system:String x:Key="Settings.CleanupNow">今すぐクリーンアップ</system:String>
 
     <system:String x:Key="Settings.Services.Title">画像ダウンロードサービス</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">設定</system:String>
 
     <system:String x:Key="Tray.ImageInfo">この画像について...</system:String>
+
+    <system:String x:Key="Tray.Quit">やめる</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">画像はすでにダウンロードされています。</system:String>
 

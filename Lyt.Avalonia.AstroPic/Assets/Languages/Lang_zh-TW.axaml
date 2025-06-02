@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">建議您僅將下載的圖像用作牆紙。對於任何其他用途，商業或其他用途，請聯繫版權持有人。</system:String>
 
+    <system:String x:Key="Language.Continue">繼續</system:String>
+
     <system:String x:Key="Settings.CleanupNow">現在清理</system:String>
 
     <system:String x:Key="Settings.Services.Title">圖像下載服務</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">設定</system:String>
 
     <system:String x:Key="Tray.ImageInfo">關於這個圖像...</system:String>
+
+    <system:String x:Key="Tray.Quit">辭職</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">圖像已經下載。</system:String>
 

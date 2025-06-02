@@ -20,4 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Lyt.Avalonia.AstroPic\Lyt.Avalonia.AstroPic.csproj" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd&#xD;&#xA;cd .. &#xD;&#xA;cd Tools&#xD;&#xA;Lyt.Translator.Cli.exe AstroPicLanguages.json&#xD;&#xA;cd .. &#xD;&#xA;cd Lyt.Avalonia.AstroPic.Desktop&#xD;&#xA;" />
+  </Target>
 </Project>

@@ -50,6 +50,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.Mvvm", "..\Lyt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Mvvm", "..\Lyt.Framework\Lyt.Mvvm\Lyt.Mvvm.csproj", "{66333785-F79B-0142-0808-D9E0F442C5F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
+	ProjectSection(SolutionItems) = preProject
+		Tools\AstroPicLanguages.json = Tools\AstroPicLanguages.json
+		Tools\av_libglesv2.dll = Tools\av_libglesv2.dll
+		Tools\libHarfBuzzSharp.dll = Tools\libHarfBuzzSharp.dll
+		Tools\libSkiaSharp.dll = Tools\libSkiaSharp.dll
+		Tools\Lyt.Translator.Cli.exe = Tools\Lyt.Translator.Cli.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

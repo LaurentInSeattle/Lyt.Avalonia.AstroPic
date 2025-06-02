@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">Вам рекомендується використовувати завантажені зображення лише як шпалери.  Для будь -якого іншого використання, комерційного чи іншим способом зверніться до власника авторських прав.</system:String>
 
+    <system:String x:Key="Language.Continue">Продовжувати</system:String>
+
     <system:String x:Key="Settings.CleanupNow">Очищення зараз</system:String>
 
     <system:String x:Key="Settings.Services.Title">Служби завантаження зображень</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">Налаштування</system:String>
 
     <system:String x:Key="Tray.ImageInfo">Про це зображення ...</system:String>
+
+    <system:String x:Key="Tray.Quit">Кинути</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">Зображення вже завантажено.</system:String>
 

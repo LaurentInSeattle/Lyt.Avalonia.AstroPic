@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
 
+    <system:String x:Key="Language.Continue">Συνεχίζω</system:String>
+
     <system:String x:Key="Settings.CleanupNow">Καθαρισμός τώρα</system:String>
 
     <system:String x:Key="Settings.Services.Title">Υπηρεσίες λήψης εικόνων</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">Ρυθμίσεις</system:String>
 
     <system:String x:Key="Tray.ImageInfo">Σχετικά με αυτήν την εικόνα ...</system:String>
+
+    <system:String x:Key="Tray.Quit">Εγκαταλείπω</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">Η εικόνα έχει ήδη μεταφορτωθεί.</system:String>
 

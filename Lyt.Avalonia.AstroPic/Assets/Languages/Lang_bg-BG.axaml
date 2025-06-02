@@ -93,6 +93,8 @@
 
     <system:String x:Key="Intro.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
 
+    <system:String x:Key="Language.Continue">Продължете</system:String>
+
     <system:String x:Key="Settings.CleanupNow">Почистване сега</system:String>
 
     <system:String x:Key="Settings.Services.Title">Услуги за изтегляне на изображения</system:String>
@@ -152,6 +154,8 @@
     <system:String x:Key="Tray.Settings">Настройки</system:String>
 
     <system:String x:Key="Tray.ImageInfo">За това изображение ...</system:String>
+
+    <system:String x:Key="Tray.Quit">Напусна</system:String>
 
     <system:String x:Key="Model.AlreadyDownloaded">Изображението вече е изтеглено.</system:String>
 
