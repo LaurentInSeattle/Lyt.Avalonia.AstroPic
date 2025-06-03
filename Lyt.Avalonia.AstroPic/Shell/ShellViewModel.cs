@@ -101,7 +101,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         if (true)
         {
             this.toaster.Show(
-                this.Localizer.Lookup("Shell.Ready"), this.Localizer.Lookup("Shell.Greetings"),
+                this.Localize("Shell.Ready"), this.Localize("Shell.Greetings"),
                 1_600, InformationLevel.Info);
         }
 

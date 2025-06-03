@@ -94,7 +94,7 @@ public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>
     {
         var model = App.GetRequiredService<AstroPicModel>();
         string providerName = model.ProviderName(this.Metadata.Provider);
-        string providerLocalized = this.Localizer.Lookup(providerName, failSilently: true);
+        string providerLocalized = this.Localize(providerName, failSilently: true);
         string? currentLanguage = this.Localizer.CurrentLanguage;
         if (!string.IsNullOrEmpty(currentLanguage))
         {

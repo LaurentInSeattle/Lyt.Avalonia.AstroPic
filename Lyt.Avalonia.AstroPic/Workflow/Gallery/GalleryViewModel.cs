@@ -91,8 +91,8 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
             return;
         }
 
-        string providerLocalized = this.Localizer.Lookup(provider.Name);
-        string errorLocalized = this.Localizer.Lookup(message.ErrorKey);
+        string providerLocalized = this.Localize(provider.Name);
+        string errorLocalized = this.Localize(message.ErrorKey);
         this.toaster.Dismiss();
         this.toaster.Show(
             providerLocalized, errorLocalized, 10_000, InformationLevel.Warning);
@@ -101,13 +101,13 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
     private void OnDownloadProgress(ServiceProgressMessage message)
     {
         string start = message.IsBegin ?
-            this.Localizer.Lookup("Gallery.StartingDownloading") :
-            this.Localizer.Lookup("Gallery.CompletedDownloading");
+            this.Localize("Gallery.StartingDownloading") :
+            this.Localize("Gallery.CompletedDownloading");
         string middle = message.IsMetadata ?
-            this.Localizer.Lookup("Gallery.ImageMetadata") :
-            this.Localizer.Lookup("Gallery.Image");
+            this.Localize("Gallery.ImageMetadata") :
+            this.Localize("Gallery.Image");
         string provider = message.Provider.ToString().BeautifyEnumString();
-        string end = this.Localizer.Lookup("Gallery.ForProvider");
+        string end = this.Localize("Gallery.ForProvider");
         this.ProgressMessage = string.Concat(start, " ", middle, " ", end, " ", provider);
     }
 
@@ -117,7 +117,7 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
         Schedule.OnUiThread(
             200, () =>
             {
-                string msg = this.Localizer.Lookup("Gallery.DownloadsComplete");
+                string msg = this.Localize("Gallery.DownloadsComplete");
                 this.ProgressMessage = msg;
             }, DispatcherPriority.Background);
     }

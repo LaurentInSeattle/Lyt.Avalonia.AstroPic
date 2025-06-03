@@ -37,11 +37,11 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
     private void UpdateStatistics()
     {
         var statistics = this.astroPicModel.Statistics;
-        string formatImageCount = this.Localizer.Lookup("Collection.Stats.ImageCountFormat");
+        string formatImageCount = this.Localize("Collection.Stats.ImageCountFormat");
         this.ImageCountText =
             string.Format(formatImageCount, statistics.ImageCount, this.astroPicModel.MaxImages);
         int sizeOnDisk = (int)((statistics.SizeOnDiskKB + 512 + 1) / 1024);
-        string formatSizeOnDisk = this.Localizer.Lookup("Collection.Stats.SizeOnDiskFormat");        
+        string formatSizeOnDisk = this.Localize("Collection.Stats.SizeOnDiskFormat");        
         this.SizeOnDiskText =
             string.Format(formatSizeOnDisk, sizeOnDisk, this.astroPicModel.MaxStorageMB);
         var fileManager = App.GetRequiredService<FileManagerModel>();
@@ -49,7 +49,7 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
         if (availableSpace > 0)
         {
             double availableSpaceGB = availableSpace / (1024.0 * 1024.0 * 1024.0);
-            string formatSpace = this.Localizer.Lookup("Collection.Stats.AvailableDiskSpaceFormat"); 
+            string formatSpace = this.Localize("Collection.Stats.AvailableDiskSpaceFormat"); 
             this.AvailableDiskSpaceText =string.Format(formatSpace, availableSpaceGB);
         }
         else
@@ -62,14 +62,14 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
         if ( this.astroPicModel.IsAvailableDiskSpaceLow())
         {
             // "Attento al spazio disponibile su disco!";
-            this.AlertText = this.Localizer.Lookup("Collection.Stats.AlertTextSpace");
+            this.AlertText = this.Localize("Collection.Stats.AlertTextSpace");
         }
         else
         {
             if (this.astroPicModel.AreQuotasExceeded())
             {
                 // "Troppe immagini nella collezione!";
-                this.AlertText = this.Localizer.Lookup("Collection.Stats.AlertTextQuota"); 
+                this.AlertText = this.Localize("Collection.Stats.AlertTextQuota"); 
             }
         } 
     }

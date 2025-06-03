@@ -59,7 +59,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
         this.imageWidth = (int)bitmap.Size.Width;
         this.LoadImage(bitmap);
         string providerName = this.astroPicModel.ProviderName(pictureMetadata.Provider);
-        this.Provider = this.Localizer.Lookup(providerName, failSilently: true);
+        this.Provider = this.Localize(providerName, failSilently: true);
         this.Title =
             string.IsNullOrWhiteSpace(pictureMetadata.Title) ? string.Empty : pictureMetadata.Title;
         this.Copyright =
@@ -199,7 +199,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
 
     internal void RemoveFromCollection()
     {
-        this.Provider = this.Localizer.Lookup("Shared.NoImage");
+        this.Provider = this.Localize("Shared.NoImage");
         this.Title = string.Empty;
         this.Copyright = string.Empty;
 
@@ -234,8 +234,8 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
             this.Logger.Error(msg);
             var toaster = ApplicationBase.GetRequiredService<IToaster>();
             toaster.Show(
-                this.Localizer.Lookup("Shared.FileErrorTitle"),
-                this.Localizer.Lookup("Shared.FileErrorText"),
+                this.Localize("Shared.FileErrorTitle"),
+                this.Localize("Shared.FileErrorText"),
                 10_000, InformationLevel.Warning);
         }
     }

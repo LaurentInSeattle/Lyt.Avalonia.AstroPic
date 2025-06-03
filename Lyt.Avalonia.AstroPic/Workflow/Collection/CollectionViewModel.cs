@@ -163,7 +163,7 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
 
     private void ShowBadPicture()
     {
-        this.PictureViewModel.Title = this.Localizer.Lookup("Collection.BadPicture") ;
+        this.PictureViewModel.Title = this.Localize("Collection.BadPicture") ;
         this.Logger.Warning("Collection: Bad picture!"); 
     }
 }

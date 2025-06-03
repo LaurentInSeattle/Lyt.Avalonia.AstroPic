@@ -8,10 +8,10 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private void SetupTrayIcon()
     {
-        string openCollection = this.Localizer.Lookup("Tray.OpenCollection");
-        string settings = this.Localizer.Lookup("Tray.Settings");
-        string imageInfo = this.Localizer.Lookup("Tray.ImageInfo");
-        string exit = this.Localizer.Lookup("Tray.Quit");
+        string openCollection = this.Localize("Tray.OpenCollection");
+        string settings = this.Localize("Tray.Settings");
+        string imageInfo = this.Localize("Tray.ImageInfo");
+        string exit = this.Localize("Tray.Quit");
         var trayIcon = new TrayIcon
         {
             Icon = new WindowIcon(

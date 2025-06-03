@@ -45,12 +45,12 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
     {
         var list = new List<string>
         {
-            this.Localizer.Lookup ( "Collection.Thumbs.AllServices")
+            this.Localize ( "Collection.Thumbs.AllServices")
         };
 
         foreach (Provider provider in this.providers)
         {
-            string providerNameLocalized = this.Localizer.Lookup(provider.Name, failSilently: true);
+            string providerNameLocalized = this.Localize(provider.Name, failSilently: true);
             list.Add(providerNameLocalized);
         }
 
