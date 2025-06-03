@@ -1,7 +1,7 @@
+rem this needs to be run using a start /wait command or else the web service will fail.  
 cd
-cd .. 
-cd Tools
-Lyt.Translator.Cli.exe AstroPicLanguages.json
-cd .. 
-cd Lyt.Avalonia.AstroPic.Desktop
+cd %~p0
 cd 
+Lyt.Translator.Cli.exe AstroPicLanguages.json
+cd 
+exit 0

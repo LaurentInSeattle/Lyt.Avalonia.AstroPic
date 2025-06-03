@@ -22,6 +22,6 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="call ..\Tools\prebuild.bat&#xD;&#xA;" />
+    <Exec Command="start /WAIT ..\Tools\prebuild.bat&#xD;&#xA;" />
   </Target>
 </Project>

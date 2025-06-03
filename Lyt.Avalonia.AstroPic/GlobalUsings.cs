@@ -102,4 +102,3 @@ global using Lyt.Avalonia.AstroPic.Workflow.Intro;
 global using Lyt.Avalonia.AstroPic.Workflow.Language;
 global using Lyt.Avalonia.AstroPic.Workflow.Settings;
 global using Lyt.Avalonia.AstroPic.Workflow.Shared;
-

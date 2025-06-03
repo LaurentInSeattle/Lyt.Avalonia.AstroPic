@@ -20,12 +20,13 @@ Localization:
  
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 
-# Just in...
+# Last Improvements...
 
 - Now showing translated image title and descriptions.
 - Image information overlay 
-- Localization for additional language using this translation tool: 
- https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator
+- Localization for additional languages using this translation tool: 
+ https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator 
+- The localization tool has been integrated in the Visual Studio 2022 build as a "pre-build event".
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
