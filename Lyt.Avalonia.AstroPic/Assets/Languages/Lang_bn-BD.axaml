@@ -49,4 +49,122 @@
 
     <system:String x:Key="Collection.Stats.ImageCountFormat">চিত্র: {0} (সমস্ত পরিষেবা - কোটা: {1})</system:String>
 
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">আনুমানিক ডিস্ক স্পেস ব্যবহার: {0} এমবি (কোটা: {1} এমবি)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">ডিস্কে উপলভ্য স্থান: {0: এফ 1} জিবি</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">ওয়েব পরিষেবা:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">সমস্ত পরিষেবা।</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">সব</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">সাম্প্রতিক</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">ওয়ালপেপার হিসাবে ব্যবহার করুন</system:String>
+
+    <system:String x:Key="Gallery.Add">যোগ করুন</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">ডেস্কটপে সংরক্ষণ করুন</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">অগ্রগতি ডাউনলোড</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">সম্পূর্ণ ডাউনলোড</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">চিত্র মেটাডেটা</system:String>
+
+    <system:String x:Key="Gallery.Image">চিত্র</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">পরিষেবা জন্য</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">সমস্ত ডাউনলোড সম্পূর্ণ!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">আমি এমআইটি লাইসেন্সের শর্তাদি গ্রহণ করি, চালিয়ে যান।</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">লাইসেন্স শর্তাদি</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">এই আবেদনটি আপনাকে এমআইটি লাইসেন্সের শর্তাদির অধীনে সরবরাহ করা হয়েছে।</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">এই অ্যাপ্লিকেশনটি আপনাকে এমআইটি লাইসেন্সের শর্তাবলীর অধীনে সরবরাহ করা হয়েছে এবং অন্যান্য শর্তাদি সহ কোনও ধরণের কোনও ওয়্যারেন্টি বোঝায় না।  এই সফ্টওয়্যারটি ব্যবহার করে, আপনি এমআইটি লাইসেন্সের শর্তাদি এবং শর্তাদি পুরোপুরি সম্মত হন।</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">গুরুত্বপূর্ণ অনুস্মারক</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">ডাউনলোড করা চিত্রগুলি মনে রাখার জন্য কয়েকটি গুরুত্বপূর্ণ বিষয় ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">আপনাকে ডাউনলোড করা চিত্রগুলি কেবল ওয়ালপেপার হিসাবে ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।  বাণিজ্যিক বা অন্য কোনও ব্যবহারের জন্য দয়া করে কপিরাইট ধারকটির সাথে যোগাযোগ করুন।</system:String>
+
+    <system:String x:Key="Language.Continue">চালিয়ে যান</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">এখন পরিষ্কার</system:String>
+
+    <system:String x:Key="Settings.Services.Title">চিত্র ডাউনলোড পরিষেবা</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">আপনি যে ওয়েব পরিষেবাগুলি থেকে চিত্রগুলি ডাউনলোড করতে চান তা নির্বাচন করুন।</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">ডাউনলোড</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">উপেক্ষা করুন এবং এড়িয়ে যান</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">ডিস্ক ব্যবহার সেটিংস</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">আপনার সংগ্রহে চিত্রের জন্য আপনার ডিস্কে স্থানের ব্যবহার সীমাবদ্ধ করতে (বা সীমাবদ্ধ নয়) এই সেটিংটি ব্যবহার করুন।</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">চিত্রের সর্বাধিক গণনা:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">চিত্রগুলির জন্য ডিস্কে স্পেস কোটা (এমবি):</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">চিত্র সংরক্ষণাগার জন্য মাত্রা:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">উচ্চ সংজ্ঞা (এইচডি)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">অতি উচ্চ সংজ্ঞা (ইউএইচডি/4 কে)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">কোটা ছাড়িয়ে গেলে কী করা উচিত:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">পুরানো চিত্র মুছুন।</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">কেবল একটি সতর্কতা বার্তা দেখান।</system:String>
+
+    <system:String x:Key="Settings.Os.Title">অপারেটিং সিস্টেম সেটিংস</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">আপনার চিত্রগুলি পরিচালনা করতে কিছু অপারেটিং সিস্টেম সেটিংস চয়ন করুন।</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">ডেস্কটপ স্ক্রিন ওয়ালপেপারগুলি ঘোরান?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">হ্যাঁ, পর্যায়ক্রমে।</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">কখনও না</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">পরে ওয়ালপেপার পরিবর্তন করুন: (মিনিট)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">গুরুত্বপূর্ণ অনুস্মারক</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">ডাউনলোড করা চিত্রগুলি মনে রাখার জন্য কয়েকটি গুরুত্বপূর্ণ বিষয় ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">আপনাকে ডাউনলোড করা চিত্রগুলি কেবল ওয়ালপেপার হিসাবে ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।  বাণিজ্যিক বা অন্য কোনও ব্যবহারের জন্য দয়া করে কপিরাইট ধারকটির সাথে যোগাযোগ করুন।</system:String>
+
+    <system:String x:Key="Shared.NoImage">কোন চিত্র নেই</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">ফাইল সিস্টেম ত্রুটি।</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">চিত্র ফাইলটি সংরক্ষণ করতে পারেনি।</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">চিত্র সংগ্রহ খুলুন</system:String>
+
+    <system:String x:Key="Tray.Settings">সেটিংস</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">এই চিত্র সম্পর্কে ...</system:String>
+
+    <system:String x:Key="Tray.Quit">প্রস্থান</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">চিত্রটি ইতিমধ্যে ডাউনলোড করা হয়েছে।</system:String>
+
+    <system:String x:Key="Model.NoUrl">ছবিটির কোনও ইউআরএল নেই।</system:String>
+
+    <system:String x:Key="Model.NotAnImage">চিত্রটি বৈধ নয়।</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">দিনের ছবিটি আসলে একটি ভিডিও ক্লিপ।</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">ব্যক্তিগত চিত্র</system:String>
+
 </ResourceDictionary>

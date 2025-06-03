@@ -22,6 +22,6 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd&#xD;&#xA;cd .. &#xD;&#xA;cd Tools&#xD;&#xA;Lyt.Translator.Cli.exe AstroPicLanguages.json&#xD;&#xA;cd .. &#xD;&#xA;cd Lyt.Avalonia.AstroPic.Desktop&#xD;&#xA;" />
+    <Exec Command="call ..\Tools\prebuild.bat&#xD;&#xA;" />
   </Target>
 </Project>

@@ -57,6 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E
 		Tools\libHarfBuzzSharp.dll = Tools\libHarfBuzzSharp.dll
 		Tools\libSkiaSharp.dll = Tools\libSkiaSharp.dll
 		Tools\Lyt.Translator.Cli.exe = Tools\Lyt.Translator.Cli.exe
+		prebuild.bat = prebuild.bat
 	EndProjectSection
 EndProject
 Global
