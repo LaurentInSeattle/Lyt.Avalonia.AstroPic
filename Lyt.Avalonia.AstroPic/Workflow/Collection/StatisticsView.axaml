@@ -33,7 +33,7 @@
 			Text="{Binding AlertText}"
 			Grid.Row="1"
 			FontSize="20"
-			Margin="32 0 0 0"
+			Margin="6 0 0 0"
 			FontWeight="DemiBold"
 			TextAlignment="Center"
 			Foreground="{StaticResource PastelOrchid_2_100_Color}"
@@ -41,7 +41,7 @@
 			/>
 		<TextBlock
 			Grid.Row="2"
-			Margin="32 0 0 0"
+			Margin="12 0 0 0"
 			Text="{Binding ImageCountText}"
 			FontSize="16"
 			TextAlignment="Center"
@@ -50,7 +50,7 @@
 			/>
 		<TextBlock
 			Grid.Row="3"
-			Margin="32 0 0 0"
+			Margin="12 0 0 0"
 			Text="{Binding SizeOnDiskText}"
 			FontSize="16"
 			TextAlignment="Center"
@@ -59,7 +59,7 @@
 			/>
 		<TextBlock
 			Grid.Row="4"
-			Margin="32 0 0 0"
+			Margin="12 0 0 0"
 			Text="{Binding AvailableDiskSpaceText}"
 			FontSize="16"
 			TextAlignment="Center"

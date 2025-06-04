@@ -18,7 +18,7 @@
 			x:Name="DropBorder"
 			Margin="10 10 0 10"
 			Background="#20808080"
-			Width="600" Height="180"
+			Width="400" Height="180"
 			BorderThickness="0"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			DragDrop.AllowDrop="True"
@@ -42,12 +42,13 @@
 					VerticalAlignment="Top"
 					/>
 				<TextBlock
-					Margin="0 0 0 10"
+					Margin="8 0 8 16"
 					Text="{DynamicResource Collection.DropZoneHelp}"
 					FontSize="16"
 					TextAlignment="Center"
 					Foreground="{StaticResource PastelOrchid_0_080}"
 					VerticalAlignment="Bottom"
+					TextWrapping="Wrap"
 					/>
 			</Grid>
 		</Border>
