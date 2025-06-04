@@ -3,18 +3,17 @@
 
 TODO: Priorities  
 
-- Build event for Translator CLI 
-
 TODO: Later  
+
+- German (de-DE) localisation 
+
+- Finnish (fi-FI) localisation 
 
 - Ability to Rotate images by 90 degrees (Would be good for NASA Apod)
 
 - Add some help hints in 'About' view: location of images, etc. 
 
-- Auto translate to Hindi and Bengali 
-
 - Not enough variation when using Open Verse 
-
 
 TODO: Maybe 
 
