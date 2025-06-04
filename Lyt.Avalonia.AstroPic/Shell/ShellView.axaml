@@ -34,18 +34,6 @@
 			Grid.ColumnSpan="999" Grid.RowSpan="999"
 			/>
 		<Rectangle
-			Grid.Column="1" Grid.ColumnSpan="999"
-			VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
-			Fill="{StaticResource PastelOrchid_0_080}"
-			Height="2"
-			/>
-		<Rectangle
-			Grid.Column="0" Grid.Row="1" Grid.RowSpan="999"
-			VerticalAlignment="Stretch" HorizontalAlignment="Right"
-			Fill="{StaticResource PastelOrchid_0_080}"
-			Width="2"
-			/>
-		<Rectangle
 			Fill="#58000020"
 			Grid.ColumnSpan="999" Grid.RowSpan="999"
 			/>
@@ -60,6 +48,22 @@
 		<Rectangle
 			Fill="#70000020"
 			Grid.ColumnSpan="1" Grid.RowSpan="999"
+			/>
+		<Rectangle
+			Grid.Column="1" Grid.ColumnSpan="999"
+			VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+			Fill="{StaticResource OrangePeel_1_100}"
+			Height="1"
+			Opacity="0.4"
+			Margin="-1 0 0 0"
+			/>
+		<Rectangle
+			Grid.Column="0" Grid.Row="1" Grid.RowSpan="999"
+			VerticalAlignment="Stretch" HorizontalAlignment="Right"
+			Fill="{StaticResource OrangePeel_1_100}"
+			Width="1"
+			Opacity="0.4"
+			Margin="0 -1 0 0"
 			/>
 		<Image
 			Stretch="UniformToFill"
