@@ -1,5 +1,20 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+	<!--  delete  -->
+	<DrawingGroup x:Key = "deleteDrawingGroup">
+		<DrawingGroup>
+			<DrawingGroup.ClipGeometry>
+				<RectangleGeometry Rect="0,0,24,24" />
+			</DrawingGroup.ClipGeometry>
+			<GeometryDrawing Brush="#FF212121" >
+				<GeometryDrawing.Geometry>
+					<PathGeometry FillRule="NonZero" Figures="M10,5L14,5C14,3.8954 13.1046,3 12,3 10.8954,3 10,3.8954 10,5z M8.5,5C8.5,3.067 10.067,1.5 12,1.5 13.933,1.5 15.5,3.067 15.5,5L21.25,5C21.6642,5 22,5.3358 22,5.75 22,6.1642 21.6642,6.5 21.25,6.5L19.9309,6.5 18.7589,18.6112C18.5729,20.5334,16.9575,22,15.0263,22L8.9737,22C7.0425,22,5.4272,20.5334,5.2411,18.6112L4.0691,6.5 2.75,6.5C2.3358,6.5 2,6.1642 2,5.75 2,5.3358 2.3358,5 2.75,5L8.5,5z M10.5,9.75C10.5,9.3358 10.1642,9 9.75,9 9.3358,9 9,9.3358 9,9.75L9,17.25C9,17.6642 9.3358,18 9.75,18 10.1642,18 10.5,17.6642 10.5,17.25L10.5,9.75z M14.25,9C14.6642,9,15,9.3358,15,9.75L15,17.25C15,17.6642 14.6642,18 14.25,18 13.8358,18 13.5,17.6642 13.5,17.25L13.5,9.75C13.5,9.3358,13.8358,9,14.25,9z M6.7342,18.4667C6.8458,19.62,7.815,20.5,8.9737,20.5L15.0263,20.5C16.185,20.5,17.1542,19.62,17.2658,18.4667L18.4239,6.5 5.5761,6.5 6.7342,18.4667z" />
+				</GeometryDrawing.Geometry>
+			</GeometryDrawing>
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="delete" Drawing="{StaticResource deleteDrawingGroup}" />
+
 	<!--  zoom_fit  -->
 	<DrawingGroup x:Key = "zoom_fitDrawingGroup">
 		<DrawingGroup>

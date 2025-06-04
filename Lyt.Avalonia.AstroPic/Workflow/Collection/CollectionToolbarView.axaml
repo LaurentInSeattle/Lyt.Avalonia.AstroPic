@@ -37,7 +37,7 @@
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Width="120" Height="56"
 			Margin="8 4 8 4"
-			GlyphSource="subtract_circle"
+			GlyphSource="delete"
 			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			GlyphAngle="0"
