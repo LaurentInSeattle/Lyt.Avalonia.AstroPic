@@ -1,5 +1,5 @@
 ﻿BUG:
-	- 
+	- Fails to autotranslate to German
 
 TODO: Priorities  
 

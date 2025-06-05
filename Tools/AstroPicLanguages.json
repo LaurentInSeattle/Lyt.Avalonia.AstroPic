@@ -7,19 +7,20 @@
   "SourceFile": "Lang_en-US.axaml",
   "TargetFileFormat": "Lang_{0}.axaml",
   "SourceLanguageCultureKey": "en-US",
-  "TargetLanguagesCultureKeys": [
-    "uk-UA",
-    "it-IT",
-    "fr-FR",
-    "es-ES",
-    "bg-BG",
-    "el-GR",
-    "jp-JP",
-    "hy-AM",
-    "ko-KO",
-    "zh-CN",
-    "zh-TW",
-    "hi-IN",
-    "bn-BD"
-  ]
+    "TargetLanguagesCultureKeys": [
+        "uk-UA",
+        "it-IT",
+        "fr-FR",
+        "es-ES",
+        "bg-BG",
+        "el-GR",
+        "jp-JP",
+        "hy-AM",
+        "ko-KO",
+        "zh-CN",
+        "zh-TW",
+        "hi-IN",
+        "bn-BD",
+        "de-DE"
+    ]
 }

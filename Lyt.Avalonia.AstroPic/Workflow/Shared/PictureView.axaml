@@ -22,19 +22,9 @@
 		<TextBlock
 			Grid.Row="0" 
 			Text="{Binding Provider}"
-			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Margin="20 0 0 0"
-			FontSize="24"
-			FontWeight="DemiBold"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
-			/>
-		<TextBlock
-			Grid.Row="0"
-			Text="{Binding Title}"
-			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Margin="300 0 0 0"
-			FontSize="24"
+			HorizontalAlignment="Left" VerticalAlignment="Top"
+			Margin="4 8 0 0"
+			FontSize="18"
 			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
@@ -42,10 +32,20 @@
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding Copyright}"
-			HorizontalAlignment="Right" VerticalAlignment="Center"
-			Margin="0 0 20 0"
-			FontSize="14"
+			HorizontalAlignment="Left" VerticalAlignment="Bottom"
+			Margin="4 0 0 4"
+			FontSize="11"
 			FontWeight="Normal"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
+			Grid.Row="0"
+			Text="{Binding Title}"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Margin="100 0 0 0"
+			FontSize="30"
+			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
 			/>
