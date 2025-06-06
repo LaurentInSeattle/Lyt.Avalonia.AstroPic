@@ -10,6 +10,7 @@ public sealed partial class LanguageViewModel : ViewModel<LanguageView>
         new LanguageInfoViewModel("en-US", "English" , "United_Kingdom.png" , "Canada.png" ) ,
         
         new LanguageInfoViewModel("es-ES", "Español" , "Spain.png" , "Mexico.png" ) ,
+        new LanguageInfoViewModel("de-DE", "Deutsch" , "Germany.png" , "Austria.png" ) ,
         new LanguageInfoViewModel("bg-BG", "Български език" , "Bulgaria.png" , string.Empty ) ,
         new LanguageInfoViewModel("el-GR", "Ελληνικά" , "Greece.png", "Cyprus.png" ) ,
         new LanguageInfoViewModel("jp-JP", "日本語", "Japan.png" , string.Empty ) ,

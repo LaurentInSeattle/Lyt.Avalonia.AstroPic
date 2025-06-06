@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Avalonia;
 
 namespace Lyt.Avalonia.AstroPic.Desktop;

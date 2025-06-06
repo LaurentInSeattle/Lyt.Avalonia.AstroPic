@@ -1,13 +1,8 @@
 ﻿BUG:
-	- Fails to autotranslate to German
 
 TODO: Priorities  
 
 TODO: Later  
-
-- German (de-DE) localisation 
-
-- Finnish (fi-FI) localisation 
 
 - Ability to Rotate images by 90 degrees (Would be good for NASA Apod)
 

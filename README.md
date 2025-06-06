@@ -15,8 +15,8 @@ Then...
 - Handle user settings.
 
 Localization: 
-- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, Japanese, Chinese, Korean. 
 - Human translated: Spanish, Italian, French and English
+- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean. 
  
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 
