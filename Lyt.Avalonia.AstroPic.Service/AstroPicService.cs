@@ -4,32 +4,22 @@ public class AstroPicService(ILogger logger, IRandomizer randomizer)
 {
     private readonly ILogger logger = logger;
     private readonly IRandomizer randomizer = randomizer;
+    private readonly HttpClient httpClient = new();
 
     public async Task<List<PictureMetadata>> GetPictures(ImageProviderKey provider)
     {
         try
         {
-            switch (provider)
+            return provider switch
             {
-                case ImageProviderKey.Nasa:
-                    return await NasaService.GetPictures();
+                ImageProviderKey.Epic => await EpicService.GetPictures(),
+                ImageProviderKey.Bing => await BingService.GetPictures(),
+                ImageProviderKey.EarthView => await EarthViewService.GetPictures(),
+                ImageProviderKey.OpenVerse => await OpenVerseService.GetPictures(this.randomizer),
+                _ => await NasaService.GetPictures(), // Default, NASA 
+            };
 
-                case ImageProviderKey.Epic:
-                    return await EpicService.GetPictures();
-
-                case ImageProviderKey.Bing:
-                    return await BingService.GetPictures();
-
-                case ImageProviderKey.EarthView:
-                    return await EarthViewService.GetPictures();
-
-                case ImageProviderKey.OpenVerse:
-                    return await OpenVerseService.GetPictures(this.randomizer);
-
-                default:
-                    break;
-            }
-            throw new NotImplementedException();
+            throw new NotImplementedException(nameof(provider));
         }
         catch (Exception ex)
         {
@@ -56,8 +46,6 @@ public class AstroPicService(ILogger logger, IRandomizer randomizer)
             throw new ArgumentException(msg);            
         }
 
-        HttpClient client = new();
-        byte[] imageData = await client.GetByteArrayAsync(url);
-        return imageData;
+        return await this.httpClient.GetByteArrayAsync(url);
     }
 }
