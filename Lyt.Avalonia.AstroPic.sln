@@ -53,9 +53,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
 	ProjectSection(SolutionItems) = preProject
 		Tools\AstroPicLanguages.json = Tools\AstroPicLanguages.json
-		Tools\av_libglesv2.dll = Tools\av_libglesv2.dll
-		Tools\libHarfBuzzSharp.dll = Tools\libHarfBuzzSharp.dll
-		Tools\libSkiaSharp.dll = Tools\libSkiaSharp.dll
 		Tools\Lyt.Translator.Cli.exe = Tools\Lyt.Translator.Cli.exe
 		prebuild.bat = prebuild.bat
 	EndProjectSection
