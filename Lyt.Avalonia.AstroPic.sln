@@ -57,6 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E
 		prebuild.bat = prebuild.bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.FileSystem", "..\Lyt.Framework\Lyt.FileSystem\Lyt.FileSystem.csproj", "{000352DE-B557-EED7-0FDB-6138973E50C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{66333785-F79B-0142-0808-D9E0F442C5F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66333785-F79B-0142-0808-D9E0F442C5F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66333785-F79B-0142-0808-D9E0F442C5F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{000352DE-B557-EED7-0FDB-6138973E50C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000352DE-B557-EED7-0FDB-6138973E50C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000352DE-B557-EED7-0FDB-6138973E50C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000352DE-B557-EED7-0FDB-6138973E50C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{3EA57527-4DA1-1EC4-0E16-1E9DAA266191} = {DA5C3214-5362-D53D-7EE1-7B72DB27BE75}
 		{761F8ABB-93F9-3510-6DCA-4CCF287C4A1B} = {DA5C3214-5362-D53D-7EE1-7B72DB27BE75}
 		{66333785-F79B-0142-0808-D9E0F442C5F6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{000352DE-B557-EED7-0FDB-6138973E50C6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E3516D3-0E36-4C81-B932-CD881041D5CF}
