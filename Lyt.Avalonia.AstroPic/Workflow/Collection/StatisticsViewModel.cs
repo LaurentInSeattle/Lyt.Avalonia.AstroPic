@@ -2,6 +2,8 @@
 
 public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
 {
+    private const double GigaByte = 1024.0 * 1024.0 * 1024.0; 
+
     private readonly AstroPicModel astroPicModel;
 
     [ObservableProperty]
@@ -48,7 +50,7 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
         long availableSpace = fileManager.AvailableFreeSpace(FileManagerModel.Area.User);
         if (availableSpace > 0)
         {
-            double availableSpaceGB = availableSpace / (1024.0 * 1024.0 * 1024.0);
+            double availableSpaceGB = availableSpace / GigaByte;
             string formatSpace = this.Localize("Collection.Stats.AvailableDiskSpaceFormat"); 
             this.AvailableDiskSpaceText =string.Format(formatSpace, availableSpaceGB);
         }
@@ -61,14 +63,12 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
         this.AlertText = string.Empty;
         if ( this.astroPicModel.IsAvailableDiskSpaceLow())
         {
-            // "Attento al spazio disponibile su disco!";
             this.AlertText = this.Localize("Collection.Stats.AlertTextSpace");
         }
         else
         {
             if (this.astroPicModel.AreQuotasExceeded())
             {
-                // "Troppe immagini nella collezione!";
                 this.AlertText = this.Localize("Collection.Stats.AlertTextQuota"); 
             }
         } 

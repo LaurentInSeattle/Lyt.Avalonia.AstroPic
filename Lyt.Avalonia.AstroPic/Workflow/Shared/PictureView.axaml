@@ -15,16 +15,26 @@
 		Background="Transparent"
 		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="50" />
+			<RowDefinition Height="60" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="{Binding DescriptionHeight}" />
 		</Grid.RowDefinitions>
 		<TextBlock
+			Grid.Row="0"
+			Text="{Binding Title}"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Margin="0 -12 0 0"
+			FontSize="28"
+			FontWeight="DemiBold"
+			Foreground="{StaticResource PastelOrchid_0_080}"
+			TextWrapping="Wrap"
+			/>
+		<TextBlock
 			Grid.Row="0" 
 			Text="{Binding Provider}"
-			HorizontalAlignment="Left" VerticalAlignment="Top"
-			Margin="4 8 0 0"
-			FontSize="18"
+			HorizontalAlignment="Left" VerticalAlignment="Bottom"
+			Margin="8 0 0 0"
+			FontSize="11"
 			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
@@ -32,20 +42,10 @@
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding Copyright}"
-			HorizontalAlignment="Left" VerticalAlignment="Bottom"
-			Margin="4 0 0 4"
+			HorizontalAlignment="Right" VerticalAlignment="Bottom"
+			Margin="0 0 8 0"
 			FontSize="11"
 			FontWeight="Normal"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
-			/>
-		<TextBlock
-			Grid.Row="0"
-			Text="{Binding Title}"
-			HorizontalAlignment="Center" VerticalAlignment="Center"
-			Margin="100 0 0 0"
-			FontSize="30"
-			FontWeight="DemiBold"
 			Foreground="{StaticResource PastelOrchid_0_080}"
 			TextWrapping="Wrap"
 			/>
