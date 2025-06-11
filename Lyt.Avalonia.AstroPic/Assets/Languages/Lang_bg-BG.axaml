@@ -33,7 +33,7 @@
 
     <system:String x:Key="Collection.Remove">Извадете</system:String>
 
-    <system:String x:Key="Collection.SaveToDesktop">Запазете на работния плот</system:String>
+    <system:String x:Key="Collection.SaveToDesktop">копира на работния плот</system:String>
 
     <system:String x:Key="Collection.BadPicture">Не мога да изтегля тази снимка!</system:String>
 
@@ -65,7 +65,7 @@
 
     <system:String x:Key="Gallery.Add">Добавяне</system:String>
 
-    <system:String x:Key="Gallery.SaveToDesktop">Запазете на работния плот</system:String>
+    <system:String x:Key="Gallery.SaveToDesktop">копира на работния плот</system:String>
 
     <system:String x:Key="Gallery.StartingDownloading">Изтеглете в ход</system:String>
 
