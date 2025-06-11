@@ -38,4 +38,13 @@ Localization:
 
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
+# Build your own...
+
+- Clone this repo'
+- => Clone the "Lyt.Framework" repo' side by side
+- => Clone the "Lyt.Avalonia" repo' side by side
+- Open the solution in Visual Studio and build.
+
+Tested with VS 2022 and Avalonia 11.3.1.
+Should likely work with Rider, but not tested.
 
