@@ -1,9 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
-using static MessagingExtensions;
-using static ViewActivationMessage;
-
 // https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
+using static MessagingExtensions; 
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
@@ -13,6 +11,12 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     private readonly IToaster toaster;
     private readonly TimeoutTimer rotatorTimer;
     private readonly TimeoutTimer downloadRetriesTimer;
+
+    [ObservableProperty]
+    public bool mainToolbarIsVisible;
+
+    private ViewSelector<ActivatedView>? viewSelector;
+    public bool isFirstActivation;
 
     #region To please the XAML viewer 
 
@@ -38,7 +42,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             this.rotatorTimer.Start();
         }
 
-        this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
+        //this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
         this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
@@ -89,7 +93,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.Logger.Debug("OnViewLoaded language loaded");
 
         // Create all statics views and bind them 
-        ShellViewModel.SetupWorkflow();
+        this.SetupWorkflow();
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
 
@@ -114,11 +118,11 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private async void ActivateInitialView()
     {
+        this.isFirstActivation = true;
+
         if (this.astroPicModel.IsFirstRun)
         {
-            bool programmaticNavigation = true; 
-            this.OnViewActivation(
-                ActivatedView.Language, parameter: programmaticNavigation, isFirstActivation: true);
+            Select(ActivatedView.Language);
         }
         else
         {
@@ -128,7 +132,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 this.Logger.Debug("ActivateInitialView: Internet connected: " + this.astroPicModel.IsInternetConnected);
                 if (this.astroPicModel.IsInternetConnected)
                 {
-                    this.OnViewActivation(ActivatedView.Gallery, parameter: null, isFirstActivation: true);
+                    Select(ActivatedView.Gallery);
                     this.Logger.Debug("OnViewLoaded OnViewActivation complete");
                     return;
                 }
@@ -141,135 +145,103 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
-    private void OnViewActivation(ViewActivationMessage message)
-        => this.OnViewActivation(message.View, message.ActivationParameter, false);
+    //private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
+    //    where TViewModel : ViewModel<TControl>
+    //    where TControl : Control, IView, new()
 
-    private void OnViewActivation(ActivatedView activatedView, object? parameter = null, bool isFirstActivation = false)
+    private void SetupWorkflow()
     {
-        ViewModel? CurrentViewModel()
+        if (this.View is not ShellView view)
         {
-            object? currentView = this.View.ShellViewContent.Content;
-            if (currentView is Control control &&
-                control.DataContext is ViewModel currentViewModel)
-            {
-                return currentViewModel;
-            }
-
-            return null;
+            throw new Exception("No view: Failed to startup...");
         }
 
-        // Navigation also reset the wallpaper rotation timer
-        this.rotatorTimer.Reset();
+        var galleryViewModel = App.GetRequiredService<GalleryViewModel>();
+        galleryViewModel.CreateViewAndBind();
+        var galleryToolbarViewModel = App.GetRequiredService<GalleryToolbarViewModel>();
+        galleryToolbarViewModel.CreateViewAndBind();
+        var collectionViewModel = App.GetRequiredService<CollectionViewModel>();
+        collectionViewModel.CreateViewAndBind();
+        var collectionToolbarViewModel = App.GetRequiredService<CollectionToolbarViewModel>();
+        collectionToolbarViewModel.CreateViewAndBind();
+        var introViewModel = App.GetRequiredService<IntroViewModel>();
+        introViewModel.CreateViewAndBind();
+        var introToolbarViewModel = App.GetRequiredService<IntroToolbarViewModel>();
+        introToolbarViewModel.CreateViewAndBind();
+        var languageViewModel = App.GetRequiredService<LanguageViewModel>();
+        languageViewModel.CreateViewAndBind();
+        var languageToolbarViewModel = App.GetRequiredService<LanguageToolbarViewModel>();
+        languageToolbarViewModel.CreateViewAndBind();
+        var settingsViewModel = App.GetRequiredService<SettingsViewModel>();
+        settingsViewModel.CreateViewAndBind();
+        var settingsToolbarViewModel = App.GetRequiredService<SettingsToolbarViewModel>();
+        settingsToolbarViewModel.CreateViewAndBind();
 
-        if (activatedView == ActivatedView.Exit)
+        var selectableViews = new List<SelectableView<ActivatedView>>()
         {
-            OnExit();
-        }
+            new(ActivatedView.Gallery, galleryViewModel, view.TodayButton, galleryToolbarViewModel),
+            new(ActivatedView.Collection, collectionViewModel, view.CollectionButton, collectionToolbarViewModel),
+            new(ActivatedView.Intro, introViewModel, view.IntroButton, introToolbarViewModel),
+            new(ActivatedView.Language, languageViewModel, view.FlagButton, languageToolbarViewModel),
+            new(ActivatedView.Settings, settingsViewModel, view.SettingsButton, settingsToolbarViewModel),
+        };
 
-        if (activatedView == ActivatedView.GoBack)
-        {
-            // We always go back to the Intro View 
-            activatedView = ActivatedView.Intro;
-        }
-
-        bool programmaticNavigation = false;
-        ActivatedView hasBeenActivated = ActivatedView.Exit;
-        ViewModel? currentViewModel = null;
-        if (parameter is bool navigationType)
-        {
-            programmaticNavigation = navigationType;
-            currentViewModel = CurrentViewModel();
-        }
-
-        void NoToolbar() => this.View.ShellViewToolbar.Content = null;
-
-        void SetupToolbar<TViewModel, TControl>()
-            where TViewModel : ViewModel<TControl>
-            where TControl : Control, IView, new()
-        {
-            if (this.View is null)
-            {
-                throw new Exception("No view: Failed to startup...");
-            }
-
-            var newViewModel = App.GetRequiredService<TViewModel>();
-            this.View.ShellViewToolbar.Content = newViewModel.View;
-        }
-
-        switch (activatedView)
-        {
-            default:
-            case ActivatedView.Gallery:
-                if (!(programmaticNavigation && currentViewModel is GalleryViewModel))
-                {
-                    SetupToolbar<GalleryToolbarViewModel, GalleryToolbarView>();
-                    this.Activate<GalleryViewModel, GalleryView>(isFirstActivation, null);
-                    hasBeenActivated = ActivatedView.Gallery;
-                }
-                break;
-
-            case ActivatedView.Collection:
-                if (!(programmaticNavigation && currentViewModel is CollectionViewModel))
-                {
-                    SetupToolbar<CollectionToolbarViewModel, CollectionToolbarView>();
-                    this.Activate<CollectionViewModel, CollectionView>(isFirstActivation, null);
-                    hasBeenActivated = ActivatedView.Collection;
-                }
-                break;
-
-            case ActivatedView.Language:
-                if ( this.astroPicModel.IsFirstRun)
-                {
-                    SetupToolbar<LanguageToolbarViewModel, LanguageToolbarView>();
-                }
-                else
-                {
-                    NoToolbar();
-                }
-
-                this.Activate<LanguageViewModel, LanguageView>(isFirstActivation, null);
-                hasBeenActivated = ActivatedView.Language;
-                break;
-
-            case ActivatedView.Intro:
-                SetupToolbar<IntroToolbarViewModel, IntroToolbarView>();
-                this.Activate<IntroViewModel, IntroView>(isFirstActivation, null);
-                break;
-
-            case ActivatedView.Settings:
-                if (!(programmaticNavigation && currentViewModel is SettingsViewModel))
-                {
-                    SetupToolbar<SettingsToolbarViewModel, SettingsToolbarView>();
-                    this.Activate<SettingsViewModel, SettingsView>(isFirstActivation, parameter);
-                    hasBeenActivated = ActivatedView.Settings;
-                }
-                break;
-        }
-
-        // Reflect in the navigation toolbar the programmatic change 
-        if (programmaticNavigation && (hasBeenActivated != ActivatedView.Exit))
-        {
-            if (this.View is not ShellView view)
-            {
-                throw new Exception("No view: Failed to startup...");
-            }
-
-            var selector = view.SelectionGroup;
-            var button = hasBeenActivated switch
-            {
-                ActivatedView.Intro => view.IntroButton,
-                ActivatedView.Collection => view.CollectionButton,
-                ActivatedView.Settings => view.SettingsButton,
-                ActivatedView.Language => view.FlagButton,
-                _ => view.TodayButton,
-            };
-            selector.Select(button);
-        }
-        
-        bool mainToolbarIsHidden = 
-            this.astroPicModel.IsFirstRun || CurrentViewModel() is IntroViewModel;
-        this.MainToolbarIsVisible = !mainToolbarIsHidden; 
+        // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
+        this.viewSelector =
+            new ViewSelector<ActivatedView>(
+                this.Messenger,
+                this.View.ShellViewContent,
+                this.View.ShellViewToolbar,
+                this.View.SelectionGroup,
+                selectableViews,
+                this.OnViewSelected);
     }
+
+    private void OnViewSelected(ActivatedView activatedView)
+    {
+        if (this.viewSelector is null)
+        {
+            throw new Exception("No view selector");
+        }
+
+        var newViewModel = this.viewSelector.CurrentViewModel();
+        if (newViewModel is not null)
+        {
+            bool mainToolbarIsHidden =
+                this.astroPicModel.IsFirstRun || newViewModel is IntroViewModel;
+            this.MainToolbarIsVisible = !mainToolbarIsHidden;
+            if (this.isFirstActivation)
+            {
+                this.Profiler.MemorySnapshot(newViewModel.ViewBase!.GetType().Name + ":  Activated");
+            } 
+        }
+
+        this.isFirstActivation = false;
+    }
+
+#pragma warning disable IDE0079 
+#pragma warning disable CA1822 // Mark members as static
+
+    [RelayCommand]
+    public void OnToday() => Select(ActivatedView.Gallery);
+
+    [RelayCommand]
+    public void OnCollection() => Select(ActivatedView.Collection);
+
+    [RelayCommand]
+    public void OnSettings() => Select(ActivatedView.Settings);
+
+    [RelayCommand]
+    public void OnInfo() => Select(ActivatedView.Intro);
+
+    [RelayCommand]
+    public void OnLanguage() => Select(ActivatedView.Language);
+
+    [RelayCommand]
+    public void OnToTray() => this.ShowMainWindow(show: false);
+
+    [RelayCommand]
+    public void OnClose() => OnExit();
 
     private static async void OnExit()
     {
@@ -279,77 +251,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         await application.Shutdown();
     }
 
-    private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
-        where TViewModel : ViewModel<TControl>
-        where TControl : Control, IView, new()
-    {
-        if (this.View is null)
-        {
-            throw new Exception("No view: Failed to startup...");
-        }
-
-        var newViewModel = App.GetRequiredService<TViewModel>();
-        object? currentView = this.View.ShellViewContent.Content;
-        if (currentView is Control control && control.DataContext is ViewModel currentViewModel)
-        {
-            if (newViewModel == currentViewModel)
-            {
-                return;
-            }
-
-            currentViewModel.Deactivate();
-        }
-
-
-        newViewModel.Activate(activationParameters);
-        this.View.ShellViewContent.Content = newViewModel.View;
-        if (!isFirstActivation)
-        {
-            this.Profiler.MemorySnapshot(newViewModel.View.GetType().Name + ":  Activated");
-        }
-    }
-
-    private static void SetupWorkflow()
-    {
-        App.GetRequiredService<GalleryViewModel>().CreateViewAndBind();
-        App.GetRequiredService<GalleryToolbarViewModel>().CreateViewAndBind();
-        App.GetRequiredService<CollectionViewModel>().CreateViewAndBind();
-        App.GetRequiredService<CollectionToolbarViewModel>().CreateViewAndBind();
-        App.GetRequiredService<IntroViewModel>().CreateViewAndBind();
-        App.GetRequiredService<IntroToolbarViewModel>().CreateViewAndBind();
-        App.GetRequiredService<LanguageViewModel>().CreateViewAndBind();
-        App.GetRequiredService<LanguageToolbarViewModel>().CreateViewAndBind();
-        App.GetRequiredService<SettingsViewModel>().CreateViewAndBind();
-        App.GetRequiredService<SettingsToolbarViewModel>().CreateViewAndBind();
-    }
-
-    [RelayCommand]
-    public void OnToday() => this.OnViewActivation(ActivatedView.Gallery);
-
-    [RelayCommand]
-    public void OnCollection() => this.OnViewActivation(ActivatedView.Collection);
-
-    [RelayCommand]
-    public void OnSettings() => this.OnViewActivation(ActivatedView.Settings);
-
-    [RelayCommand]
-    public void OnInfo() => this.OnViewActivation(ActivatedView.Intro);
-
-    [RelayCommand]
-    public void OnLanguage() => this.OnViewActivation(ActivatedView.Language);
-
-    [RelayCommand]
-    public void OnToTray() => this.ShowMainWindow(show: false);
-
-#pragma warning disable IDE0079 
-#pragma warning disable CA1822 // Mark members as static
-
-    [RelayCommand]
-    public void OnClose() => OnExit();
-
 #pragma warning restore CA1822
 #pragma warning restore IDE0079
-
-    [ObservableProperty]
-    public bool mainToolbarIsVisible ; 
 }

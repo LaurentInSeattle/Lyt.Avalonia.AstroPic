@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
-using static ViewActivationMessage;
+using static MessagingExtensions;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
@@ -88,7 +88,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             this.ShowMainWindow();
         }
 
-        this.NavigateTo(ActivatedView.Collection);
+        Select(ActivatedView.Collection);
     }
 
     private void OpenSettingsFromTray()
@@ -98,7 +98,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             this.ShowMainWindow();
         }
 
-        this.NavigateTo(ActivatedView.Settings);
+        Select(ActivatedView.Settings);
     }
 
     private void ShowImageInfoFromTray()
@@ -124,11 +124,4 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 await application.Shutdown();
             }, DispatcherPriority.Normal);
     }
-
-    private void NavigateTo(ActivatedView view)
-    {
-        bool programmaticNavigation = true;
-        this.Messenger.Publish(new ViewActivationMessage(view, programmaticNavigation));
-    }
 }
-
