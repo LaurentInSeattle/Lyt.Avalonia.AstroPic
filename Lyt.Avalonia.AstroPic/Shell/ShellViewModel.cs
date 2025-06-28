@@ -1,7 +1,7 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
 // https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
-using static MessagingExtensions; 
+using static MessagingExtensions;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
@@ -145,10 +145,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
-    //private void Activate<TViewModel, TControl>(bool isFirstActivation, object? activationParameters)
-    //    where TViewModel : ViewModel<TControl>
-    //    where TControl : Control, IView, new()
-
     private void SetupWorkflow()
     {
         if (this.View is not ShellView view)
@@ -156,35 +152,37 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             throw new Exception("No view: Failed to startup...");
         }
 
-        var galleryViewModel = App.GetRequiredService<GalleryViewModel>();
-        galleryViewModel.CreateViewAndBind();
-        var galleryToolbarViewModel = App.GetRequiredService<GalleryToolbarViewModel>();
-        galleryToolbarViewModel.CreateViewAndBind();
-        var collectionViewModel = App.GetRequiredService<CollectionViewModel>();
-        collectionViewModel.CreateViewAndBind();
-        var collectionToolbarViewModel = App.GetRequiredService<CollectionToolbarViewModel>();
-        collectionToolbarViewModel.CreateViewAndBind();
-        var introViewModel = App.GetRequiredService<IntroViewModel>();
-        introViewModel.CreateViewAndBind();
-        var introToolbarViewModel = App.GetRequiredService<IntroToolbarViewModel>();
-        introToolbarViewModel.CreateViewAndBind();
-        var languageViewModel = App.GetRequiredService<LanguageViewModel>();
-        languageViewModel.CreateViewAndBind();
-        var languageToolbarViewModel = App.GetRequiredService<LanguageToolbarViewModel>();
-        languageToolbarViewModel.CreateViewAndBind();
-        var settingsViewModel = App.GetRequiredService<SettingsViewModel>();
-        settingsViewModel.CreateViewAndBind();
-        var settingsToolbarViewModel = App.GetRequiredService<SettingsToolbarViewModel>();
-        settingsToolbarViewModel.CreateViewAndBind();
+        var selectableViews = new List<SelectableView<ActivatedView>>();
 
-        var selectableViews = new List<SelectableView<ActivatedView>>()
+        void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
+                ActivatedView activatedView, Control control)
+            where TViewModel : ViewModel<TControl>
+            where TControl : Control, IView, new()
+            where TToolbarViewModel : ViewModel<TToolbarControl>
+            where TToolbarControl : Control, IView, new()
         {
-            new(ActivatedView.Gallery, galleryViewModel, view.TodayButton, galleryToolbarViewModel),
-            new(ActivatedView.Collection, collectionViewModel, view.CollectionButton, collectionToolbarViewModel),
-            new(ActivatedView.Intro, introViewModel, view.IntroButton, introToolbarViewModel),
-            new(ActivatedView.Language, languageViewModel, view.FlagButton, languageToolbarViewModel),
-            new(ActivatedView.Settings, settingsViewModel, view.SettingsButton, settingsToolbarViewModel),
-        };
+            var vm = App.GetRequiredService<TViewModel>();
+            vm.CreateViewAndBind();
+            var vmToolbar = App.GetRequiredService<TToolbarViewModel>();
+            vmToolbar.CreateViewAndBind();
+            selectableViews.Add(
+                new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
+        }
+
+        Setup<GalleryViewModel, GalleryView, GalleryToolbarViewModel, GalleryToolbarView>(
+            ActivatedView.Gallery, view.TodayButton);
+
+        Setup<CollectionViewModel, CollectionView, CollectionToolbarViewModel, CollectionToolbarView>(
+            ActivatedView.Collection, view.CollectionButton);
+
+        Setup<IntroViewModel, IntroView, IntroToolbarViewModel, IntroToolbarView>(
+            ActivatedView.Intro, view.IntroButton);
+
+        Setup<LanguageViewModel, LanguageView, LanguageToolbarViewModel, LanguageToolbarView>(
+            ActivatedView.Language, view.FlagButton);
+
+        Setup<SettingsViewModel, SettingsView, SettingsToolbarViewModel, SettingsToolbarView>(
+            ActivatedView.Settings, view.SettingsButton);
 
         // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
         this.viewSelector =
@@ -207,13 +205,13 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         var newViewModel = this.viewSelector.CurrentViewModel();
         if (newViewModel is not null)
         {
-            bool mainToolbarIsHidden =
+            bool mainToolbarIsHidden = 
                 this.astroPicModel.IsFirstRun || newViewModel is IntroViewModel;
             this.MainToolbarIsVisible = !mainToolbarIsHidden;
             if (this.isFirstActivation)
             {
                 this.Profiler.MemorySnapshot(newViewModel.ViewBase!.GetType().Name + ":  Activated");
-            } 
+            }
         }
 
         this.isFirstActivation = false;
