@@ -2,7 +2,7 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
 using static Avalonia.Controls.Utilities;
 
-public partial class ThumbnailView : UserControl, IView
+public partial class ThumbnailView : View
 {
     private static readonly SolidColorBrush insideBrush;
     private static readonly SolidColorBrush pressedBrush;
@@ -19,24 +19,14 @@ public partial class ThumbnailView : UserControl, IView
         selectedBrush = FindResource<SolidColorBrush>("FreshGreen_0_080");
     }
 
-    public ThumbnailView()
+    public ThumbnailView() : base () 
     {
-        this.InitializeComponent();
         this.PointerEntered += this.OnPointerEnter;
         this.PointerExited += this.OnPointerLeave;
         this.PointerPressed += this.OnPointerPressed;
         this.PointerReleased += this.OnPointerReleased;
         this.PointerMoved += this.OnPointerMoved;
-        this.DataContextChanged += this.OnDataContextChanged;
         this.SetVisualState();
-    }
-
-    private void OnDataContextChanged(object? sender, EventArgs e)
-    {
-        if (this.DataContext is ThumbnailViewModel thumbnailViewModel)
-        {
-            thumbnailViewModel.BindOnDataContextChanged(this);
-        }
     }
 
     ~ThumbnailView()
@@ -45,7 +35,6 @@ public partial class ThumbnailView : UserControl, IView
         this.PointerExited -= this.OnPointerLeave;
         this.PointerPressed -= this.OnPointerPressed;
         this.PointerReleased -= this.OnPointerReleased;
-        this.DataContextChanged -= this.OnDataContextChanged;
     }
 
     public void Select()

@@ -1,0 +1,170 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Közeli</system:String>
+
+    <system:String x:Key="Shell.AppName">Csillagászat képei</system:String>
+
+    <system:String x:Key="Shell.About">Körülbelül...</system:String>
+
+    <system:String x:Key="Shell.Today">Ma</system:String>
+
+    <system:String x:Key="Shell.Collection">Gyűjtemény</system:String>
+
+    <system:String x:Key="Shell.Settings">Beállítások</system:String>
+
+    <system:String x:Key="Shell.Language">Nyelv</system:String>
+
+    <system:String x:Key="Shell.ToTray">Tálca ikonra</system:String>
+
+    <system:String x:Key="Shell.Exit">Kilépett</system:String>
+
+    <system:String x:Key="Shell.Close">Közeli</system:String>
+
+    <system:String x:Key="Shell.Ready">Kész.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Üdvözöljük a csillagászati ​​képeken!</system:String>
+
+    <system:String x:Key="Collection.SetWallpaper">Használjon háttérképként</system:String>
+
+    <system:String x:Key="Collection.Remove">Eltávolítás</system:String>
+
+    <system:String x:Key="Collection.SaveToDesktop">Mentés az asztalra</system:String>
+
+    <system:String x:Key="Collection.BadPicture">Nem tudom letölteni ezt a képet!</system:String>
+
+    <system:String x:Key="Collection.DropZone">Húzd és Vidd Zóna</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Húzza és dobja ide a fájlokat ide, hogy hozzáadja őket a háttérkép -gyűjteményhez.</system:String>
+
+    <system:String x:Key="Collection.Statistics">Statisztika</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextQuota">Túl sok kép a gyűjteményedben!</system:String>
+
+    <system:String x:Key="Collection.Stats.AlertTextSpace">Vigyázzon a lemezen rendelkezésre álló helyre!</system:String>
+
+    <system:String x:Key="Collection.Stats.ImageCountFormat">Képek: {0} (Minden szolgáltatás - kvóta: {1})</system:String>
+
+    <system:String x:Key="Collection.Stats.SizeOnDiskFormat">Becsült lemeztérfelhasználás: {0} MB (kvóta: {1} MB)</system:String>
+
+    <system:String x:Key="Collection.Stats.AvailableDiskSpaceFormat">Rendelkezésre álló hely a lemezen: {0:F1} GB</system:String>
+
+    <system:String x:Key="Collection.Thumbs.WebService">Webszolgáltatás:</system:String>
+
+    <system:String x:Key="Collection.Thumbs.AllServices">Minden szolgáltatás.</system:String>
+
+    <system:String x:Key="Collection.Thumbs.All">Minden</system:String>
+
+    <system:String x:Key="Collection.Thumbs.Recent">Legújabb</system:String>
+
+    <system:String x:Key="Gallery.SetWallpaper">Használjon háttérképként</system:String>
+
+    <system:String x:Key="Gallery.Add">Hozzáad</system:String>
+
+    <system:String x:Key="Gallery.SaveToDesktop">Mentés az asztalra</system:String>
+
+    <system:String x:Key="Gallery.StartingDownloading">Letöltés a folyamatban</system:String>
+
+    <system:String x:Key="Gallery.CompletedDownloading">Töltse le a teljes</system:String>
+
+    <system:String x:Key="Gallery.ImageMetadata">kép -metaadatok</system:String>
+
+    <system:String x:Key="Gallery.Image">kép</system:String>
+
+    <system:String x:Key="Gallery.ForProvider">szolgálatra</system:String>
+
+    <system:String x:Key="Gallery.DownloadsComplete">Minden letöltés befejeződött!</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Elfogadom a MIT licenc feltételeit, folytatom.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Licenc feltételek</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Ezt az alkalmazást a MIT licenc feltételei szerint nyújtják be.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Ezt az alkalmazást a MIT licenc feltételei szerint nyújtják be, és más feltételekkel együtt semmilyen garanciát nem jelent.  A szoftver használatával teljes mértékben elfogadja a MIT licenc feltételeit.</system:String>
+
+    <system:String x:Key="Intro.ReminderTitle">Fontos emlékeztető</system:String>
+
+    <system:String x:Key="Intro.ReminderSubtitle">Néhány fontos pont, amelyet emlékezni kell a letöltött képekről ...</system:String>
+
+    <system:String x:Key="Intro.ReminderText">Javasoljuk, hogy a letöltött képeket csak háttérképként használja.  Bármely más felhasználáshoz, kereskedelmi vagy más módon, kérjük, vegye fel a kapcsolatot a szerzői jogtulajdonossal.</system:String>
+
+    <system:String x:Key="Language.Continue">Folytatódik</system:String>
+
+    <system:String x:Key="Settings.CleanupNow">Tisztítás most</system:String>
+
+    <system:String x:Key="Settings.Services.Title">Kép letöltési szolgáltatásai</system:String>
+
+    <system:String x:Key="Settings.Services.Subtitle">Válassza ki azt a webszolgáltatást, amelyből képeket szeretne letölteni.</system:String>
+
+    <system:String x:Key="Settings.Services.Downloaded">Letöltés</system:String>
+
+    <system:String x:Key="Settings.Services.Skip">Figyelmen kívül hagyja és kihagyja</system:String>
+
+    <system:String x:Key="Settings.Quota.Title">DICK USAGE A beállítások</system:String>
+
+    <system:String x:Key="Settings.Quota.Subtitle">Használja ezt a beállítást, hogy korlátozza (vagy nem korlátozza) a hely használatát a lemezen a gyűjteményben található képhez.</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageCount">A képek maximális száma:</system:String>
+
+    <system:String x:Key="Settings.Quota.DiskSpace">Space kvóta (MB) a képek lemezén:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize">Méretek a kép archiválásához:</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.True">Nagyfelbontás (HD)</system:String>
+
+    <system:String x:Key="Settings.Quota.ImageSize.False">Ultra nagyfelbontású (UHD/4K)</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded">Mit kell tenni, ha a kvótákat túllépik:</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.True">Törölje a régi képeket.</system:String>
+
+    <system:String x:Key="Settings.Quota.Exceeded.False">Csak egy figyelmeztető üzenetet mutat.</system:String>
+
+    <system:String x:Key="Settings.Os.Title">Operációs rendszer beállításai</system:String>
+
+    <system:String x:Key="Settings.Os.Subtitle">Válasszon néhány operációs rendszer beállítást a képek kezeléséhez.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate">Forgassa el az asztali képernyő háttérképeket?</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.True">Igen, időszakonként.</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.False">Soha</system:String>
+
+    <system:String x:Key="Settings.Os.Rotate.Minutes">Változtassa meg a háttérképet: (perc)</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Fontos emlékeztető</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Néhány fontos pont, amelyet emlékezni kell a letöltött képekről ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Javasoljuk, hogy a letöltött képeket csak háttérképként használja.  Bármely más felhasználáshoz, kereskedelmi vagy más módon, kérjük, vegye fel a kapcsolatot a szerzői jogtulajdonossal.</system:String>
+
+    <system:String x:Key="Shared.NoImage">Nincs kép</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Fájlrendszer hiba.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Nem menthette a képfájlt.</system:String>
+
+    <system:String x:Key="Tray.OpenCollection">Nyissa meg a képgyűjteményt</system:String>
+
+    <system:String x:Key="Tray.Settings">Beállítások</system:String>
+
+    <system:String x:Key="Tray.ImageInfo">Erről a képről ...</system:String>
+
+    <system:String x:Key="Tray.Quit">Kilépett</system:String>
+
+    <system:String x:Key="Model.AlreadyDownloaded">A képet már letöltötték.</system:String>
+
+    <system:String x:Key="Model.NoUrl">A képnek nincs URL-je.</system:String>
+
+    <system:String x:Key="Model.NotAnImage">A kép nem érvényes.</system:String>
+
+    <system:String x:Key="Model.TodayIsVideo">A nap fényképe valójában egy videoklip.</system:String>
+
+    <system:String x:Key="Model.Provider.Personal">Személyes kép</system:String>
+
+</ResourceDictionary>

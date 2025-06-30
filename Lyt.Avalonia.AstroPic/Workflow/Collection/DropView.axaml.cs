@@ -2,7 +2,7 @@ namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 using static Lyt.Avalonia.Controls.Utilities;
 
-public partial class DropView : UserControl, IView
+public partial class DropView : View
 {
     private static readonly SolidColorBrush? normalBrush;
     private static readonly SolidColorBrush? hotBrush;
@@ -22,11 +22,8 @@ public partial class DropView : UserControl, IView
         }
     }
 
-    public DropView()
+    public DropView() : base ()
     {
-        this.InitializeComponent();
-        this.DataContextChanged += this.OnDataContextChanged;
-
         if (normalBrush is not null)
         {
             this.DropRectangle.Stroke = normalBrush;
@@ -44,14 +41,6 @@ public partial class DropView : UserControl, IView
         this.DropBorder.RemoveHandler(DragDrop.DropEvent, this.OnDrop);
         this.DropBorder.RemoveHandler(DragDrop.DragEnterEvent, this.OnDragEnter);
         this.DropBorder.RemoveHandler(DragDrop.DragLeaveEvent, this.OnDragLeave);
-    }
-
-    private void OnDataContextChanged(object? _, EventArgs e)
-    {
-        if (this.DataContext is DropViewModel dropViewModel)
-        {
-            dropViewModel.BindOnDataContextChanged(this);
-        }
     }
 
     private void OnDragEnter(object? _, DragEventArgs e)

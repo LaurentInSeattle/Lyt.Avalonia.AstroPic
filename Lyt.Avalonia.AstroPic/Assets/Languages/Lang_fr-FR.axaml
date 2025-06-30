@@ -125,11 +125,11 @@
 
     <system:String x:Key="Settings.Quota.Exceeded.False">Seulement afficher un messagge d'alerte.</system:String>
 
-    <system:String x:Key="Settings.Os.Title">Systeme</system:String>
+    <system:String x:Key="Settings.Os.Title">Système</system:String>
 
     <system:String x:Key="Settings.Os.Subtitle">Choisissez certains paramètres du système d’exploitation pour gérer vos images.</system:String>
 
-    <system:String x:Key="Settings.Os.Rotate">Changer automatiquement les fonds d'ecran?</system:String>
+    <system:String x:Key="Settings.Os.Rotate">Changer automatiquement les fonds d'écran?</system:String>
 
     <system:String x:Key="Settings.Os.Rotate.True">Oui, périodiquement.</system:String>
 
@@ -145,7 +145,7 @@
 
     <system:String x:Key="Shared.NoImage">Aucune Image</system:String>
 
-    <system:String x:Key="Shared.FileErrorTitle">Erreur du systeme de fichiers.</system:String>
+    <system:String x:Key="Shared.FileErrorTitle">Erreur du système de fichiers.</system:String>
 
     <system:String x:Key="Shared.FileErrorText">Impossible de sauvegarder le ficher de cette image.</system:String>
 

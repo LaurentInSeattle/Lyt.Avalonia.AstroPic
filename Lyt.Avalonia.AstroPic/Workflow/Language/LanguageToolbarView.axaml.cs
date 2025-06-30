@@ -1,6 +1,3 @@
 namespace Lyt.Avalonia.AstroPic.Workflow.Language;
 
-public partial class LanguageToolbarView : UserControl, IView
-{
-    public LanguageToolbarView() => this.InitializeComponent();
-}
+public partial class LanguageToolbarView : View { }

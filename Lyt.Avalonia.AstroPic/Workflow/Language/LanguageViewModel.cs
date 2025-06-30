@@ -24,6 +24,8 @@ public sealed partial class LanguageViewModel : ViewModel<LanguageView>
         // Hindi and Bengali hi-IN /  bn-BD 
         new LanguageInfoViewModel("hi-IN", "हिन्दी", "India.png" , string.Empty ) ,
         new LanguageInfoViewModel("bn-BD", "বাঙ্গালী", "Bangladesh.png" , string.Empty ) ,
+        // {  "hu-HU" , new Language( "", "hu", "", "Magyar", "Hungary") },
+        new LanguageInfoViewModel("hu-HU", "Magyar" , "Hungary.png" , string.Empty ) ,
     ];
 
     private readonly AstroPicModel astroPicModel;

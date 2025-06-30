@@ -27,6 +27,5 @@ public static class MessagingExtensions
 
     public static void Select(ActivatedView activatedView, object? parameter = null)
         => ViewSelector<ActivatedView>.Select(
-            MessagingExtensions.messenger, activatedView, parameter);
-    
+            MessagingExtensions.messenger, activatedView, parameter);    
 }

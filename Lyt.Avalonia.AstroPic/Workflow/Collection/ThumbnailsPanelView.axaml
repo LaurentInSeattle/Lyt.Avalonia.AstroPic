@@ -40,8 +40,8 @@
 				VerticalAlignment="Center" HorizontalAlignment="Left"
 				/>
 			<ComboBox
-				Width="270"
-				Margin="8 0 8 0"
+				Width="256"
+				Margin="6 0 6 0"
 				HorizontalAlignment="Center" VerticalAlignment="Center"
 				ItemsSource="{Binding ProviderNames}"
 				SelectedIndex="{Binding ProvidersSelectedIndex}"

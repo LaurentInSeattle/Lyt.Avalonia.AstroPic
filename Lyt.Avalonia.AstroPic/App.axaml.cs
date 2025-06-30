@@ -102,7 +102,7 @@ public partial class App : ApplicationBase
                 AssemblyName = App.AssemblyName,
                 Languages = 
                 [
-                    "en-US", 
+                    "en-US", "hu-HU",
                     "fr-FR", "it-IT", "es-ES", "de-DE",
                     "uk-UA", "bg-BG", "el-GR", "hy-AM", 
                     "jp-JP", "ko-KO", "zh-CN", "zh-TW", 
