@@ -105,7 +105,7 @@
 
     <system:String x:Key="Settings.Services.Skip">Figyelmen kívül hagyja és kihagyja</system:String>
 
-    <system:String x:Key="Settings.Quota.Title">DICK USAGE A beállítások</system:String>
+    <system:String x:Key="Settings.Quota.Title">Lemezhasználati beállítások</system:String>
 
     <system:String x:Key="Settings.Quota.Subtitle">Használja ezt a beállítást, hogy korlátozza (vagy nem korlátozza) a hely használatát a lemezen a gyűjteményben található képhez.</system:String>
 
