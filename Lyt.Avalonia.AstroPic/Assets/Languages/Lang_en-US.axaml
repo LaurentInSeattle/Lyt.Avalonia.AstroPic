@@ -71,7 +71,7 @@
 	<system:String x:Key="Settings.Services.Downloaded">Download</system:String>
 	<system:String x:Key="Settings.Services.Skip">Ignore and Skip</system:String>
 
-	<system:String x:Key="Settings.Quota.Title">Disc usage settings</system:String>
+	<system:String x:Key="Settings.Quota.Title">Disk usage settings</system:String>
 	<system:String x:Key="Settings.Quota.Subtitle">Use this setting to limit (or not limit) the use of space on your disc for the image in your collection.</system:String>
 	<system:String x:Key="Settings.Quota.ImageCount">Maximum count of images:</system:String>
 	<system:String x:Key="Settings.Quota.DiskSpace">Space quota (MB) on the disc for the images:</system:String>
