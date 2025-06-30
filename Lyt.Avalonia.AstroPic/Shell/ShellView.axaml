@@ -41,7 +41,7 @@
 				</Grid.RowDefinitions>
 				<Image
 					Stretch="UniformToFill"
-					Source="\Assets\Images\dark.jpg"
+					Source="\Assets\Images\sky.jpg"
 					Grid.ColumnSpan="999" Grid.RowSpan="999"
 					/>
 				<Rectangle

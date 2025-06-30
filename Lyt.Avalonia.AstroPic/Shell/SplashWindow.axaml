@@ -17,7 +17,7 @@
         <Image
             x:Name="Image"
             Stretch="UniformToFill"
-            Source="\Assets\Images\dark.jpg"
+            Source="\Assets\Images\sky.jpg"
             Opacity="1"
             />
         <Rectangle
@@ -29,7 +29,7 @@
             Margin="60 60 0 0 "
             FontSize="20"
             Foreground="#ECfac8b2"
-			HorizontalAlignment="Left" VerticalAlignment="Top"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
             />
         <TextBlock
             Text="Astro Pic"
@@ -37,14 +37,14 @@
             FontSize="74"
             FontWeight="DemiBold"
             Foreground="#FFa8efff"
-			HorizontalAlignment="Center" VerticalAlignment="Center"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
             />
         <TextBlock
             Text="Attendere prego ~ Please wait. ~ Patientez svp. ~ Espere por favor"
             Margin="0 0 60 60 "
             FontSize="20"
             Foreground="#ECfac8b2"
-			HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            HorizontalAlignment="Right" VerticalAlignment="Bottom"
             />
     </Grid>
 </Window>
