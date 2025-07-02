@@ -202,7 +202,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             throw new Exception("No view selector");
         }
 
-        var newViewModel = this.viewSelector.CurrentViewModel();
+        var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
         if (newViewModel is not null)
         {
             bool mainToolbarIsHidden = 

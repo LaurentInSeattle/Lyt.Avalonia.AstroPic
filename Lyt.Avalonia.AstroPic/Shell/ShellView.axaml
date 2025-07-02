@@ -222,7 +222,7 @@
 				</StackPanel>
 
 				<!-- View Specific toolbar - Aligned Center -->
-				<ContentControl
+				<Grid
 					x:Name="ShellViewToolbar"
 					Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
 					Margin="500 0 0 0"
@@ -234,7 +234,7 @@
 					Grid.Column="1" Grid.Row="1"
 					VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 					> 			
-					<ContentControl
+					<Grid
 						x:Name="ShellViewContent"
 						VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 						/>

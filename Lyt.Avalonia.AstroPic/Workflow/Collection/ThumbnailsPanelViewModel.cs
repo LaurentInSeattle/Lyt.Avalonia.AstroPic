@@ -151,7 +151,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
             this.filteredThumbnails = null;
         }
 
-        if (this.filteredThumbnails is not null)
+        if (this.filteredThumbnails is not null && this.filteredThumbnails.Count > 0)
         {
             this.Thumbnails = [.. this.filteredThumbnails];
             this.selectedMetadata = this.filteredThumbnails[0].Metadata;
