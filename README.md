@@ -16,7 +16,7 @@ Then...
 
 Localization: 
 - Human translated: Spanish, Italian, French and English
-- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean. 
+- Machine translated: Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean, Magyar, Hindi and Bengali. 
  
 <p align="left"><img src="AstroPicScreenshot.png" height="500"/>
 

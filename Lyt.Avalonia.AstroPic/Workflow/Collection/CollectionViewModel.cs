@@ -1,7 +1,4 @@
-﻿using Lyt.Avalonia.AstroPic.Service;
-using Lyt.Avalonia.AstroPic.Workflow.Shared;
-
-namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
+﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
 public sealed partial class CollectionViewModel : ViewModel<CollectionView>
 {
