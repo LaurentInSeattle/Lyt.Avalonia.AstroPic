@@ -24,7 +24,6 @@
 			Background="Transparent"
 			>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Settings.Services.Title}"
 				Text="{DynamicResource Settings.Services.Subtitle}"
@@ -61,7 +60,6 @@
 				</shared:ContainerControl.ContainerControlContent>
 			</shared:ContainerControl>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Settings.Quota.Title}"
 				Text="{DynamicResource Settings.Quota.Subtitle}"
@@ -168,7 +166,6 @@
 				</shared:ContainerControl.ContainerControlContent>
 			</shared:ContainerControl>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Settings.Os.Title}"		
 				Text="{DynamicResource Settings.Os.Subtitle}"
@@ -257,7 +254,6 @@
 				</shared:ContainerControl.ContainerControlContent>
 			</shared:ContainerControl>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Settings.ReminderTitle}"
 				Text="{DynamicResource Settings.ReminderSubtitle}"

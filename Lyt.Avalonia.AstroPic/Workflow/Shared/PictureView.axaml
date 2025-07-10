@@ -23,31 +23,22 @@
 			Grid.Row="0"
 			Text="{Binding Title}"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Theme="{StaticResource H1}"
 			Margin="0 -12 0 0"
-			FontSize="28"
-			FontWeight="DemiBold"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Row="0" 
 			Text="{Binding Provider}"
 			HorizontalAlignment="Left" VerticalAlignment="Bottom"
 			Margin="8 0 0 0"
-			FontSize="11"
-			FontWeight="DemiBold"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
+			Theme="{StaticResource Small}"
 			/>
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding Copyright}"
 			HorizontalAlignment="Right" VerticalAlignment="Bottom"
+			Theme="{StaticResource Small}"
 			Margin="0 0 8 0"
-			FontSize="11"
-			FontWeight="Normal"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
 			/>
 		<panzoom:PanZoomControl
 			x:Name="PanAndZoom"
@@ -77,10 +68,7 @@
 			Text="{Binding Description}"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Margin="8 0 16 0"
-			FontSize="18"
-			FontWeight="Normal"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
+			Theme="{StaticResource H3}"
 			/>
 	</Grid>
 </UserControl>

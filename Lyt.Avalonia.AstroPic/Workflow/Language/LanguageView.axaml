@@ -41,164 +41,116 @@
 			Grid.Column="0" Grid.Row="1" 
 			Margin="20 0 0 0"
 			Text="Scegli la lingua dell'interfaccia utente."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="2" 
 			Margin="20 0 0 0"
 			Text="Choisissez le langage de l'interface utilisateur."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="3" 
 			Margin="20 0 0 0"
 			Text="Choose the user interface language."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="4" 
 			Margin="20 0 0 0"
 			Text="Elija el idioma de la interfaz de usuario."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="5"
 			Margin="20 0 0 0"
 			Text="Виберіть мову інтерфейсу користувача."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="6"
 			Margin="20 0 0 0"
 			Text="Изберете езика на потребителския интерфейс."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="7"
 			Margin="20 0 0 0"
 			Text="ユーザーインターフェイス言語を選択します。"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="8"
 			Margin="20 0 0 0"
 			Text="Επιλέξτε τη γλώσσα διεπαφής χρήστη."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="0" Grid.Row="9"
 			Margin="20 0 0 0"
 			Text="Wählen Sie die Sprache der Benutzeroberfläche."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="1" Grid.Row="3"
 			Margin="20 0 0 0"
 			Text="Ընտրեք օգտվողի միջերեսի լեզուն:"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="1" Grid.Row="4"
 			Margin="20 0 0 0"
 			Text="사용자 인터페이스 언어를 선택하십시오."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="1" Grid.Row="5"
 			Margin="20 0 0 0"
 			Text="选择用户界面语言。"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<TextBlock
 			Grid.Column="1" Grid.Row="6"
 			Margin="20 0 0 0"
 			Text="選擇用戶界面語言。"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<!-- hi   -->
 		<TextBlock
 			Grid.Column="1" Grid.Row="7"
 			Margin="20 0 0 0"
 			Text="उपयोगकर्ता इंटरफ़ेस भाषा चुनें।"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<!-- bn   -->
 		<TextBlock
 			Grid.Column="1" Grid.Row="8"
 			Margin="20 0 0 0"
 			Text="ব্যবহারকারী ইন্টারফেস ভাষা চয়ন করুন।"
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<!-- Hu   -->
 		<TextBlock
 			Grid.Column="1" Grid.Row="9"
 			Margin="20 0 0 0"
 			Text="Válassza ki a felhasználói felület nyelvét."
-			FontSize="24"
-			TextAlignment="Left"
-			Foreground="{StaticResource PastelOrchid_0_080}"
+			Theme="{StaticResource H2}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			TextWrapping="Wrap"
 			/>
 		<ComboBox
 			Grid.Column="1" Grid.Row="1" 

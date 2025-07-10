@@ -50,22 +50,16 @@
                 <TextBlock
                     Grid.Row="0"
                     x:Name="TitleText"
+					Theme="{StaticResource H2}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
-                    FontSize="24"
-                    FontWeight="DemiBold"
-                    Foreground="{StaticResource PastelOrchid_0_080}"
-                    TextWrapping="Wrap"
                     />
                 <TextBlock
                     Grid.Row="1"
                     x:Name="DescriptionText"
+					Theme="{StaticResource H3}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="8"
-                    FontSize="18"
-                    FontWeight="Normal"
-                    Foreground="{StaticResource PastelOrchid_0_080}"
-                    TextWrapping="Wrap"
-                />
+                    />
             </Grid>
         </Border>
     </Border>

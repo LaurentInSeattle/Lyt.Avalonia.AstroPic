@@ -8,7 +8,7 @@
 	>
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="12" />
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions >
@@ -31,9 +31,9 @@
 		<Rectangle 
 			x:Name="rectangle"
 			Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-			Fill="Aquamarine"
+			Fill="{StaticResource FreshGreen_0_080}"
 			Width="4"
-			VerticalAlignment="Stretch" HorizontalAlignment="Center"
+			VerticalAlignment="Stretch" HorizontalAlignment="Left"
 			/>
 		<Rectangle
 			Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
@@ -47,12 +47,7 @@
 			Grid.Row="0" Grid.Column="1" 
 			Text="Title"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Margin="20 0 0 0"
-			FontSize="34"
-			FontStyle="Normal"
-			FontWeight="DemiBold"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			TextWrapping="Wrap"
+			Theme="{StaticResource Title}"
 			/>
 		<TextBlock
 			x:Name="textTextBlock"
@@ -61,11 +56,8 @@
 			Text="Text"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Margin="40 0 0 0"
-			FontSize="18"
-			FontStyle="Normal"
-			FontWeight="Normal"
-			Foreground="{StaticResource LightAqua_1_100}"
-			TextWrapping="Wrap"
+			Theme="{StaticResource H3}"
+			Foreground="{StaticResource Secondary.TextColor}"
 			/>
 	</Grid>
 </UserControl>

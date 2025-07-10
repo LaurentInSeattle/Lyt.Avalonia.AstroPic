@@ -94,14 +94,11 @@
 					/>
 				<TextBlock 
 					Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+					Theme="{StaticResource Title}"
 					Text="{DynamicResource Shell.AppName}" 
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					Margin="12 0 0 0"
-					FontSize="34" 
-					FontStyle="Normal"
-					FontWeight="DemiBold"
 					Foreground="{StaticResource PastelOrchid_0_080}"
-					TextWrapping="Wrap"
 					/>
 				<!-- View Selector - Main toolbar - Vertical left -->
 				<StackPanel

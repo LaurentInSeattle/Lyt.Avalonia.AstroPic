@@ -23,7 +23,6 @@
 			Background="Transparent"
 			>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Intro.LicenseTitle}"
 				Text="{DynamicResource Intro.LicenseSubtitle}"
@@ -35,17 +34,13 @@
 						<TextBlock
 							Margin="10 0 0 0"
 							Text="{DynamicResource Intro.LicenseTerms}"
-							FontSize="24"
-							TextAlignment="Left"
-							Foreground="{StaticResource PastelOrchid_0_080}"
+							Theme="{StaticResource H2}"
 							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-							TextWrapping="Wrap"
 							/>
 					</Grid>
 				</shared:ContainerControl.ContainerControlContent>
 			</shared:ContainerControl>
 			<shared:ContainerControl
-				Foreground="{StaticResource FreshGreen_0_080}"
 				Margin="32"
 				Title="{DynamicResource Intro.ReminderTitle}"
 				Text="{DynamicResource Intro.ReminderSubtitle}"
@@ -57,11 +52,8 @@
 						<TextBlock
 							Margin="10 0 0 0"
 							Text="{DynamicResource Intro.ReminderText}"
-							FontSize="24"
-							TextAlignment="Left"
-							Foreground="{StaticResource PastelOrchid_0_080}"
+							Theme="{StaticResource H2}"
 							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-							TextWrapping="Wrap"
 							/>
 					</Grid>
 				</shared:ContainerControl.ContainerControlContent>

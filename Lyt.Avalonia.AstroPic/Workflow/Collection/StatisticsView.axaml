@@ -22,49 +22,34 @@
 		</Grid.RowDefinitions>
 		<TextBlock
 			Text="{DynamicResource Collection.Statistics}"
+			Theme="{StaticResource H2}"
 			Margin="0 10 0 0"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			FontSize="24"
-			FontWeight="DemiBold"
 			TextAlignment="Left"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
 			/>
 		<TextBlock
-			Text="{Binding AlertText}"
 			Grid.Row="1"
-			FontSize="20"
-			Margin="6 0 0 0"
-			FontWeight="DemiBold"
-			TextAlignment="Center"
-			Foreground="{StaticResource PastelOrchid_2_100_Color}"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Text="{Binding AlertText}"
+			Theme="{StaticResource Alert}"
+			Margin="12 0 0 0"
 			/>
 		<TextBlock
 			Grid.Row="2"
 			Margin="12 0 0 0"
 			Text="{Binding ImageCountText}"
-			FontSize="16"
-			TextAlignment="Center"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Theme="{StaticResource Large}"
 			/>
 		<TextBlock
 			Grid.Row="3"
 			Margin="12 0 0 0"
 			Text="{Binding SizeOnDiskText}"
-			FontSize="16"
-			TextAlignment="Center"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Theme="{StaticResource Large}"
 			/>
 		<TextBlock
 			Grid.Row="4"
 			Margin="12 0 0 0"
 			Text="{Binding AvailableDiskSpaceText}"
-			FontSize="16"
-			TextAlignment="Center"
-			Foreground="{StaticResource PastelOrchid_0_080}"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Theme="{StaticResource Large}"
 			/>
 	</Grid>
 </UserControl>

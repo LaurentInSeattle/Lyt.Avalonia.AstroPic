@@ -25,6 +25,7 @@
 	  <AvaloniaXaml Remove="Assets\Languages\Lang_de-DE.axaml" />
 	  <AvaloniaXaml Remove="Assets\Languages\Lang_es-ES.axaml" />
 	  <AvaloniaXaml Remove="Assets\Theme\Sliders.axaml" />
+	  <AvaloniaXaml Remove="Assets\Theme\Typography.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,6 +60,9 @@
   </ItemGroup>
 
 	<ItemGroup>
+	  <AvaloniaResource Update="Assets\Theme\Typography.axaml">
+	    <SubType>Designer</SubType>
+	  </AvaloniaResource>
 	  <AvaloniaResource Update="Assets\Theme\Sliders.axaml">
 	    <SubType>Designer</SubType>
 	  </AvaloniaResource>
