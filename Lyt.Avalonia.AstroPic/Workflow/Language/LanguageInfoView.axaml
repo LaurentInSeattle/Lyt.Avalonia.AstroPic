@@ -19,12 +19,9 @@
 		</Grid.ColumnDefinitions>
 		<TextBlock
 			Grid.Column="0" Grid.ColumnSpan="2"
+			Margin="4"
 			Text="{Binding Name}"
-			VerticalAlignment="Center"
-			FontSize="26"
-			FontWeight="DemiBold"
-			Margin="8"
-			Foreground="{StaticResource LightAqua_0_080}"
+			Theme="{StaticResource Data}"
 			/>
 		<Image
 			Grid.Column="1"

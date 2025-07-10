@@ -32,15 +32,12 @@
 				/>
 			<TextBlock
 				Grid.Row="1"
-				Margin="10 0 0 0"
+				Margin="6 0 0 0"
 				Text="{DynamicResource Collection.Thumbs.WebService}"
-				FontSize="18"
-				TextAlignment="Center"
-				Foreground="{StaticResource PastelOrchid_0_080}"
-				VerticalAlignment="Center" HorizontalAlignment="Left"
+				Theme="{StaticResource H3}"
 				/>
 			<ComboBox
-				Width="256"
+				Width="250"
 				Margin="6 0 6 0"
 				HorizontalAlignment="Center" VerticalAlignment="Center"
 				ItemsSource="{Binding ProviderNames}"

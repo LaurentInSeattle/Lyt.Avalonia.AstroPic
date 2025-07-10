@@ -43,12 +43,8 @@
 			<TextBlock
 				Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
 				Text="{Binding ProgressMessage}"
+				Theme="{StaticResource H1}"
 				HorizontalAlignment="Center" VerticalAlignment="Center"
-				Margin="0"
-				FontSize="28"
-				FontWeight="DemiBold"
-				Foreground="{StaticResource PastelOrchid_0_080}"
-				TextWrapping="Wrap"
 				/>
 			<shared:PictureView
 				DataContext="{Binding PictureViewModel}"
