@@ -8,7 +8,7 @@
 	>
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="12" />
+			<ColumnDefinition Width="8" />
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions >
@@ -16,13 +16,6 @@
 			<RowDefinition Height="60" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		<Rectangle
-			Grid.Column="1" Grid.Row="0"
-			Margin="4"
-			Fill="{StaticResource DeepBlue_1_100}"
-			Opacity="0.1"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
 		<ContentPresenter
 			x:Name="presenter"
 			Grid.Column="1" Grid.Row="2"
@@ -33,14 +26,16 @@
 			Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
 			Fill="{StaticResource FreshGreen_0_080}"
 			Width="4"
+			RadiusX="2" RadiusY="2"
 			VerticalAlignment="Stretch" HorizontalAlignment="Left"
 			/>
 		<Rectangle
 			Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
-			Margin="4 0 0 0"
+			Margin="0 0 0 0"
 			Fill="{StaticResource DeepBlue_1_100}"
-			Opacity="0.4"
+			Opacity="0.6"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			RadiusX="4" RadiusY="4"
 			/>
 		<TextBlock
 			x:Name="titleTextBlock"
@@ -48,6 +43,7 @@
 			Text="Title"
 			HorizontalAlignment="Left" VerticalAlignment="Center"
 			Theme="{StaticResource Title}"
+			Margin="20 0 0 0"
 			/>
 		<TextBlock
 			x:Name="textTextBlock"
