@@ -26,13 +26,13 @@
 		<Image
 			Grid.Column="1"
 			Stretch="Uniform"
-			Width="52"
+			Width="54"
 			Source="{Binding FlagOne}"
 			/>
 		<Image
 			Grid.Column="3"
 			Stretch="Uniform"
-			Width="52"
+			Width="54"
 			Source="{Binding FlagTwo}"
 			/>
 	</Grid>

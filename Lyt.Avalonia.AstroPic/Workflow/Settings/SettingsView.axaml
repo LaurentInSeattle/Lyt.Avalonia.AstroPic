@@ -68,6 +68,7 @@
 					<Grid
 						Width="680" Height="300"
 						VerticalAlignment="Top"
+						ShowGridLines="True"
 						>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*" />
@@ -86,10 +87,8 @@
 							Grid.Row="0"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Quota.ImageCount}"
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<NumericUpDown
 							Grid.Row="0" Grid.Column="2"
@@ -107,10 +106,8 @@
 							Grid.Row="1"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Quota.DiskSpace}"
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<NumericUpDown
 							Grid.Row="1" Grid.Column="2"
@@ -128,10 +125,8 @@
 							Grid.Row="2"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Quota.ImageSize}"
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<toggle:ToggleSwitch
 							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
@@ -147,10 +142,8 @@
 							Grid.Row="4"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Quota.Exceeded}"							
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<toggle:ToggleSwitch
 							Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
@@ -214,10 +207,8 @@
 							Grid.Row="2"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Os.Rotate}"
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<toggle:ToggleSwitch
 							Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
@@ -233,10 +224,8 @@
 							Grid.Row="4"
 							Margin="20 0 0 0"
 							Text="{DynamicResource Settings.Os.Rotate.Minutes}"
-							FontSize="18"
-							TextAlignment="Center"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Center" HorizontalAlignment="Right"
+							Theme="{StaticResource H3}"
+							HorizontalAlignment="Right"
 							/>
 						<NumericUpDown
 							Grid.Row="4" Grid.Column="2"
@@ -265,11 +254,7 @@
 						<TextBlock
 							Margin="10 0 0 0"
 							Text="{DynamicResource Settings.ReminderText}"
-							FontSize="24"
-							TextAlignment="Left"
-							Foreground="{StaticResource PastelOrchid_0_080}"
-							VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-							TextWrapping="Wrap"
+							Theme="{StaticResource H2}"
 							/>
 					</Grid>
 				</shared:ContainerControl.ContainerControlContent>

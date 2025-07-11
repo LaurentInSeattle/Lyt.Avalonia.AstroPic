@@ -33,7 +33,7 @@ namespace Lyt.Avalonia.AstroPic.Utilities
                 bitmap.Format
             );
             
-            using (var fb = writeableBitmap.Lock())
+            using (ILockedFramebuffer fb = writeableBitmap.Lock())
             {
                 bitmap.CopyPixels(fb, AlphaFormat.Opaque);
             }
@@ -61,7 +61,7 @@ namespace Lyt.Avalonia.AstroPic.Utilities
 
             try
             {
-                using var frameBuffer = writeableBitmap.Lock();
+                using ILockedFramebuffer frameBuffer = writeableBitmap.Lock();
                 SKColorType colorType = ColorTypeMap[bitmap.Format!.Value];
                 var skImageInfo = new SKImageInfo(frameBuffer.Size.Width, frameBuffer.Size.Height, colorType);
                 using var skBitmap = new SKBitmap(skImageInfo);

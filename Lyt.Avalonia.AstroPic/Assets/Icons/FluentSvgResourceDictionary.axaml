@@ -60,7 +60,6 @@
 	</DrawingGroup>
 	<DrawingImage x:Key="zoom_out" Drawing="{StaticResource zoom_outDrawingGroup}" />
 
-
 	<!--  flag  -->
 	<DrawingGroup x:Key = "flagDrawingGroup">
 		<DrawingGroup>
@@ -255,6 +254,5 @@
 		</DrawingGroup>
 	</DrawingGroup>
 	<DrawingImage x:Key="wallpaper" Drawing="{StaticResource wallpaperDrawingGroup}" />
-
 
 </ResourceDictionary>
