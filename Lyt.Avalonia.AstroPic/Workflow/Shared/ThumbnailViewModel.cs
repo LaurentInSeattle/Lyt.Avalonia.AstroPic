@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Shared;
 
-public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>
+public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>, IRecipient<LanguageChangedMessage>
 {
     public const double LargeFontSize = 24.0;
     public const double SmallFontSize = 16.0;
@@ -60,12 +60,11 @@ public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>
                     isLarge ? LargeThumbnailWidth : SmallThumbnailWidth) :
                 WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.Thumbnail = bitmap;
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
     }
 
     // We need to reload the thumbnail view title, so that it will be properly localized
-    private void OnLanguageChanged(LanguageChangedMessage message)
-        => this.SetThumbnailTitle(); 
+    public void Receive(LanguageChangedMessage _) => this.SetThumbnailTitle(); 
 
     internal void OnSelect() => this.parent.OnSelect(this);
 

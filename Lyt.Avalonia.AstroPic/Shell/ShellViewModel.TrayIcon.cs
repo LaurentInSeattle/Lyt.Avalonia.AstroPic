@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
-using static MessagingExtensions;
+using static ApplicationMessagingExtensions;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {

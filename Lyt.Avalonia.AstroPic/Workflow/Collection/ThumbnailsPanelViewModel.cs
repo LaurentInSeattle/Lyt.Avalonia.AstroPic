@@ -1,7 +1,9 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-// See if we can create a base class 
-public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanelView>, ISelectListener
+public sealed partial class ThumbnailsPanelViewModel : 
+    ViewModel<ThumbnailsPanelView>, 
+    ISelectListener, 
+    IRecipient<LanguageChangedMessage>
 {
     private readonly AstroPicModel astroPicModel;
     private readonly CollectionViewModel collectionViewModel;
@@ -36,10 +38,10 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
               select provider )];
         this.ShowMru = this.astroPicModel.ShowRecentImages;
         this.PopulateComboBox();
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage _) => this.PopulateComboBox();
+    public void Receive(LanguageChangedMessage _) => this.PopulateComboBox();
 
     private void PopulateComboBox ()
     {
@@ -72,6 +74,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
     }
 
     public ThumbnailViewModel? SelectedThumbnail => this.selectedThumbnail; 
+
     public void OnSelect(object selectedObject)
     {
         if (selectedObject is ThumbnailViewModel thumbnailViewModel)

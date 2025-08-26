@@ -141,7 +141,7 @@ public sealed partial class AstroPicModel : ModelBase
         {
             pictureMetadata.TranslationLanguage = currentLanguage;
             this.Update(pictureMetadata);
-            this.Messenger.Publish(translationMessage); 
+            translationMessage.Publish(); 
         }
     }
 

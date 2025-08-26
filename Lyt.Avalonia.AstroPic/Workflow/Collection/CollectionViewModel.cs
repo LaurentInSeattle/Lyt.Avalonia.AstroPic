@@ -1,6 +1,10 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed partial class CollectionViewModel : ViewModel<CollectionView>
+public sealed partial class CollectionViewModel : 
+    ViewModel<CollectionView>,
+    IRecipient<ToolbarCommandMessage>,
+    IRecipient<ModelLoadedMessage>,
+    IRecipient<CollectionChangedMessage>
 {
     private readonly AstroPicModel astroPicModel;
 
@@ -26,9 +30,9 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
         this.DropViewModel = new DropViewModel();
         this.StatisticsViewModel = new StatisticsViewModel(this.astroPicModel);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
-        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
-        this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
-        this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
+        this.Subscribe<ToolbarCommandMessage>();
+        this.Subscribe<ModelLoadedMessage>();
+        this.Subscribe<CollectionChangedMessage>();
     }
 
     public override void Activate(object? activationParameters) 
@@ -40,7 +44,7 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
         }
     }
 
-    private void OnModelLoaded(ModelLoadedMessage _)
+    public void Receive(ModelLoadedMessage _)
     {
         if (!this.loaded)
         {
@@ -54,10 +58,10 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
         }
     }
 
-    private void OnCollectionChanged(CollectionChangedMessage message)
+    public void Receive(CollectionChangedMessage _)
     {
         this.loaded = false;
-        this.OnModelLoaded(new());
+        this.Receive(new ModelLoadedMessage());
         this.UpdateSelection();
     }
 
@@ -74,7 +78,7 @@ public sealed partial class CollectionViewModel : ViewModel<CollectionView>
                 },
                 DispatcherPriority.Background);
 
-    private void OnToolbarCommand(ToolbarCommandMessage message)
+    public void Receive(ToolbarCommandMessage message) 
     {
         switch (message.Command)
         {

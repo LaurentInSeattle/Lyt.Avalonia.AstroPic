@@ -1,6 +1,10 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Collection;
 
-public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
+public sealed partial class StatisticsViewModel : 
+    ViewModel<StatisticsView>,
+    IRecipient<ModelLoadedMessage>,
+    IRecipient<CollectionChangedMessage>,
+    IRecipient<LanguageChangedMessage>
 {
     private const double GigaByte = 1024.0 * 1024.0 * 1024.0; 
 
@@ -25,16 +29,16 @@ public sealed partial class StatisticsViewModel : ViewModel<StatisticsView>
         this.ImageCountText = string.Empty;
         this.SizeOnDiskText = string.Empty;
         this.AvailableDiskSpaceText = string.Empty;
-        this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
-        this.Messenger.Subscribe<CollectionChangedMessage>(this.OnCollectionChanged);
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<ModelLoadedMessage>();
+        this.Subscribe<CollectionChangedMessage>();
+        this.Subscribe<LanguageChangedMessage>();
     }
 
-    private void OnModelLoaded(ModelLoadedMessage _) => this.UpdateStatistics();
+    public void Receive(ModelLoadedMessage  _) => this.UpdateStatistics();
 
-    private void OnCollectionChanged(CollectionChangedMessage message) => this.UpdateStatistics();
+    public void Receive(CollectionChangedMessage _) => this.UpdateStatistics();
 
-    private void OnLanguageChanged(LanguageChangedMessage message) => this.UpdateStatistics();
+    public void Receive(LanguageChangedMessage _) => this.UpdateStatistics();
 
     private void UpdateStatistics()
     {

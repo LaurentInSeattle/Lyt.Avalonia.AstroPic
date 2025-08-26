@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Settings;
 
-public sealed partial class SettingsViewModel : ViewModel<SettingsView>
+public sealed partial class SettingsViewModel : ViewModel<SettingsView>, IRecipient<ToolbarCommandMessage>
 {
     private readonly AstroPicModel astroPicModel;
 
@@ -34,7 +34,7 @@ public sealed partial class SettingsViewModel : ViewModel<SettingsView>
     {
         this.astroPicModel = astroPicModel;
         this.SelectProviders = [];
-        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
+        this.Subscribe<ToolbarCommandMessage>();
     }
 
     public override void OnViewLoaded()
@@ -49,7 +49,7 @@ public sealed partial class SettingsViewModel : ViewModel<SettingsView>
         this.Populate();
     }
 
-    private void OnToolbarCommand(ToolbarCommandMessage message)
+    public void Receive(ToolbarCommandMessage message) 
     {
         switch (message.Command)
         {

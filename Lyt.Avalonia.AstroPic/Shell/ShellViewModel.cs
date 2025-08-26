@@ -1,9 +1,14 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Shell;
 
-// https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
-using static MessagingExtensions;
+using CommunityToolkit.Mvvm.Messaging;
 
-public sealed partial class ShellViewModel : ViewModel<ShellView>
+// https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
+using static ApplicationMessagingExtensions;
+
+public sealed partial class ShellViewModel 
+    : ViewModel<ShellView>,
+    IRecipient<ToolbarCommandMessage>,
+    IRecipient<LanguageChangedMessage>
 {
     private const int MinutesToMillisecs = 60 * 1_000;
 
@@ -43,11 +48,11 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         }
 
         //this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
-        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<ToolbarCommandMessage>();
+        this.Subscribe<LanguageChangedMessage>();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage message)
+    public void Receive(LanguageChangedMessage _) 
     {
         // We need to destroy and recreate the tray icon, so that it will be properly localized
         // since its native menu will not respond to dynamic property changes 
@@ -55,7 +60,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.SetupTrayIcon();
     }
 
-    private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
+    public void Receive(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
 
     private void OnDownloadRetriesTimer()
     {
@@ -187,7 +192,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
         this.viewSelector =
             new ViewSelector<ActivatedView>(
-                this.Messenger,
                 this.View.ShellViewContent,
                 this.View.ShellViewToolbar,
                 this.View.SelectionGroup,
@@ -248,7 +252,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         var application = App.GetRequiredService<IApplicationBase>();
         await application.Shutdown();
     }
-
 #pragma warning restore CA1822
 #pragma warning restore IDE0079
 }

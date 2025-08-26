@@ -1,6 +1,11 @@
 ﻿namespace Lyt.Avalonia.AstroPic.Workflow.Gallery;
 
-public sealed partial class GalleryViewModel : ViewModel<GalleryView>
+public sealed partial class GalleryViewModel : 
+    ViewModel<GalleryView>,
+    IRecipient<ServiceProgressMessage>,
+    IRecipient<ServiceErrorMessage>,
+    IRecipient<ToolbarCommandMessage>,
+    IRecipient<ModelLoadedMessage>
 {
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
@@ -23,10 +28,11 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
         this.progressMessage =  string.Empty;
         this.PictureViewModel = new PictureViewModel(this);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
-        this.Messenger.Subscribe<ServiceProgressMessage>(this.OnDownloadProgress, withUiDispatch: true);
-        this.Messenger.Subscribe<ServiceErrorMessage>(this.OnDownloadError, withUiDispatch: true);
-        this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
-        this.Messenger.Subscribe<ModelLoadedMessage>(this.OnModelLoaded);
+
+        this.Subscribe<ServiceProgressMessage>();
+        this.Subscribe<ServiceErrorMessage>();
+        this.Subscribe<ToolbarCommandMessage>();
+        this.Subscribe<ModelLoadedMessage>();
     }
 
     public override void Activate(object? activationParameters)
@@ -41,7 +47,7 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
         }
     }
 
-    private void OnModelLoaded(ModelLoadedMessage message)
+    public void Receive(ModelLoadedMessage message)
     {
         if (!this.downloaded)
         {
@@ -49,7 +55,7 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
         }
     }
 
-    private void OnToolbarCommand(ToolbarCommandMessage message)
+    public void Receive(ToolbarCommandMessage message)
     {
         switch (message.Command)
         {
@@ -81,34 +87,40 @@ public sealed partial class GalleryViewModel : ViewModel<GalleryView>
         }
     }
 
-    private void OnDownloadError(ServiceErrorMessage message)
+    public void Receive(ServiceErrorMessage message)
     {
-        var provider = this.astroPicModel.MaybeProviderFromKey(message.Provider);
-        if (provider is null)
+        Dispatch.OnUiThread(() =>
         {
-            // Should never happen 
-            if (Debugger.IsAttached) { Debugger.Break(); }
-            return;
-        }
+            var provider = this.astroPicModel.MaybeProviderFromKey(message.Provider);
+            if (provider is null)
+            {
+                // Should never happen 
+                if (Debugger.IsAttached) { Debugger.Break(); }
+                return;
+            }
 
-        string providerLocalized = this.Localize(provider.Name);
-        string errorLocalized = this.Localize(message.ErrorKey);
-        this.toaster.Dismiss();
-        this.toaster.Show(
-            providerLocalized, errorLocalized, 10_000, InformationLevel.Warning);
+            string providerLocalized = this.Localize(provider.Name);
+            string errorLocalized = this.Localize(message.ErrorKey);
+            this.toaster.Dismiss();
+            this.toaster.Show(
+                providerLocalized, errorLocalized, 10_000, InformationLevel.Warning);
+        });
     }
 
-    private void OnDownloadProgress(ServiceProgressMessage message)
+    public void Receive(ServiceProgressMessage message)
     {
-        string start = message.IsBegin ?
+        Dispatch.OnUiThread(() =>
+        {
+            string start = message.IsBegin ?
             this.Localize("Gallery.StartingDownloading") :
             this.Localize("Gallery.CompletedDownloading");
-        string middle = message.IsMetadata ?
-            this.Localize("Gallery.ImageMetadata") :
-            this.Localize("Gallery.Image");
-        string provider = message.Provider.ToString().BeautifyEnumString();
-        string end = this.Localize("Gallery.ForProvider");
-        this.ProgressMessage = string.Concat(start, " ", middle, " ", end, " ", provider);
+            string middle = message.IsMetadata ?
+                this.Localize("Gallery.ImageMetadata") :
+                this.Localize("Gallery.Image");
+            string provider = message.Provider.ToString().BeautifyEnumString();
+            string end = this.Localize("Gallery.ForProvider");
+            this.ProgressMessage = string.Concat(start, " ", middle, " ", end, " ", provider);
+        });
     }
 
     private void LoadImages(List<PictureDownload> downloads)

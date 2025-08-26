@@ -2,6 +2,7 @@
 
 public sealed partial class IntroToolbarViewModel : ViewModel<IntroToolbarView>
 {
+#pragma warning disable CA1822 // Mark members as static
     [RelayCommand]
     public void OnNext()
     {
@@ -9,6 +10,7 @@ public sealed partial class IntroToolbarViewModel : ViewModel<IntroToolbarView>
         astroPicModel.IsFirstRun = false;
         astroPicModel.Save();
 
-        ViewSelector<ActivatedView>.Select(this.Messenger, ActivatedView.Collection);
+        ViewSelector<ActivatedView>.Select(ActivatedView.Collection);
     }
+#pragma warning restore CA1822 // Mark members as static
 }

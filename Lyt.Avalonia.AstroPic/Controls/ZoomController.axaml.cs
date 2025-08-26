@@ -2,8 +2,6 @@ namespace Lyt.Avalonia.AstroPic.Controls;
 
 public partial class ZoomController : UserControl
 {
-    private readonly IMessenger? messenger;
-
     public ZoomController()
     {
         this.InitializeComponent();
@@ -13,10 +11,6 @@ public partial class ZoomController : UserControl
         this.Slider.SmallChange = 0.20;
         this.Slider.TickFrequency = 0.20;
         this.Slider.Value = 1.0;
-        if (!Design.IsDesignMode)
-        {
-            this.messenger = App.GetRequiredService<IMessenger>();
-        }
     }
 
     public void Min() => this.Slider.Value = this.Slider.Minimum;
@@ -24,7 +18,7 @@ public partial class ZoomController : UserControl
     public void Max() => this.Slider.Value = this.Slider.Maximum;
 
     private void OnSliderValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
-        => this.messenger?.Publish(new ZoomRequestMessage(e.NewValue, this.Tag));
+        => new ZoomRequestMessage(e.NewValue, this.Tag).Publish();
 
     private void OnButtonMaxClick(object? sender, RoutedEventArgs e) => this.Max();
 

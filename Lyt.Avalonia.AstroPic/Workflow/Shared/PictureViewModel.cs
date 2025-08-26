@@ -3,7 +3,10 @@
 using static FileManagerModel;
 using static Lyt.Translator.Service.Google.Language;
 
-public sealed partial class PictureViewModel : ViewModel<PictureView>
+public sealed partial class PictureViewModel : 
+    ViewModel<PictureView>, 
+    IRecipient<ZoomRequestMessage>, 
+    IRecipient<TranslationMessage>
 {
     public const int ThumbnailWidth = 280;
 
@@ -36,8 +39,8 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
     {
         this.parent = parent;
         this.astroPicModel = ApplicationBase.GetRequiredService<AstroPicModel>();
-        this.Messenger.Subscribe<ZoomRequestMessage>(this.OnZoomRequest);
-        this.Messenger.Subscribe<TranslationMessage>(this.OnTranslation, withUiDispatch: true);
+        this.Subscribe<ZoomRequestMessage>();
+        this.Subscribe<TranslationMessage>();
 
         this.Provider = string.Empty;
         this.Title = string.Empty;
@@ -124,19 +127,23 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
         });
     }
 
-    private void OnTranslation(TranslationMessage message)
-    {
-        string translatedTitle = message.Title;
-        if (!string.IsNullOrWhiteSpace(translatedTitle))
-        {
-            this.Title = translatedTitle;
-        }
 
-        string translatedDescription = message.Description;
-        if (!string.IsNullOrWhiteSpace(translatedDescription))
+    public void Receive(TranslationMessage message) 
+    {
+        Dispatch.OnUiThread(() =>
         {
-            this.Description= translatedDescription;
-        }
+            string translatedTitle = message.Title;
+            if (!string.IsNullOrWhiteSpace(translatedTitle))
+            {
+                this.Title = translatedTitle;
+            }
+
+            string translatedDescription = message.Description;
+            if (!string.IsNullOrWhiteSpace(translatedDescription))
+            {
+                this.Description = translatedDescription;
+            }
+        }); 
     }
 
     private void LoadImage(WriteableBitmap bitmap)
@@ -240,7 +247,7 @@ public sealed partial class PictureViewModel : ViewModel<PictureView>
         }
     }
 
-    private void OnZoomRequest(ZoomRequestMessage message)
+    public void Receive(ZoomRequestMessage message)
     {
         if (message.Tag != this.parent)
         {

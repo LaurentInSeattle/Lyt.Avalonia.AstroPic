@@ -118,7 +118,7 @@ public sealed partial class AstroPicModel : ModelBase
                 // Save the whole model to disk and notify 
                 this.Save();
                 this.UpdateStatistics(isAdd: true);
-                this.Messenger.Publish(new CollectionChangedMessage());
+                new CollectionChangedMessage().Publish();
 
                 return true;
             }
@@ -160,7 +160,7 @@ public sealed partial class AstroPicModel : ModelBase
                         // Commit changes and notify
                         this.Save();
                         this.UpdateStatistics(isAdd: false);
-                        this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
+                        new CollectionChangedMessage(IsAddition: false).Publish();
                     }
                 }
             }
@@ -232,7 +232,7 @@ public sealed partial class AstroPicModel : ModelBase
         {
             this.DoCleanup();
             this.ValidateCollection();
-            this.Messenger.Publish(new CollectionChangedMessage(IsAddition: false));
+            new CollectionChangedMessage(IsAddition: false).Publish();
         }
     }
 
@@ -478,7 +478,7 @@ public sealed partial class AstroPicModel : ModelBase
         {
             if (!this.ModelLoadedNotified && this.ThumbnailsLoaded && this.PingComplete)
             {
-                this.Messenger.Publish(new ModelLoadedMessage());
+                new ModelLoadedMessage().Publish();
                 this.ModelLoadedNotified = true;
             }
         }

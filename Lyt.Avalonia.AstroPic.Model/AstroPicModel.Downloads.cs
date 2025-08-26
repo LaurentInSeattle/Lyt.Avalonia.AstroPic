@@ -141,11 +141,11 @@ public sealed partial class AstroPicModel : ModelBase
         var empty = new PictureDownload(new(), []);
         try
         {
-            this.Report(provider, isMetadata: true, isBegin: true);
+            Report(provider, isMetadata: true, isBegin: true);
             var metadata = await this.astroPicService.GetPictures(provider);
             if ((metadata != null) && (metadata.Count > 0))
             {
-                this.Report(provider, isMetadata: true, isBegin: false);
+                Report(provider, isMetadata: true, isBegin: false);
                 var picture = metadata[0];
                 if (picture.MediaType == MediaType.Image)
                 {
@@ -155,12 +155,12 @@ public sealed partial class AstroPicModel : ModelBase
                         {
                             // A little pause so that we can see the messaging 
                             await Task.Delay(100);
-                            this.Report(provider, isMetadata: false, isBegin: true);
+                            Report(provider, isMetadata: false, isBegin: true);
 
                             // A little pause between starting the actual image download 
                             await Task.Delay(100);
                             byte[] bytes = await this.astroPicService.DownloadPicture(picture);
-                            this.Report(provider, isMetadata: false, isBegin: false);
+                            Report(provider, isMetadata: false, isBegin: false);
                             return new PictureDownload(picture, bytes);
                         }
                         else
@@ -186,13 +186,13 @@ public sealed partial class AstroPicModel : ModelBase
                 // Nasa Astronomy Picture of the Day can be a video 
                 // The Picture of the Day is actually a video clip.
                 string msg = "Model.TodayIsVideo";
-                this.ReportError(provider, msg);
+                ReportError(provider, msg);
                 throw new Exception("Failed to retrieve picture metadata.");
             }
         }
         catch (Exception ex)
         {
-            this.ReportError(provider, ex.Message);
+            ReportError(provider, ex.Message);
             this.Logger.Warning(
                 "Failed to load picture from " + provider.ToString() + "\n" +
                 ex.Message + "\n" + ex.ToString());
@@ -201,14 +201,12 @@ public sealed partial class AstroPicModel : ModelBase
         return empty;
     }
 
-    private void ReportError(ImageProviderKey provider, string message)
-        => this.Messenger.Publish(new ServiceErrorMessage(provider, message));
+    private static void ReportError(ImageProviderKey provider, string message)
+        => new ServiceErrorMessage(provider, message).Publish();
 
-    private void Report(ImageProviderKey provider, bool isMetadata, bool isBegin)
-        => this.Messenger.Publish(
-            new ServiceProgressMessage(provider, IsMetadata: isMetadata, IsBegin: isBegin));
+    private static void Report(ImageProviderKey provider, bool isMetadata, bool isBegin)
+        => new ServiceProgressMessage(provider, IsMetadata: isMetadata, IsBegin: isBegin).Publish();
 
     private bool IsAlreadyInCollection(PictureMetadata picture)
-        => !string.IsNullOrWhiteSpace(picture.Url) &&
-            this.Pictures.ContainsKey(picture.Url);
+        => !string.IsNullOrWhiteSpace(picture.Url) && this.Pictures.ContainsKey(picture.Url);
 }
