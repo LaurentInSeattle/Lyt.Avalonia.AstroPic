@@ -1,17 +1,17 @@
 <ResourceDictionary 
 	xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
 	>
-    <Design.PreviewWith>
-        <Border Padding="20" Background="Transparent">
+	<Design.PreviewWith>
+		<Border Padding="20" Background="Transparent">
 			<glyphs:GlyphButton 
 				Theme="{StaticResource ToolbarIconButton}"
-				GlyphSource="person"
+				GlyphSource="dismiss"
 				Text="Login"
 				/>
-        </Border>
-    </Design.PreviewWith>
+		</Border>
+	</Design.PreviewWith>
 
 	<ControlTheme x:Key="GlyphButtonTypography" TargetType="TextBlock">
 		<Setter Property="Background" Value="Transparent"/>
@@ -101,4 +101,42 @@
 		<Setter Property="GlyphStrokeThickness" Value="0" />
 		<Setter Property="GlyphAngle" Value="0" />
 	</ControlTheme>
+
+	<ControlTheme x:Key="AppToolbarIconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Layout" Value="IconTextBelowNoBackground"/>
+		<Setter Property="Behaviour" Value="Tap"/>
+		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="Width" Value="140" />
+		<Setter Property="Height" Value="56" />
+		<Setter Property="Margin" Value="8 4 8 4" />
+		<Setter Property="BackgroundMargin" Value="42" />
+		<Setter Property="GlyphStrokeThickness" Value="0.05" />
+	</ControlTheme>
+
+	<ControlTheme x:Key="NavigationIconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Layout" Value="IconTextBelowNoBackground"/>
+		<Setter Property="Behaviour" Value="Tap"/>
+		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="Width" Value="86" />
+		<Setter Property="Height" Value="72" />
+		<Setter Property="Margin" Value="2 16 2 16" />
+		<Setter Property="BackgroundMargin" Value="8" />
+	</ControlTheme>
+
 </ResourceDictionary>
