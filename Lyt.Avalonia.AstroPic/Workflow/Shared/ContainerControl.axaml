@@ -24,7 +24,8 @@
 		<Rectangle 
 			x:Name="rectangle"
 			Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-			Fill="{StaticResource FreshGreen_0_080}"
+			Fill="{StaticResource FreshGreen_2_100}"
+
 			Width="4"
 			RadiusX="2" RadiusY="2"
 			VerticalAlignment="Stretch" HorizontalAlignment="Left"

@@ -68,7 +68,7 @@
 					<Grid
 						Width="680" Height="300"
 						VerticalAlignment="Top"
-						ShowGridLines="True"
+						ShowGridLines="False"
 						>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*" />
