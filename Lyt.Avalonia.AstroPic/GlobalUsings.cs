@@ -79,7 +79,6 @@ global using Lyt.Avalonia.Localizer;
 
 global using Lyt.Model;
 global using Lyt.Persistence;
-global using Lyt.Messaging;
 global using Lyt.Mvvm;
 global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Profiling;
