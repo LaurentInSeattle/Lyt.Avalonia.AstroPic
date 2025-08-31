@@ -29,11 +29,11 @@
 
     <system:String x:Key="Shell.Greetings">Ласкаво просимо до фотографій астрономії!</system:String>
 
-    <system:String x:Key="Collection.SetWallpaper">Використовуйте як шпалери</system:String>
+    <system:String x:Key="Collection.SetWallpaper">Як шпалери</system:String>
 
     <system:String x:Key="Collection.Remove">Видалити</system:String>
 
-    <system:String x:Key="Collection.SaveToDesktop">Збережіть на робочому столі</system:String>
+    <system:String x:Key="Collection.SaveToDesktop">Збережіть на столі</system:String>
 
     <system:String x:Key="Collection.BadPicture">Не вдається завантажити цю картинку!</system:String>
 
@@ -61,11 +61,11 @@
 
     <system:String x:Key="Collection.Thumbs.Recent">Недавній</system:String>
 
-    <system:String x:Key="Gallery.SetWallpaper">Використовуйте як шпалери</system:String>
+    <system:String x:Key="Gallery.SetWallpaper">Як шпалери</system:String>
 
     <system:String x:Key="Gallery.Add">Додавання</system:String>
 
-    <system:String x:Key="Gallery.SaveToDesktop">Збережіть на робочому столі</system:String>
+    <system:String x:Key="Gallery.SaveToDesktop">Збережіть на столі</system:String>
 
     <system:String x:Key="Gallery.StartingDownloading">Завантажити</system:String>
 

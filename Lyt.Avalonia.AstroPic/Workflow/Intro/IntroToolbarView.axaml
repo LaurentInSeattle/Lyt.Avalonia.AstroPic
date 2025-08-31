@@ -19,13 +19,10 @@
 		Height="72"
 		>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
-			HorizontalAlignment="Center" VerticalAlignment="Center"
-			Width="320" Height="56"
-			Margin="0 4 0 4"
+			Style="{StaticResource AppToolbarIconButton}"
+			Width="360" 
+			BackgroundMargin="154" 
 			GlyphSource="next"
-			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
 			Text="{DynamicResource Intro.AgreeMIT}"
 			Command="{Binding OnNext}"

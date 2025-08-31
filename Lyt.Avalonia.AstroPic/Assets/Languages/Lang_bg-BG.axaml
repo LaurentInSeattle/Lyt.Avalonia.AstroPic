@@ -29,11 +29,11 @@
 
     <system:String x:Key="Shell.Greetings">Добре дошли в Astronomy Pictures!</system:String>
 
-    <system:String x:Key="Collection.SetWallpaper">Използвайте като тапет</system:String>
+    <system:String x:Key="Collection.SetWallpaper">Като тапет</system:String>
 
     <system:String x:Key="Collection.Remove">Извадете</system:String>
 
-    <system:String x:Key="Collection.SaveToDesktop">копира на работния плот</system:String>
+    <system:String x:Key="Collection.SaveToDesktop">На работния плот</system:String>
 
     <system:String x:Key="Collection.BadPicture">Не мога да изтегля тази снимка!</system:String>
 
@@ -61,11 +61,11 @@
 
     <system:String x:Key="Collection.Thumbs.Recent">Скоро</system:String>
 
-    <system:String x:Key="Gallery.SetWallpaper">Използвайте като тапет</system:String>
+    <system:String x:Key="Gallery.SetWallpaper">Като тапет</system:String>
 
     <system:String x:Key="Gallery.Add">Добавяне</system:String>
 
-    <system:String x:Key="Gallery.SaveToDesktop">копира на работния плот</system:String>
+    <system:String x:Key="Gallery.SaveToDesktop">На работния плот</system:String>
 
     <system:String x:Key="Gallery.StartingDownloading">Изтеглете в ход</system:String>
 

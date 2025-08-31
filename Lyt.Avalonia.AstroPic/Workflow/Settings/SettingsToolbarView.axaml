@@ -19,15 +19,11 @@
 		Height="72"
 		>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
-			HorizontalAlignment="Left" VerticalAlignment="Center"
-			Width="140" Height="56"
-			Margin="8 4 8 4"
+			Style="{StaticResource AppToolbarIconButton}"
+			Width="200" 
+			BackgroundMargin="74" 
 			GlyphSource="broom"
-			ButtonBackground="BorderlessRectangle"
 			GlyphStrokeThickness="0"
-			GlyphAngle="0"
 			Text="{DynamicResource Settings.CleanupNow}"
 			Command="{Binding OnCleanup}"
 			/>
