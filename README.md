@@ -1,4 +1,6 @@
 # AstroPic ~ Image Downloader and Wallpaper App'
+US Government Shutdown: As of October 3rd, 2025: The APOD service is still live and responding. However it is not updated and the service returns the same image every day. 
+
 Downloads and manages images from various online providers: 
 
 - the NASA Astronomy Pictures of the Day (APOD) 
