@@ -1,3 +1,8 @@
+# US Government Shutdown: 
+As of October 14th, 2025: The APOD service is now not responding. The app just times out after a (long) while. 
+
+As of October 3rd, 2025: The APOD service is still live and responding. However it is not updated and the service returns the same image every day. 
+
 # AstroPic ~ Image Downloader and Wallpaper App'
 Downloads and manages images from various online providers: 
 
