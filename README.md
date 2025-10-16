@@ -27,20 +27,21 @@ Localization:
 
 # Last Improvements...
 
+- Upgraded to .Net 10
 - Now showing translated image title and descriptions.
 - Image information overlay 
 - Localization for additional languages using this translation tool: 
  https://github.com/LaurentInSeattle/Lyt.Avalonia.Translator 
-- The localization tool has been integrated in the Visual Studio 2022 build as a "pre-build event".
+- The localization tool has been integrated in the Visual Studio 2026 build as a "pre-build event".
 
 <p align="left"><img src="AstroPicCollectionScreenshot.png" height="500"/>
 
 # Given up, On hold: 
 
 - Mac OS support. (No machine for testing.)
-
 - Autostart: Tired to struggle with account security and permissions  
 
+# Settings
 <p align="left"><img src="AstroPicSettingsScreenshot.png" height="500"/>
 
 # Build your own...
@@ -48,8 +49,8 @@ Localization:
 - Clone this repo'
 - => Clone the "Lyt.Framework" repo' side by side
 - => Clone the "Lyt.Avalonia" repo' side by side
-- Open the solution in Visual Studio and build.
+- Open the solution in Visual Studio 2026 and build.
 
-Tested with VS 2022 and Avalonia 11.3.1.
+Tested with VS 2026 Insider and Avalonia 11.3.7.
 Should likely work with Rider, but not tested.
 
