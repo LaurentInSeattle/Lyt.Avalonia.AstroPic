@@ -1,4 +1,6 @@
 # US Government Shutdown: 
+As of November 13th, 2025: The NASA APOD service is now back online, providing new images. 
+
 As of October 14th, 2025: The APOD service is now not responding. The app just times out after a (long) while. 
 
 As of October 3rd, 2025: The APOD service is still live and responding. However it is not updated and the service returns the same image every day. 
