@@ -53,6 +53,6 @@ Localization:
 - => Clone the "Lyt.Avalonia" repo' side by side
 - Open the solution in Visual Studio 2026 and build.
 
-Tested with VS 2026 Insider and Avalonia 11.3.7.
+Tested with VS 2026 and Avalonia 11.3.8.
 Should likely work with Rider, but not tested.
 
