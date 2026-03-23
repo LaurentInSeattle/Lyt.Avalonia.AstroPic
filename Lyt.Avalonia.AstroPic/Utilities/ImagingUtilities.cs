@@ -33,9 +33,9 @@ namespace Lyt.Avalonia.AstroPic.Utilities
                 bitmap.Format
             );
             
-            using (ILockedFramebuffer fb = writeableBitmap.Lock())
+            using (ILockedFramebuffer framebuffer = writeableBitmap.Lock())
             {
-                bitmap.CopyPixels(fb, AlphaFormat.Opaque);
+                bitmap.CopyPixels(framebuffer);
             }
 
             return writeableBitmap;
