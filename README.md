@@ -1,10 +1,3 @@
-# US Government Shutdown: 
-As of November 13th, 2025: The NASA APOD service is now back online, providing new images. 
-
-As of October 14th, 2025: The APOD service is now not responding. The app just times out after a (long) while. 
-
-As of October 3rd, 2025: The APOD service is still live and responding. However it is not updated and the service returns the same image every day. 
-
 # AstroPic ~ Image Downloader and Wallpaper App'
 Downloads and manages images from various online providers: 
 
@@ -53,6 +46,6 @@ Localization:
 - => Clone the "Lyt.Avalonia" repo' side by side
 - Open the solution in Visual Studio 2026 and build.
 
-Tested with VS 2026 and Avalonia 11.3.8.
+Tested with Visual Studio 2026 and Avalonia 12.0.0
 Should likely work with Rider, but not tested.
 
