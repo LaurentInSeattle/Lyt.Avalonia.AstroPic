@@ -10,22 +10,22 @@ public sealed partial class GalleryViewModel :
     private readonly AstroPicModel astroPicModel;
     private readonly IToaster toaster;
 
-    [ObservableProperty]
-    private string progressMessage;
-
-    [ObservableProperty]
-    private ThumbnailsPanelViewModel thumbnailsPanelViewModel;
-
-    [ObservableProperty]
-    private PictureViewModel pictureViewModel;
-
     private bool downloaded;
+
+    [ObservableProperty]
+    public partial string ProgressMessage { get; set; }
+
+    [ObservableProperty]
+    public partial ThumbnailsPanelViewModel ThumbnailsPanelViewModel { get; set; }
+
+    [ObservableProperty]
+    public partial PictureViewModel PictureViewModel { get; set; }
 
     public GalleryViewModel(AstroPicModel astroPicModel, IToaster toaster)
     {
         this.astroPicModel = astroPicModel;
         this.toaster = toaster;
-        this.progressMessage =  string.Empty;
+        this.ProgressMessage =  string.Empty;
         this.PictureViewModel = new PictureViewModel(this);
         this.ThumbnailsPanelViewModel = new ThumbnailsPanelViewModel(this);
 

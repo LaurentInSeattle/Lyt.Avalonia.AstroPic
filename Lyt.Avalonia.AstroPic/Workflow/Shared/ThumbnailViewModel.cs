@@ -21,19 +21,19 @@ public sealed partial class ThumbnailViewModel : ViewModel<ThumbnailView>, IReci
     private readonly bool isLarge;
 
     [ObservableProperty]
-    private double fontSize;
+    public partial double FontSize { get; set; }
 
     [ObservableProperty]
-    private double borderHeight;
+    public partial double BorderHeight { get; set; }
 
     [ObservableProperty]
-    private double imageHeight;
+    public partial double ImageHeight { get; set; }
 
     [ObservableProperty]
-    private string provider;
+    public partial string Provider { get; set; }
 
     [ObservableProperty]
-    private WriteableBitmap thumbnail;
+    public partial WriteableBitmap Thumbnail { get; set; }
 
     /// <summary> 
     /// Creates a thumbnail from a full (large) image - use for downloads 

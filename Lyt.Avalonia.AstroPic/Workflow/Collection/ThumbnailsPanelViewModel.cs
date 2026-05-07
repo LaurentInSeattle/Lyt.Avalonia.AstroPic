@@ -10,13 +10,13 @@ public sealed partial class ThumbnailsPanelViewModel :
     private readonly List<Provider> providers;
 
     [ObservableProperty]
-    private bool showMru;
+    public partial bool ShowMru { get; set; }
 
     [ObservableProperty]
-    private ObservableCollection<ThumbnailViewModel> thumbnails;
+    public partial ObservableCollection<ThumbnailViewModel> Thumbnails { get; set; }
 
     [ObservableProperty]
-    private List<string> providerNames;
+    public partial List<string> ProviderNames { get; set; }
 
     [ObservableProperty]
     private int providersSelectedIndex; 

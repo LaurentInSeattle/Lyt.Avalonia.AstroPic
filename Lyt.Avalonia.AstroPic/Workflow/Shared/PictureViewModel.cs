@@ -14,22 +14,22 @@ public sealed partial class PictureViewModel :
     private readonly ViewModel parent;
 
     [ObservableProperty]
-    private double zoomFactor;
+    public partial double ZoomFactor { get; set; }
 
     [ObservableProperty]
-    private string provider;
+    public partial string Provider { get; set; }
 
     [ObservableProperty]
-    private string title;
+    public partial string Title { get; set; }
 
     [ObservableProperty]
-    private string copyright;
+    public partial string Copyright { get; set; }
 
     [ObservableProperty]
-    private string description;
+    public partial string Description { get; set; }
 
     [ObservableProperty]
-    private GridLength descriptionHeight;
+    public partial GridLength DescriptionHeight { get; set; }
 
     private PictureMetadata? pictureMetadata;
     private byte[]? imageBytes;

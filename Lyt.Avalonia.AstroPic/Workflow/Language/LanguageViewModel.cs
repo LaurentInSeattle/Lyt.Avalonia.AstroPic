@@ -59,7 +59,7 @@ public sealed partial class LanguageViewModel : ViewModel<LanguageView>
     }
 
     [ObservableProperty]
-    private int selectedLanguageIndex ; 
+    public partial int SelectedLanguageIndex { get; set; }
 
     partial void OnSelectedLanguageIndexChanged(int value)
     { 

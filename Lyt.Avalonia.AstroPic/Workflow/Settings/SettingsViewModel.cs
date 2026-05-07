@@ -8,25 +8,25 @@ public sealed partial class SettingsViewModel : ViewModel<SettingsView>, IRecipi
     private ObservableCollection<SelectProviderViewModel> selectProviders;
 
     [ObservableProperty]
-    private decimal? maxImages;
+    public partial decimal? MaxImages { get; set; }
 
     [ObservableProperty]
-    private decimal? maxStorageMB;
+    public partial decimal? MaxStorageMB { get; set; }
 
     [ObservableProperty]
-    private bool maxImageWidth;
+    public partial bool MaxImageWidth { get; set; }
 
     [ObservableProperty]
-    private bool shouldAutoCleanup;
+    public partial bool ShouldAutoCleanup { get; set; }
 
     [ObservableProperty]
-    private bool shouldAutoStart;
+    public partial bool ShouldAutoStart { get; set; }
 
     [ObservableProperty]
-    private bool shouldRotateWallpapers;
+    public partial bool ShouldRotateWallpapers { get; set; }
 
     [ObservableProperty]
-    private decimal? wallpaperRotationMinutes;
+    public partial decimal? WallpaperRotationMinutes { get; set; }
 
     private bool isPopulating;
 

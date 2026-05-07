@@ -8,18 +8,6 @@ public sealed partial class CollectionViewModel :
 {
     private readonly AstroPicModel astroPicModel;
 
-    [ObservableProperty]
-    private ThumbnailsPanelViewModel thumbnailsPanelViewModel;
-
-    [ObservableProperty]
-    private DropViewModel dropViewModel;
-
-    [ObservableProperty]
-    private StatisticsViewModel statisticsViewModel;
-
-    [ObservableProperty]
-    private PictureViewModel pictureViewModel;
-
     private bool loaded;
     private List<Tuple<Picture, byte[]>>? collectionThumbnails;
 
@@ -34,6 +22,18 @@ public sealed partial class CollectionViewModel :
         this.Subscribe<ModelLoadedMessage>();
         this.Subscribe<CollectionChangedMessage>();
     }
+
+    [ObservableProperty]
+    public partial ThumbnailsPanelViewModel ThumbnailsPanelViewModel { get; set; }
+
+    [ObservableProperty]
+    public partial DropViewModel DropViewModel { get; set; }
+
+    [ObservableProperty]
+    public partial StatisticsViewModel StatisticsViewModel { get; set; }
+
+    [ObservableProperty]
+    public partial PictureViewModel PictureViewModel { get; set; }
 
     public override void Activate(object? activationParameters) 
     {

@@ -11,16 +11,16 @@ public sealed partial class StatisticsViewModel :
     private readonly AstroPicModel astroPicModel;
 
     [ObservableProperty]
-    private string imageCountText;
+    public partial string ImageCountText { get; set; }
 
     [ObservableProperty]
-    private string sizeOnDiskText;
+    public partial string SizeOnDiskText { get; set; }
 
     [ObservableProperty]
-    private string availableDiskSpaceText;
+    public partial string AvailableDiskSpaceText { get; set; }
 
     [ObservableProperty]
-    private string alertText;
+    public partial string AlertText { get; set; }
 
     public StatisticsViewModel(AstroPicModel astroPicModel)
     {

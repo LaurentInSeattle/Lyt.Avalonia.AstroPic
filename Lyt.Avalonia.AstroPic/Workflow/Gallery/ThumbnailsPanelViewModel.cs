@@ -5,7 +5,7 @@ public sealed partial class ThumbnailsPanelViewModel : ViewModel<ThumbnailsPanel
     private readonly GalleryViewModel galleryViewModel;
 
     [ObservableProperty]
-    private List<ThumbnailViewModel> thumbnails;
+    public partial List<ThumbnailViewModel> Thumbnails { get; set; }
 
     private PictureMetadata? selectedMetadata;
 

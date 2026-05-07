@@ -7,10 +7,10 @@ public sealed partial class SelectProviderViewModel : ViewModel<SelectProviderVi
     private readonly bool isInitializing;
 
     [ObservableProperty]
-    private string? providerName;
+    public partial string? ProviderName { get; set; }
 
     [ObservableProperty]
-    private bool useService;
+    public partial bool UseService { get; set; }
 
     public SelectProviderViewModel(AstroPicModel astroPicModel, Provider provider)
     {
