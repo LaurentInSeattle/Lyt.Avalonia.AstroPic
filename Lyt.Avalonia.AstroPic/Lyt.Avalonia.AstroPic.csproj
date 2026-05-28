@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <NoWarn>IDE0079</NoWarn>
+		<NoWarn>IDE0079</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <NoWarn>IDE0079</NoWarn>
+		<NoWarn>IDE0079</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,78 +23,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
-	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
+		<PackageReference Include="Avalonia" Version="12.0.4" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
+		<PackageReference Include="SkiaSharp" Version="3.119.4" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionary.axaml" />
-	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
-	  <AvaloniaXaml Remove="Assets\Languages\Lang_de-DE.axaml" />
-	  <AvaloniaXaml Remove="Assets\Languages\Lang_es-ES.axaml" />
-	  <AvaloniaXaml Remove="Assets\Theme\Sliders.axaml" />
-	  <AvaloniaXaml Remove="Assets\Theme\Typography.axaml" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Controls\Lyt.Avalonia.Controls.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Interfaces\Lyt.Avalonia.Interfaces.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Framework.Interfaces\Lyt.Framework.Interfaces.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Mvvm\Lyt.Mvvm.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Translator.Service\Lyt.Translator.Service.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj" />
+		<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj" />
+		<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Model\Lyt.Avalonia.AstroPic.Model.csproj" />
+		<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
-	  <Content Include="Assets\Images\AstroPic.ico" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="12.0.1" />
-		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.1" />
-		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.1" />
-		<PackageReference Include="SkiaSharp" Version="3.119.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-	<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Controls\Lyt.Avalonia.Controls.csproj" />
-	<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Interfaces\Lyt.Avalonia.Interfaces.csproj" />
-	<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
-	<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Framework.Interfaces\Lyt.Framework.Interfaces.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Mvvm\Lyt.Mvvm.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Translator.Service\Lyt.Translator.Service.csproj" />
-	<ProjectReference Include="..\..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj" />
-	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Interfaces\Lyt.Avalonia.AstroPic.Interfaces.csproj" />
-	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Model\Lyt.Avalonia.AstroPic.Model.csproj" />
-	<ProjectReference Include="..\Lyt.Avalonia.AstroPic.Service\Lyt.Avalonia.AstroPic.Service.csproj" />
-  </ItemGroup>
-
-	<ItemGroup>
-	  <AvaloniaResource Update="Assets\Theme\Typography.axaml">
-	    <SubType>Designer</SubType>
-	  </AvaloniaResource>
-	  <AvaloniaResource Update="Assets\Theme\Sliders.axaml">
-	    <SubType>Designer</SubType>
-	  </AvaloniaResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Workflow\Collection\CollectionToolbarView.axaml.cs">
-	    <DependentUpon>CollectionToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Gallery\ThumbnailsPanelView.axaml.cs">
-	    <DependentUpon>ThumbnailsPanelView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Intro\IntroToolbarView.axaml.cs">
-	    <DependentUpon>IntroToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Language\LanguageToolbarView.axaml.cs">
-	    <DependentUpon>LanguageToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Language\LanguageView.axaml.cs">
-	    <DependentUpon>LanguageView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Settings\SettingsView.axaml.cs">
-	    <DependentUpon>SettingsView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Settings\SettingsToolbarView.axaml.cs">
-	    <DependentUpon>SettingsToolbarView.axaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
 </Project>

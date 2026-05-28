@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11819.183 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Desktop", "Lyt.Avalonia.AstroPic.Desktop\Lyt.Avalonia.AstroPic.Desktop.csproj", "{134747B8-7895-CB37-6197-FF6BF55529C1}"
 EndProject
@@ -56,6 +56,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.FileSystem", "..\Lyt.Framework\Lyt.FileSystem\Lyt.FileSystem.csproj", "{000352DE-B557-EED7-0FDB-6138973E50C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.AstroPic.Desktop.MacOs", "Lyt.Avalonia.AstroPic.Desktop.MacOs\Lyt.Avalonia.AstroPic.Desktop.MacOs.csproj", "{CFD53667-482A-EF5B-E627-E0D6BA919593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,10 @@ Global
 		{000352DE-B557-EED7-0FDB-6138973E50C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{000352DE-B557-EED7-0FDB-6138973E50C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{000352DE-B557-EED7-0FDB-6138973E50C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD53667-482A-EF5B-E627-E0D6BA919593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD53667-482A-EF5B-E627-E0D6BA919593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD53667-482A-EF5B-E627-E0D6BA919593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD53667-482A-EF5B-E627-E0D6BA919593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
