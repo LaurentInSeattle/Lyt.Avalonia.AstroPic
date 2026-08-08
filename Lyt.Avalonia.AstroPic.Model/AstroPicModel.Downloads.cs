@@ -47,7 +47,7 @@ public sealed partial class AstroPicModel : ModelBase
                     {
                         // load image from disk
                         byte[] imageBytes = this.fileManager.Load<byte[]>(
-                            Area.User, Kind.BinaryNoExtension, pictureMetadata.TodayImageFilePath());
+                            Area.User, Kind.BinaryNoExtension, pictureMetadata.TodayImageFilePath(), subFolder: string.Empty);
                         downloads.Add(new PictureDownload(pictureMetadata, imageBytes));
                         provider.IsLoaded = true;
                     }
